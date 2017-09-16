@@ -19,8 +19,8 @@ namespace WCF.Web.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Kiến thức";
-            //return View();
-            return RedirectToAction("Message");
+            return View();
+            //return RedirectToAction("Message");
         }
 
         public ActionResult Message()

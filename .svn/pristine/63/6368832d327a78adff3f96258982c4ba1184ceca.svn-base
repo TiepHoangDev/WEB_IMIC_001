@@ -1,0 +1,177 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.RecruitmentNewsletterObject>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="mainContainer">
+
+    <div id="menuTop">
+        <div class="w1220">
+            <ul>
+                <li>
+                    <a class="cate4 current" href="/co-hoi-nghe-nghiep.html">Cơ hội nghề nghiệp </a>
+                </li>
+                <li>
+                    <a class="cate1" href="/tintuc/tu-van-tuyen-dung.html">Tư vấn tuyển dụng</a>
+                </li>
+                <li>
+                    <a class="cate2" href="/thong-tin/cau-hoi-thuong-gap.html">Câu hỏi thường gặp</a>
+                </li>
+                <li>
+                    <a class="cate3" href="/thong-tin/van-hoa-doanh-nghiep.html">Văn hóa doanh nghiệp</a>
+                </li>
+                <li>
+                    <a class="cate5" href="/thong-tin/thong-tin-dao-tao.html">Chương trình đào tạo</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="/Themes/Portal/Default/Scripts/owl.carousel.min.js"></script>
+    <script type="text/javascript">
+        var currentMenu = "cate4";
+        var current = "item5";
+        $(document).ready(function () {
+            $("." + currentMenu).addClass("current");
+            $("." + current).addClass("current");
+
+        });
+    </script>
+
+    <style type="text/css">
+        #bannerLayout {
+            background: transparent url("images/tuyen-dung/layout_Bg.png") no-repeat scroll center top;
+        }
+    </style>
+    <div id="bannerLayout">
+        <div class="w1220">
+            <h1>
+                <span>Hotline</span>: 04.73086880<br>
+                <span>Email</span>: tuyendung@dkt.com.vn
+            </h1>
+            <a class="re-button btn-send-fast" href="https://docs.google.com/forms/d/e/1FAIpQLSdJtCJS1DGiqlG5u9s1kQ324PSDsJjcZ5HmOAnsqJh25w0XeQ/viewform" target="_blank">Nộp hồ sơ online</a>
+        </div>
+
+    </div>
+
+
+
+    <style type="text/css">
+        #RecruitmentSearch {
+            margin: 30px auto 10px;
+        }
+
+            #RecruitmentSearch .searchChild:first-child,
+            #RecruitmentSearch .searchChild:nth-child(2),
+            #RecruitmentSearch .searchChild:nth-child(5),
+            #RecruitmentSearch .searchChild:nth-child(6) {
+                margin-right: 20px;
+            }
+
+            #RecruitmentSearch .searchChild-title,
+            #RecruitmentSearch .searchChild select {
+                color: #898989;
+            }
+
+            #RecruitmentSearch .searchChild-title {
+                font-family: roboto-italic;
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+
+            #RecruitmentSearch .searchChild {
+                width: auto;
+                float: left;
+            }
+
+                #RecruitmentSearch .searchChild:nth-child(7) {
+                    padding: 30px 0 0 70px;
+                }
+
+                #RecruitmentSearch .searchChild:first-child,
+                #RecruitmentSearch .searchChild:nth-child(2),
+                #RecruitmentSearch .searchChild:nth-child(3),
+                #RecruitmentSearch .searchChild:nth-child(5),
+                #RecruitmentSearch .searchChild:nth-child(6) {
+                    margin-bottom: 25px;
+                }
+
+                #RecruitmentSearch .searchChild select {
+                    /*padding: 8px 30px !important;*/
+                    width: 352px;
+                }
+
+                #RecruitmentSearch .searchChild input {
+                    background-color: #2db3db;
+                    border: medium none;
+                    border-radius: 22px;
+                    box-shadow: none;
+                    color: #fff;
+                    font-size: 16px;
+                    margin-right: 15px;
+                    padding: 9px 31px;
+                    width: 120px;
+                    font-family: Helvetica;
+                }
+    </style>
+
+    <div>
+        <div id="RecruitmentSearch" class="w1220">
+            <div class="searchChild">
+                <div class="searchChild-title">Chọn ngành nghề</div>
+                <div class="searchChild-dropdown">
+                    @Html.DropDownList("nhanhNghe", @ViewBag.selectNganhNghe as SelectList, "Tất cả ngành nghề", new {@class="" })
+                </div>
+            </div>
+            <div class="searchChild">
+                <div class="searchChild-title">Chọn trình độ học vấn</div>
+                <div class="searchChild-dropdown">
+                    @Html.DropDownList("trinhDo", @ViewBag.selectTrinhDo as SelectList, "Tất cả trình độ", new { @class = "" })
+                </div>
+            </div>
+            <div class="searchChild">
+                <div class="searchChild-title">Chọn loại hình công việc</div>
+                <div class="searchChild-dropdown">
+                    <select name="typeWord" id="typeWord" data-val="true" data-val-number="The field Loại hình must be a number." data-val-range="Bạn chưa chọn loại hình" data-val-range-max="2147483647" data-val-range-min="1">
+                        <option value="0">-- Chọn --</option>
+                        <option value="1">Toàn thời gian</option>
+                        <option value="2">Bán thời gian</option>
+                        <option value="3">Thực tập</option>
+                    </select>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="searchChild">
+                <div class="searchChild-title">Chọn kinh nghiệm</div>
+                @Html.DropDownList("kinhNghiem", @ViewBag.selectKinhNghiem as SelectList, "Tất cả kinh nghiệm", new { @class = "" })
+                <div class="searchChild-dropdown"></div>
+            </div>
+            <div class="searchChild">
+                <div class="searchChild-title">Chọn nơi làm việc</div>
+                @Html.DropDownList("diaDiem", @ViewBag.selectDiaDiem as SelectList, "Tất cả địa điểm", new { @class = "" })
+                <div class="searchChild-dropdown"></div>
+            </div>
+            <div class="searchChild">
+                <div class="searchChild-dropdown">
+                    <input type="submit" name="submit" value="Tìm kiếm" class="re-button">
+                    <a class="re-button" href="http://dkt.com.vn/Content/CV/DKT_CV_Kinhdoanh.doc" style=" padding: 11px 25px ; ">Tải CV mẫu</a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="result">
+        @Html.Partial("Index_RecruitmentNewsletter",Model)
+    </div>
+    <div class="clear"></div>
+</div>
+
+@section style{
+    <link href="/Content/css/tuyen-dung/style-tuyen-dung.css" rel="stylesheet" />
+}
+
+@section script{
+    
+}

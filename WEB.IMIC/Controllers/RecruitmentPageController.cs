@@ -14,7 +14,7 @@ namespace WEB.IMIC.Controllers
         {
             ViewBag.selectNganhNghe = new SelectList(new RecCareerBbl().GetAll(), "RecCareerId", "RecCareerName");
             ViewBag.selectKinhNghiem = new SelectList(new RecExperienceBbl().GetAll(), "RecExperienceId", "RecExperienceName");
-            ViewBag.selectHocVan = new SelectList(new RecDipBbl().GetAll(), "RecDipId", "RecDip");
+            ViewBag.selectTrinhDo = new SelectList(new RecDipBbl().GetAll(), "RecDipId", "RecDip");
             ViewBag.selectDiaDiem = new SelectList(new RecruitmentLocationBbl().GetAll(), "RecLocationId", "RecLocationName");
             return View(new RecruitmentNewsletterBCL().getForPaging(1, "", 0, 10));
         }

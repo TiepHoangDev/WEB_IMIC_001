@@ -1,0 +1,71 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.RecruitmentNewsletterObject>
+
+<div class="career-chance w1220">
+    <div class="recruitment-list">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th width="160"></th>
+                    <th>Tên công việc</th>
+                    <th width="390">Mô tả ngắn</th>
+                    <th width="190">Địa điểm</th>
+                    <th width="190">Hạn nộp hồ sơ</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div style="overflow:hidden; width: 140px; height:100px; margin: 0 auto;">
+                                <img src="images/tuyen-dung/47077a22a2cc8acf7e37e8ba1deb4271.jpg" style="max-width:100%;">
+                            </div>
+
+                        </td>
+                        <td>
+                            <a class="title" href="@Url.Action("","")">@item.Title</a>
+                        </td>
+                        <td>@item.Description</td>
+                        <td>Dia diem</td>
+                        <td>
+                            Hanj<span> Còn @(DateTime.Now - DateTime.Now) ngày</span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <ul id="pagination" class="pagination_a">
+            <li>
+                <a href="hoi-dap?start=1" class="hidden-md-down prev"><i aria-hidden="true" class="fa fa-angle-left"></i></a>
+            </li>
+            <li>
+                <a href="hoi-dap?start=1" class="hidden-md-down">1</a>
+            </li>
+            <li>
+                <a href="hoi-dap?start=2" class="hidden-md-down">2</a>
+            </li>
+            <li>
+                <a href="hoi-dap?start=3" class="hidden-md-down">3</a>
+            </li>
+            <li>
+                <a href="hoi-dap?start=4" class="hidden-md-down">4</a>
+            </li>
+            <li>
+                <a href="hoi-dap?start=5" class="hidden-md-down">5</a>
+            </li>
+            <li class="">
+                <span class="ellipse clickable">…</span>
+            </li>
+            <li>
+                <a href="hoi-dap?start=22" class="hidden-md-down">22</a>
+            </li>
+            <li>
+                <a href="hoi-dap?start=23" class="hidden-md-down">23</a>
+            </li>
+            <li>
+                <a href="hoi-dap?start=1" class="hidden-md-down next"><i aria-hidden="true" class="fa fa-angle-right"></i></a>
+            </li>
+        </ul>
+    </div>
+
+</div>
