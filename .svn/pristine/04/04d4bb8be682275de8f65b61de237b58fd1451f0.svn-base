@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "ManageCategory";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@model List<WCF.BusinessObjectsLayer.EntityObjects.TechCategoryObject>
+<div id="manage-tech-category" class="col-xs-12">
+    <div class="portlet box red-intense">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-globe"></i>Quản lý danh mục công nghệ
+            </div>
+            <div class="tools">
+
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="col-xs-12" style="float:none">
+                <div style="padding-bottom:10px;">
+                    <a class="btn btn-primary btn-sm" style="margin-top:10px;" href="@Url.Action("Category_Insert", "TechAdmin")">
+                        Thêm mới
+                        <span class="fa fa-plus" style="padding-left:6px;"></span>
+                    </a>
+                </div>
+                <table class="table table-striped table-bordered table-hover dataTable no-footer" id="category-table" aria-describedby="dataTables-example_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting" tabindex="0" aria-controls="category-table" rowspan="1" colspan="1">Thứ tự sắp xếp</th>
+                            <th class="sorting" tabindex="0" aria-controls="category-table" rowspan="1" colspan="1">Tên</th>
+                            <th class="sorting" tabindex="0" aria-controls="category-table" rowspan="1" colspan="1">Ảnh</th>
+
+                        
+                            <th class="sorting" tabindex="0" aria-controls="category-table" rowspan="1" colspan="1">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th>@item.RankingOfSortingOnTop</th>
+                                <th>@item.CategoryName</th>
+                                <th><img style="height:101px;width:180px;" src="~/Content/Galleries/Tech/Categories/@item.CategoryAvatar" /></th>
+                             
+                                <th>
+                                    <a href="@Url.Action("Category_Edit", "TechAdmin", new { id = item.TechCategoryId })" class="btn btn-info">Sửa</a>
+                                    <a class="btn btn-danger" onclick="Remove('@item.TechCategoryId','@WCF.Web.App_Start.StringHelpers.FormatJSString(item.CategoryName)',this)">Xóa</a>
+                                </th>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#category-table').dataTable();
+        });
+        function Remove(id, name, event) {
+            var sender = event.currentTarget;
+            var answer = confirm("Bạn muốn xóa danh mục này: " + name + " ?");
+            if (answer) {
+                $.ajax({
+                    url: '@Url.Action("Category_Delete", "TechAdmin")',
+                    data: { id: id },
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        if (!data.result) {
+                            alert(data.Message);
+                        } else {
+                            $(event).closest("tr").remove();
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+}
+

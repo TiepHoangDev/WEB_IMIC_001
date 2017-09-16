@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.DemoProjectObject>
+@{
+    Layout = null;
+}
+@*<div class="gallery col-xs-12">
+    <a class="gr1" href="~/Content/Galleries/Training/DemoProject/Images/image1.jpg"><img src="~/Content/Galleries/Training/DemoProject/Thumbs/thumb1.jpg" /></a>
+    <a class="gr1" href="~/Content/Galleries/Training/DemoProject/Images/image2.jpg"><img src="~/Content/Galleries/Training/DemoProject/Thumbs/thumb2.jpg" /></a>
+    <a class="gr1" href="~/Content/Galleries/Training/DemoProject/Images/image3.jpg"><img src="~/Content/Galleries/Training/DemoProject/Thumbs/thumb3.jpg" /></a>
+    <a class="gr1" href="~/Content/Galleries/Training/DemoProject/Images/image4.jpg"><img src="~/Content/Galleries/Training/DemoProject/Thumbs/thumb4.jpg" /></a>
+    <a class="gr1" href="~/Content/Galleries/Training/DemoProject/Images/image5.jpg"><img src="~/Content/Galleries/Training/DemoProject/Thumbs/thumb5.jpg" /></a>
+    <a class="gr1" href="~/Content/Galleries/Training/DemoProject/Images/image6.jpg"><img src="~/Content/Galleries/Training/DemoProject/Thumbs/thumb6.jpg" /></a>
+    <a class="gr1" href="~/Content/Galleries/Training/DemoProject/Images/image7.jpg"><img src="~/Content/Galleries/Training/DemoProject/Thumbs/thumb7.jpg" /></a>
+    <a class="gr1" href="~/Content/Galleries/Training/DemoProject/Images/image8.jpg"><img src="~/Content/Galleries/Training/DemoProject/Thumbs/thumb8.jpg" /></a>
+    <a class="gr1" href="~/Content/Galleries/Training/DemoProject/Images/image9.jpg"><img src="~/Content/Galleries/Training/DemoProject/Thumbs/thumb9.jpg" /></a>
+    <a class="gr1" href="~/Content/Galleries/Training/DemoProject/Images/image10.jpg"><img src="~/Content/Galleries/Training/DemoProject/Thumbs/thumb10.jpg" /></a>
+    <a class="gr1" href="~/Content/Galleries/Training/DemoProject/Images/image11.jpg"><img src="~/Content/Galleries/Training/DemoProject/Thumbs/thumb11.jpg" /></a>
+    <a class="gr1" href="~/Content/Galleries/Training/DemoProject/Images/image11.jpg"><img src="~/Content/Galleries/Training/DemoProject/Thumbs/thumb11.jpg" /></a>
+</div>*@
+
+<div class="gallery col-xs-12">
+    @foreach (var item in Model)
+    {
+        
+            <a class="gr1" href="~/Content/Galleries/Training/DemoProject/Images/@item.DemoLink"><img src="~/Content/Galleries/Training/DemoProject/Thumbs/@item.Thumbnail" /></a>
+        
+    }
+</div>
+

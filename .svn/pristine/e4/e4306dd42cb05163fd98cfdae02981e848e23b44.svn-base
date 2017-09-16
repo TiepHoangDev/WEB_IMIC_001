@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Edit Video Category";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@model WCF.BusinessObjectsLayer.EntityObjects.VideoCategoryObject
+
+<div id="add-video-category" style="padding-bottom:20px; width:100%">
+    <div class="portlet light">
+        <div class="portlet-body" style="padding-top:0px">
+            @*<h4 style=" font-weight:bold; color:#1945e5; padding-bottom:30px; font-size:18px">
+            Update Video Category</h4>*@
+
+            @using (Html.BeginForm("Category_Edit", "VideoAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(m => m.VideoCategoryId)
+                @Html.HiddenFor(m => m.VideoCategoryIcon)
+                @Html.HiddenFor(m => m.IsDeleted)
+                <div class="form-group">
+                    <h3>Tên danh mục</h3>
+
+                    @Html.TextBoxFor(m => m.VideoCategoryName, new { @type = "text", @class = "form-control", @id = "name" })
+                </div>
+                <h5 style="color:red; display:none" class="name_warning">Tên danh mục không được phép trống.</h5>
+                
+                <div class="form-group">
+                    <h3>Biểu tượng</h3>
+                    @Html.TextBoxFor(m => m.VideoCategoryIcon, new { type = "file", name = "CategoryIcon", id = "icon" })
+                    <div style="margin-top:15px;">
+                        <img style="width:25%;height:25%;" class="img-thumbnail rimage" src="~/Content/Galleries/Video/Categories/@Model.VideoCategoryIcon" />
+                    </div>
+                </div>
+
+                <div style="padding-left:0px;width:100%;margin-top:30px;margin-bottom:20px">
+                    <a class="btn btn-primary" data-toggle="modal" href="#confirm-modal">Cập nhật</a>
+                    <a href="@Url.Action("Manage_Category", "VideoAdmin")" class="btn btn-default" style="height:34px;width:86.75px">Đóng</a>
+                </div>
+
+                <!-- /.modal -->
+                <div class="modal fade bs-modal-lg" id="confirm-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">Confirm Dialog</h4>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure to update @Model.VideoCategoryName ?
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn default" data-dismiss="modal">Close</button>
+                                <button onclick="submit" class="btn blue" id="btn-update">Confirm</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $("#icon").change(function () {
+            readURL(this, '.rimage');
+        });
+
+    </script>
+
+    <script>
+        $('#name').on('change', function (e) {
+            var name = $('#name').val();
+            if (name == null || name.trim() === '') {
+                $('.name_warning').show();
+                $('#btn-update').attr("disabled", true);
+            }
+            else {
+                $('.name_warning').hide();
+                $('#btn-update').attr("disabled", false);
+            }
+        });
+    </script>
+
+}
+
+

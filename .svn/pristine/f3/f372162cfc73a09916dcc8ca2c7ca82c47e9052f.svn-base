@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.TrainingCategoryObject>
+
+@{
+    Layout = null;
+}
+<div class="row">
+    <div class="box_search">
+        <div class="box">
+            <input type="text" autocomplete="off" name="" class="text-select textfield autoText" value="Chọn dạnh mục" id="">
+            <input type="text" name="" class="text-input" id="" placeholder="Nhập từ khóa">
+            <button class="bt">Search</button>
+            <div id="Box-field" class="box-field">
+                <div class="col-lg-5">
+                    <ul class="column-row"id="Category">
+                        @{
+                            foreach (var item in Model)
+                            {
+                                <a href="@Url.Action("Index","ClassPage", new{tcCodeNumber = @item.TCCodeNumber})"><li class="col-xs-6">
+                                    @item.TrainingCategoryName
+
+                                </li></a>
+                            }
+}
+                        
+                    </ul>
+
+                </div>
+                @*<div class="col-lg-5">
+                    <ul>
+                        <li><span>Flash animation 3D</span></li>
+                        <li><span> AutoCad-Cam 3D</span></li>
+                        <li><span>Google Sketchup</span></li>
+                        <li><span>Maya</span></li>
+                        <li><span>Cinema 4D</span></li>
+                        <li><span>Đồ họa Game</span></li>
+                        <li><span>Object C</span></li>
+                        <li><span>XNA</span></li>
+                        <li><span>Java</span></li>
+                    </ul>
+                </div>*@
+                <a tabindex="9" href="#" onclick="" class="close-from fa-times fa"></a>
+                <div class="box-li">
+                    <a href="#">Giới thiệu</a>
+                    <a href="#">Qui định</a>
+                    <a href="#">Điều khoản áp dụng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,716 @@
+﻿@{
+    ViewBag.Title = "Trang kiến thức";
+    Layout = "~/Views/LessonPage/_LayoutLesson.cshtml";
+    ViewBag.description = "iMic - Nơi đào tạo lập trình viên hàng đầu Việt Nam. Cơ hội tiếp cận môi trường làm dự án tại các Công ty, trau dồi kinh nghiệm lập trình cùng các chuyên gia, giảng viên nhiều năm kinh nghiệm.";
+    ViewBag.image = "http://imic.edu.vn/Images/Shortcut.jpg";
+}
+@*<link rel="stylesheet" href="~/Content/css/intro/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/css/intro/owl.theme.css">
+    <link rel="stylesheet" href="~/Content/css/intro/owl.transitions.css">*@
+@*<link rel="stylesheet" type="text/css" href="~/Content/assets/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/style.css" />
+    <script type="text/javascript" src="~/Content/assets/js/modernizr.custom.53451.js"></script>*@
+<link rel="stylesheet" type="text/css" href="~/Content/assets/css/demo.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/assets/css/style2.css" />
+<link rel="stylesheet" href="~/Content/css/slicebox.css" />
+<!--[if lt IE 9]>
+<link rel="stylesheet" type="text/css" href="css/style_ie.css" />
+<![endif]-->
+<!-- jQuery -->
+@*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>*@
+<!-- jmpress plugin -->
+
+<style>
+    .feeds li .col2 {
+        width: 120px;
+        float: right;
+    }
+
+    span.views {
+        background: #ececec;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        color: #FFF;
+        font-weight: bold;
+        margin-left: 3px;
+        border-radius: 4px;
+    }
+
+    .feeds li .col1 {
+        width: calc(100% - 130px);
+    }
+
+    .slimScrollDiv {
+        height: 230px !important;
+    }
+
+    .scroller {
+        height: 230px !important;
+    }
+
+    .btn-load-les {
+        display: block;
+        margin: auto;
+        max-width: 100%;
+        float: none;
+        font-weight: bold;
+        font-size: 16px;
+        margin-top: 30px;
+    }
+
+    .detail-count {
+        padding: 5px;
+        width: 25px;
+        height: 25px;
+        border-radius: 3px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 15px;
+    }
+
+    .nopadding {
+        padding: 0px;
+    }
+
+    .container-fluid {
+        background: #2f373e;
+    }
+</style>
+<div class="page-fixed-main-content">
+    <!-- BEGIN PAGE CONTENT-->
+    <div id="lesson-box">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- BEGIN PROFILE SIDEBAR -->
+                <!-- END BEGIN PROFILE SIDEBAR -->
+                <!-- BEGIN PROFILE CONTENT -->
+                <div class="profile-content">
+                    <div class="row" style="margin-bottom: 15px;">
+                        <div class="container">
+                            <!-- Codrops top bar -->
+                            @*<div id="da-slider" class="da-slider">
+                                    <div class="da-slide">
+                                        <h2>Easy management</h2>
+                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                                        <a href="#" class="da-link">Read more</a>
+                                        <div class="da-img"><img src="~/Content/assets/images/2.png" alt="image01" /></div>
+                                    </div>
+                                    <div class="da-slide">
+                                        <h2>Revolution</h2>
+                                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                                        <a href="#" class="da-link">Read more</a>
+                                        <div class="da-img"><img src="~/Content/assets/images/3.png" alt="image01" /></div>
+                                    </div>
+                                    <div class="da-slide">
+                                        <h2>Warm welcome</h2>
+                                        <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.</p>
+                                        <a href="#" class="da-link">Read more</a>
+                                        <div class="da-img"><img src="~/Content/assets/images/1.png" alt="image01" /></div>
+                                    </div>
+                                    <div class="da-slide">
+                                        <h2>Quality Control</h2>
+                                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                                        <a href="#" class="da-link">Read more</a>
+                                        <div class="da-img"><img src="~/Content/assets/images/4.png" alt="image01" /></div>
+                                    </div>
+                                    <nav class="da-arrows">
+                                        <span class="da-arrows-prev"></span>
+                                        <span class="da-arrows-next"></span>
+                                    </nav>
+                                </div>*@
+                            <style>
+                                .sb-slider img {
+                                    width: 100%;
+                                    max-height: 450px;
+                                }
+                            </style>
+                            <ul id="sb-slider" class="sb-slider" style="overflow:hidden;max-height:450px">
+                                <li>
+                                    <a href="http://www.flickr.com/photos/strupler/2969141180" target="_blank"><img style="max-height:450px" src="~/Content/images/1.jpg" alt="image1" /></a>
+                                    <div class="sb-description">
+                                        <h3>Creative Lifesaver</h3>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="http://www.flickr.com/photos/strupler/2968268187" target="_blank"><img style="max-height:450px" src="~/Content/images/2.jpg" alt="image2" /></a>
+                                    <div class="sb-description">
+                                        <h3>Honest Entertainer</h3>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="http://www.flickr.com/photos/strupler/2968114825" target="_blank"><img style="max-height:450px" src="~/Content/images/3.jpg" alt="image1" /></a>
+                                    <div class="sb-description">
+                                        <h3>Brave Astronaut</h3>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="http://www.flickr.com/photos/strupler/2968122059" target="_blank"><img style="max-height:450px" style="max-height:540px" src="~/Content/images/4.jpg" alt="image1" /></a>
+                                    <div class="sb-description">
+                                        <h3>Affectionate Decision Maker</h3>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="http://www.flickr.com/photos/strupler/2969119944" target="_blank"><img style="max-height:450px" src="~/Content/images/5.jpg" alt="image1" /></a>
+                                    <div class="sb-description">
+                                        <h3>Faithful Investor</h3>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="http://www.flickr.com/photos/strupler/2968126177" target="_blank"><img style="max-height:540px" src="~/Content/images/6.jpg" alt="image1" /></a>
+                                    <div class="sb-description">
+                                        <h3>Groundbreaking Artist</h3>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="http://www.flickr.com/photos/strupler/2968945158" target="_blank"><img style="max-height:540px" src="~/Content/images/7.jpg" alt="image1" /></a>
+                                    <div class="sb-description">
+                                        <h3>Selfless Philantropist</h3>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            
+
+                            <div id="nav-arrows" class="nav-arrows">
+                                <a href="#">Next</a>
+                                <a href="#">Previous</a>
+                            </div>
+
+
+                        </div>
+
+
+                        @*<div id="owl-demo" class="owl-carousel owl-theme">
+                                <div class="item"><img src="~/Content/images/slider/images/1.png" alt="The Last of us"></div>
+                                <div class="item"><img src="~/Content/images/slider/images/2.png" alt="GTA V"></div>
+                                <div class="item"><img src="~/Content/images/slider/images/daotao.png" alt="Mirror Edge"></div>
+                            </div>*@
+                        @*<div class="col-md-6">
+                                <!-- BEGIN PORTLET -->
+                                <div class="portlet light ">
+                                    <div class="portlet-title">
+                                        <div class="caption caption-md">
+                                            <i class="icon-bar-chart theme-font hide"></i>
+                                            <span class="caption-subject font-blue-madison bold uppercase">Your Activity</span>
+                                            <span class="caption-helper hide">weekly stats...</span>
+                                        </div>
+                                        <div class="actions">
+                                            <div class="btn-group btn-group-devided" data-toggle="buttons">
+                                                <label class="btn btn-transparent grey-salsa btn-circle btn-sm active">
+                                                    <input type="radio" name="options" class="toggle" id="option1">Today
+                                                </label>
+                                                <label class="btn btn-transparent grey-salsa btn-circle btn-sm">
+                                                    <input type="radio" name="options" class="toggle" id="option2">Week
+                                                </label>
+                                                <label class="btn btn-transparent grey-salsa btn-circle btn-sm">
+                                                    <input type="radio" name="options" class="toggle" id="option2">Month
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div class="row number-stats margin-bottom-30">
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <div class="stat-left">
+                                                    <div class="stat-chart">
+                                                        <!-- do not line break "sparkline_bar" div. sparkline chart has an issue when the container div has line break -->
+                                                        <div id="sparkline_bar"></div>
+                                                    </div>
+                                                    <div class="stat-number">
+                                                        <div class="title">
+                                                            Total
+                                                        </div>
+                                                        <div class="number">
+                                                            246
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <div class="stat-right">
+                                                    <div class="stat-chart">
+                                                        <!-- do not line break "sparkline_bar" div. sparkline chart has an issue when the container div has line break -->
+                                                        <div id="sparkline_bar2"></div>
+                                                    </div>
+                                                    <div class="stat-number">
+                                                        <div class="title">
+                                                            New
+                                                        </div>
+                                                        <div class="number">
+                                                            719
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="table-scrollable table-scrollable-borderless">
+                                            <table class="table table-hover table-light">
+                                                <thead>
+                                                    <tr class="uppercase">
+                                                        <th colspan="2">
+                                                            MEMBER
+                                                        </th>
+                                                        <th>
+                                                            Earnings
+                                                        </th>
+                                                        <th>
+                                                            CASES
+                                                        </th>
+                                                        <th>
+                                                            CLOSED
+                                                        </th>
+                                                        <th>
+                                                            RATE
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tr>
+                                                    <td class="fit">
+                                                        <img class="user-pic" src="~/Content/assets/images/avatar4.jpg">
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:;" class="primary-link">Brain</a>
+                                                    </td>
+                                                    <td>
+                                                        $345
+                                                    </td>
+                                                    <td>
+                                                        45
+                                                    </td>
+                                                    <td>
+                                                        124
+                                                    </td>
+                                                    <td>
+                                                        <span class="bold theme-font">80%</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fit">
+                                                        <img class="user-pic" src="~/Content/assets/images/avatar5.jpg">
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:;" class="primary-link">Nick</a>
+                                                    </td>
+                                                    <td>
+                                                        $560
+                                                    </td>
+                                                    <td>
+                                                        12
+                                                    </td>
+                                                    <td>
+                                                        24
+                                                    </td>
+                                                    <td>
+                                                        <span class="bold theme-font">67%</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fit">
+                                                        <img class="user-pic" src="~/Content/assets/images/avatar6.jpg">
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:;" class="primary-link">Tim</a>
+                                                    </td>
+                                                    <td>
+                                                        $1,345
+                                                    </td>
+                                                    <td>
+                                                        450
+                                                    </td>
+                                                    <td>
+                                                        46
+                                                    </td>
+                                                    <td>
+                                                        <span class="bold theme-font">98%</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fit">
+                                                        <img class="user-pic" src="~/Content/assets/images/avatar7.jpg">
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:;" class="primary-link">Tom</a>
+                                                    </td>
+                                                    <td>
+                                                        $645
+                                                    </td>
+                                                    <td>
+                                                        50
+                                                    </td>
+                                                    <td>
+                                                        89
+                                                    </td>
+                                                    <td>
+                                                        <span class="bold theme-font">58%</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END PORTLET -->
+                            </div>
+                            <div class="col-md-6">
+                                <!-- BEGIN PORTLET -->
+                                <div class="portlet light ">
+                                    <div class="portlet-title">
+                                        <div class="caption caption-md">
+                                            <i class="icon-bar-chart theme-font hide"></i>
+                                            <span class="caption-subject font-blue-madison bold uppercase">Your Activity</span>
+                                            <span class="caption-helper hide">weekly stats...</span>
+                                        </div>
+                                        <div class="actions">
+                                            <div class="btn-group btn-group-devided" data-toggle="buttons">
+                                                <label class="btn btn-transparent grey-salsa btn-circle btn-sm active">
+                                                    <input type="radio" name="options" class="toggle" id="option1">Today
+                                                </label>
+                                                <label class="btn btn-transparent grey-salsa btn-circle btn-sm">
+                                                    <input type="radio" name="options" class="toggle" id="option2">Week
+                                                </label>
+                                                <label class="btn btn-transparent grey-salsa btn-circle btn-sm">
+                                                    <input type="radio" name="options" class="toggle" id="option2">Month
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div class="row number-stats margin-bottom-30">
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <div class="stat-left">
+                                                    <div class="stat-chart">
+                                                        <!-- do not line break "sparkline_bar" div. sparkline chart has an issue when the container div has line break -->
+                                                        <div id="sparkline_bar"></div>
+                                                    </div>
+                                                    <div class="stat-number">
+                                                        <div class="title">
+                                                            Total
+                                                        </div>
+                                                        <div class="number">
+                                                            246
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <div class="stat-right">
+                                                    <div class="stat-chart">
+                                                        <!-- do not line break "sparkline_bar" div. sparkline chart has an issue when the container div has line break -->
+                                                        <div id="sparkline_bar2"></div>
+                                                    </div>
+                                                    <div class="stat-number">
+                                                        <div class="title">
+                                                            New
+                                                        </div>
+                                                        <div class="number">
+                                                            719
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="table-scrollable table-scrollable-borderless">
+                                            <table class="table table-hover table-light">
+                                                <thead>
+                                                    <tr class="uppercase">
+                                                        <th colspan="2">
+                                                            MEMBER
+                                                        </th>
+                                                        <th>
+                                                            Earnings
+                                                        </th>
+                                                        <th>
+                                                            CASES
+                                                        </th>
+                                                        <th>
+                                                            CLOSED
+                                                        </th>
+                                                        <th>
+                                                            RATE
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tr>
+                                                    <td class="fit">
+                                                        <img class="user-pic" src="~/Content/assets/images/avatar4.jpg">
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:;" class="primary-link">Brain</a>
+                                                    </td>
+                                                    <td>
+                                                        $345
+                                                    </td>
+                                                    <td>
+                                                        45
+                                                    </td>
+                                                    <td>
+                                                        124
+                                                    </td>
+                                                    <td>
+                                                        <span class="bold theme-font">80%</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fit">
+                                                        <img class="user-pic" src="~/Content/assets/images/avatar5.jpg">
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:;" class="primary-link">Nick</a>
+                                                    </td>
+                                                    <td>
+                                                        $560
+                                                    </td>
+                                                    <td>
+                                                        12
+                                                    </td>
+                                                    <td>
+                                                        24
+                                                    </td>
+                                                    <td>
+                                                        <span class="bold theme-font">67%</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fit">
+                                                        <img class="user-pic" src="~/Content/assets/images/avatar6.jpg">
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:;" class="primary-link">Tim</a>
+                                                    </td>
+                                                    <td>
+                                                        $1,345
+                                                    </td>
+                                                    <td>
+                                                        450
+                                                    </td>
+                                                    <td>
+                                                        46
+                                                    </td>
+                                                    <td>
+                                                        <span class="bold theme-font">98%</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fit">
+                                                        <img class="user-pic" src="~/Content/assets/images/avatar7.jpg">
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:;" class="primary-link">Tom</a>
+                                                    </td>
+                                                    <td>
+                                                        $645
+                                                    </td>
+                                                    <td>
+                                                        50
+                                                    </td>
+                                                    <td>
+                                                        89
+                                                    </td>
+                                                    <td>
+                                                        <span class="bold theme-font">58%</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END PORTLET -->
+                            </div>*@
+                    </div>
+                    @{Html.RenderAction("Lesson_GetMore");}
+
+                </div>
+                <!-- END PROFILE CONTENT -->
+            </div>
+        </div>
+        <!-- END PAGE CONTENT-->
+    </div>
+    <button class="btn btn-sm btn-primary btn-load-les">Xem thêm các bài học</button>
+</div>
+<div class="modal fade" id="myModal" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="text-indent:initial">×</button>
+                <h4 class="modal-title" id="myModalLabel">Thông báo</h4>
+            </div>
+            <div class="modal-body">
+                Bạn đã load hết tất cả các bài viết
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- END PAGE CONTENT FIXED -->
+@section scripts{
+
+
+    <link href='http://fonts.googleapis.com/css?family=Economica:700,400italic' rel='stylesheet' type='text/css'>
+    <noscript>
+        <link rel="stylesheet" type="text/css" href="~/Content/assets/css/nojs.css" />
+    </noscript>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/jquery.cslider.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/modernizr.custom.28468.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $('#da-slider').cslider({
+                autoplay: true,
+                bgincrement: 450
+            });
+
+        });
+    </script>
+    <script src="~/Content/js/modernizr.custom.46884.js"></script>
+    <script src="~/Content/js/jquery.slicebox.js"></script>
+
+    @*<script type="text/javascript" src="~/Content/js/intro/owl.carousel.js"></script>
+        <script type="text/javascript" src="~/Content/js/intro/owl.carousel.min.js"></script>
+        <script src="~/Content/js/intro/owl.carousel.js"></script>
+        <script src="~/Content/js/intro/owl.carousel.min.js"></script>*@
+    @*<script>
+            $(document).ready(function () {
+
+                $("#owl-demo").owlCarousel({
+
+                    navigation: true, // Show next and prev buttons
+                    slideSpeed: 300,
+                    paginationSpeed: 400,
+                    singleItem: true,
+                    autoPlay: 3000,
+                    pagination: false,
+                    navigation: false,
+                    transitionStyle: "fadeUp"
+                });
+                $(".cat-video").owlCarousel({
+
+                    autoPlay: 3000, //Set AutoPlay to 3 seconds
+                    items: 6,
+                    itemsDesktop: [1900, 5],
+                    itemsDesktopSmall: [992, 3],
+                    itemsTablet: [767, 2],
+                    pagination: false,
+                    scrollPerPage: true,
+                    autoPlay: false
+
+                });
+                $(".next-slide").click(function () {
+                    var owl = $(this).parent().parent().find('.cat-video');
+                    owl.trigger('owl.next');
+                })
+                $(".prev-slide").click(function () {
+                    var owl = $(this).parent().parent().find('.cat-video');
+                    owl.trigger('owl.prev');
+                })
+            });
+        </script>*@
+    <script>
+        var page = 1;
+        $(document)
+            .on('click',
+                '.btn-load-detail',
+                function (e) {
+                    var id = $(this).data('id');
+                    var code = $(this).data('ul');
+                    var page1 = $(this).data('page');
+                    var t = $(this);
+                    $.ajax({
+                        url: '@Url.Action("Lesson_MoreDetail", "LessonPage")',
+                        data: { lessonid: id, page: page1 },
+                        success: function (res) {
+
+                            var $html = $.parseHTML(res);
+                            var rs = $($html).find('.col1').length;
+                            if (rs > 0) {
+                                $($html).hide();
+                                $('#ul-detail-' + code).append($html);
+                                $($html).fadeIn('slow');
+                                $(t).data('page', page1 + 1);
+
+                            } else {
+                                $('#myModal').modal('show');
+                            }
+                        }
+                    });
+                });
+        $('.btn-load-les')
+            .on('click',
+                function (e) {
+                    $.ajax({
+                        url: '@Url.Action("Lesson_GetMore", "LessonPage")',
+                        data: { page: page },
+                        success: function (res) {
+                            page = page + 1;
+                            var $html = $.parseHTML(res);
+                            var rs = $($html).find('.portlet').length;
+                            if (rs > 0) {
+                                $($html).hide();
+                                $('#lesson-box').append($html);
+                                $($html).fadeIn('slow');
+                                Metronic.initSlimScroll('.scroller');
+                            } else {
+                                $('#myModal').modal('show');
+                                $('.btn-load-les').fadeOut('slow');
+                            }
+                        }
+                    });
+                })
+
+    </script>
+    <script type="text/javascript">
+        $(function () {
+
+            var Page = (function () {
+
+                var $navArrows = $('#nav-arrows').hide(),
+                    $shadow = $('#shadow').hide(),
+                    slicebox = $('#sb-slider').slicebox({
+                        onReady: function () {
+
+                            $navArrows.show();
+                            $shadow.show();
+
+                        },
+                        orientation: 'r',
+                        cuboidsRandom: true
+                    }),
+
+                    init = function () {
+
+                        initEvents();
+
+                    },
+                    initEvents = function () {
+
+                        // add navigation events
+                        $navArrows.children(':first').on('click', function () {
+
+                            slicebox.next();
+                            return false;
+
+                        });
+
+                        $navArrows.children(':last').on('click', function () {
+
+                            slicebox.previous();
+                            return false;
+
+                        });
+                        setInterval(function (e) { slicebox.next(); }, 3000);
+
+                    };
+
+                return { init: init };
+
+            })();
+
+            Page.init();
+
+        });
+    </script>
+}

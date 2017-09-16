@@ -1,0 +1,449 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.RecruitmentNewsletterObject>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="mainContainer">
+
+    <div id="menuTop">
+        <div class="w1220">
+            <ul>
+                <li>
+                    <a class="cate4 current" href="/co-hoi-nghe-nghiep.html">Cơ hội nghề nghiệp </a>
+                </li>
+                <li>
+                    <a class="cate1" href="/tintuc/tu-van-tuyen-dung.html">Tư vấn tuyển dụng</a>
+                </li>
+                <li>
+                    <a class="cate2" href="/thong-tin/cau-hoi-thuong-gap.html">Câu hỏi thường gặp</a>
+                </li>
+                <li>
+                    <a class="cate3" href="/thong-tin/van-hoa-doanh-nghiep.html">Văn hóa doanh nghiệp</a>
+                </li>
+                <li>
+                    <a class="cate5" href="/thong-tin/thong-tin-dao-tao.html">Chương trình đào tạo</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="/Themes/Portal/Default/Scripts/owl.carousel.min.js"></script>
+    <script type="text/javascript">
+        var currentMenu = "cate4";
+        var current = "item5";
+        $(document).ready(function () {
+            $("." + currentMenu).addClass("current");
+            $("." + current).addClass("current");
+
+        });
+    </script>
+
+    <style type="text/css">
+        #bannerLayout {
+            background: transparent url("images/tuyen-dung/layout_Bg.png") no-repeat scroll center top;
+        }
+    </style>
+    <div id="bannerLayout">
+        <div class="w1220">
+            <h1>
+                <span>Hotline</span>: 04.73086880<br>
+                <span>Email</span>: tuyendung@dkt.com.vn
+            </h1>
+            <a class="re-button btn-send-fast" href="https://docs.google.com/forms/d/e/1FAIpQLSdJtCJS1DGiqlG5u9s1kQ324PSDsJjcZ5HmOAnsqJh25w0XeQ/viewform" target="_blank">Nộp hồ sơ online</a>
+        </div>
+
+    </div>
+
+
+
+    <style type="text/css">
+        #RecruitmentSearch {
+            margin: 30px auto 10px;
+        }
+
+            #RecruitmentSearch .searchChild:first-child,
+            #RecruitmentSearch .searchChild:nth-child(2),
+            #RecruitmentSearch .searchChild:nth-child(5),
+            #RecruitmentSearch .searchChild:nth-child(6) {
+                margin-right: 20px;
+            }
+
+            #RecruitmentSearch .searchChild-title,
+            #RecruitmentSearch .searchChild select {
+                color: #898989;
+            }
+
+            #RecruitmentSearch .searchChild-title {
+                font-family: roboto-italic;
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+
+            #RecruitmentSearch .searchChild {
+                width: auto;
+                float: left;
+            }
+
+                #RecruitmentSearch .searchChild:nth-child(7) {
+                    padding: 30px 0 0 70px;
+                }
+
+                #RecruitmentSearch .searchChild:first-child,
+                #RecruitmentSearch .searchChild:nth-child(2),
+                #RecruitmentSearch .searchChild:nth-child(3),
+                #RecruitmentSearch .searchChild:nth-child(5),
+                #RecruitmentSearch .searchChild:nth-child(6) {
+                    margin-bottom: 25px;
+                }
+
+                #RecruitmentSearch .searchChild select {
+                    /*padding: 8px 30px !important;*/
+                    width: 352px;
+                }
+
+                #RecruitmentSearch .searchChild input {
+                    background-color: #2db3db;
+                    border: medium none;
+                    border-radius: 22px;
+                    box-shadow: none;
+                    color: #fff;
+                    font-size: 16px;
+                    margin-right: 15px;
+                    padding: 9px 31px;
+                    width: 120px;
+                    font-family: Helvetica;
+                }
+    </style>
+
+    <form action="/co-hoi-nghe-nghiep.html" method="get" novalidate>
+        <div id="RecruitmentSearch" class="w1220">
+            <div class="searchChild">
+                <div class="searchChild-title">Chọn ngành nghề</div>
+                <div class="searchChild-dropdown">
+                    <select data-val="true" data-val-number="The field Ngành nghề must be a number." data-val-range="Bạn chưa chọn ngành nghề" data-val-range-max="2147483647" data-val-range-min="1" id="CareerBranchId" name="CareerBranchId">
+                        <option value="">-- Chọn --</option>
+                        <option value="24">Trưởng phòng Tuyển dụng Đào tạo</option>
+                        <option value="23">Trưởng nhóm tuyển dụng</option>
+                        <option value="22">Luật / Pháp lý</option>
+                        <option value="21">Quản lý chất lượng</option>
+                        <option value="20">Kế toán</option>
+                        <option value="19">QA</option>
+                        <option value="18">Phát triển sản phẩm</option>
+                        <option value="17">Lập trình viên PHP</option>
+                        <option value="16">Nhân viên giao hàng</option>
+                        <option value="15">Telesales</option>
+                        <option value="14">Chăm sóc khách hàng</option>
+                        <option value="13">Nhân viên IT</option>
+                        <option value="12">Tester</option>
+                        <option value="11">SEO</option>
+                        <option value="10">Chuyên viên Marketing</option>
+                        <option value="9">Thiết kế</option>
+                        <option value="8">Lập trình viên</option>
+                        <option value="7">Chuyên viên nhân sự</option>
+                        <option value="5">Biên tập viên</option>
+                        <option value="4">Quản trị dự án</option>
+                        <option value="3">Test Leader</option>
+                        <option value="2">Thực tập kinh doanh</option>
+                        <option value="1">Nhân viên kinh doanh</option>
+                    </select>
+                    @Html.DropDownList("nhanhNghe",                    )
+                </div>
+            </div>
+            <div class="searchChild">
+                <div class="searchChild-title">Chọn trình độ học vấn</div>
+                <div class="searchChild-dropdown">
+                    <select data-val="true" data-val-number="The field Bằng cấp must be a number." data-val-range="Bạn chưa chọn bằng cấp" data-val-range-max="2147483647" data-val-range-min="1" id="Certificate" name="Certificate">
+                        <option value="">-- Chọn --</option>
+                        <option value="1">Trung cấp</option>
+                        <option value="2">Cao đẳng</option>
+                        <option value="3">Đại học</option>
+                        <option value="4">Thạc sĩ</option>
+                        <option value="5">Tiến sĩ</option>
+                        <option value="6">Chứng chỉ</option>
+                    </select>
+                </div>
+            </div>
+            <div class="searchChild">
+                <div class="searchChild-title">Chọn loại hình công việc</div>
+                <div class="searchChild-dropdown">
+                    <select data-val="true" data-val-number="The field Loại hình must be a number." data-val-range="Bạn chưa chọn loại hình" data-val-range-max="2147483647" data-val-range-min="1" id="WorkingType" name="WorkingType">
+                        <option value="">-- Chọn --</option>
+                        <option value="1">Toàn thời gian</option>
+                        <option value="2">Bán thời gian</option>
+                        <option value="3">Thực tập</option>
+                    </select>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="searchChild">
+                <div class="searchChild-title">Chọn kinh nghiệm</div>
+                <select data-val="true" data-val-number="The field Cấp bậc must be a number." data-val-range="Bạn chưa chọn cấp bậc" data-val-range-max="2147483647" data-val-range-min="1" id="Level" name="Level">
+                    <option value="">-- Chọn --</option>
+                    <option value="1">Mới đi làm</option>
+                    <option value="2">Nhân viên</option>
+                    <option value="3">Trưởng nhóm</option>
+                    <option value="4">Trưởng phòng</option>
+                    <option value="5">Giám đốc</option>
+                </select>
+                <div class="searchChild-dropdown"></div>
+            </div>
+            <div class="searchChild">
+                <div class="searchChild-title">Chọn nơi làm việc</div>
+                <select data-val="true" data-val-number="The field Nơi làm việc must be a number." id="Location" name="Location">
+                    <option value="">-- Chọn --</option>
+                    <option value="-1">Tất cả</option>
+                    <option value="1">Hà Nội</option>
+                    <option value="2">Hồ Chí Minh</option>
+                    <option value="3">Hải Phòng</option>
+                    <option value="4">Bắc Ninh</option>
+                </select>
+                <div class="searchChild-dropdown"></div>
+            </div>
+            <div class="searchChild">
+                <div class="searchChild-dropdown">
+                    <input type="submit" name="submit" value="Tìm kiếm" class="re-button">
+                    <a class="re-button" href="http://dkt.com.vn/Content/CV/DKT_CV_Kinhdoanh.doc" style=" padding: 11px 25px ; ">Tải CV mẫu</a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </form>
+    <form action="/co-hoi-nghe-nghiep.html" method="get" novalidate>
+        <div class="career-chance w1220">
+            <div class="recruitment-list">
+                <table width="100%">
+                    <tbody>
+                        <tr>
+                            <th width="160"></th>
+                            <th>Tên công việc</th>
+                            <th width="390">Mô tả ngắn</th>
+                            <th width="190">Địa điểm</th>
+                            <th width="190">Hạn nộp hồ sơ</th>
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <div style="overflow:hidden; width: 140px; height:100px; margin: 0 auto;">
+                                    <img src="images/tuyen-dung/47077a22a2cc8acf7e37e8ba1deb4271.jpg" style="max-width:100%;">
+                                </div>
+
+                            </td>
+                            <td>
+                                <a class="title" href="/co-hoi-nghe-nghiep/1307">[HN] CHĂM SÓC KHÁCH HÀNG</a>
+                            </td>
+                            <td>Phối hợp với các bộ phận liên quan (nội dung, kinh doanh, marketing...) để triển khai các hoạt động CSKH theo kế hoạch;</td>
+                            <td>Hà Nội</td>
+                            <td>
+                                18/09/2017<span>Còn 9 ngày</span>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <div style="overflow:hidden; width: 140px; height:100px; margin: 0 auto;">
+                                    <img src="images/tuyen-dung/eb200f55f893a1341968de827dc6089a.jpg" style="max-width:100%;">
+                                </div>
+
+                            </td>
+                            <td>
+                                <a class="title" href="/co-hoi-nghe-nghiep/1306">[HN] THỰC TẬP SINH TRUYỀN THÔNG</a>
+                            </td>
+                            <td>Xây dựng kịch bản và thực hiện truyền thông trên mạng xã hội (Facebook, Twitter, Zalo, Instagram, diễn đàn …</td>
+                            <td>Hà Nội</td>
+                            <td>
+                                10/09/2017<span>Còn 1 ngày</span>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <div style="overflow:hidden; width: 140px; height:100px; margin: 0 auto;">
+                                    <img src="images/tuyen-dung/1b783269d712e851b79e350ff0514f09.png" style="max-width:100%;">
+                                </div>
+
+                            </td>
+                            <td>
+                                <a class="title" href="/co-hoi-nghe-nghiep/1305">[HN] NHÂN VIÊN CHẠY QUẢNG CÁO</a>
+                            </td>
+                            <td>Nghiên cứu, Cập nhật công nghệ của Google Adwords</td>
+                            <td>Hà Nội</td>
+                            <td>
+                                31/08/2017<span>Hết hạn</span>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <div style="overflow:hidden; width: 140px; height:100px; margin: 0 auto;">
+                                    <img src="images/tuyen-dung/88f99ee9044ea92a3a83c39a69296307.png" style="max-width:100%;">
+                                </div>
+
+                            </td>
+                            <td>
+                                <a class="title" href="/co-hoi-nghe-nghiep/1304">[HN] Marketing online</a>
+                            </td>
+                            <td>Chịu trách nhiệm khai thác, triển khai quảng cáo Google adword, Facebook Ad cho sản phẩm của công ty</td>
+                            <td>Hà Nội</td>
+                            <td>
+                                31/08/2017<span>Hết hạn</span>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <div style="overflow:hidden; width: 140px; height:100px; margin: 0 auto;">
+                                    <img src="images/tuyen-dung/efc8629ab1b95d36515f65be386cf1e9.png" style="max-width:100%;">
+                                </div>
+
+                            </td>
+                            <td>
+                                <a class="title" href="/co-hoi-nghe-nghiep/1303">[HN] CONTENT MARKETING</a>
+                            </td>
+                            <td>
+                                Nghiên cứu thông tin sản phẩm, khách hàng tiềm năng để xây dung kế hoạch content marketing cho sản phẩm của công ty hoặc cho khách hàng của công ty
+
+                            </td>
+                            <td>Tất cả</td>
+                            <td>
+                                31/08/2017<span>Hết hạn</span>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <div style="overflow:hidden; width: 140px; height:100px; margin: 0 auto;">
+                                    <img src="images/tuyen-dung/b12db5d45e518a63555e78dcb06047a8.png" style="max-width:100%;">
+                                </div>
+
+                            </td>
+                            <td>
+                                <a class="title" href="/co-hoi-nghe-nghiep/1302">[HN] VIDEO EDITOR</a>
+                            </td>
+                            <td>Quay, dựng video theo yêu cầu: quay phim review sản phẩm, dựng video motion graphic.</td>
+                            <td>Hà Nội</td>
+                            <td>
+                                31/08/2017<span>Hết hạn</span>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <div style="overflow:hidden; width: 140px; height:100px; margin: 0 auto;">
+                                    <img src="images/tuyen-dung/458c1bfc5837058fecb95ebb25d9f070.jpg" style="max-width:100%;">
+                                </div>
+
+                            </td>
+                            <td>
+                                <a class="title" href="/co-hoi-nghe-nghiep/1299">[HN] TRƯỞNG NHÓM DIGITAL MARKETING</a>
+                            </td>
+                            <td>
+                                - Xây dựng kế hoạch, quản lý, triển khai, theo dõi và tối ưu hóa quá trình thực hiện các chiến dịch quảng cáo trực tuyến, tỷ lệ chuyển đổi - Lên chiến lược và lập kế hoạch tiếp thị trực tuyến cũng như các chỉ tiêu sẽ đạt được trong ngắn hạn, dài hạn;
+                            </td>
+                            <td>Hà Nội</td>
+                            <td>
+                                30/09/2017<span>Còn 21 ngày</span>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <div style="overflow:hidden; width: 140px; height:100px; margin: 0 auto;">
+                                    <img src="images/tuyen-dung/52a799ce9e567b51c27d856ce92e6bff.png" style="max-width:100%;">
+                                </div>
+
+                            </td>
+                            <td>
+                                <a class="title" href="/co-hoi-nghe-nghiep/1298">[HN] CHUYÊN VIÊN KINH DOANH QUẢNG CÁO</a>
+                            </td>
+                            <td>Tìm kiếm khách hàng và tư vấn khách hàng sử dụng các dịch vụ quảng cáo, truyền thông trực tuyến (Google AdWords, Facebook, Cốc Cốc, Zalo…), thiết kế website…..</td>
+                            <td>Hồ Chí Minh</td>
+                            <td>
+                                30/09/2017<span>Còn 21 ngày</span>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <div style="overflow:hidden; width: 140px; height:100px; margin: 0 auto;">
+                                    <img src="images/tuyen-dung/5e8faa4e2fa5b8f8e49a3b607eed40a5.jpg" style="max-width:100%;">
+                                </div>
+
+                            </td>
+                            <td>
+                                <a class="title" href="/co-hoi-nghe-nghiep/1297">[HN] THỰC TẬP SINH TRUYỀN THÔNG NỘI BỘ</a>
+                            </td>
+                            <td>Tham gia đóng góp ý tưởng, thực hiện triển khai các chiến dịch truyền thông văn hóa nội bộ và hoạt động văn thể của công ty, cùng thực hiện những sản phẩm truyền thông độc lạ.</td>
+                            <td>Hà Nội</td>
+                            <td>
+                                24/06/2017<span>Hết hạn</span>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <div style="overflow:hidden; width: 140px; height:100px; margin: 0 auto;">
+                                    <img src="images/tuyen-dung/16e82d41eee9493f54364e402e41fdf2.jpg" style="max-width:100%;">
+                                </div>
+
+                            </td>
+                            <td>
+                                <a class="title" href="/co-hoi-nghe-nghiep/1290">NHÂN VIÊN KINH DOANH CƠ SỞ BẮC NINH</a>
+                            </td>
+                            <td>- Tìm kiếm khách hàng, duy trì và phát triển mạng lưới khách hàng của công ty - Hỗ trợ khách hàng phát triển kinh doanh, gia tăng doanh số thông qua Thương mại điện tử - Thiết lập những những mối quan hệ kinh doanh mới bằng việc lập kế hoạch và tổ chức tìm kiếm, liên hệ, tiếp xúc, tìm hiểu nhu cầu đối với những khách hàng tiềm năng.</td>
+                            <td>Bắc Ninh</td>
+                            <td>
+                                30/06/2017<span>Hết hạn</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <ul id="pagination" class="pagination_a">
+                    <li>
+                        <a href="hoi-dap?start=1" class="hidden-md-down prev"><i aria-hidden="true" class="fa fa-angle-left"></i></a>
+                    </li>
+                    <li>
+                        <a href="hoi-dap?start=1" class="hidden-md-down">1</a>
+                    </li>
+                    <li>
+                        <a href="hoi-dap?start=2" class="hidden-md-down">2</a>
+                    </li>
+                    <li>
+                        <a href="hoi-dap?start=3" class="hidden-md-down">3</a>
+                    </li>
+                    <li>
+                        <a href="hoi-dap?start=4" class="hidden-md-down">4</a>
+                    </li>
+                    <li>
+                        <a href="hoi-dap?start=5" class="hidden-md-down">5</a>
+                    </li>
+                    <li class="">
+                        <span class="ellipse clickable">…</span>
+                    </li>
+                    <li>
+                        <a href="hoi-dap?start=22" class="hidden-md-down">22</a>
+                    </li>
+                    <li>
+                        <a href="hoi-dap?start=23" class="hidden-md-down">23</a>
+                    </li>
+                    <li>
+                        <a href="hoi-dap?start=1" class="hidden-md-down next"><i aria-hidden="true" class="fa fa-angle-right"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </form>
+    <div class="clear"></div>
+</div>
+
+@section style{
+    <link href="/Content/css/tuyen-dung/style-tuyen-dung.css" rel="stylesheet" />
+}
+
+@section script{
+    
+}

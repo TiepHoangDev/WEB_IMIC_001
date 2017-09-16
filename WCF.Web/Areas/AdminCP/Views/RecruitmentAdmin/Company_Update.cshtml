@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "Cập nhật công ty tuyển dụng";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@model WCF.BusinessObjectsLayer.EntityObjects.RecruitmentCompanyObject
+<div class="portlet box red-intense">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Thêm công ty tuyển dụng
+        </div>
+        <div class="tools">
+
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        <div style="width:100%">
+            @using (Html.BeginForm("Company_Update", "RecruitmentAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(x=>x.CompanyId)
+                @Html.HiddenFor(x=>x.CompanyLogo)
+                @Html.HiddenFor(x=>x.CompanyCode)
+                <h4 style="color:red">@Html.ValidationSummary("", true)</h4>
+                <div class="form-group">
+                    <h3>Tên viết tắt</h3>
+
+                    @Html.TextBoxFor(q => q.CompanyName, new
+                    {
+                        @type = "text",
+                        @class = "form-control"
+                    })
+                </div>
+                <div class="form-group">
+                    <h3>Tên đầy đủ</h3>
+
+                    @Html.TextBoxFor(q => q.CompanyFullName, new
+       {
+           @type = "text",
+           @class = "form-control"
+       })</div>
+                <div class="form-group">
+                    <h3>Số thư tuyển dụng</h3>
+
+                    @Html.TextBoxFor(q => q.TotalOfNewsLetter, new
+       {
+           @type = "number",
+           @class = "form-control"
+       })
+                </div>
+                <div class="form-group">
+                    <h3>Link tới trang web công ty</h3>
+
+                    @Html.TextBoxFor(q => q.CompanyLink, new
+       {
+           @type = "text",
+           @class = "form-control"
+       })
+                </div>
+                <div class="form-group">
+                    <label style="width:100%">Ảnh đại diện</label>
+
+                    <div class="file-box">
+                        <input type="file" name="Avatar" id="ava">
+
+                    </div>
+                </div>
+                <div style="margin-top:15px;">
+                    <img style="width:200px;height:180px;" class="img-thumbnail rimage" src="~/Content/Galleries/Recruit/@Model.CompanyLogo" />
+                </div>
+
+                 <div class="form-group">
+                            <label>Hiển thị</label>
+                            @Html.CheckBoxFor(model => model.IsApproved, new { @class = "iCheck-helper" })
+                            <em>(Chọn nếu muốn hiển thị )</em>
+                    </div>
+                <div class="form-group">
+                    <h3>Vị trí</h3>
+
+                    @Html.TextBoxFor(q => q.Rank, new
+       {
+           @type = "number",
+           @class = "form-control",
+           @placeholder = "vị trí để hiển thị"
+       })
+
+</div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+
+                </div>
+            }
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $("#ava").change(function () {
+            readURL(this, '.rimage');
+        });
+
+    </script>
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+﻿@model  int[]
+<div class="row list-separated profile-stat">
+    <div class="col-md-4 col-sm-4 col-xs-6">
+        <div class="uppercase profile-stat-title">
+            @Model[0]
+        </div>
+        <div class="uppercase profile-stat-text">
+            Bài viết
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-6">
+        <div class="uppercase profile-stat-title">
+            @Model[1]
+        </div>
+        <div class="uppercase profile-stat-text">
+            Chuyên mục
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-6">
+        <div class="uppercase profile-stat-title">
+            @Model[2]
+        </div>
+        <div class="uppercase profile-stat-text">
+            Chủ đề
+        </div>
+    </div>
+</div>

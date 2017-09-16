@@ -1,0 +1,177 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.OpenClassObject>
+
+@{
+    ViewBag.Title = "ListClass";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<div class="portlet box grey-cascade">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Danh sách tin tức
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="table-toolbar">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="btn-group">
+                        <a href="@Url.Action("ClassInsert","ClassAdmin")" c class="btn green">
+                            Thêm tin tức mới <i class="fa fa-plus"></i>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="col-xs-2 pull-right">
+                    <button class="btn btn-block btn-danger btn-flat pull-right" id="DeleteOfChecked">Xóa</button>
+                </div>
+            </div>
+            @Html.Action("ListClass_Dropdownlist")
+            
+
+            <table class="table table-striped table-bordered table-hover" id="sample_1">
+                <thead>
+                    <tr>
+                        <th class="table-checkbox">
+                            <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" />
+                        </th>
+                        <th>
+                            Tên lớp
+                        </th>
+                        <th>
+                            Ảnh
+                        </th>
+                        <th>
+                            Ngày đăng
+                        </th>
+                        <th>
+                            Duyệt
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="odd gradeX">
+                            <td>
+                                <input type="checkbox" class="checkboxes" name="@item.ClassName" value="@item.ClassId" />
+                            </td>
+                            <td>
+                                @item.ClassName
+                            </td>
+                            <td>
+                                <img align="middle" class="img-thumbnail" style="height: 50px; width: 50px;" src="~/Content/Galleries/Class/@item.ClassAvatar" />
+                            </td>
+                            <td>
+                                @item.ModifiedTime
+                            </td>
+                            <td class="center">
+                                @if (item.IsApproved==true)
+                                {
+                                    <span class="label label-sm label-success">Đã duyệt</span>
+                                }
+                                else
+                                {
+                                    <span class="label label-sm label-fail">Chưa duyệt</span>
+                                }
+                            </td>
+                            <td>
+                                <a href="@Url.Action("ClassEdit", new { classId = item.ClassId })" class="btn btn-info">Sửa</a>
+                                <a href="javascript:" class="btn btn-danger" onclick="Delete('@item.ClassId','@item.ClassName')">Xoá</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/select2/select2.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/admin/pages/scripts/table-managed.js"></script>
+
+    <script>
+        jQuery(document).ready(function() {
+            TableManaged.init();
+        });
+
+
+    </script>
+
+    <script>
+        function Delete(id, title) {
+
+            debugger;
+            bootbox.confirm("Bạn có đồng ý xóa lớp: " + title + "?", function(result) {
+                if (result) {
+                    debugger;
+                    var url = "@Url.Action("Delete")";
+                    debugger;
+                    $.ajax({
+                        url: url,
+                        data: { classId: id },
+                        type: "post",
+                        dataType: "json",
+                        success: function(data) {
+                            if (data.Success) {
+                                debugger;
+                                alert(data.Message);
+                            } else {
+                                alert(data.Message);
+                            }
+                        }
+                    });
+                }
+                debugger;
+                location.href = location.href;
+            });
+            return false;
+        }
+    </script>
+    <script>
+        // Khi click vào nút Xoá
+        $("#DeleteOfChecked").on("click", function () {
+            var selected = [];
+            var selectedName = [];
+            debugger;
+            // Lấy list checked
+            $(':checkbox:checked').each(function () {
+                var data = jQuery(this).attr('value');
+                var name = jQuery(this).attr('name');
+                selected.push(data);
+                selectedName.push(name);
+            });
+
+            var ValueArr = selected.join(", ");
+            var NameArr = selectedName.join(', ');
+            //console.log(NameArr);
+
+            bootbox.confirm("Bạn có thực sự muốn xoá các lớp: " + NameArr + " ?", function (result) {
+
+                if (result == true) {
+                    //Post dữ liệu từ Ajax --> Action trong Controllers
+                    $.post("@Url.Action("DeleteCheckAll")", { idArr: selected }, function (data) {
+                        if (data.Success) {
+                            alert(data.Message);
+
+                        } else {
+                            alert(data.Message);
+                        }
+
+                    });
+                }
+                window.location.href = window.location.href;
+            });
+            return false;
+        });
+    </script>
+
+}
+

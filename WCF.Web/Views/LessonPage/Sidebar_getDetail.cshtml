@@ -1,0 +1,11 @@
+﻿@model List<WCF.BusinessObjectsLayer.EntityObjects.LessonDetailObject>
+@using WCF.Web.App_Start
+
+    
+    @foreach (var item in Model)
+    {
+        <li data-code="@item.DetailCode" class="detail-li sub-li">
+            <a href="@Url.RouteUrl("lessondetail", new {code = item.DetailCode, name = StringHelpers.GenerateURL(item.DetailTitle)})"><i class="icon-tag"></i>@item.DetailName</a>
+        </li>
+         
+    }

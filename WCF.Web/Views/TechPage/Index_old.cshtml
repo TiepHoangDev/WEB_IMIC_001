@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "IMIC-ĐÀO TẠO KINH NGHIỆM LẬP TRÌNH-ĐỒ HỌA";
+    Layout = "~/Views/TechPage/_LayoutTech.cshtml";
+    ViewBag.description = "iMic - Nơi đào tạo lập trình viên hàng đầu Việt Nam. Cơ hội tiếp cận môi trường làm dự án tại các Công ty, trau dồi kinh nghiệm lập trình cùng các chuyên gia, giảng viên nhiều năm kinh nghiệm.";
+    ViewBag.image = "http://imic.edu.vn/Images/Shortcut.jpg";
+}
+@section TechCss{
+    <link href="~/Content/css/tech.css" rel="stylesheet">
+}
+@if (Session[WCF.BusinessObjectsLayer.Commons.CommonConstants.SESSION_ACCOUNT] != null)
+{
+    <a class="btn-float-post" href="@Url.Action("Posting","TechPage")" title="Ấn vào đây để đăng bài mới"><div class="fa fa-plus"></div></a>
+}
+<div id="tech-container" class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 0}'>
+    @Html.Action("Index_getMoreArticle", "TechPage", new { catid = @ViewBag.Catid, pageSize = 15, pageIndex = 0 })
+</div>
+<div class="col-xs-12" style="min-height:200px;position:relative">
+    <img id="loader-img" alt="" src="~/Content/images/icon/loading.gif" style="display: none; margin:10px auto" />
+    <button id="btn-more" style="position:absolute;bottom:0px" class="col-xs-12 btn btn-primary m-y-20" onclick="loadMore('@ViewBag.Catid')">
+        <strong class="align-center text-uppercase">Tôi muốn xem thêm nhiều bài viết nữa</strong>
+    </button>
+</div>
+
+
+@section TechScript
+{
+    <script type="text/javascript" src="~/Content/js/masonry.pkgd.min.js"></script>
+    <script>
+        var pageindex = 1;
+        function loadMore(catid) {
+
+            var page = pageindex;
+            $.ajax({
+                url: '@Url.Action("Index_getMoreArticle", "TechPage")?catid=' + catid + '&pageIndex=' + page,
+
+            }).success(function (response) {
+                appliedMasonry(response);
+                pageindex = pageindex + 1;
+            });
+
+        }
+
+
+        $(window).load(function () {
+            $('#tech-container').masonry({
+                itemSelector: '.grid-item',
+                columnWidth: 0,
+                isAnimated: true
+
+            });
+
+        })
+
+        function appliedMasonry(e) {
+            var parsed = $.parseHTML(e);
+            var result = $(parsed).find(".box-item");
+            //Kiểm tra nếu ko có dữ liệu thì ẩn nút xem thêm
+            if (result.length == 0) {
+                $('#btn-more').hide();
+            }
+            else {
+                var $boxHtml = parsed;
+                // $("#tech-container").append($boxHtml).masonry('appended', $boxHtml, true);
+                $("#tech-container").append($boxHtml).masonry('appended', $boxHtml, true);
+                window.setTimeout(function () {
+                    $("#tech-container").masonry('layout');
+                }, 1000);
+            }
+
+
+        }
+    </script>
+    <script>
+
+
+    </script>
+}
+

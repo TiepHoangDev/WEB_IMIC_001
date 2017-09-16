@@ -1,0 +1,4 @@
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.BusinessObjectsLayer\bin\Debug\WCF.BusinessObjectsLayer.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.BusinessObjectsLayer\bin\Debug\WCF.BusinessObjectsLayer.pdb
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.BusinessObjectsLayer\obj\Debug\WCF.BusinessObjectsLayer.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.BusinessObjectsLayer\obj\Debug\WCF.BusinessObjectsLayer.pdb

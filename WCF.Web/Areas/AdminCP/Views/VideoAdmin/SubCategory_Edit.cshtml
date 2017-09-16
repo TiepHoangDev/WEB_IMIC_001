@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Sửa playlist";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@model WCF.BusinessObjectsLayer.EntityObjects.VideoSubCategoryObject
+
+<div style="padding-bottom:20px;width:100%">
+    <div class="portlet box purple-studio">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-list"></i>&nbsp;Sửa playlist
+            </div>
+            <div class="tools">
+
+            </div>
+        </div>
+        <div class="portlet-body" style="padding-top:0px">
+            @using (Html.BeginForm("SubCategory_Edit", "VideoAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(m => m.VideoSubCategoryID)
+                @Html.HiddenFor(m => m.TotalVideo)
+                <div class="form-group">
+                    <label style="margin-top:16px">Tên playlist</label>
+                    @Html.TextBoxFor(q => q.VideoSubCategoryName, new { @class = "form-control", @required = "true", @id = "Name" })
+                    <h4 style="color:red">@Html.ValidationSummary("", true)</h4>
+                </div>
+                <h5 style="color:red; font-weight:bold; display:none" class="name_warning">Tên playlist không được phép trống.</h5>
+                <div style="padding-left:0px;width:100%;margin-top:30px;margin-bottom:20px">
+                    <a class="btn btn-primary" id="btn-update">Cập nhật</a>
+                    <a href="@Url.Action("Manage_SubCategory", "VideoAdmin")" class="btn btn-default" style="height:34px;width:86.75px">Đóng</a>
+                </div>
+
+                <!-- /.modal -->
+                <div class="modal fade bs-modal-lg" id="confirm-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">Thông báo xác nhận</h4>
+                            </div>
+                            <div class="modal-body">
+                                Bạn có muốn sửa playlist này không?
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn default" data-dismiss="modal">Hủy</button>
+                                <button onclick="submit" class="btn blue">Xác nhận</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $("#btn-update").click(function () {
+            var name = $('#Name').val();
+            if (name == null || name.trim() == '') {
+                $('.name_warning').show();
+            }
+            else {
+                $("#confirm-modal").modal({ show: true });
+            }
+        });
+    </script>
+}
+
+
+
+
+

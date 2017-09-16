@@ -1,0 +1,130 @@
+﻿@using WCF.Web.App_Start
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.OpenClassObject>
+@{
+    Layout = null;
+}
+<style>
+    .fullimg{
+        position:relative;
+    }
+    .item__location{
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.55);
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #fff;
+        font-size: 12px;
+        padding: 5px 8px;
+        z-index: 7;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+    }
+</style>
+@foreach (var item in Model)
+{
+    <div class="col-sm-6 col-md-4">
+        <div class="class-item">
+            <li class="w-100 pull-left ">
+                <div class="e-marker tkb-sprites hot-e"></div>
+                <div class="fullimg">
+                    @{
+                    if (item.Course != null)
+                    {
+                            <a href="@Url.Action("DetailCourse", "TrainingPage", new {courseCodeNumber = item.Course.CourseCodeNumber, postName = StringHelpers.ToAscii(item.Course.CourseName)})">
+                                <img class="cover-img" src="~/Content/Galleries/Class/@item.ClassAvatar">
+                            </a>
+                    }
+                    else
+                    {
+                            <img class="cover-img" src="~/Content/Galleries/Class/@item.ClassAvatar">
+                    }
+                    }
+                    <div class="item__location">
+                        <span class="glyphicon glyphicon-map-marker"></span>
+                        @item.LocationID
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="bottom-box">
+                    @{
+                        if (item.Course != null)
+                        {
+                            <a href="@Url.Action("DetailCourse", "TrainingPage", new {courseCodeNumber = item.Course.CourseCodeNumber, postName = StringHelpers.ToAscii(item.Course.CourseName)})" class="course-link w-100" style="font-weight: bold;">@item.ClassName</a>
+                        }
+                        else
+                        {
+                            <a href="#" class="course-link w-100" style="font-weight: bold;">@item.ClassName</a>
+                        }
+
+}
+                    
+                    <button onclick=" btnRegisterClass('@item.ClassId') " class="btnRegisterClass btn btn-signup pull-left" id="@item.ClassId" style="color: white; background: #EB1212;">Đăng ký</button>
+                    <div class="pull-left time">
+                        <div class="fa fa-clock-o">@item.ClassTime</div>
+                    </div>
+                    <div class="event-date">
+                        @switch (int.Parse(item.Month))
+                        {
+                            case 1:
+                                <div class="month">THÁNG 1</div>
+                                break;
+                            case 2:
+                                <div class="month">THÁNG 2</div>
+                                break;
+                            case 3:
+                                <div class="month">THÁNG 3</div>
+                                break;
+                            case 4:
+                                <div class="month">THÁNG 4</div>
+                                break;
+                            case 5:
+                                <div class="month">THÁNG 5</div>
+                                break;
+                            case 6:
+                                <div class="month">THÁNG 6</div>
+                                break;
+                            case 7:
+                                <div class="month">THÁNG 7</div>
+                                break;
+                            case 8:
+                                <div class="month">THÁNG 8</div>
+                                break;
+                            case 9:
+                                <div class="month">THÁNG 9</div>
+                                break;
+                            case 10:
+                                <div class="month">THÁNG 10</div>
+                                break;
+                            case 11:
+                                <div class="month">THÁNG 11</div>
+                                break;
+                            case 12:
+                                <div class="month">THÁNG 12</div>
+                                break;
+                        }
+
+                        <div class="detail text-center">
+                            <p class="w-100">@item.DayOfMonth</p>
+
+
+                            @if (int.Parse(item.Month) == DateTime.Now.Month && int.Parse(item.DayOfMonth) == DateTime.Now.Day)
+                            {
+                                <p class="w-100 text-primary">Today</p>
+                            }
+                            else
+                            {
+                                <p class="w-100 text-primary">@item.DayOfWeek</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </div>
+    </div>   
+}

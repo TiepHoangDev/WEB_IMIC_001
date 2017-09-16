@@ -1,0 +1,49 @@
+﻿@using WCF.BusinessObjectsLayer.EntityObjects
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.BoxBelowObject>
+
+@{
+    Layout = null;
+}
+
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+        BoxBelowObject objBB = Model.ElementAt(i);
+        
+        //string bbtype = (i % 2 == 0) ? "box-left" : "box-right";
+        string bbtype = "";
+        switch (i)
+        {
+            case 0:
+                bbtype = "box-left-1";
+                break;
+            case 1:
+                bbtype = "box-right-2";
+                break;
+            case 2:
+                bbtype = "box-left-3";
+                break;
+            case 3:
+                bbtype = "box-right-4";
+                break;
+            case 4:
+                bbtype = "box-left-5";
+                break;
+        }
+        <div class="box-dt-ab">
+            
+            <img src="~/Content/Galleries/Training/BoxBelow/@objBB.Boxlmage" class="img" />
+            
+            <div class="@bbtype">
+                <div class="text">
+                    <h2>@objBB.BoxTitle</h2>
+                    <p>
+                        @Html.Raw(@objBB.BoxDescription)
+                    </p>
+                    <p>
+                        <a href="#" class="button"> Xem thêm</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+        

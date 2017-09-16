@@ -1,0 +1,143 @@
+﻿@using WCF.Web.App_Start
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.ClassSessionDetailObject>
+@{
+    ViewBag.Title = "Quản lý chi tiết giảng dạy";
+    Layout = "~/Areas/Class/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="portlet box red-intense">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Quản lý chi tiết giảng dạy
+        </div>
+        <div class="tools">
+
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="col-xs-12" style="float:none">
+            <div style="padding-bottom:10px;">
+                <a class="btn btn-primary btn-sm" style="margin-top:10px;" href="@Url.Action("ClassSessionDetailInsert", "ClassSessionDetail")">
+                    Thêm mới
+                    <span class="fa fa-plus" style="padding-left:6px;"></span>
+                </a>
+            </div>
+            <table class="table table-striped table-bordered table-hover dataTable no-footer" id="tbl-main" aria-describedby="dataTables-example_info">
+                <thead>
+                    <tr role="row">
+                        <th>Stt</th>
+                        <th>Lớp</th>
+                        <th>Ca học</th>
+                        <th>Thứ</th>
+                        <th>Ngày</th>
+                        <th>Trạng thái</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @{
+                    int count = 0;
+                    foreach (var item in Model)
+                    {
+                        count += 1;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.ClassObject.ClassName</td>
+                            <td>@item.ClassShiftObject.ShiftName</td>
+                            <td>@item.ClassWeekDayObject.WeekName</td>
+                            <td>@item.OnDate</td>
+                            <td>
+                                @if (item.IsActived)
+                                {
+                                    <i class="glyphicon glyphicon-ok-sign" style="color: green;"></i>
+                                }
+                                else
+                                {
+                                    <i class="glyphicon glyphicon-remove-sign" style="color: red;"></i>
+                                }
+                            </td>
+                            <th>
+                                <a href="@Url.Action("ClassSessionDetailUpdate", "ClassSessionDetail", new { id = item.ClassSessionDetailId })" class="btn btn-info">Sửa</a>
+                                <a class="btn btn-danger" onclick=" Remove('@item.ClassSessionDetailId', this) ">Xóa</a>
+                            </th>
+                        </tr>
+                    }
+                }
+                    
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section PageLevelScript {
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script>
+    $(document)
+        .ready(function () {
+            $('#tbl-main').dataTable();
+        });
+
+    function Remove(id, event) {
+        var sender = event.currentTarget;
+        var answer = confirm("Bạn muốn xóa không ?");
+        if (answer) {
+            $.ajax({
+                url: '@Url.Action("ClassShiftDelete", "ClassSessionDetail")',
+                data: { id: id },
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    if (data.rs == 'ok') {
+                        $(event).closest("tr").remove();
+                    }
+                }
+            });
+        }
+    }
+
+    @*$(".img_Actice_UnActice").click(function () {
+        var id = jQuery(this).attr("getvalueid");
+        console.log(id);
+        $.ajax({
+            url: '@Url.Action("IsActived", "Class")',
+            data: { id: id },
+            type: 'post'
+        }).success(function (data) {
+            if (data.rs == "ok") {
+                //???
+                $(".hoatdong").show();
+                $(".khonghoatdong").hide();
+                location.reload();
+            }
+
+        });
+    });
+    $(".khonghoatdong").click(function () {
+        var id = jQuery(this).attr("getvalueid");
+        console.log(id);
+        $.ajax({
+            url: '@Url.Action("IsActived", "Class")',
+            data: { id: id },
+            type: 'post'
+        }).success(function (data) {
+            if (data.rs == "ok") {
+                $(".hoatdong").show();
+                $(".khonghoatdong").hide();
+                location.reload();
+            }
+
+        });
+    });*@
+
+    </script>
+
+
+
+}
+

@@ -1,0 +1,28 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.DemoProjectObject
+@{
+    Layout = null;
+}
+
+
+
+    @{
+        if (Model != null)
+        {
+            <div class="col-xs-12 col-md-6 col-lg-6 tr-video-box">
+                <a href="@Model.DemoLink" data-fullscreenmode="true" data-autoslide="true" data-thumbnail="~/Content/Galleries/Training/DemoProject/Thumbs/@Model.Thumbnail" class="html5lightbox" data-group="set1" title="@Model.ProjectName">
+                    <img src="~/Content/Galleries/Training/DemoProject/Thumbs/@Model.Thumbnail" />
+                    <div class="play"></div>
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="col-xs-12 col-md-6 col-lg-6">
+                @Html.Raw("Chưa có Video")
+            </div>
+            }
+      }
+
+
+
+            

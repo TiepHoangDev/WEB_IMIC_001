@@ -1,0 +1,638 @@
+﻿<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head id="ctl00_ctl00_head">
+    <meta charset="utf-8" />
+    <title>
+        @ViewBag.Title
+    </title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css"/>
+    <link href="~/Content/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/academy.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="~/Content/assets/css/app.20170423225748007.css" />*@
+    @RenderSection("LevelCss", false)
+
+</head>
+
+<body class="no-js en-gb">
+
+<style>
+    a:hover {
+        text-decoration: none;
+        cursor: pointer
+    }
+     .name input[type="text"] {
+         width: 100% !important;
+         color: #333333 !important;
+         outline: none;
+         font-size: 16px;
+         padding: .5em;
+         border: none;
+         -webkit-appearance: none;
+         margin-bottom: 0.5em;
+         font-family: 'Helvetica Neue', sans-serif;
+         font-style: italic;
+     }
+
+    .name input[type="submit"] {
+        background: #fa4b2a;
+        padding: 10px 0;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 400;
+        display: block;
+        outline: none;
+        border: none;
+        width: 100%;
+        font-family: 'Helvetica Neue', sans-serif;
+        margin-bottom: 16px;
+    }
+
+    .scroll-back-to-top-wrapper {
+        display: none;
+        position: fixed;
+        opacity: 0.8;
+        overflow: hidden;
+        text-align: center;
+        z-index: 99999999;
+        background-color: #777777;
+        color: #eeeeee;
+        width: 50px;
+        height: 48px;
+        line-height: 48px;
+        margin-left: -25px;
+        bottom: 30px;
+        left: 98%;
+        padding-top: 2px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -ms-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        cursor: pointer;
+    }
+
+    .scroll-back-to-top-wrapper:hover {
+        background-color: #888888;
+        color: #eeeeee;
+    }
+
+    .scroll-back-to-top-wrapper .show {
+        visibility: visible;
+        cursor: pointer;
+        opacity: 1.0;
+    }
+
+    .scroll-back-to-top-wrapper i.fa {
+        line-height: inherit;
+    }
+
+    .scroll-back-to-top-wrapper .fa-lg {
+        vertical-align: 0;
+    }
+</style>
+    <!-- Google Tag Manager -->
+    <!-- End Google Tag Manager -->
+
+
+    <div id="application-content">
+        <div class="header header_sticky">
+
+            @*<a id="myBtn" onclick="topFunction()" class="go2top" style="display: inline; font-size: 9px">Top</a>*@
+            <div class="scroll-back-to-top-wrapper" id="myBtn">
+                <span class="scroll-back-to-top-inner">
+                    <i class="fa fa-2x fa-arrow-circle-up"></i>
+                </span>
+            </div>
+
+            <div class="top-line">
+                <div class="top-line__content">
+                    <a href="@Url.Action("Index", "Home")" class="top-line__main-logo">Imic Academy</a>
+                    @*<div id="dynamic-panel-placeholder" data-section=""></div>*@
+                </div>
+            </div>
+            <div class="main-menu js-main-menu">
+                <div class="main-menu__trigger main-menu__trigger_open" data-reactid=".7.0.2.0">Menu</div>
+                <div class="main-menu__overflow"></div>
+                <div class="main-menu__panel">
+                    <div class="main-menu__panel-control">
+                        <div class="main-menu__trigger main-menu__trigger_close">Đóng</div>
+                    </div>
+                    <div class="main-menu__container">
+                        <div class="main-menu__list">
+                            <div class="main-menu-item">
+                                <a href="@Url.Action("Index", "Home")" class="main-menu-item__link"><span class="main-menu-item__label">Trang chủ</span></a>
+                            </div>
+                            <div class="main-menu-item">
+                                <a href="@Url.Action("Index", "IntroducePage")" class="main-menu-item__link">
+                                    <span class="main-menu-item__label">Giới thiệu</span>
+                                </a>
+                            </div>
+                            <div class="main-menu-item ">
+                                <a href="@Url.Action("Index", "NewsPage")" class="main-menu-item__link">
+                                    <span class="main-menu-item__label">Tin tức</span>
+                                </a>
+                            </div>
+                            <div class="main-menu-item ">
+                                <a href="@Url.Action("Index", "TrainingPage")" class="main-menu-item__link">
+                                    <span class="main-menu-item__label">Đào tạo</span>
+                                </a>
+                            </div>
+                            <div class="main-menu-item ">
+                                <a href="@Url.Action("Index", "ClassPage")" class="main-menu-item__link">
+                                    <span class="main-menu-item__label">Khai giảng</span>
+                                </a>
+                            </div>
+                            <div class="main-menu-item">
+                                <a href="@Url.Action("Index", "TechPage")" class="main-menu-item__link">
+                                    <span class="main-menu-item__label">Công nghệ</span>
+                                </a>
+                            </div>
+                            <div class="main-menu-item">
+                                <a href="@Url.Action("Index_new", "LessonPage")" class="main-menu-item__link"><span class="main-menu-item__label">Kiến thức </span></a>
+                            </div>
+                            <div class="main-menu-item">
+                                <a href="@Url.Action("Index", "RecruitPage")" class="main-menu-item__link"><span class="main-menu-item__label">Tuyển dụng</span></a>
+                            </div>
+                            <div class="main-menu-item">
+                                <a href="@Url.Action("Academy", "VideoPage")" class="main-menu-item__link"><span class="main-menu-item__label">Học viện</span></a>
+                            </div>
+                            <div class="main-menu-item">
+                                <a href="@Url.Action("Index", "ContactPage")" class="main-menu-item__link"><span class="main-menu-item__label">Liên hệ</span></a>
+                            </div>
+                            @*<div class="main-menu-item">
+                                    <a href="https://pgconsumersupport.secure.force.com/ContactUs?brand=Vidal+Sassoon&country=United+States+of+America&language=English-US" class="main-menu-item__link"><span class="main-menu-item__label">Contacts</span></a>
+                                </div>*@
+                        </div>
+                        @*<div class="main-menu__title">Find a salon</div>
+                            <div class="main-menu__list">
+                                <div class="main-menu-item main-menu-item_small"><a href="http://www.sassoon-salon.com/en/salon/uk/salons" class="main-menu-item__link"><span class="main-menu-item__label">Sassoon salon</span></a></div>
+                                <div class="main-menu-item main-menu-item_small"><a href="https://www.sassoon.com/SalonFinder" class="main-menu-item__link"><span class="main-menu-item__label">Sassoon partner salon</span></a></div>
+                            </div>
+                            <div class="main-menu__location">Location <span class="main-menu__location-label">UK</span></div>*@
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="mobile-menu-placeholder" data-state="{&quot;languages&quot;:[{&quot;id&quot;:&quot;en-gb&quot;,&quot;link&quot;:&quot;/en/academy/uk&quot;,&quot;title&quot;:&quot;English&quot;,&quot;active&quot;:true},{&quot;id&quot;:&quot;de-de&quot;,&quot;link&quot;:&quot;/de/academy/uk&quot;,&quot;title&quot;:&quot;deutsch&quot;,&quot;active&quot;:false},{&quot;id&quot;:&quot;it-it&quot;,&quot;link&quot;:&quot;/it-IT/academy/uk&quot;,&quot;title&quot;:&quot;italiano&quot;,&quot;active&quot;:false},{&quot;id&quot;:&quot;ja-jp&quot;,&quot;link&quot;:&quot;/ja-JP/academy/uk&quot;,&quot;title&quot;:&quot;日本語&quot;,&quot;active&quot;:false},{&quot;id&quot;:&quot;ru-ru&quot;,&quot;link&quot;:&quot;/ru-RU/academy/uk&quot;,&quot;title&quot;:&quot;русский&quot;,&quot;active&quot;:false},{&quot;id&quot;:&quot;es-es&quot;,&quot;link&quot;:&quot;/es-ES/academy/uk&quot;,&quot;title&quot;:&quot;español&quot;,&quot;active&quot;:false}],&quot;locations&quot;:[{&quot;id&quot;:&quot;uk&quot;,&quot;link&quot;:&quot;/en/academy/uk&quot;,&quot;title&quot;:&quot;UK&quot;,&quot;active&quot;:true,&quot;parent&quot;:null},{&quot;id&quot;:&quot;santa monica&quot;,&quot;link&quot;:&quot;/en/academy/north-america/santa-monica&quot;,&quot;title&quot;:&quot;Santa Monica&quot;,&quot;active&quot;:false,&quot;parent&quot;:&quot;North America&quot;},{&quot;id&quot;:&quot;san francisco&quot;,&quot;link&quot;:&quot;/en/academy/north-america/san-francisco&quot;,&quot;title&quot;:&quot;San Francisco&quot;,&quot;active&quot;:false,&quot;parent&quot;:&quot;North America&quot;},{&quot;id&quot;:&quot;seattle&quot;,&quot;link&quot;:&quot;/en/academy/north-america/seattle&quot;,&quot;title&quot;:&quot;Seattle&quot;,&quot;active&quot;:false,&quot;parent&quot;:&quot;North America&quot;},{&quot;id&quot;:&quot;chicago&quot;,&quot;link&quot;:&quot;/en/academy/north-america/chicago&quot;,&quot;title&quot;:&quot;Chicago&quot;,&quot;active&quot;:false,&quot;parent&quot;:&quot;North America&quot;},{&quot;id&quot;:&quot;new york&quot;,&quot;link&quot;:&quot;/en/academy/north-america/new-york&quot;,&quot;title&quot;:&quot;New York&quot;,&quot;active&quot;:false,&quot;parent&quot;:&quot;North America&quot;},{&quot;id&quot;:&quot;boston&quot;,&quot;link&quot;:&quot;/en/academy/north-america/Boston&quot;,&quot;title&quot;:&quot;Boston&quot;,&quot;active&quot;:false,&quot;parent&quot;:&quot;North America&quot;},{&quot;id&quot;:&quot;atlanta&quot;,&quot;link&quot;:&quot;/en/academy/north-america/atlanta&quot;,&quot;title&quot;:&quot;Atlanta&quot;,&quot;active&quot;:false,&quot;parent&quot;:&quot;North America&quot;},{&quot;id&quot;:&quot;toronto&quot;,&quot;link&quot;:&quot;/en/academy/north-america/toronto&quot;,&quot;title&quot;:&quot;Toronto&quot;,&quot;active&quot;:false,&quot;parent&quot;:&quot;North America&quot;},{&quot;id&quot;:&quot;germany&quot;,&quot;link&quot;:&quot;http://www.sassoon-salon.de/academy/ &quot;,&quot;title&quot;:&quot;Germany&quot;,&quot;active&quot;:false,&quot;parent&quot;:null}],&quot;menu&quot;:[{&quot;title&quot;:&quot;Discover&quot;,&quot;link&quot;:&quot;https://www.sassoon.com/About/&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Heritage&quot;,&quot;link&quot;:&quot;https://www.sassoon-academy.com/en/academy/uk/Heritage&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Sassoon Academy&quot;,&quot;link&quot;:&quot;/en/academy&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;title&quot;:&quot;Courses&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;groupId&quot;:&quot;Col1&quot;,&quot;title&quot;:&quot;Beginners&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/beginners&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;title&quot;:&quot;24 Week Diploma&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/beginners/24-week-diploma&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;30 Week Diploma&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/beginners/30-week-course&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]}]},{&quot;groupId&quot;:&quot;Col2&quot;,&quot;title&quot;:&quot;Short Term&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/short-term&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;title&quot;:&quot;CUT COURSES&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/short-term/CUT-COURSES&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;title&quot;:&quot;Salon Creative Cut&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/short-term/CUT-COURSES/salon-creative&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Trilogy&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/short-term/CUT-COURSES/trilogy&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;abc Cut&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/short-term/CUT-COURSES/abc-cut&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;abc Men&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/short-term/CUT-COURSES/abc-men&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]}]},{&quot;title&quot;:&quot;COLOUR  COURSES&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/short-term/COLOUR-COURSES&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;title&quot;:&quot;Salon Creative Colour&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/short-term/COLOUR-COURSES/salon-colour&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Sassoon Blondes&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/short-term/COLOUR-COURSES/Sassoon-Blondes&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]}]},{&quot;title&quot;:&quot;CUT &amp; COLOUR COURSES&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/short-term/CUT-COLOUR-COURSES&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;title&quot;:&quot;Academy&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/short-term/CUT-COLOUR-COURSES/academy&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;abc Complete&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/short-term/CUT-COLOUR-COURSES/abc-complete&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]}]},{&quot;title&quot;:&quot;FINISH COURSE&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/short-term/FINISH-COURSE&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;title&quot;:&quot;abc Finish&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/short-term/FINISH-COURSE/abc-Finish&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]}]}]},{&quot;groupId&quot;:&quot;Col3&quot;,&quot;title&quot;:&quot;Month Of Mondays&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/month-of-mondays&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;title&quot;:&quot;abc Cut | Month of Mondays&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/month-of-mondays/month-of-mondays-abc&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]}]},{&quot;groupId&quot;:&quot;Col1&quot;,&quot;title&quot;:&quot;Long Term&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/long-term&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;title&quot;:&quot;Salon Intensive&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/long-term/salon-intensive&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Comprehensive&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/long-term/comprehensive&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Postgraduate&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/long-term/postgraduate&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]}]},{&quot;groupId&quot;:&quot;Col3&quot;,&quot;title&quot;:&quot;Specialist&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/specialist&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;title&quot;:&quot;1-ON-1 Tuition&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/specialist/1-ON-1-Tuition&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Colour with Edward Darley&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/specialist/Colour-with-Edward-Darley&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;International Masters&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/specialist/international&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Trilogy With Silvia Salerno&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/specialist/salon-creative&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]}]}]},{&quot;title&quot;:&quot;Streaming&quot;,&quot;link&quot;:&quot;/en/academy/videos&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;title&quot;:&quot;Classic Cut&quot;,&quot;link&quot;:&quot;/en/academy/videos/classic-cut&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Classic Colour&quot;,&quot;link&quot;:&quot;/en/academy/videos/classic-colour&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Classic Men&quot;,&quot;link&quot;:&quot;/en/academy/videos/classic-men&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Collection&quot;,&quot;link&quot;:&quot;/en/academy/videos/collection&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]}]},{&quot;title&quot;:&quot;Products&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;title&quot;:&quot;DVDs&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;title&quot;:&quot;abc | Cutting Hair the Sassoon Way &quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/abc-CUTTING-HAIR-THE-SASSOON-WAY&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;abc | Colouring Hair the Sassoon Way&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/abc-COLOURING-HAIR-THE-SASSOON-WAY&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;abc MEN | Cutting Hair the Sassoon Way&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/abc-MEN-CUTTING-HAIR-THE-SASSOON-WAY&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;abc Cutting DVD &amp; Book&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/abc-CUTTING-HAIR-THE-SASSOON-WAY-(1)&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;abc Colouring DVD &amp; Book&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/abc-COLOURING-HAIR-THE-SASSOON-WAY-(1)&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;abc MEN DVD &amp; Book&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/abc-MEN-CUTTING-HAIR-THE-SASSOON-WAY-(1)&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Underpass&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/Underpass&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Urbane&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/Urbane&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Utopia&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/Utopia&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Poetica&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/Poetica&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Kidhood&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/KIDHOOD&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Androgyne&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/ANDROGYNEMAIL&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;The Group&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/THE-GROUP&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Nu-Pop&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/NU-POP&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Prairie&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/PRAIRIE&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;The Dandies&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/THE-DANDIES&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;The Muses&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/The-Muses&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Vidal Sassoon the Movie&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/DVDs/VIDAL-SASSOON-THE-MOVIE&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]}]},{&quot;title&quot;:&quot;Books&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/Books&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Combs&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/Combs&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Brushes&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/Brushes&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Scissors&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/Scissors&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Appliances&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/Appliances&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Accessories&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/Accessories&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Mail Order&quot;,&quot;link&quot;:&quot;/en/academy/uk/Products/Mail-Order&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]}]},{&quot;title&quot;:&quot;Collections&quot;,&quot;link&quot;:&quot;/en/academy/uk/collections&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;title&quot;:&quot;Underpass&quot;,&quot;link&quot;:&quot;/en/academy/uk/collections/Underpass&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Poetica&quot;,&quot;link&quot;:&quot;/en/academy/uk/collections/Poetica&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]}]},{&quot;title&quot;:&quot;Events&quot;,&quot;link&quot;:&quot;/en/academy/uk/Events&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;title&quot;:&quot;Shows&quot;,&quot;link&quot;:&quot;/en/academy/uk/Events/shows&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Look &amp; Learn Seminars&quot;,&quot;link&quot;:&quot;/en/academy/uk/Events/look-learn-seminars&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Sassoon Direct&quot;,&quot;link&quot;:&quot;/en/academy/uk/Events/in-salon-workshop&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]}]},{&quot;title&quot;:&quot;Team&quot;,&quot;link&quot;:&quot;/en/academy/uk/team&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;News/Offers&quot;,&quot;link&quot;:&quot;/en/academy/uk/News&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;title&quot;:&quot;Latest news&quot;,&quot;link&quot;:&quot;/en/academy/uk/News&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;2016&quot;,&quot;link&quot;:&quot;/en/academy/uk/News/2016&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;2015&quot;,&quot;link&quot;:&quot;/en/academy/uk/News/2015&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;2014&quot;,&quot;link&quot;:&quot;/en/academy/uk/News/2014&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;2013&quot;,&quot;link&quot;:&quot;/en/academy/uk/News/2013&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]}]},{&quot;title&quot;:&quot;Models Wanted&quot;,&quot;link&quot;:&quot;/en/academy/uk/Models-Wanted&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Contact&quot;,&quot;link&quot;:&quot;/en/academy/uk/contact&quot;,&quot;active&quot;:false,&quot;branches&quot;:[{&quot;title&quot;:&quot;UK&quot;,&quot;link&quot;:&quot;/en/academy/uk/contact/new&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;USA&quot;,&quot;link&quot;:&quot;/en/academy/uk/contact/usa-north-america&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Canada&quot;,&quot;link&quot;:&quot;/en/academy/uk/contact/canada&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Germany&quot;,&quot;link&quot;:&quot;/en/academy/uk/contact/germany&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]}]}]},{&quot;title&quot;:&quot;Sassoon Salon&quot;,&quot;link&quot;:&quot;http://www.sassoon-salon.com/en/salon&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Sassoon Partner Salon&quot;,&quot;link&quot;:&quot;https://www.sassoon.com/PartnerSalon/&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Collections&quot;,&quot;link&quot;:&quot;https://www.sassoon.com/Collections/&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Products&quot;,&quot;link&quot;:&quot;https://www.sassoon-academy.com/en/academy/uk/Products&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Contacts&quot;,&quot;link&quot;:&quot;https://pgconsumersupport.secure.force.com/ContactUs?brand=Vidal+Sassoon&amp;country=United+States+of+America&amp;language=English-US&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]}],&quot;discover&quot;:[{&quot;imageType&quot;:&quot;Location&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/locations&quot;,&quot;title&quot;:&quot;Locations&quot;,&quot;active&quot;:false},{&quot;imageType&quot;:&quot;PricesDates&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/prices-dates&quot;,&quot;title&quot;:&quot;Prices &amp; Dates&quot;,&quot;active&quot;:false},{&quot;imageType&quot;:&quot;MeetTheTeam&quot;,&quot;link&quot;:&quot;/en/academy/uk/team&quot;,&quot;title&quot;:&quot;Meet the team&quot;,&quot;active&quot;:false},{&quot;imageType&quot;:&quot;Location&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/faqs&quot;,&quot;title&quot;:&quot;Faq&#39;s&quot;,&quot;active&quot;:false},{&quot;imageType&quot;:&quot;VirtualTour&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/virtual-tour&quot;,&quot;title&quot;:&quot;Virtual Tour&quot;,&quot;active&quot;:false},{&quot;imageType&quot;:&quot;OpenHouse&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/Open-Days&quot;,&quot;title&quot;:&quot;Open days&quot;,&quot;active&quot;:false},{&quot;imageType&quot;:&quot;StudentPolicy&quot;,&quot;link&quot;:&quot;/en/academy/uk/courses/Student-Policies&quot;,&quot;title&quot;:&quot;Student Policy&quot;,&quot;active&quot;:false}],&quot;salons&quot;:[{&quot;title&quot;:&quot;Sassoon Salon&quot;,&quot;link&quot;:&quot;http://www.sassoon-salon.com/en/salon/uk/salons&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]},{&quot;title&quot;:&quot;Sassoon Partner Salon&quot;,&quot;link&quot;:&quot;https://www.sassoon.com/SalonFinder&quot;,&quot;active&quot;:false,&quot;branches&quot;:[]}]}"></div>*@
+
+            <div class="mobile-menu" data-reactid=".1">
+
+                <div class="Tappable-inactive mobile-menu__trigger" data-toggle="collapse" data-target="#demo" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; cursor: pointer;" data-reactid=".1.0">
+                    <svg viewBox="0 0 40 30" class="mobile-menu__icon-hamburger mobile-menu__icon" data-reactid=".1.0.0">
+                        <rect width="40" height="30" fill="#FFFFFF" data-reactid=".1.0.0.0"></rect>
+                        <path fill="#808285" d="M0,0 L40,0 L40,3 L0,3 L0,0 Z M0,13 L40,13 L40,16 L0,16 L0,13 Z M0,26 L40,26 L40,29 L0,29 L0,26 Z" data-reactid=".1.0.0.1"></path>
+                    </svg>
+                </div>
+                <div class="mobile-menu__container collapse  " id="demo" data-reactid=" .1.1">
+                    <div class="mobile-nav mobile-nav_active-panel_1 " data-reactid=".1.1.0">
+                        <div class="mobile-nav__line" data-reactid=".1.1.0.0">
+                            <div class="mobile-nav__panel" data-reactid=".1.1.0.0.$0">
+                                <div class="mobile-nav__list" data-reactid=".1.1.0.0.$0.0">
+                                    <div class="mobile-nav__item mobile-nav__item_level_1" data-reactid=".1.1.0.0.$0.0.1:$0">
+                                        <a href="@Url.Action("Index", "Home")" class="mobile-nav__link" data-reactid=".1.1.0.0.$0.0.1:$0.0">
+                                            <span class="mobile-nav__label mobile-nav__label_level_1" data-reactid=".1.1.0.0.$0.0.1:$0.0.0">
+                                                <span data-reactid=".1.1.0.0.$0.0.1:$0.0.0.0">Trang chủ</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="mobile-nav__item mobile-nav__item_level_1" data-reactid=".1.1.0.0.$0.0.1:$1">
+                                        <a href="@Url.Action("Index", "IntroducePage")" class="mobile-nav__link" data-reactid=".1.1.0.0.$0.0.1:$1.0">
+                                            <span class="mobile-nav__label mobile-nav__label_level_1" data-reactid=".1.1.0.0.$0.0.1:$1.0.0">
+                                                <span data-reactid=".1.1.0.0.$0.0.1:$1.0.0.0">Giới thiệu</span>
+                                            </span>
+                                        </a>
+                                    </div>
+
+                                    <div class="mobile-nav__item mobile-nav__item_level_1" data-reactid=".1.1.0.0.$0.0.1:$3">
+                                        <a href="@Url.Action("Index", "NewsPage")" class="mobile-nav__link" data-reactid=".1.1.0.0.$0.0.1:$3.0">
+                                            <span class="mobile-nav__label mobile-nav__label_level_1" data-reactid=".1.1.0.0.$0.0.1:$3.0.0">
+                                                <span data-reactid=".1.1.0.0.$0.0.1:$3.0.0.0">Tin tức</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="mobile-nav__item mobile-nav__item_level_1 " sdata-reactid=".1.1.0.0.$0.0.1:$4">
+                                        <a href="@Url.Action("Index", "TrainingPage")" class="mobile-nav__link " data-reactid=".1.1.0.0.$0.0.1:$4.0">
+                                            <span class="mobile-nav__label mobile-nav__label_level_1" data-reactid=".1.1.0.0.$0.0.1:$4.0.0">
+                                                <span data-reactid=".1.1.0.0.$0.0.1:$4.0.0.0">Đào tạo</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="mobile-nav__item mobile-nav__item_level_1" data-reactid=".1.1.0.0.$0.0.1:$5">
+                                        <a href="@Url.Action("Index", "ClassPage")" class="mobile-nav__link" data-reactid=".1.1.0.0.$0.0.1:$5.0">
+                                            <span class="mobile-nav__label mobile-nav__label_level_1" data-reactid=".1.1.0.0.$0.0.1:$5.0.0">
+                                                <span data-reactid=".1.1.0.0.$0.0.1:$5.0.0.0">Khai giảng</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="mobile-nav__item mobile-nav__item_level_1" data-reactid=".1.1.0.0.$0.0.1:$5">
+                                        <a href="@Url.Action("Index", "TechPage")" class="mobile-nav__link" data-reactid=".1.1.0.0.$0.0.1:$5.0">
+                                            <span class="mobile-nav__label mobile-nav__label_level_1" data-reactid=".1.1.0.0.$0.0.1:$5.0.0">
+                                                <span data-reactid=".1.1.0.0.$0.0.1:$5.0.0.0">Công nghệ</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="mobile-nav__item mobile-nav__item_level_1" data-reactid=".1.1.0.0.$0.0.1:$6">
+                                        <a href="@Url.Action("Index_new", "LessonPage")" class="mobile-nav__link" data-reactid=".1.1.0.0.$0.0.1:$6.0">
+                                            <span class="mobile-nav__label mobile-nav__label_level_1" data-reactid=".1.1.0.0.$0.0.1:$6.0.0">
+                                                <span data-reactid=".1.1.0.0.$0.0.1:$6.0.0.0">Kiến thức</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="mobile-nav__item mobile-nav__item_level_1" data-reactid=".1.1.0.0.$0.0.1:$7">
+                                        <a href="@Url.Action("Index", "RecruitPage")" class="mobile-nav__link" data-reactid=".1.1.0.0.$0.0.1:$7.0">
+                                            <span class="mobile-nav__label mobile-nav__label_level_1" data-reactid=".1.1.0.0.$0.0.1:$7.0.0">
+                                                <span data-reactid=".1.1.0.0.$0.0.1:$7.0.0.0">Tuyển dụng</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="mobile-nav__item mobile-nav__item_level_1" data-reactid=".1.1.0.0.$0.0.1:$7">
+                                        <a href="@Url.Action("Academy", "VideoPage")" class="mobile-nav__link" data-reactid=".1.1.0.0.$0.0.1:$7.0">
+                                            <span class="mobile-nav__label mobile-nav__label_level_1" data-reactid=".1.1.0.0.$0.0.1:$7.0.0">
+                                                <span data-reactid=".1.1.0.0.$0.0.1:$7.0.0.0">Học viện</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="mobile-nav__item mobile-nav__item_level_1" data-reactid=".1.1.0.0.$0.0.1:$7">
+                                        <a href="@Url.Action("Index", "ContactPage")" class="mobile-nav__link" data-reactid=".1.1.0.0.$0.0.1:$7.0">
+                                            <span class="mobile-nav__label mobile-nav__label_level_1" data-reactid=".1.1.0.0.$0.0.1:$7.0.0">
+                                                <span data-reactid=".1.1.0.0.$0.0.1:$7.0.0.0">Liên hệ</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="mobile-menu__selectors" data-reactid=".1.1.2"><div class="mobile-menu__selector mobile-menu__selector_location" data-reactid=".1.1.2.0"><div class="mobile-dropdown" data-reactid=".1.1.2.0.0"><div class="mobile-dropdown__container" data-reactid=".1.1.2.0.0.0"><label class="mobile-dropdown__label" data-reactid=".1.1.2.0.0.0.0"><span data-reactid=".1.1.2.0.0.0.0.0">Location:</span><span class="mobile-dropdown__current" data-reactid=".1.1.2.0.0.0.0.1">UK</span></label><select class="mobile-dropdown__select" data-reactid=".1.1.2.0.0.0.1"><option selected="" value="uk" data-reactid=".1.1.2.0.0.0.1.$uk">UK</option><option value="santa monica" data-reactid=".1.1.2.0.0.0.1.$santa monica">North America - Santa Monica</option><option value="san francisco" data-reactid=".1.1.2.0.0.0.1.$san francisco">North America - San Francisco</option><option value="seattle" data-reactid=".1.1.2.0.0.0.1.$seattle">North America - Seattle</option><option value="chicago" data-reactid=".1.1.2.0.0.0.1.$chicago">North America - Chicago</option><option value="new york" data-reactid=".1.1.2.0.0.0.1.$new york">North America - New York</option><option value="boston" data-reactid=".1.1.2.0.0.0.1.$boston">North America - Boston</option><option value="atlanta" data-reactid=".1.1.2.0.0.0.1.$atlanta">North America - Atlanta</option><option value="toronto" data-reactid=".1.1.2.0.0.0.1.$toronto">North America - Toronto</option><option value="germany" data-reactid=".1.1.2.0.0.0.1.$germany">Germany</option></select></div></div></div></div>*@
+                </div>
+            </div>
+
+
+            @*<div class=" academy-menu " data-justify=" " data-location=" uk">
+                    <div class="academy-menu__gaps">
+                        <div class="academy-menu__content">
+
+                            <div class="academy-menu__item"><a href="/en/academy/uk/courses" class="academy-menu__link">Courses</a></div>
+
+                            <div class="academy-menu__item"><a href="/en/academy/videos" class="academy-menu__link">Streaming</a></div>
+
+                            <div class="academy-menu__item"><a href="/en/academy/uk/Products" class="academy-menu__link">Products</a></div>
+
+                            <div class="academy-menu__item"><a href="/en/academy/uk/collections" class="academy-menu__link">Collections</a></div>
+
+                            <div class="academy-menu__item"><a href="/en/academy/uk/Events" class="academy-menu__link">Events</a></div>
+
+                            <div class="academy-menu__item"><a href="/en/academy/uk/team" class="academy-menu__link">Team</a></div>
+
+                            <div class="academy-menu__item"><a href="/en/academy/uk/News" class="academy-menu__link">News/Offers</a></div>
+
+                            <div class="academy-menu__item"><a href="/en/academy/uk/Models-Wanted" class="academy-menu__link">Models Wanted</a></div>
+
+                            <div class="academy-menu__item"><a href="/en/academy/uk/contact" class="academy-menu__link">Contact</a></div>
+
+                        </div>
+                    </div>
+                </div>*@
+
+
+        </div>
+
+
+        @RenderBody()
+
+        <section class="discover">
+            <h2 class="discover__title">Discover</h2>
+            <div class="discover__list ">
+                <div class="discover__option discover-option">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42	42" class="discover-option__icon discover-option-icon">
+                        <g class="discover-option-icon__shape">
+                            <path d="M21.016 10.008c-3.66 0-6.514 2.962-6.623 6.62-.176 5.872 6.623 15.43 6.623 15.43s6.623-9.25 6.623-15.43c0-3.66-2.964-6.62-6.624-6.62m0 9.928c-1.824 0-3.31-1.486-3.31-3.31 0-1.822 1.486-3.308 3.31-3.308s3.31 1.486 3.31 3.31c0 1.822-1.486 3.308-3.31 3.308"></path>
+                        </g>
+                        <path d="M21 41c11.046 0 20-8.954 20-20C41 9.955 32.046 1 21 1S1 9.955 1 21c0 11.046 8.954 20 20 20z" class="discover-option-icon__frame"></path>
+                    </svg>
+
+                    <div class="discover-option__content">
+                        <p class="discover-option__title">
+                            <a href="/en/academy/uk/courses/locations " class="discover-option__link">Locations</a>
+                        </p>
+                    </div>
+                </div><div class="discover__option discover-option">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42	42" class="discover-option__icon discover-option-icon">
+                        <g class="discover-option-icon__shape">
+                            <path d="M26.773 15.03h2.68v14.466H12.547V15.03h2.68v-2.526h2.513v2.526h6.52v-2.526h2.513v2.526zm-1.817-1.762v3.094h1.122v-3.094h-1.122zm-9.034 0v3.094h1.122v-3.094h-1.122zM28.117 28.18V17.828H13.883V28.18h14.234zm-11.5-2.112l.358-.998c.495.22 1.073.325 1.546.325 1.032 0 1.568-.367 1.568-1.07 0-.443-.24-.748-.726-.874-.22-.062-.504-.083-.85-.083h-.916v-1.01h.736c1.04 0 1.546-.356 1.546-1.008 0-.558-.347-.926-1.062-.926-.568 0-1.178.21-1.673.473l-.336-.977c.525-.274 1.314-.557 2.167-.557 1.545 0 2.24.883 2.24 1.86 0 .704-.368 1.21-1.063 1.492v.02c.81.17 1.274.76 1.274 1.568 0 1.208-.883 2.154-2.82 2.154-.64 0-1.398-.126-1.987-.39zm7.553.284v-5.675l-1.61.724-.42-.976 2.314-1.05h.956v6.978h-1.24z"></path>
+                        </g>
+                        <path d="M21 41c11.046 0 20-8.954 20-20C41 9.955 32.046 1 21 1S1 9.955 1 21c0 11.046 8.954 20 20 20z" class="discover-option-icon__frame"></path>
+                    </svg>
+
+                    <div class="discover-option__content">
+                        <p class="discover-option__title">
+                            <a href="/en/academy/uk/courses/prices-dates " class="discover-option__link">Prices &amp; Dates</a>
+                        </p>
+                    </div>
+                </div><div class="discover__option discover-option">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42	42" class="discover-option__icon discover-option-icon">
+                        <g class="discover-option-icon__shape">
+                            <path d="M14.607 22.33H13.25c-1.015 0-1.968-.486-1.968-1.61 0-.82-.03-3.576 1.257-3.576.21 0 1.266.86 2.634.86.467 0 .913-.08 1.35-.232-.03.223-.052.446-.052.668 0 .922.294 1.834.82 2.593-1.053.03-2.006.487-2.685 1.297m.567-5.186c-1.43 0-2.595-1.165-2.595-2.594 0-1.428 1.165-2.593 2.594-2.593 1.43 0 2.596 1.165 2.596 2.593 0 1.43-1.166 2.594-2.596 2.594m10.27 12.967h-8.86c-1.622 0-2.707-.982-2.707-2.623 0-2.29.538-5.805 3.508-5.805.344 0 1.6 1.408 3.63 1.408 2.026 0 3.284-1.408 3.628-1.408 2.97 0 3.508 3.515 3.508 5.805 0 1.64-1.084 2.624-2.706 2.624m-4.43-7.78c-2.15 0-3.893-1.742-3.893-3.89 0-2.147 1.745-3.89 3.894-3.89 2.15 0 3.893 1.743 3.893 3.89 0 2.148-1.744 3.89-3.893 3.89m5.84-5.186c-1.43 0-2.596-1.165-2.596-2.594 0-1.428 1.166-2.593 2.595-2.593 1.43 0 2.596 1.165 2.596 2.593 0 1.43-1.167 2.594-2.597 2.594m1.926 5.186h-1.36c-.68-.81-1.632-1.266-2.685-1.297.526-.76.82-1.67.82-2.593 0-.222-.02-.445-.05-.668.436.152.882.232 1.348.232 1.37 0 2.423-.86 2.636-.86 1.287 0 1.256 2.755 1.256 3.576 0 1.124-.953 1.61-1.967 1.61"></path>
+
+                        </g>
+                        <path d="M21 41c11.046 0 20-8.954 20-20C41 9.955 32.046 1 21 1S1 9.955 1 21c0 11.046 8.954 20 20 20z" class="discover-option-icon__frame"></path>
+                    </svg>
+
+                    <div class="discover-option__content">
+                        <p class="discover-option__title">
+                            <a href="/en/academy/uk/team " class="discover-option__link">Meet the team</a>
+                        </p>
+                    </div>
+                </div><div class="discover__option discover-option">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42	42" class="discover-option__icon discover-option-icon">
+                        <g class="discover-option-icon__shape">
+                            <path d="M21.016 10.008c-3.66 0-6.514 2.962-6.623 6.62-.176 5.872 6.623 15.43 6.623 15.43s6.623-9.25 6.623-15.43c0-3.66-2.964-6.62-6.624-6.62m0 9.928c-1.824 0-3.31-1.486-3.31-3.31 0-1.822 1.486-3.308 3.31-3.308s3.31 1.486 3.31 3.31c0 1.822-1.486 3.308-3.31 3.308"></path>
+                        </g>
+                        <path d="M21 41c11.046 0 20-8.954 20-20C41 9.955 32.046 1 21 1S1 9.955 1 21c0 11.046 8.954 20 20 20z" class="discover-option-icon__frame"></path>
+                    </svg>
+
+                    <div class="discover-option__content">
+                        <p class="discover-option__title">
+                            <a href="/en/academy/uk/courses/faqs " class="discover-option__link">Faq's</a>
+                        </p>
+                    </div>
+                </div><div class="discover__option discover-option">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42	42" class="discover-option__icon discover-option-icon">
+                        <g class="discover-option-icon__shape">
+                            <polyline points="18.0125 14.6650411 26.1381663 19.8270685 18.0125 24.9890959"></polyline>
+                            <path d="M12.346 15.023l-1.493-1.32 5.003-1.67-1.055 5.164-1.386-1.228c-.932 1.448-1.423 3.124-1.423 4.857 0 4.964 4.042 9.003 9.01 9.003s9.01-4.04 9.01-9.003c0-4.964-4.042-9.003-9.01-9.003h-.06V10.36H21c5.775 0 10.474 4.696 10.474 10.467 0 5.77-4.7 10.466-10.474 10.466-5.775 0-10.474-4.695-10.474-10.466 0-2.09.615-4.106 1.776-5.833l.044.03zm5.512.642l8.125 5.162-8.125 5.162V15.664z"></path>
+                        </g>
+                        <path d="M21 41c11.046 0 20-8.954 20-20C41 9.955 32.046 1 21 1S1 9.955 1 21c0 11.046 8.954 20 20 20z" class="discover-option-icon__frame"></path>
+                    </svg>
+
+                    <div class="discover-option__content">
+                        <p class="discover-option__title">
+                            <a href="/en/academy/uk/courses/virtual-tour " class="discover-option__link">Virtual Tour</a>
+                        </p>
+                    </div>
+                </div><div class="discover__option discover-option">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42	42" class="discover-option__icon discover-option-icon">
+                        <g class="discover-option-icon__shape">
+                            <path d="M21.014 14.887c-4.91 0-9.25 2.43-11.89 6.147 2.64 3.718 6.98 6.146 11.89 6.146s9.25-2.428 11.89-6.146c-2.64-3.718-6.98-6.147-11.89-6.147m0 10.914c-2.785 0-5.04-2.255-5.04-5.037 0-2.783 2.255-5.04 5.04-5.04 2.784 0 5.04 2.257 5.04 5.04 0 2.782-2.256 5.038-5.04 5.038m.06-5.186c-.956-.955-1.098-2.413-.43-3.52-1.866.185-3.32 1.757-3.32 3.67 0 2.035 1.652 3.687 3.69 3.687 1.962 0 3.562-1.53 3.68-3.463-1.12.734-2.637.61-3.62-.373"></path>
+                        </g>
+                        <path d="M21 41c11.046 0 20-8.954 20-20C41 9.955 32.046 1 21 1S1 9.955 1 21c0 11.046 8.954 20 20 20z" class="discover-option-icon__frame"></path>
+                    </svg>
+
+                    <div class="discover-option__content">
+                        <p class="discover-option__title">
+                            <a href="/en/academy/uk/courses/Open-Days " class="discover-option__link">Open days</a>
+                        </p>
+                    </div>
+                </div><div class="discover__option discover-option">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42	42" class="discover-option__icon discover-option-icon">
+                        <g class="discover-option-icon__shape">
+                            <path d="M21 27.84c2.387-1.853 7.705-1.668 7.705-1.668V15.346l2.422-.705v13.2c-6.8-.74-10.11 1.472-10.127 1.484-.017-.012-3.328-2.224-10.127-1.484v-13.2l2.422.706v10.826s5.318-.185 7.705 1.668zm-.47-12.754v11.308s-2.856-1.297-6.307-1.075V12.675s4.625 1.04 6.307 2.41zm.927 0v11.308s2.862-1.297 6.32-1.075V12.675s-4.634 1.04-6.32 2.41z"></path>
+                        </g>
+                        <path d="M21 41c11.046 0 20-8.954 20-20C41 9.955 32.046 1 21 1S1 9.955 1 21c0 11.046 8.954 20 20 20z" class="discover-option-icon__frame"></path>
+                    </svg>
+
+                    <div class="discover-option__content">
+                        <p class="discover-option__title">
+                            <a href=" " class="discover-option__link">Student Policy</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sign-up-to-newsletter">
+            <div class="sign-up-to-newsletter__content">
+                <h2 class="sign-up-to-newsletter__title">Sign up to our newsletter</h2>
+                <p class="sign-up-to-newsletter__text">Become part of our global community with exclusive access to special offers, latest news and events.</p>
+                <div class="sign-up-to-newsletter__field-wrapper">
+                    <div class="sign-up-to-newsletter__field sign-up-form">
+                        <div class="sign-up-form__form">
+                            <div class="sign-up-form__field-container">
+                                <label for="ctl00_ctl00_ContentPlaceHolder_plcMain_ctl01_newsletter_email" id="ctl00_ctl00_ContentPlaceHolder_plcMain_ctl01_newsletter_labelEmail" class="visuallyhidden">Enter your email address</label>
+                                <input name="ctl00$ctl00$ContentPlaceHolder$plcMain$ctl01$newsletter$email" type="text" id="ctl00_ctl00_ContentPlaceHolder_plcMain_ctl01_newsletter_email" class="sign-up-form__field" placeholder="Enter your email address" />
+                            </div>
+                        </div>
+                        <button onclick="if (typeof(Page_ClientValidate) == 'function') Page_ClientValidate(''); __doPostBack('ctl00$ctl00$ContentPlaceHolder$plcMain$ctl01$newsletter$Button4','')" id="ctl00_ctl00_ContentPlaceHolder_plcMain_ctl01_newsletter_Button4" class="sign-up-form__submit">
+                            <span class="visuallyhidden">Submit</span>
+                        </button>
+                    </div>
+                    <span id="ctl00_ctl00_ContentPlaceHolder_plcMain_ctl01_newsletter_emailRegularExpressionValidator" class="sign-up-to-newsletter__field-error" style="display:none;">Enter correct email</span>
+                    <span id="ctl00_ctl00_ContentPlaceHolder_plcMain_ctl01_newsletter_emailRequiredFieldValidator" class="sign-up-to-newsletter__field-error" style="display:none;">Enter your email address</span>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="footer-links">
+            <div class="footer-links__content">
+
+                <div class="footer-links__column footer-links__column_1 social-networks">
+                    <span class="social-networks__logo">Sassoon Academy</span>
+                    <div class="social-networks__account">
+                        <a class="social-networks__link social-networks__link_type_facebook" href="https://www.facebook.com/SassoonAcademy" target="_blank" title="follow us on Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 54" class="social-networks__icon social-network-icon">
+                                <path d="M27,53.5A26.5,26.5,0,1,0,.5,27,26.5,26.5,0,0,0,27,53.5Z" fill="none" stroke="#808285" stroke-width="0.72" class="social-network-icon__frame"></path>
+                                <path d="M22.27,43.44V28.63H18.35V23.29h3.92V18.74c0-3.58,2.31-6.86,7.65-6.86a32.75,32.75,0,0,1,3.76.2l-.13,5-3.4,0c-1.92,0-2.23.89-2.23,2.36v3.89h5.79l-.25,5.33H27.91V43.44Z" fill="#808285" class="social-network-icon__shape"></path>
+                            </svg>
+                            <span class="visuallyhidden">Facebook</span>
+                        </a>
+                    </div>
+                    <div class="social-networks__account">
+                        <a class="social-networks__link social-networks__link_type_youtube" href="https://www.youtube.com/user/SassoonGlobal" target="_blank" title="follow us on YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 54" class="social-networks__icon social-network-icon">
+                                <path d="M27,53.5A26.5,26.5,0,1,0,.5,27,26.5,26.5,0,0,0,27,53.5Z" fill="none" stroke="#808285" stroke-width="0.72" class="social-network-icon__frame"></path>
+                                <path d="M20.19,15.3l-1.37-4.92h-2L18,13.87a31.05,31.05,0,0,1,1.17,4V22.9h1.9V17.84l2.29-7.46H21.49Zm6.16-2a2.33,2.33,0,0,0-2,.95,3.71,3.71,0,0,0-.53,2.21v3.27A3.68,3.68,0,0,0,24.33,22a2.6,2.6,0,0,0,4,0,3.56,3.56,0,0,0,.55-2.19V16.51a3.59,3.59,0,0,0-.55-2.21A2.34,2.34,0,0,0,26.35,13.34Zm.83,6.75c0,.87-.25,1.3-.82,1.3s-.82-.43-.82-1.3V16.15c0-.85.27-1.3.82-1.3s.82.45.82,1.3ZM34,13.34v7.14c-.37.52-.74.79-1.08.79s-.36-.14-.42-.41a4.47,4.47,0,0,1,0-.66V13.34H30.81v7.39a4.58,4.58,0,0,0,.14,1.38,1,1,0,0,0,1.11.7,2.74,2.74,0,0,0,2-1.14v1h1.74V13.34Z" fill="#808285" class="social-network-icon__shape"></path>
+                                <path d="M37.16,31.45c-.62,0-.91.48-.91,1.38v.92h1.83v-.92C38.08,31.92,37.77,31.45,37.16,31.45Zm-6.78.12a1.26,1.26,0,0,0-.91.46v6a1.26,1.26,0,0,0,.91.45c.52,0,.79-.45.79-1.33V32.95C31.17,32,30.9,31.57,30.38,31.57Zm9.84-6.85H13.29a1,1,0,0,0-1,1V41.23a1,1,0,0,0,1,1H40.22a1,1,0,0,0,1-1V25.71A1,1,0,0,0,40.22,24.71ZM20.41,28.58h-2.2V40h-2V28.58H14V26.71h6.37Zm5.39,11.27H24V38.78A2.93,2.93,0,0,1,21.89,40a1.12,1.12,0,0,1-1.18-.74,4.72,4.72,0,0,1-.17-1.46V30h1.83v7.27a2.11,2.11,0,0,0,0,.7c0,.29.17.43.42.43s.74-.29,1.16-.84V30h1.83ZM33,37a7.32,7.32,0,0,1-.19,2,1.43,1.43,0,0,1-1.45,1.11A2.45,2.45,0,0,1,29.46,39V40H27.64V26.71h1.83V31A2.47,2.47,0,0,1,31.35,30a1.43,1.43,0,0,1,1.45,1.11,7.24,7.24,0,0,1,.19,2Zm6.89-1.76H36.25V37c0,.92.29,1.38.94,1.38a.76.76,0,0,0,.81-.72c0-.1,0-.49,0-1.21h1.85v.25c0,.6,0,1,0,1.17a2.67,2.67,0,0,1-.42,1.07A2.9,2.9,0,0,1,35,39a3.76,3.76,0,0,1-.59-2.32V33.2A3.8,3.8,0,0,1,35,30.85a2.65,2.65,0,0,1,2.2-1,2.52,2.52,0,0,1,2.14,1,3.8,3.8,0,0,1,.56,2.34Z" fill="#808285" class="social-network-icon__shape"></path>
+                            </svg>
+                            <span class="visuallyhidden">Youtube</span>
+                        </a>
+                    </div>
+                    <div class="social-networks__account">
+                        <a class="social-networks__link social-networks__link_type_instagram" href="http://instagram.com/sassoonacademyofficial" target="_blank" title="follow us on Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 54" class="social-networks__icon social-network-icon">
+                                <path d="M27,53.5A26.5,26.5,0,1,0,.5,27,26.5,26.5,0,0,0,27,53.5Z" fill="none" stroke="#808285" stroke-width="0.72" class="social-network-icon__frame"></path>
+                                <path d="M41.33,20.87c-.24-5.33-3.26-8.17-8.41-8.4-2.77-.13-9.14-.13-11.91,0-5.36.24-8.17,3.29-8.41,8.4-.12,2.65-.12,9.27,0,11.91C12.85,38.22,16,41,21,41.19c2.65.12,9.26.12,11.91,0,5.42-.25,8.18-3.34,8.41-8.41C41.45,30.11,41.45,23.55,41.33,20.87Zm-2.6,11.79c-.19,4-2.19,5.75-5.92,5.92-2.65.12-9,.12-11.68,0-4.07-.19-5.75-2.21-5.92-5.92-.12-2.62-.12-9.05,0-11.68.19-4,2.15-5.75,5.92-5.92,2.65-.12,9-.12,11.68,0,4.05.18,5.75,2.19,5.92,5.92C38.85,23.64,38.85,30,38.73,32.66ZM27,19.41a7.42,7.42,0,1,0,7.42,7.42A7.42,7.42,0,0,0,27,19.41Zm0,12.23a4.82,4.82,0,1,1,4.82-4.82A4.81,4.81,0,0,1,27,31.64Zm7.71-14.26a1.73,1.73,0,1,0,1.73,1.73A1.73,1.73,0,0,0,34.68,17.38Z" fill="#808285" class="social-network-icon__shape"></path>
+                            </svg>
+                            <span class="visuallyhidden">Instagram</span>
+                        </a>
+                    </div>
+                    <div class="social-networks__account">
+                        <a class="social-networks__link social-networks__link_type_twitter" href="https://twitter.com/SassoonAcademy" target="_blank" title="follow us on Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 54" class="social-networks__icon social-network-icon">
+                                <path d="M27,53.5A26.5,26.5,0,1,0,.5,27,26.5,26.5,0,0,0,27,53.5Z" fill="none" stroke="#808285" stroke-width="0.72" class="social-network-icon__frame"></path>
+                                <path d="M44.1,26.09a8.28,8.28,0,0,1-3.87-.39,4.14,4.14,0,0,0,3.72-2.22,6.11,6.11,0,0,1-4,.45c-.06-.28-.12-.54-.19-.78-.9-3.33-4-6-7.25-5.68.26-.11.53-.21.8-.3s2.45-.47,2.12-1.21-2.84.49-3.33.64c.64-.24,1.69-.65,1.8-1.38a5.07,5.07,0,0,0-2.67,1.27,1.85,1.85,0,0,0,.51-1c-2.6,1.66-4.12,5-5.35,8.27a12.77,12.77,0,0,0-2.59-2.09A67.48,67.48,0,0,0,15,17.78c-.12,1.34.66,3.12,2.92,4.3a7.17,7.17,0,0,0-2.1.25c.29,1.54,1.25,2.8,3.83,3.41a3.13,3.13,0,0,0-2.34.92,4,4,0,0,0,4.21,2.07c-2.63,1.13-1.07,3.23,1.07,2.92A9.06,9.06,0,0,1,9.9,32C18.51,43.74,37.23,38.94,40,27.63a5.18,5.18,0,0,0,4.08-1.54" fill="#808285" class="social-network-icon__shape"></path>
+                            </svg>
+                            <span class="visuallyhidden">Twitter</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links__column footer-links__column_2 site-map">
+
+                    <h5 class="site-map__title">Sassoon Academy</h5>
+
+                    <div class="site-map__columns">
+
+                        <ul class="site-map__column">
+
+                            <li class="site-map__page">
+                                <a class="site-map__link" href="">Collections</a>
+                            </li>
+
+                            <li class="site-map__page">
+                                <a class="site-map__link" href="">Contact</a>
+                            </li>
+
+                            <li class="site-map__page">
+                                <a class="site-map__link" href="">Courses</a>
+                            </li>
+
+                            <li class="site-map__page">
+                                <a class="site-map__link" href="">Events</a>
+                            </li>
+
+                        </ul>
+
+                        <ul class="site-map__column">
+
+                            <li class="site-map__page">
+                                <a class="site-map__link" href="">Models Wanted</a>
+                            </li>
+
+                            <li class="site-map__page">
+                                <a class="site-map__link" href="">News</a>
+                            </li>
+
+                            <li class="site-map__page">
+                                <a class="site-map__link" href="">Products</a>
+                            </li>
+
+                            <li class="site-map__page">
+                                <a class="site-map__link" href="">The Team</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+
+
+                <div class="footer-links__column footer-links__column_3 latest-tweet">
+                    <h5 class="latest-tweet__title">Latest tweet</h5>
+                    <p class="latest-tweet__text">
+                        Vidal Sassoon CBE | 1928 – 2012 Forever in our hearts . .
+                        <a href="" target="_blank">#vidalsassoon</a>
+                        <a href="" target="_blank">#rememberingvidal</a>
+                        <a href="" target="_blank">#5years</a>
+                        <a href="" target="_blank">#icon</a>
+                        <a href="" target="_blank">#legend</a>… <a href="https://t.co/7tHweb6xnt" target="_blank">https://t.co/7tHweb6xnt</a>
+                    </p>
+                    <div class="latest-tweet__meta">
+                        <div class="latest-tweet__date">4 days ago</div>
+                        <div class="latest-tweet__interactions">8 Retweets / 9 Favourites</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer class="footer ">
+            <div class="footer__content">
+                <div class="footer__item">© 2017 Imic Academy</div>
+
+                <div class="footer__item">
+                    <span class="footer__link-wrapper">
+                        <a href="" class="footer__link">
+                            Terms and Conditions
+                        </a>
+                    </span>
+                </div>
+
+                <div class="footer__item">
+                    <span class="footer__link-wrapper">
+                        <a href="" class="footer__link">
+                            Privacy Policy
+                        </a>
+                    </span>
+                </div>
+
+                <div class="footer__item">
+                    <span class="footer__link-wrapper">
+                        <a href="" class="footer__link">
+                            Team T&C
+                        </a>
+                    </span>
+                </div>
+
+                <div class="footer__item">Sassoon Academy is operated by Regis under licence from P&amp;G</div>
+            </div>
+        </footer>
+    </div>
+    <div class="modal fade" id="modal-video" tabindex="-1" role="dialog" aria-labelledby="modal-video-label" >
+        <div style="width: 80%" class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-video">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe  width="100%" height="500" class="embed-responsive-item"  src=""
+                                    webkitallowfullscreen mozallowfullscreen allowfullscreen ></iframe>
+                        </div>
+                    </div>
+                    <div class="video-name" style="margin: 10px; font-size: 18px;">
+                        @*<h3 style=" border-bottom: 1px solid silver">Tiêu đề</h3>*@
+                        <div class="title-video" style="float: left; text-transform: uppercase"></div>
+                        <div class="total-view" style="float: right"> <i class="fa fa-user" style="color: #00ced1"></i><span class="view-count"></span> Lượt xem</div>
+                        <div style="clear: both"></div>
+                    </div>
+                    <div class="video-description" style="margin: 10px;font-size:16px ">
+                        @*<h3 style=" border-bottom: 1px solid silver">Mô tả</h3>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="~/Content/assets/js/jquery.min.js"></script>
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/js/app.20170423225748007.js"></script>
+   
+
+    @RenderSection("scripts", false)
+
+
+    @*<script>
+            $('.main-menu__trigger_open').on('click',function() {
+                $('.main-menu').addClass('main-menu_open');
+            })
+            $('.main-menu__trigger_close').on('click',function() {
+                $('.main-menu').removeClass('main-menu_open');
+            })
+
+           
+        </script>*@
+</body>
+
+</html>

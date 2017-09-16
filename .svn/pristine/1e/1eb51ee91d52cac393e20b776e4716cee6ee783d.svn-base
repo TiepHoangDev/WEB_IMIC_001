@@ -1,0 +1,73 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.OpenClassObject>
+
+@{
+    ViewBag.Tittle = "";
+    Layout = "~/Areas/AdminCP/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs font-green-sharp"></i>
+                    <span class="caption-subject font-green-sharp bold uppercase">Quản lý Các khóa học khai giảng</span>
+                </div>
+                <div class="tools"></div>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-striped table-bordered table-hover" id="sample_1">
+                    <thead>
+                        <tr>
+                            <td>Tên khóa học</td>
+                            <td>Anh đại diện</td>
+                            <td>Lịch học</td>
+                            <td>Thời gian học</td>
+                            <td>Số Học viên đăng kí</td>
+                            <td>Học viên tối đa</td>
+                            <td>Địa điểm khia giảng</td>
+                            <td>Người chỉnh sửa</td>
+                            <td>Người duyệt</td>
+                            <td>Thao tác</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ClassName</td>
+                                <td><img src="@item.ClassAvatar" alt="@item.ClassName" height="50px" /></td>
+                                <td>@item.ClassTime</td>
+                                <td>@item.DayOfWeek - @item.DayOfMonth - @item.Month</td>
+                                <td>@item.TotalOfRegisters</td>
+                                <td>@item.MaxTotalOfStudents</td>
+                                <td>@item.LocationID</td>
+                                <td>@(item.IsApproved != true ? "" : @item.ModifiedPerson.FullName)</td>
+                                <td>@(item.IsApproved != true ? "" : @item.ApprovedPerson.FullName)</td>
+                                <td>
+                                    @if (item.IsApproved != true)
+                                    {
+                                        <a href="javascript: void(0)" class="btn btn-success" onclick="apply_khoaHoc('@item.ClassId')">Apply</a>
+                                    }
+                                    @Html.ActionLink("Sửa", "Edit", new { id = item.ClassId }, new { @class = "btn btn-info" })
+                                    <a href="javascript: void(0)" class="btn btn-warning" onclick="delete_khoaHoc('@item.ClassId')">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section style{
+
+}
+
+@section script{
+    <script src="/Areas/AdminCP/theme/assets/global/scripts/datatable.js"></script>
+    <script>
+        TableAdvanced.init();
+    </script>
+}

@@ -1,0 +1,6 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.LessonDetailTagObject>
+
+    @foreach (var item in Model)
+    {
+        <li><a data-tag="@item.LessonDetailTagName" class="tag">@item.LessonDetailTagName</a></li>
+    }

@@ -1,0 +1,124 @@
+﻿@using WCF.BusinessObjectsLayer.EntityObjects
+@model List<WCF.BusinessObjectsLayer.EntityObjects.DemoProjectObject>
+
+@{
+    List<DemoProjectObject> lisHinhanh = new List<DemoProjectObject>();
+    List<DemoProjectObject> lisVideoDuan = new List<DemoProjectObject>();
+    List<DemoProjectObject> lisVideoGioithieu = new List<DemoProjectObject>();
+
+    foreach (var oDP in Model)
+    {
+        if (oDP.DemoType == true && oDP.TabType == false)
+        {
+            lisHinhanh.Add(oDP);
+        }
+        else if (oDP.DemoType == false && oDP.TabType == false)
+        {
+            lisVideoDuan.Add(oDP);
+        }
+        else if (oDP.DemoType == false && oDP.TabType == true)
+        {
+            lisVideoGioithieu.Add(oDP);
+        }
+    }
+    
+}
+
+<div class="form-group">
+    <label>Các hình ảnh về khoá học: </label>
+    <div class="checkbox-list" id="lisHinhanh">
+        
+    </div>
+    <button type="button" class="btn btn-info btn-small" id="btnModalHinhanh">Chọn hình ảnh</button>
+    <div class="modal fade bs-modal-lg in" id="hinhanh" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Chọn hình ảnh muốn thêm</h4>
+                </div>
+                <div class="modal-body">
+                    <select name="lisDemoProjectIdSelected" multiple="multiple" class="image-picker show-html hidden">
+                        @foreach (var oDP in lisHinhanh)
+                        {
+                            <option data-img-src="../../../../Content/Galleries/Training/DemoProject/Thumbs/@oDP.Thumbnail" value="@oDP.DemoProjectId">@oDP.ProjectName</option>
+                        }
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn default" data-dismiss="modal" id="doneHinhanh">Xong</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>
+
+
+<div class="form-group">
+    <label>Các video về khoá học: </label>
+    <div class="checkbox-list" id="lisVideoKhoahoc">
+
+    </div>
+    <button type="button" class="btn btn-info btn-small" id="btnModalVideoKhoahoc">Chọn video</button>
+    <div class="modal fade bs-modal-lg in" id="videokhoahoc" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Chọn video muốn thêm</h4>
+                </div>
+                <div class="modal-body">
+                    <select name="lisDemoProjectIdSelected" multiple="multiple" class="image-picker show-html hidden">
+                        @foreach (var oDP in lisVideoDuan)
+                        {
+                            <option data-img-src="../../../../Content/Galleries/Training/DemoProject/Thumbs/@oDP.Thumbnail" value="@oDP.DemoProjectId">@oDP.ProjectName</option>
+                        }
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn default" data-dismiss="modal" id="doneVideoKhoahoc">Xong</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>
+
+
+<div class="form-group">
+    <label>Video giới thiệu (hiển thị bên dưới): </label>
+    <div class="checkbox-list" id="lisVideoGioithieu">
+
+    </div>
+    <button type="button" class="btn btn-info btn-small" id="btnModalVideoGioithieu">Chọn video</button>
+    <div class="modal fade bs-modal-lg in" id="videogioithieu" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Chọn video muốn thêm</h4>
+                </div>
+                <div class="modal-body">
+                    <select name="lisDemoProjectIdSelected" class="image-picker show-html hidden">
+                        @foreach (var oDP in lisVideoGioithieu)
+                        {
+                            <option data-img-src="../../../../Content/Galleries/Training/DemoProject/Thumbs/@oDP.Thumbnail" value="@oDP.DemoProjectId">@oDP.ProjectName</option>
+                        }
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn default" data-dismiss="modal" id="doneVideoGioithieu">Xong</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <br/>
+    <label><a target="_blank" href="@Url.Action("DemoProjectInsert", "TrainingAdmin")">Thêm hình ảnh/video khoá học/video giới thiệu mới</a></label>
+</div>
+
+

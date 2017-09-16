@@ -1,0 +1,24 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.RecruitmentTitleObject 
+
+<div class="content-top">
+    <div class="wrap">
+        <h3>@Model.Title1</h3>
+        <h5>@Model.Summary1</h5>
+        <div class="section group">
+            @{Html.RenderAction("Job","RecruitmentPageAn");}
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div class="content-middle">
+    <h2><span>@Model.Title2</span></h2>
+    <p>@Model.Summary2</p>
+    <div id="container">
+        @{Html.RenderAction("Gallery","RecruitmentPageAn");}
+    </div>
+</div>
+<div class="content-bottom">
+    <h2><span>@Model.Title3</span></h2>
+    <p>@Model.Summary3</p>
+    @{Html.RenderAction("Company","RecruitmentPageAn");}
+</div>

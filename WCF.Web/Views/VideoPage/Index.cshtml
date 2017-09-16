@@ -1,0 +1,248 @@
+﻿@using WCF.BusinessObjectsLayer.EntityObjects;
+@using WCF.BusinessControlLayer.Bcls;
+@using WCF.BusinessObjectsLayer.Commons;
+@using WCF.Web.App_Start
+@{
+    ViewBag.Title = "Trang chủ video";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    ViewBag.description = "iMic - Nơi đào tạo lập trình viên hàng đầu Việt Nam. Cơ hội tiếp cận môi trường làm dự án tại các Công ty, trau dồi kinh nghiệm lập trình cùng các chuyên gia, giảng viên nhiều năm kinh nghiệm.";
+    ViewBag.image = "http://imic.edu.vn/Images/Shortcut.jpg";
+}
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.VideoCategoryObject>
+@section css{
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/video.css">
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="~/Content/css/intro/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/css/intro/owl.theme.css">
+    <link rel="stylesheet" href="~/Content/css/intro/owl.transitions.css">
+}
+@{
+    AccountObject account = new AccountObject();
+    if (CommonConstants.SESSION_ACCOUNT != null)
+    {
+        account = (AccountObject)Session[CommonConstants.SESSION_ACCOUNT];
+    }
+    else
+    {
+        account = null;
+    }
+    int vcCode = ViewBag.vcCodeNumber;
+}
+<div id="page-wrapper">
+    <div class="box-dt-group">
+        <div id="customer-video-box">
+            <div class="main">
+                <div class="a-column">
+                    <div class="box-menu-left">
+                        <h2 class="title">Danh mục video</h2>
+                        <ul class="list-menu">
+                            @foreach (var item in Model)
+                            {
+                                <li>
+                                    <a href="@Url.RouteUrl("video-category", new { vcCodeNumber = item.VCCodeNumber, catname = StringHelpers.ToAscii(item.VideoCategoryName) })">@item.VideoCategoryName
+                                    <span>(@item.TotalVideo)</span>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="box-list hidden-xs">
+                        <a href="javascript:0">
+                            <img src="~/Content/images/other/anh5.jpg" class="img-t">
+                        </a>
+                    </div>
+                    @{Html.RenderAction("FacebookLikeBox", "Marketing");}
+                </div>
+
+                <div class="content_daotao">
+                    <div class="w-100 pull-left">
+                        @{Html.RenderAction("Index_VideoBanner");}
+                        <div class="video-box">
+                            @{Html.RenderAction("Index_CategorySearch");}
+                            <div class="video-content">
+                                <ul class="cat-list">
+                                    @if (vcCode == 0)
+                                    {
+                                        <li class="top-video">
+                                            <a class="cat-header" href="@Url.RouteUrl("video-category", new { vcCodeNumber = 0, catname = StringHelpers.ToAscii("Xem tất cả") })"><h4 class="pull-left w-100">Xem nhiều nhất</h4></a>
+                                            <ul class="pull-left video-list w-100">
+                                                @Html.Action("Index_ListTopVideo", new { pageIndex = 0, vcCodeNumber = vcCode })
+                                            </ul>
+                                            @*<a class="see-more" onclick="loadMoreHotVideo()">Xem thêm</a>*@
+                                            <!--top-video-->
+                                        </li>
+                                        Html.RenderAction("Index_ListVideoCategory", new { pageIndex = 0, vcCodeNumber = vcCode });
+                                    }
+                                    else
+                                    {
+                                        Html.RenderAction("Index_VideoCategoryDetail", new { vcCodeNumber = vcCode });
+                                    }
+                                </ul>
+                                <!--cat-list-->
+                            </div>
+                            <!--video-content-->
+                            @if (vcCode == 0)
+                            {
+                                <div class="col-xs-12">
+                                    <img id="loader-img" alt="" src="~/Content/Galleries/SharedIcons/loading.gif" style="display: none; position: relative; left: 400px; bottom: 233px;" />
+                                    <button class="btn btn-default col-xs-offset-5" onclick="loadMoreCategory()">Tải thêm</button>
+                                </div>
+                            }
+                        </div>
+                        <!--video-box-->
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /#page-wrapper -->
+
+<div class="clear"></div>
+
+<input id="vcCodeNumber" type="hidden" name="vcCodeNumber" value="@ViewBag.vcCodeNumber">
+
+@section scripts{
+<!-- Custom Theme JavaScript -->
+<script type="text/javascript" src="~/Content/js/intro/owl.carousel.js"></script>
+<script type="text/javascript" src="~/Content/js/intro/owl.carousel.min.js"></script>
+<script src="~/Content/js/intro/owl.carousel.js"></script>
+<script src="~/Content/js/intro/owl.carousel.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $("#owl-demo").owlCarousel({
+
+            navigation: true, // Show next and prev buttons
+            slideSpeed: 300,
+            paginationSpeed: 400,
+            singleItem: true,
+            autoPlay: 3000,
+            pagination: false,
+            navigation: false,
+            transitionStyle: "fadeUp"
+        });
+        $(".cat-video").owlCarousel({
+
+            autoPlay: 3000, //Set AutoPlay to 3 seconds
+            items: 6,
+            itemsDesktop: [1900, 5],
+            itemsDesktopSmall: [992, 3],
+            itemsTablet: [767, 2],
+            pagination: false,
+            scrollPerPage: true,
+            autoPlay: false
+
+        });
+        $(".next-slide").click(function () {
+            var owl = $(this).parent().parent().find('.cat-video');
+            owl.trigger('owl.next');
+        })
+        $(".prev-slide").click(function () {
+            var owl = $(this).parent().parent().find('.cat-video');
+            owl.trigger('owl.prev');
+        })
+    });
+</script>
+
+<script>
+    var pageindex = 1;
+    function loadMoreCategory() {
+        var page = pageindex;
+        var codeNumber = $("#vcCodeNumber").val();
+        //debugger
+        $("#loader-img").show();
+        $.ajax({
+            url: "@Url.Action("Index_ListVideoCategory", "VideoPage")",
+            type: "get",
+            data: { pageIndex: page , vcCodeNumber: codeNumber }
+        }).success(function (response) {
+            var parsed = $.parseHTML(response);
+            var result = $(parsed).find(".customNavigation ");
+            if (result.length == 0 ) {
+                $("#loader-img").hide();
+                $(".btn-default").hide();
+            } else if (result.length == 3) {
+                $(parsed).find('.cat-video:eq(0)').owlCarousel({
+                    autoPlay: 3000, //Set AutoPlay to 3 seconds
+                    items: 6,
+                    itemsDesktop: [1900, 5],
+                    itemsDesktopSmall: [992, 3],
+                    itemsTablet: [767, 2],
+                    pagination: false,
+                    scrollPerPage: true,
+                    autoPlay: false
+
+                });
+                $(".next-slide").click(function () {
+                    var owl = $(this).parent().parent().find('.cat-video');
+                    owl.trigger('owl.next');
+                })
+                $(".prev-slide").click(function () {
+                    var owl = $(this).parent().parent().find('.cat-video');
+                    owl.trigger('owl.prev');
+                })
+                $(".cat-list").append(parsed);              
+                $("#loader-img").hide();
+                pageindex = pageindex + 1;
+            } else if (result.length < 3) {
+                $(parsed).find('.cat-video:eq(0)').owlCarousel({
+                    autoPlay: 3000, //Set AutoPlay to 3 seconds
+                    items: 6,
+                    itemsDesktop: [1900, 5],
+                    itemsDesktopSmall: [992, 3],
+                    itemsTablet: [767, 2],
+                    pagination: false,
+                    scrollPerPage: true,
+                    autoPlay: false
+
+                });
+                $(".next-slide").click(function () {
+                    var owl = $(this).parent().parent().find('.cat-video');
+                    owl.trigger('owl.next');
+                })
+                $(".prev-slide").click(function () {
+                    var owl = $(this).parent().parent().find('.cat-video');
+                    owl.trigger('owl.prev');
+                })
+                $(".cat-list").append(parsed);
+                $("#loader-img").hide();
+                $(".btn-default").hide();
+            }
+        });
+    }
+</script>
+
+<script>
+    var pageindex = 1;
+    function loadMoreHotVideo() {
+        var page = pageindex;
+        var codeNumber = $("#vcCodeNumber").val();
+        $("#loader-img").show();
+        $.ajax({
+            url: "@Url.Action("Index_ListTopVideo", "VideoPage")",
+            type: "get",
+            data: { pageIndex: page, vcCodeNumber: codeNumber }
+        }).success(function (response) {
+            var parsed = $.parseHTML(response);
+            var result = $(parsed).find(".video-top-title");
+            if (result.length == 0) {
+                $("#loader-img").hide();
+                $(".see-more").hide();
+            } else if (result.length == 15) {
+                $(".video-list").append(parsed);
+                $("#loader-img").hide();
+                pageindex = pageindex + 1;
+            } else if (result.length < 15) {
+                $(".video-list").append(parsed);
+                $("#loader-img").hide();
+                $(".see-more").hide();
+            }
+        });
+    }
+</script>
+
+}

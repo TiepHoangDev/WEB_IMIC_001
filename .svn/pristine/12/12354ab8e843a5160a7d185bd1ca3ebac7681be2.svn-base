@@ -1,0 +1,14 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.TrainingCategoryObject>
+@{
+    Layout = null;
+}
+
+<div class="box-menu-left">
+    <h2 class="title">Danh sách khóa học</h2>
+    <ul class="list-menu">
+        @foreach (var oCat in Model)
+        {
+            <li><a href="@Url.Action("Index", new { categoryId = oCat.TrainingCategoryId})">- @oCat.TrainingCategoryName<span>@*(@oCat.TotalOfCourse)*@</span></a></li>
+        }
+    </ul>
+</div>

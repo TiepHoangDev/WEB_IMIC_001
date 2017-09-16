@@ -1,0 +1,43 @@
+﻿@model List<WCF.BusinessObjectsLayer.EntityObjects.ReJobObject>
+
+@foreach (var item in Model)
+{
+    <div class="col_1_of_4 span_1_of_4">
+        <a href="@item.Job_Url">
+            <div class="grid1">
+
+                <img src="~/Content/Galleries/Job/@item.JobImage_Link" alt="@item.JobImage_Alt" data-tag="@item.objTag.NewsletterTagName" class="rec-tag" title="@item.JobTitle" />
+
+                @*<h4>@item.JobTitle</h4>*@
+            </div>
+        <div class="desc">
+            <p>@item.JobSummary</p>
+        </div>
+            </a>
+</div>
+}
+@*<div class="col_1_of_4 span_1_of_first">
+    <img src="images/pic.jpg" alt="" />
+    <div class="desc">
+        <h4>Redesigning<br> with personality<br><span>in<span class="small">&nbsp;web design</span></span><div class="clear"></div></h4>
+    </div>
+</div>
+
+<div class="col_1_of_4 span_1_of_4">
+    <div class="grid1">
+        <img src="images/icon2.png" alt="" />
+        <h4>Web design</h4>
+    </div>
+    <div class="desc">
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
+    </div>
+</div>
+<div class="col_1_of_4 span_1_of_4">
+    <div class="grid1">
+        <img src="images/icon3.png" alt="" />
+        <h4>Graphic design</h4>
+    </div>
+    <div class="desc">
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod</p>
+    </div>
+</div>*@

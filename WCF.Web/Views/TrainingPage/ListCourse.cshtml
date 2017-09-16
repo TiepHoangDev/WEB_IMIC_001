@@ -1,0 +1,57 @@
+﻿@using WCF.BusinessObjectsLayer.EntityObjects
+@using WCF.Web.App_Start
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.CourseObject>
+@{
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+    <div class="col-xs-12 col-lg-4 col-md-4">
+        <div class="item">
+            <div class="photo">
+                @switch (item.IsOnline)
+                {
+                    case 0:
+                        <img src="~/Content/Galleries/SharedIcons/icon_lanb.png" class="icon" />
+                        break;
+                    case 1:
+                    <img src="~/Content/Galleries/SharedIcons/icon_online.png" class="icon" />
+                        break;
+                }
+                <a href="@Url.Action("DetailCourse", "TrainingPage", new {courseCodeNumber = item.CourseCodeNumber, postName = StringHelpers.ToAscii(item.CourseName)})">
+                    
+                    <img style="width: 100%; height: 160px;" src="~/Content/Galleries/Training/CourseImage/@item.CourseImage" class="img"/>
+                </a>
+            </div>
+            <div class="tem-list">
+                <h3 class="title">
+                    <a href="@Url.Action("DetailCourse", "TrainingPage", new {courseCodeNumber = item.CourseCodeNumber, postName = StringHelpers.ToAscii(item.CourseName)})">
+                        @item.CourseName
+                    </a>
+                </h3>
+                <ul>
+                    <li>
+                        @for (int j = 1; j <= item.Rating; j++)
+                        {
+                            <img src="~/Content/images/icon/icon_star.png" />
+                        }
+                        @*<img src="~/Content/images/icon/icon_star_low.png" c />
+                            <img src="~/Content/images/icon/icon_none.png" />*@
+                        <span>( @item.Rating )</span>
+                    </li>
+                    @Html.Action("ListCourse_Teacher", new { courseId = item.CourseId })
+                    @if (item.Price != null)
+                    {
+                        <li>@item.Price</li>
+                    }
+                    else
+                    {
+                        <li>Liên hệ</li>
+                    }
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+}

@@ -1,0 +1,39 @@
+﻿@model List<WCF.BusinessObjectsLayer.EntityObjects.TechArticleObject>
+@using WCF.Web.App_Start
+
+    @foreach (var item in Model)
+    {
+
+        <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 t-item">
+
+            <div class="item">
+                <div class="photo">
+                    <a href="@Url.RouteUrl("tech-detail", new { codeNumber = item.ArticleCodeNumber, PostName = StringHelpers.ToAscii(item.ArticleTitle) })">
+                        <img style="width:100%; height: 180px;" src="~/Content/Galleries/Tech/Articles/@item.ArticleImageLink"
+                             alt="@item.ArticleTitle">
+                    </a>
+                </div>
+                <div class="box-small">
+                    <h3>
+                        <a href="@Url.RouteUrl("tech-detail", new { codeNumber = item.ArticleCodeNumber, PostName = StringHelpers.ToAscii(item.ArticleTitle) })">
+                            @*@item.objTechCategory.CategoryName*@
+                            @item.ArticleTitle
+                        </a>
+                    </h3>
+                    <div class="by"><span>@item.objCreateBy.FullName</span> | @item.CreatedTime.ToString("dd/MM/yyyy")</div>
+                    @*<h4>@item.ArticleTitle</h4>*@
+                    @*<span style="font-weight:bold">@item.objTechCategory.CategoryName</span>*@
+                    <h4>@item.TechSummary</h4>
+
+                </div>
+                <div class="box-line">
+                    <span class="icon_like">@item.TotalOfLikes Lượt thích</span>
+                    @*<span class="icon_comment">@item.TotalOfReplies</span>*@
+                    <span ><i class="fa fa-eye" aria-hidden="true"></i> @item.TotalOfViews Lượt xem</span>
+                    <a><img style="width: 30px; height: 30px; border-radius: 5px;float: right  " src="/Content/images/avatar/@item.objCreateBy.ImageAvatar"></a> 
+                </div>
+            </div>
+
+        </div>
+
+    }

@@ -1,0 +1,52 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.ClassWeekDayObject
+@{
+    ViewBag.Title = "ClassWeekDayInsert";
+    Layout = "~/Areas/Class/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> Thêm ca học
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm("ClassWeekDayInsert", "ClassSessionDetail", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <div class="form-body">
+
+                <div class="form-group">
+                    <label>Tên ca học</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.WeekName, new { @class = "form-control", @placeholder = "Nhập thứ trong tuần" })
+                    </div>
+                </div>
+
+            </div>
+            
+
+            <div class="form-actions">
+                <button type="submit" class="btn blue">Thêm</button>
+
+            </div>
+        }
+    </div>
+</div>
+
+@section PageLevelScript {
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script src="~/Areas/AdminCP/Content/ckfinder/ckfinder.js"></script>
+
+
+
+
+
+
+}
+
+
+
+

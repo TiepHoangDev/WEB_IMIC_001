@@ -1,0 +1,25 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.ExperiencerObject>
+@{
+    Layout = null;
+}
+@if (Model.Count() > 0)
+{
+    string lisTecher = "";
+    if (Model.Count() > 1)
+    {
+        for (int i = 0; i < Model.Count(); i++)
+        {
+            lisTecher += Model.ElementAt(i).FullName + "; ";
+        }
+    }
+    <li title="@lisTecher">
+        @Model.ElementAt(0).FullName
+    </li>
+}
+else
+{
+    <li title="Chưa có giáo viên">
+        Chưa có giáo viên
+    </li>
+}
+

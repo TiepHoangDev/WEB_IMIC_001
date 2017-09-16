@@ -1,0 +1,9 @@
+﻿
+@{
+    Layout = null;
+}
+@model List<WCF.BusinessObjectsLayer.EntityObjects.ArticleTagObject>
+@foreach (var item in Model)
+{
+    <span class="tech-tag-02" data-id="@item.ArticleTagId">@item.TagName</span>
+}

@@ -1,0 +1,119 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.RegisterDetailObject
+@{
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+
+<div aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Thông tin chi tiết</h4>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("getResByID", "ClassAdmin", FormMethod.Post, new {@id = "frmReg", @class = "row form-horizontal margin-top-10"}))
+                {
+                    <div class="form-body">
+
+                        @Html.HiddenFor(x => x.RegisterDetailId)
+
+                        @Html.HiddenFor(x => x.ClassId)
+                        @Html.HiddenFor(x => x.CourseId)
+                        @Html.HiddenFor(x => x.RegisterPersonId)
+                        <input type="hidden" name="daduyet" id="daduyet" value="@ViewBag.daduyet"/>
+                        @*<input type="hidden" name="typeReg" id="typeReg"/>*@
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Ngày đăng ký :</label>
+                            <div class="col-md-6">
+                                @*<input class="form-control" type="text" readonly name="createdTime" id="createdTime" value="@Model.CreatedTime"/>*@
+                                @Html.TextBoxFor(x => x.CreatedTime, new {@class = "form-control", @readonly = "true"})
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Khoá/Lớp học :</label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" readonly name="className" id="className" value="@Model.OpenClass.ClassName @Model.Course.CourseName"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Họ tên:</label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" readonly name="fullName" id="fullName" value="@Model.RegisterPerson.FullName"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Địa chỉ: </label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" readonly name="address" id="address" value="@Model.RegisterPerson.Address"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Email :</label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" readonly name="email" id="email" value="@Model.RegisterPerson.Email"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Số điện thoại :</label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" readonly name="phone" id="phone" value="@Model.RegisterPerson.Phone"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Hiện là :</label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" readonly name="jobName" id="jobName" value="@Model.RegisterPerson.JobObj.JobObjectName"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Tin nhắn để lại :</label>
+                            <div class="col-md-6">
+                                <textarea id="message" readonly name="Message" class="form-control" rows="3">@Model.Message </textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Trạng thái xử lý :</label>
+                            <div class="col-md-6">
+                                <select name="Status" class="form-control">
+                                    <option value="0">Chưa xử lý</option>
+                                    <option value="1">Đã mail/phone</option>
+                                    <option value="2">Đang chờ phản hồi</option>
+                                    <option value="3">Đã chấp nhận học thử</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Ghi chú :</label>
+                            <div class="col-md-6">
+                                <textarea name="Comment" class="form-control" rows="3">@Model.Comment</textarea>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button id="submitFrm" type="button" class="btn btn-primary">Xác nhận đã duyệt</button>
+                <button type="button" class="btn default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+@section Scripts{
+  <script>
+      $(document).ready(function () {
+
+
+          $("#submitFrm").click(function () {
+              $("#frmReg").submit();
+          });
+      });
+
+</script>  
+}

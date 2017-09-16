@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Quản lý Tag Tuyển dụng";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@using WCF.Web.App_Start
+@model List<WCF.BusinessObjectsLayer.EntityObjects.NewsletterTagObject>
+<div class="col-xs-12">
+    <div class="portlet box red-intense">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-globe"></i>Quản lý Tag Tuyển dụng
+            </div>
+            <div class="tools">
+
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="col-xs-12" style="float:none">
+                <div style="padding-bottom:10px;">
+                    <a class="btn btn-primary btn-sm" style="margin-top:10px;" href="@Url.Action("Tag_Insert", "RecruitmentAdmin")">
+                        Thêm mới
+                        <span class="fa fa-plus" style="padding-left:6px;"></span>
+                    </a>
+                </div>
+                <table class="table table-striped table-bordered table-hover dataTable no-footer" id="tbl-main" aria-describedby="dataTables-example_info" style="text-align: center;">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting" tabindex="0" aria-controls="category-table" rowspan="1" colspan="1">Tên tag</th>
+                            <th class="sorting" tabindex="0" aria-controls="category-table" rowspan="1" colspan="1">Số bài viết</th>
+
+
+
+                            <th class="sorting" tabindex="0" aria-controls="category-table" rowspan="1" colspan="1">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th>@item.NewsletterTagName</th>
+                                <th>@item.TotalOfNewsletter</th>
+
+
+                                <th>
+                                    <a href="@Url.Action("Tag_Update", "RecruitmentAdmin", new { id = item.NewsletterTagId })" class="btn btn-info">Sửa</a>
+                                    <a class="btn btn-danger" onclick="Remove('@item.NewsletterTagId','@StringHelpers.FormatJSString(item.NewsletterTagName)',this)">Xóa</a>
+                                </th>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tbl-main').dataTable();
+        });
+        function Remove(id, name, event) {
+            var sender = event.currentTarget;
+            var answer = confirm("Bạn muốn xóa tag này: " + name + " ?");
+            if (answer) {
+                $.ajax({
+                    url: '@Url.Action("Tag_Delete", "NewsAdmin")',
+                    data: { id: id },
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.rs == 'ok') {
+                            $(event).closest("tr").remove();
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+}
+
+
+
+

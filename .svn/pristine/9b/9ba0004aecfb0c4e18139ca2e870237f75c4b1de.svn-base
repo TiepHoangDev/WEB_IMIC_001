@@ -1,0 +1,8 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.ExperiencerObject>
+@{
+    ViewBag.Title = "Quản lý chuyên gia";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+
+

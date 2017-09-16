@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<div class="portlet light">
+    <div class="portlet-body">
+        <div class="tabbable-custom nav-justified">
+            <ul class="nav nav-tabs nav-justified">
+                <li id="Component_Banner">
+                    <a href="@Url.Action("Component_Banner")" data-toggle="">
+                        Ảnh trình chiếu
+                    </a>
+                </li>
+                <li id="Component_TrainingCategory">
+                    <a href="@Url.Action("Component_TrainingCategory")" data-toggle="">
+                        Chuyên mục khoá học
+                    </a>
+                </li>
+                <li id="Component_DemoProject">
+                    <a href="@Url.Action("Component_DemoProject")" data-toggle="">
+                        Dự án mẫu
+                    </a>
+                </li>
+                <li id="Component_CourseTech">
+                    <a href="@Url.Action("Component_CourseTech")" data-toggle="">
+                        Công nghệ khoá học
+                    </a>
+                </li>
+                <li id="Component_BoxBelow">
+                    <a href="@Url.Action("Component_BoxBelow")" data-toggle="">
+                        Hộp thông tin bổ sung
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $('#@ViewContext.RouteData.GetRequiredString("action")').addClass("active");
+    </script>
+}

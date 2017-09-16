@@ -1,0 +1,9 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.LessonDetailTagObject>
+<div class="sidebar-box-content">
+    <div class="tags">
+        @foreach (var item in Model)
+{
+    <a @*href="@Url.Action("Search","LessonPage",new{query="",tag =item.LessonDetailTagId,start='0'})"*@  data-tag ="@item.LessonDetailTagName" class="tag has-counter "> @item.LessonDetailTagName<span>@item.TotalOfLessons</span></a>
+}
+    </div>
+</div>

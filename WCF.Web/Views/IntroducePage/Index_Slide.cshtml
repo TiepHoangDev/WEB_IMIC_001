@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.IntroduceBannerObject>
+@{
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+    <div class="item">
+        <img style="width:100%;height:600px;" src="~/Content/Galleries/Introduce/Banners/@item.Bannerlmage" alt="Lập trình ASP.NET">
+        <div class="text-slider">
+            <div class="col-xs-12">
+                <h3>@item.TitleBanner</h3>
+                <ul class="text-slider-info">
+                    @if (!string.IsNullOrEmpty(item.Content1))
+                    {
+                        <li>@item.Content1</li>
+                    }
+                    @if (!string.IsNullOrEmpty(item.Content2))
+                    {
+                        <li>@item.Content2</li>
+                    }
+                    @if (!string.IsNullOrEmpty(item.Content3))
+                    {
+                        <li>@item.Content3</li>
+                    }
+                    @if (!string.IsNullOrEmpty(item.Content4))
+                    {
+                        <li>@item.Content4</li>
+                    }
+                    @if (!string.IsNullOrEmpty(item.Content5))
+                    {
+                        <li>@item.Content5</li>
+                    }
+                    
+                    
+                </ul>
+                <div class="col-xs-12">
+                    <ul class="pull-right pagin">
+
+                        <li><a href="#" class="owl-prev"><img src="~/Content/images/icon/icon_slide_previous.gif" /></a></li>
+                        <li><a href="#" class="banner-number">@item.RankToShow</a></li>
+                        <li><a href="#" class="owl-next"><img src="~/Content/images/icon/icon_slide_next.gif" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

@@ -1,0 +1,238 @@
+﻿@{
+    ViewBag.Title = "Tạo chi tiết bài học mới";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@using WCF.BusinessObjectsLayer.EntityObjects
+@model WCF.BusinessObjectsLayer.EntityObjects.LessonDetailObject
+<style>
+    .alert-tag {
+        color: red;
+    }
+
+    .tag-group {
+        float: left;
+        vertical-align: central;
+    }
+
+    .post-tag {
+        border-radius: 5px;
+        float: left;
+        margin-left: 5px;
+        height: 28px;
+        line-height: 28px;
+        padding-left: 5px;
+        padding-right: 5px;
+        color: #33658a;
+        vertical-align: middle;
+        background-color: #cee0ed;
+    }
+
+    .delete-tag {
+        width: 14px;
+        height: 14px;
+        vertical-align: middle;
+        display: inline-block;
+        background-position: -40px -319px;
+        cursor: pointer;
+        margin-left: 3px;
+        margin-top: -2px;
+        margin-bottom: -1px;
+    }
+
+    #tag-editor {
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 4px;
+        width: 100%;
+        padding: 3px;
+    }
+
+        #tag-editor input {
+            border: none;
+        }
+</style>
+<div style="padding-bottom:20px; width:100%">
+    <div class="portlet light">
+        <div class="portlet-body" style="padding-top:0px">
+            @using (Html.BeginForm("LessonDetail_Insert", "LessonAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="form-group">
+                    <h4>&nbsp;Bài học:</h4>
+                    @{
+                var lisLesson = ViewBag.LessonList;
+                List<SelectListItem> listItem = new List<SelectListItem>();
+                foreach (var item in lisLesson)
+                {
+                    listItem.Add(new SelectListItem()
+                    {
+                        Value = "" + item.LessonId,
+                        Text = item.LessonName
+                    });
+                }
+                    }
+                    @Html.DropDownListFor(m => m.LessonId, listItem, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <h4>&nbsp;Tên bài học:</h4>
+                    @Html.TextBoxFor(m => m.DetailName, new { @type = "text", @class = "form-control", id = "lessonName" })
+                </div>
+                <h5 style="color:red; font-weight:bold; display:none" class="name_warning">Tên chi tiết bài học không được phép trống.</h5>
+
+                <div class="form-group">
+                    <h4>&nbsp;Tiêu đề:</h4>
+                    @Html.TextBoxFor(m => m.DetailTitle, new { @type = "text", @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <h4>&nbsp;Tóm tắt:</h4>
+                    @Html.TextAreaFor(m => m.DetailSummary, new { @type = "text", @class = "form-control", @rows = "3" })
+                </div>
+                <div class="form-group">
+                    <h4>&nbsp;Nội dùng bài viết:</h4>
+                    @Html.TextAreaFor(m => m.DetailContent, new { @type = "text", @class = "form-control", @rows = "6" })
+                </div>
+                
+                <div class="form-group">
+                    <h4>&nbsp;Tổng lượt xem:</h4>
+                    @Html.TextBoxFor(m => m.TotalOfView, new { @type = "number", @class = "form-control" })
+                </div>            
+
+                <div class="form-group">
+                    <h4>&nbsp;Số lượt thích:</h4>
+                    @Html.TextBoxFor(m => m.TotalOfLike, new { @type = "number", @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <h4>&nbsp;Mức độ ưu tiên:</h4>
+                    @Html.TextBoxFor(q => q.Rank, new { @class = "form-control", @type = "number" })
+                </div>
+
+                List<LessonDetailTagObject> lstTag = (List<LessonDetailTagObject>)ViewBag.TagList;
+
+                <div class="form-group">
+                    <h4>&nbsp;Gắn tag cho bài viết</h4>
+                    <div style="width:100%;padding:10px;border:1px solid #999">
+                        @foreach (var item in lstTag)
+                        {
+                            <div class="col-xs-4">
+                                <input type="checkbox" name="oldtag" value="@item.LessonDetailTagId" />@item.LessonDetailTagName
+                            </div>
+                        }
+                        <div style="clear:both"></div>
+                        <label style="margin-top:10px">Thêm tag mới</label>
+                        <h4 style="color:#00cc00">Gõ tag và ấn Enter để thêm tag mới</h4>
+                        <h4 class="alert-tag"></h4>
+                        <div style="width:100%" id="tag-editor">
+                            <span class="tag-group">
+
+                            </span>
+                            <input type="text" name="newtag" style="float:left" class="form-control" />
+                            <div style="clear:both"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="hidden" name="Option" id="Option" value="@ViewBag.Option" />
+                
+                <div style="padding-left:0px;width:100%;margin-top:30px;margin-bottom:20px">
+                    <a class="btn btn-primary" id="btn-update">Cập nhật</a>
+                </div>
+
+                <!-- /.modal -->
+                <div class="modal fade bs-modal-lg" id="confirm-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">Thông báo xác nhận</h4>
+                            </div>
+                            <div class="modal-body">
+                                Bạn có muốn thêm bài học này không ?
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn default" data-dismiss="modal">Hủy</button>
+                                <button onclick="submit" class="btn blue">Xác nhận</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script src="~/Areas/AdminCP/Content/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript">
+        if ($(window).width() > 500) {
+            var editor = CKEDITOR.instances['DetailContent'];
+
+            if (editor) { editor.destroy(true); }
+            CKEDITOR.replace('DetailContent', {
+                enterMode: CKEDITOR.ENTER_BR,
+                htmlEncodeOutput: true,
+                height: '600px'
+
+            });
+            CKFinder.setupCKEditor(null, '@Url.Content("~/Areas/AdminCP/Content/ckfinder")');
+        }
+    </script>
+
+    <script>
+        $("#btn-update").click(function () {
+            var name = $('#lessonName').val();
+            if (name == null || name.trim() == '') {
+                $('.name_warning').show();
+            }
+            else {
+                $("#confirm-modal").modal({ show: true });
+            }
+        });
+    </script>
+
+    <script>
+        $(document).on("keydown", "input", function (e) {
+            if (e.which == 13) e.preventDefault();
+        });
+        $('input[name=newtag]').on('keyup', function (e) {
+            if (e.keyCode == 13) {
+                var input = $(this);
+                var query = $(this).val();
+                if (String(query).trim().length > 0) {
+                    $.ajax({
+                        url: '@Url.Action("LessonDetailTag_CheckName", "LessonAdmin")',
+                        data: { TagName: query },
+                        type: 'post',
+                        success: function (response) {
+                            if (response.rs == 'fail') {
+                                $('.alert-tag').fadeIn('fast');
+                                $('.alert-tag').html('Tag ' + query + ' đã bị trùng');
+                                $(input).val('');
+                            }
+                            else {
+                                $('.tag-group').append('<span class="post-tag">' + query + '<span class="delete-tag fa fa-times"></span>'
+                                    + '<input name=newtaglist value="' + query + '" type="hidden">'
+                                    + '</span>');
+
+                                var width = $('.tag-group').width();
+                                $(input).css('width', 'calc(100% - ' + width + 'px)');
+                                $(input).val('');
+                                $('.alert-tag').fadeOut('fast');
+                            }
+                        }
+                    })
+                }
+            }
+
+        });
+        $(document).on("click", ".delete-tag", function () {
+            $(this).parent().remove();
+
+        });
+    </script>
+}
+
+

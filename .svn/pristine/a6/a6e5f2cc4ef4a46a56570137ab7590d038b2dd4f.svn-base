@@ -1,0 +1,193 @@
+﻿@using WCF.BusinessObjectsLayer.EntityObjects;
+@using WCF.Web.App_Start
+@{
+    ViewBag.Title = "Quản lý chi tiết";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@model List<WCF.BusinessObjectsLayer.EntityObjects.LessonDetailObject>
+@section CSS{
+    <link rel="stylesheet" type="text/css" href="~/Areas/AdminCP/Content/assets/admin/pages/css/simplePagination.css" />
+}
+<style>
+    th {
+        text-align: center !important;
+    }
+
+    td {
+        text-align: center !important;
+    }
+</style>
+<div id="manage-lesson-detail" class="col-xs-12">
+    <div class="portlet box red-intense">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-video-camera"></i>   Quản lý chi tiết bài học
+            </div>
+            <div class="tools">
+
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="col-xs-12" style="float:none">
+                <div style="padding-bottom:10px;">
+                    <a class="btn btn-primary btn-sm" style="margin-top:10px;" href="@Url.Action("LessonDetail_Insert", "LessonAdmin", new { Option = 0 })">
+                        Thêm mới
+                        <span class="fa fa-plus" style="padding-left:6px;"></span>
+                    </a>
+                </div>
+                <div class="col-xs-12" style="padding-bottom:20px;padding-left:0px">
+                    <h4 style="margin-top:10px;">Chọn danh mục :</h4>
+                    @{
+                        List<LessonObject> lstLesson = (List<LessonObject>)ViewBag.LessonList;
+                        <select class="form-control input-inline" id="selectLesson">
+                            <option value="0">Tất cả</option>
+                            @foreach (var lesson in lstLesson)
+                            {
+                                if (lesson.LessonId == ViewBag.LessonId)
+                                {
+                                    <option selected value="@lesson.LessonId">@lesson.LessonName</option>
+                                }
+                                else
+                                {
+                                    <option value="@lesson.LessonId">@lesson.LessonName</option>
+                                }
+                            }
+                        </select>
+                    }
+                </div>
+                <div style="clear:both"></div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-advance table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Mã chi tiết
+                                </th>
+                                <th>
+                                    Tên chi tiết
+                                </th>
+                                <th>
+                                    Tiêu đề
+                                </th>
+                                <th>
+                                    Ngày đăng
+                                </th>
+                                <th>
+                                    Tổng lượt xem
+                                </th>
+                                <th>
+                                    Lượt thích
+                                </th>
+                                <th>
+                                    Lượt bình luận
+                                </th>
+                                <th style="width:170px">
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.DetailCode
+                                    </td>
+                                    <td>
+                                        @item.DetailName
+                                    </td>
+                                    <td>
+                                        @item.DetailTitle
+                                    </td>
+                                    <td>
+                                        @item.ModifiedTime.ToString("dd/MM/yyyy HH:mm:ss")
+                                    </td>
+                                    <td>
+                                        @item.TotalOfView.ToString("n0")
+                                    </td>
+                                    <td>
+                                        @item.TotalOfLike.ToString("n0")
+                                    </td>
+                                    <td>
+                                        @item.TotalOfComment.ToString("n0")
+                                    </td>
+                                    <td style="width: 235px; text-align: left !important">
+                                        <a href="@Url.Action("LessonDetail_Update", "LessonAdmin", new { LessonDetailId = item.LessonDetailId, Option = 0 })" class="btn btn-info">   Sửa   </a>
+                                        <a href="@Url.Action("ManageComment", "LessonAdmin", new { ArticleId = item.LessonDetailId,Title = item.DetailTitle })" class="btn btn-success">Bình luận</a>
+                                        <a onclick="Delete('@item.LessonDetailId', '@item.DetailName', event)" class="btn btn-danger">    Xóa    </a>
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                @{
+                    int page = ViewBag.pageIndex;
+                }
+                <div class="pagination-holder clearfix" style="margin-top:10px">
+                    <div id="light-pagination" class="pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/admin/pages/scripts/jquery.simplePagination.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+        });
+
+        $(function () {
+            var e = document.getElementById("selectLesson");
+            var valueSelected = e.options[e.selectedIndex].value;
+            var href = "";
+            if(valueSelected == "0"){
+                href = "Manage_LessonDetail?pageIndex="
+            }
+            else{
+                href = 'Manage_LessonDetail?LessonId=' + valueSelected + '&pageIndex='
+            }
+            $('#light-pagination').pagination({
+                items: @ViewBag.totalItem,
+                itemsOnPage: 10,
+                currentPage: @ViewBag.pageIndex,
+                hrefTextPrefix: href,
+                cssStyle: 'light-theme'
+            });
+        });
+
+        $('#selectLesson').on('change', function (e) {
+            var optionSelected = $("option:selected", this);
+            var valueSelected = this.value;
+            debugger
+            window.location.href = 'Manage_LessonDetail?LessonId=' + valueSelected + '&pageIndex=0'
+        })
+
+        function Delete(id, name, event) {
+            var sender = event.currentTarget;
+            var answer = confirm("Bạn có muốn xóa chi tiết bài học: " + name + " ?");
+            if (answer) {
+                $.ajax({
+                    url: '@Url.Action("LessonDetail_Delete", "LessonAdmin")',
+                    data: { LessonDetailId: id },
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        if (!data.result) {
+                            alert(data.message);
+                        } else {
+                            $(sender).closest("tr").remove();
+                            alert(data.message);
+                        }
+                    }
+                });
+            }
+        }
+</script>
+}
+

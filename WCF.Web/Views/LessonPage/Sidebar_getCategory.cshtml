@@ -1,0 +1,35 @@
+﻿@model List<WCF.BusinessObjectsLayer.EntityObjects.LessonCategoryObject>
+<ul class="page-sidebar-menu w-100" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="background:#FFF">
+    @foreach (var item in Model)
+{
+    if (item.Rank == 2)
+    {
+        <li class="lesson-li open ">
+            <a href="javascript:;">
+                <i class="icon-folder"></i>
+                <span class="title">@item.CategoryName</span>
+                <span class="arrow open"></span>
+            </a>
+            <ul class="sub-menu" style="display: block">
+                @{ Html.RenderAction("Sidebar_getLesson", "LessonPage", new {catid = item.LessonCategoryId}); }
+            </ul>
+
+        </li>
+    }
+    else
+    {
+         <li class="lesson-li">
+            <a href="javascript:;">
+                <i class="icon-folder"></i>
+                <span class="title">@item.CategoryName</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                @{Html.RenderAction("Sidebar_getLesson", "LessonPage", new { catid = item.LessonCategoryId });}
+            </ul>
+</li>
+    }
+       
+    }
+
+</ul>

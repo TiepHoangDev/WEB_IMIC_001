@@ -1,0 +1,150 @@
+﻿@using WCF.BusinessObjectsLayer.EntityObjects;
+@using WCF.Web.App_Start
+@{
+    ViewBag.Title = "Manage Video";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.VideoObject>
+<style>
+    th {
+        text-align: center !important;
+    }
+    td {
+        text-align: center !important;
+    }
+</style>
+<div id="manage-tech-category" class="col-xs-12">
+    <div class="portlet box red-intense">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-video-camera"></i>   Quản lý video
+            </div>
+            <div class="tools">
+
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="col-xs-12" style="float:none">
+                <div style="padding-bottom:10px;">
+                    <a class="btn btn-primary btn-sm" style="margin-top:10px;" href="@Url.Action("Video_Insert", "VideoAdmin")">
+                        Thêm mới
+                        <span class="fa fa-plus" style="padding-left:6px;"></span>
+                    </a>
+                </div>
+                <div class="col-xs-12" style="padding-bottom:20px;padding-left:0px">
+                    <h4 style="margin-top:10px;">Chọn danh mục :</h4>
+                    @{
+                        List<VideoCategoryObject> lstCategory = (List<VideoCategoryObject>)ViewBag.CategoryList;
+                        <select class="form-control input-inline" id="selectCategory">
+                            <option value="0">Tất cả</option>
+                            @foreach (var category in lstCategory)
+                            {
+                                if (category.VCCodeNumber == ViewBag.vcCodeNumber)
+                                {
+                                    <option selected value="@category.VCCodeNumber">@category.VideoCategoryName</option>
+                                }
+                                else
+                                {
+                                    <option value="@category.VCCodeNumber">@category.VideoCategoryName</option>
+                                }
+                            }
+                        </select>
+                    }
+                </div>
+                @*<table class="table table-striped table-bordered table-hover dataTable no-footer" id="video-table" aria-describedby="dataTables-example_info">*@
+                <table class="table table-striped table-bordered table-hover" id="video-table">
+                    <thead>
+                        <tr role="row">
+                            <th style="width:300px">Tên</th>
+                            <th>Lượt xem</th>
+                            <th>Thích</th>
+                            <th>Không thích</th>
+                            <th>Số bình luận</th>
+                            <th>Người đăng</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.VideoName</td>
+                                <td>@item.TotalOfViews.ToString("n0")</td>
+                                <td>@item.TotalOfLikes.ToString("n0")</td>
+                                <td>@item.TotalOfDislikes.ToString("n0")</td>
+                                <td>@item.TotalOfComments.ToString("n0")</td>
+                                <td>@item.Account.Username</td>
+                                @if (item.IsDeleted == false)
+                                {
+                                    <td>
+                                        <h4><span class="label label-lg label-success">Active</span></h4>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <h4><span class="label label-lg label-danger">Deactive</span></h4>
+                                    </td>
+                                }
+                                <td>
+                                    <a href="@Url.Action("Video_Edit", "VideoAdmin", new { VideoId = item.VideoId })" class="btn btn-info">Sửa</a>
+                                    <a onclick="Delete('@item.VideoId','@item.VideoName',event)" class="btn btn-danger">Xóa</a>
+                                    @*<a href="@Url.RouteUrl("video-detail", new { videoCodeNumber = item.VideoCodeNumber, videoname = StringHelpers.ToAscii(item.VideoName) })" target="_blank" class="btn btn-primary">Chi tiết</a>*@
+                                    <a href="@Url.Action("Manage_VideoComments", "VideoAdmin", new { VideoId = item.VideoId, VideoName = item.VideoName })" target="_blank" class="btn btn-primary">Chi tiết</a>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script>
+    $(document).ready(function () {
+        $('#video-table').dataTable();
+    });
+
+    $('#selectCategory').on('change', function (e) {
+        var optionSelected = $("option:selected", this);
+        var valueSelected = this.value;
+        $.ajax({
+            url: "@Url.Action("Manage_Video", "VideoAdmin")",
+                type: "get",
+                data: { vcCodeNumber: valueSelected },
+                success: function (data) {
+                    $('body').html(data);
+                }
+            })
+        })
+
+        function Delete(id, name, event) {
+            var sender = event.currentTarget;
+            var answer = confirm("Bạn có muốn xóa video: " + name + " ?");
+            if (answer) {
+                $.ajax({
+                    url: '@Url.Action("Delete_Video", "VideoAdmin")',
+                    data: { VideoId: id },
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        if (!data.result) {
+                            alert(data.Message);
+                        } else {
+                            $(sender).closest("tr").remove();
+                        }
+                    }
+                });
+            }
+        }
+
+    </script>
+}
+

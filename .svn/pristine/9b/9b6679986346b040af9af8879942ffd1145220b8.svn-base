@@ -1,0 +1,473 @@
+﻿@using WCF.BusinessObjectsLayer.EntityObjects
+@model WCF.BusinessObjectsLayer.EntityObjects.CourseObject
+@{
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+@section CSS{
+    <link href="~/Areas/AdminCP/Content/assets/global/plugins/image-picker-master/image-picker/image-picker.css" rel="stylesheet" />
+}
+<style>
+    .alert-tag {
+        color: red;
+    }
+
+    .tag-group {
+        float: left;
+        vertical-align: central;
+    }
+
+    .post-tag {
+        border-radius: 5px;
+        float: left;
+        margin-left: 5px;
+        height: 28px;
+        line-height: 28px;
+        padding-left: 5px;
+        padding-right: 5px;
+        color: #33658a;
+        vertical-align: middle;
+        background-color: #cee0ed;
+    }
+
+    .delete-tag {
+        width: 14px;
+        height: 14px;
+        vertical-align: middle;
+        display: inline-block;
+        background-position: -40px -319px;
+        cursor: pointer;
+        margin-left: 3px;
+        margin-top: -2px;
+        margin-bottom: -1px;
+    }
+
+    #tag-editor {
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 4px;
+        width: 100%;
+        padding: 3px;
+    }
+
+        #tag-editor input {
+            border: none;
+        }
+</style>
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> Thông tin của khoá học
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm("CourseInsert", "TrainingAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-body">
+                <div class="alert alert-warning">
+                    <strong>Chú ý!</strong> Nên thêm trước các mục như: Ô thông tin dưới, Dự án mẫu, Công nghệ áp dụng, Chuyên gia giảng dạy,...
+                    <br />Sau đó, F5 tải lại trang này để thấy được những mục vừa thêm.
+                </div>
+                <div class="form-group">
+                    <label>Chọn chuyên mục</label>
+                    @{
+            var lisCategory = ViewBag.ListCategory;
+            List<SelectListItem> lisSelectCategory = new List<SelectListItem>();
+            foreach (var item in lisCategory)
+            {
+                lisSelectCategory.Add(new SelectListItem()
+
+                {
+                    Value = "" + item.TrainingCategoryId,
+                    Text = item.TrainingCategoryName
+                });
+            }
+                    }
+                    @Html.DropDownListFor(m => m.TrainingCategoryId, lisSelectCategory, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Tên khoá học</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.CourseName, new { @class = "form-control", @placeholder = "Nhập tên khoá học..." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Ảnh đại diện</label>
+                    <input type="file" name="fileAvatar">
+                    <p class="help-block">
+                        Chọn một ảnh đại diện khoá học.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Hình thức học</label>
+                    <div class="radio-list">
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.IsOnline, 0) Onlab
+                        </label>
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.IsOnline, 1) Online
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Giá tiền</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.Price, new { @class = "form-control", @placeholder = "Nhập giá tiền..." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tóm tắt khoá học</label>
+                    <div class="">
+                        @Html.TextAreaFor(m => m.CourseSummary, new { @class = "ckeditor form-control", @row = "6" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tab giới thiệu</label>
+                    <div class="">
+                        @Html.TextAreaFor(m => m.ContentIntroduce, new { @class = "ckeditor form-control", @row = "6" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tab nội dung khóa học</label>
+                    <div class="">
+                        @Html.TextAreaFor(m => m.ContentPreferentialPolicy, new { @class = "ckeditor form-control", @row = "6" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tab đánh giá khoá học</label>
+                    <div class="">
+                        @Html.TextAreaFor(m => m.ContentEvaluting, new { @class = "ckeditor form-control", @row = "6" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tab hình ảnh khóa học</label>
+                    <div class="">
+                        @Html.TextAreaFor(m => m.ContentTemplateProject, new { @class = "ckeditor form-control", @row = "6" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tab video khóa học</label>
+                    <div class="">
+                        @Html.TextAreaFor(m => m.ContentLearnByVideo, new { @class = "ckeditor form-control", @row = "6" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tiêu đề video giới thiệu</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.TitleIntroduceVideo, new { @class = "form-control", @placeholder = "Xây dựng Controller, Model dễ bảo trì và mở rộng" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Mục video giới thiệu khóa học</label>
+                    <div class="">
+                        @Html.TextAreaFor(m => m.ContentIntroduceVideo, new { @class = "ckeditor form-control", @row = "6" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Xếp hạng khóa học</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.RankVip, new { @class = "form-control", @placeholder = "Nhập số 1-10, nếu không nhập, giá trị mặc định là 1000" })
+                    </div>
+                </div>
+                @*List<videotagobject> lstTag = (List<videotagobject>)ViewBag.TagList;*@
+                @{
+                    List<TagObject> lstTag = (List<TagObject>)ViewBag.ListTag;
+                }
+                <!--TAG-->
+                <div class="form-group">
+                    <h4>&nbsp;Gắn tag cho bài viết</h4>
+                    <div style="width:100%;padding:10px;border:1px solid #999">
+                        @foreach (var item in lstTag)
+                        {
+                            <div class="col-xs-4">
+                                <input type="checkbox" name="oldtag" value="@item.TagId" />@item.TagName
+                            </div>
+                        }
+                        <div style="clear:both"></div>
+                        <label style="margin-top:10px">Thêm tag mới</label>
+                        <h4 style="color:#00cc00">Gõ tag và ấn Enter để thêm tag mới</h4>
+                        <h4 class="alert-tag"></h4>
+                        <div style="width:100%" id="tag-editor">
+                            <span class="tag-group">
+
+                            </span>
+                            <input type="text" name="newtag" style="float:left" class="form-control" />
+                            <div style="clear:both"></div>
+                        </div>
+                    </div>
+                </div>
+                        <div class="form-group">
+                            <label>Các ô thông tin ở dưới</label>
+                            <div class="checkbox-list">
+                                @{
+                                var lisBoxBellow = ViewBag.ListBoxBellow;
+                                foreach (var oBoxBellow in lisBoxBellow)
+                                {
+                                    <label>
+                                        <input type="checkbox" name="lisBoxBelowIdSelected" value="@oBoxBellow.BoxBelowId"> @oBoxBellow.BoxTitle
+                                    </label>
+                                }
+                                }
+                            </div>
+                            <label><a target="_blank" href="@Url.Action("BoxBellowInsert", "TrainingAdmin")">Thêm ô thông tin mới</a></label>
+                        </div>
+
+                        @Html.Action("DemoProjectSelects")
+
+                        @*<div class="form-group">
+                                    <label>Hình ảnh/video dự án/Video giới thiệu</label>
+                                        <div class="checkbox-list">
+                                            @{
+                                                var lisDemoProject = ViewBag.ListDemoProject;
+                                                foreach (var oDemoProject in lisDemoProject)
+                                                {
+                                                    <label>
+                                                        <input type="checkbox" name="lisDemoProjectIdSelected" value="@oDemoProject.DemoProjectId"> @oDemoProject.ProjectName
+                                                    </label>
+                                                }
+                                            }
+                                        </div>
+
+                                    <div class="checkbox-list">
+                                        @{
+                            var lisDemoProject = ViewBag.ListDemoProject;
+                            foreach (var oDemoProject in lisDemoProject)
+                            {
+                                <label>
+                                    <input type="checkbox" name="lisDemoProjectIdSelected" value="@oDemoProject.DemoProjectId"> @oDemoProject.ProjectName
+                                </label>
+                            }
+                                        }
+                                    </div>
+                                    <label><a target="_blank" href="@Url.Action("DemoProjectInsert","TrainingAdmin")">Thêm hình ảnh/video dự án/Video giới thiệu mới</a></label>
+                                </div>*@
+                        <div class="form-group">
+                            <label>Các công nghệ sử dụng trong khoá học</label>
+                            <div class="checkbox-list">
+                                @{
+                                var lisCourseTech = ViewBag.ListCourseTech;
+                                foreach (var oTech in lisCourseTech)
+                                {
+                                    <label>
+                                        <input type="checkbox" name="lisCourseTechnologyIdSelected" value="@oTech.CourseTechnologyId"> @oTech.CourseTechnologyName
+                                    </label>
+                                }
+                                }
+                            </div>
+                            <label><a target="_blank" href="@Url.Action("CourseTech","TrainingAdmin")">Thêm công nghệ mới</a></label>
+                        </div>
+                        <div class="form-group">
+                            <label>Các chuyên gia giảng dạy</label>
+                            <div class="checkbox-list">
+                                @{
+                                var lisExperiencer = ViewBag.ListExperiencer;
+                                foreach (var oExperiencer in lisExperiencer)
+                                {
+                                    <label>
+                                        <input type="checkbox" name="lisExperiencerIdSelected" value="@oExperiencer.ExperiencerId"> @oExperiencer.FullName
+                                    </label>
+                                }
+                                }
+                            </div>
+                            <label>
+                                <a target="_blank" href="@Url.Action("ExperiencerInsert", "ExperiencerAdmin")">Thêm chuyên gia mới</a>
+                            </label>
+                        </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn blue">Thêm khoá học</button>
+                <button type="button" class="btn default">Huỷ</button>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/AdminCP/Content/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript">
+        var editor = CKEDITOR.instances['CourseSummary'];
+        if (editor) {
+            editor.destroy(true);
+        }
+        CKEDITOR.replace('CourseSummary', {
+            enterMode: CKEDITOR.ENTER_BR,
+        });
+
+        var editor2 = CKEDITOR.instances['ContentIntroduce'];
+        if (editor2) {
+            editor2.destroy(true);
+        }
+        CKEDITOR.replace('ContentIntroduce', {
+            enterMode: CKEDITOR.ENTER_BR,
+        });
+
+        var editor3 = CKEDITOR.instances['ContentPreferentialPolicy'];
+        if (editor3) {
+            editor3.destroy(true);
+        }
+        CKEDITOR.replace('ContentPreferentialPolicy', {
+            enterMode: CKEDITOR.ENTER_BR,
+        });
+
+        var editor4 = CKEDITOR.instances['ContentEvaluting'];
+        if (editor4) {
+            editor4.destroy(true);
+        }
+        CKEDITOR.replace('ContentEvaluting', {
+            enterMode: CKEDITOR.ENTER_BR,
+        });
+
+        var editor5 = CKEDITOR.instances['ContentTemplateProject'];
+        if (editor5) {
+            editor5.destroy(true);
+        }
+        CKEDITOR.replace('ContentTemplateProject', {
+            enterMode: CKEDITOR.ENTER_BR,
+        });
+
+        var editor6 = CKEDITOR.instances['ContentLearnByVideo'];
+        if (editor6) {
+            editor6.destroy(true);
+        }
+        CKEDITOR.replace('ContentLearnByVideo', {
+            enterMode: CKEDITOR.ENTER_BR,
+        });
+
+        var editor7 = CKEDITOR.instances['ContentIntroduceVideo'];
+        if (editor7) {
+            editor7.destroy(true);
+        }
+        CKEDITOR.replace('ContentIntroduceVideo', {
+            enterMode: CKEDITOR.ENTER_BR,
+        });
+
+        CKFinder.setupCKEditor(null, '@Url.Content("~/Areas/AdminCP/Content/ckfinder")');
+
+    </script>
+<script>
+    $(document).on("keydown", "input", function (e) {
+        if (e.which == 13) e.preventDefault();
+    });
+    $('input[name=newtag]').on('keyup', function (e) {
+        if (e.keyCode == 13) {
+            var input = $(this);
+            var query = $(this).val();
+            if (String(query).trim().length > 0) {
+                $.ajax({
+                    url: '@Url.Action("Tag_CheckName", "TrainingAdmin")',
+                    data: { TagName: query },
+                    type: 'post',
+                    success: function (response) {
+                        if (response.rs == 'fail') {
+                            $('.alert-tag').fadeIn('fast');
+                            $('.alert-tag').html('Tag ' + query + ' đã bị trùng');
+                            $(input).val('');
+                        }
+                        else {
+                            $('.tag-group').append('<span class="post-tag">' + query + '<span class="delete-tag fa fa-times"></span>'
+                                + '<input name=newtaglist value="' + query + '" type="hidden">'
+                                + '</span>');
+
+                            var width = $('.tag-group').width();
+                            $(input).css('width', 'calc(100% - ' + width + 'px)');
+                            $(input).val('');
+                            $('.alert-tag').fadeOut('fast');
+                        }
+                    }
+                })
+            }
+        }
+
+    });
+    $(document).on("click", ".delete-tag", function () {
+        $(this).parent().remove();
+
+    });
+</script>
+
+    <!--Modal 1 - Hình ảnh dự án mẫu-->
+    <script>
+        $(document).ready(function () {
+            // --- Hình ảnh ---
+            $("#btnModalHinhanh").click(function () {
+                $("#hinhanh").modal();
+            });
+
+            $("#doneHinhanh").click(function() {
+                var sHinhhanhName = "";
+                $("#hinhanh .selected p").each(function () {
+                    var name = "<label>" + $(this).html() + "</label>";
+                    sHinhhanhName += name;
+                });
+                $("#lisHinhanh").html(sHinhhanhName);
+            });
+            // --- End Hình ảnh ---
+
+            // --- Video khoá học ---
+            $("#btnModalVideoKhoahoc").click(function () {
+                $("#videokhoahoc").modal();
+            });
+
+            $("#doneVideoKhoahoc").click(function () {
+                var sHinhhanhName = "";
+                $("#videokhoahoc .selected p").each(function () {
+                    var name = "<label>" + $(this).html() + "</label>";
+                    sHinhhanhName += name;
+                });
+                $("#lisVideoKhoahoc").html(sHinhhanhName);
+            });
+            // --- End Video khoá học ---
+
+            // --- Video giới thiệu ---
+            $("#btnModalVideoGioithieu").click(function () {
+                $("#videogioithieu").modal();
+            });
+
+            $("#doneVideoGioithieu").click(function () {
+                var sHinhhanhName = "";
+                $("#videogioithieu .selected p").each(function () {
+                    var name = "<label>" + $(this).html() + "</label>";
+                    sHinhhanhName += name;
+                });
+                $("#lisVideoGioithieu").html(sHinhhanhName);
+            });
+            // --- End Video giới thiệu ---
+        });
+    </script>
+
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/image-picker-master/image-picker/image-picker.js"></script>
+    <script type="text/javascript">
+
+        jQuery("select.image-picker").imagepicker({
+            hide_select: false,
+            show_label: true
+
+        });
+
+        //jQuery("select.image-picker.show-labels").imagepicker({
+        //    hide_select: false,
+        //    show_label: true,
+        //});
+        
+
+        //var container = jQuery("select.image-picker.masonry").next("ul.thumbnails");
+        //container.imagesLoaded(function () {
+        //    container.masonry({
+        //        itemSelector: "li",
+        //    });
+        //});
+        //var arr = new Array();
+        //$('option:selected').each(function () {
+        //    $(this).val();
+        //    arr.push($(this).val());
+        //    var str = arr.join();
+        //});
+
+    </script>
+}
+

@@ -1,0 +1,139 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.NewsObject
+@{
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> Đăng tin mới
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm("NewsInsert", "NewsAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-body">
+                <div class="form-group">
+                    <label>Chọn danh mục</label>
+                    @{
+                        var lisCategory = ViewBag.ListCategory;
+                        List<SelectListItem> lisSelectCategory = new List<SelectListItem>();
+                        foreach (var item in lisCategory)
+                        {
+                            lisSelectCategory.Add(new SelectListItem()
+                            {
+                                Value = "" + item.NewsCategoryId,
+                                Text = item.NewsCategoryName
+                            });
+                        }
+                    }
+
+                    @Html.DropDownListFor(m => m.NewsCategoryId, lisSelectCategory, new { @class = "form-control" })
+
+                </div>
+                <div class="form-group">
+                    <label>Tiêu đề tin</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.NewsTitle, new {@class = "form-control", @placeholder = "Nhập tiêu đề..."})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Ngày Tháng Năm đăng bài</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.ModifiedTime, new { @class = "form-control", @placeholder = "dd/MM/yyyy" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Ảnh đại diện</label>
+                    <input type="file" name="fileAvatar">
+                    <p class="help-block">
+                        Chọn một ảnh đại diện cho tin tức.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Tóm tắt tin tức</label>
+                    <div class="">
+                        @Html.TextAreaFor(m => m.NewsSummary, new { @class = "form-control", @row = "6" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Nội dung bài viết</label>
+                    <div class="">
+                        @Html.TextAreaFor(m => m.NewsContent, new { @class = "ckeditor form-control", @row = "6" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Các tag bài viết</label>
+                    <div class="checkbox-list">
+                        @{
+                            var lisTag = ViewBag.ListTag;
+                            foreach (var oTag in lisTag)
+                            {
+                                <label>
+                                    <input type="checkbox" name="lisTagNewsIdSelected" value="@oTag.TagNewsId"> @oTag.TagNewsName
+                                </label>
+                            }
+                        }
+                    </div>
+                    <label><a href="#">Thêm tag mới</a></label>
+                </div>
+                <div class="form-group">
+                    <label>Số lượt likes tin</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.TotalOfLike, new { @class = "form-control", @placeholder = "Nhập số lượt likes..." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Số lượt comments tin</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.TotalOfComment, new { @class = "form-control", @placeholder = "Nhập số lượt bình luận..." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Số lượt chia sẻ tin</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.TotalOfShare, new { @class = "form-control", @placeholder = "Nhập số lượt shares..." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Số lượt xem tin</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.TotalOfView, new { @class = "form-control", @placeholder = "Nhập số lượt xem..." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Bài viết ưu tiên (VIP)</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.CheckBoxFor(m => m.IsVip, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn blue">Đăng tin</button>
+                <button type="button" class="btn default">Huỷ</button>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/AdminCP/Content/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript">
+        var editor = CKEDITOR.instances['NewsContent'];
+        if (editor) { editor.destroy(true); }
+        CKEDITOR.replace('NewsContent', {
+            enterMode: CKEDITOR.ENTER_BR,
+        });
+
+        CKFinder.setupCKEditor(null, '@Url.Content("~/Areas/AdminCP/Content/ckfinder")');
+    </script>
+}
+

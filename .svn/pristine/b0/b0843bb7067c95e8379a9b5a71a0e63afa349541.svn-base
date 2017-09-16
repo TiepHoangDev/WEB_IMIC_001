@@ -1,0 +1,94 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.IntroduceBannerObject
+@{
+    ViewBag.Title = "Trang giới thiệu - Sửa banner";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> Sửa
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm("BannerEdit", "IntroduceAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(m => m.IntroduceBanerld)
+            <div class="form-body">
+                <div class="form-group">
+                    <label>Tiêu đề banner</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.TitleBanner, new { @class = "form-control", @placeholder = "Nhập tiêu đề..." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Ảnh banner</label>
+                    <img class="img" height="50" width="50" src="~/Content/Galleries/Introduce/Banners/@Model.Bannerlmage"/> @Model.Bannerlmage
+                    @Html.HiddenFor(m => m.Bannerlmage)
+                    <input type="file" name="fileAvatar">
+                    <p class="help-block">
+                        Chọn một ảnh có tên khác cho banner.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Link trỏ đến</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.BannerLinkTo, new { @class = "form-control", @placeholder = "Nhập đường link..." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Rank sắp xếp</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.RankToShow, new { @class = "form-control", @placeholder = "Nhập 1 số (sô càng nhỏ, rank càng cao)..." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Nội dung 1</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.Content1, new { @class = "form-control", @placeholder = "Nhập nội dung 1..." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Nội dung 2</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.Content2, new { @class = "form-control", @placeholder = "Nhập nội dung 2..." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Nội dung 3</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.Content3, new { @class = "form-control", @placeholder = "Nhập nội dung 3..." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Nội dung 4</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.Content4, new { @class = "form-control", @placeholder = "Nhập nội dung 4..." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Nội dung 5</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.Content5, new { @class = "form-control", @placeholder = "Nhập nội dung 5..." })
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn blue">Cập nhật</button>
+                <button type="button" class="btn default">Huỷ</button>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+
+}

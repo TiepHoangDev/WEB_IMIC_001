@@ -1,0 +1,164 @@
+﻿<style>
+    .w-100 {
+        width: 100%;
+    }
+
+    .page-sidebar {
+        background: transparent;
+    }
+</style>
+<div class="page-sidebar-wrapper">
+
+    <div class="page-sidebar navbar-collapse collapse">
+        <style>
+            .profile-sidebar {
+                width: 100%;
+            }
+        </style>
+        <div class="profile-sidebar">
+            <!-- PORTLET MAIN -->
+            <div class="portlet light profile-sidebar-portlet w-100">
+                @if (ViewBag.CategoryImage == null)
+                {
+                    <div class="profile-userpic">
+                        <img src="~/Content/images/other/imic-kinhnghiem.png" class="img-responsive" alt="">
+                    </div>
+                <!-- END SIDEBAR USERPIC -->
+                <!-- SIDEBAR USER TITLE -->
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            Trang kiến thức IMIC
+                        </div>
+
+                    </div>
+                }
+                else
+                {
+                     <!-- SIDEBAR USERPIC -->
+                    <div class="profile-userpic">
+                        <img src="~/Content/Galleries/Lesson/Categories/@ViewBag.CategoryImage" class="img-responsive" alt="">
+                    </div>
+                <!-- END SIDEBAR USERPIC -->
+                <!-- SIDEBAR USER TITLE -->
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            @ViewBag.CategoryName
+                        </div>
+
+                    </div>
+                }
+
+                <!-- END SIDEBAR USER TITLE -->
+                <!-- SIDEBAR BUTTONS -->
+                <div class="profile-userbuttons">
+                    <button type="button" class="btn btn-circle green-haze btn-sm">Follow</button>
+                    <button type="button" class="btn btn-circle btn-danger btn-sm">Message</button>
+                </div>
+                <!-- END SIDEBAR BUTTONS -->
+                <!-- SIDEBAR MENU -->
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li>
+                            <a href="@Url.RouteUrl("")">
+                                <i class="icon-home"></i>
+                                Trang chủ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.RouteUrl("Introduce")" target="_blank">
+                                <i class="icon-star"></i>
+                                Giới thiệu
+                            </a>
+                        </li>
+                       
+                        <li>
+                            <a href="@Url.RouteUrl("Education")" target="_blank">
+                                <i class="icon-notebook"></i>
+                                Đào tạo
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.RouteUrl("class")" target="_blank">
+                                <i class="icon-envelope-open"></i>
+                                Khai giảng
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.RouteUrl("News")" target="_blank">
+                                <i class="icon-feed"></i>
+                                Tin tức
+                            </a>
+                        </li>
+                        <li>
+                            <a href="todo.html" target="_blank">
+                                <i class="icon-game-controller"></i>
+                                Công nghệ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.RouteUrl("StudentGalleryPage")" target="_blank">
+                                <i class="icon-users"></i>
+                                Học viên
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.RouteUrl("recruitindex")" target="_blank">
+                                <i class="icon-user-follow"></i>
+                                Tuyển dụng
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" target="_blank">
+                                <i class="icon-pointer"></i>
+                                Liên hệ
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END MENU -->
+            </div>
+            <!-- END PORTLET MAIN -->
+            <!-- PORTLET MAIN -->
+            <div class="portlet light w-100">
+                <!-- STAT -->
+                @{Html.RenderAction("Sidebar_LessonCount", "LessonPage");}
+
+                <!-- END STAT -->
+                <div style="text-align: justify !important;">
+
+                    @if (ViewBag.CategoryImage != null)
+                    {
+                        <h4 class="profile-desc-title">Tóm tắt bài viết</h4>
+                        <span class="profile-desc-text">@ViewBag.DetailSummary</span>
+                    }
+                    else
+                    {
+                        <h4 class="profile-desc-title">Về chúng tôi</h4>
+                        <span class="profile-desc-text">Nơi đây sẽ cung cấp cho Học viên kho tàng kiến thức thông qua các bài viết dễ đọc, dể hiểu về Lập trình & Thiết kế đồ họa đa phương tiện. Giúp Học viên học tốt hơn khi tham gia Khóa Đào Tạo Chuyên môn Phát triển & Quản lý Dự Án tại IMicroSoft Việt Nam!!!</span>
+                    }
+                    <div class="margin-top-20 profile-desc-link">
+                        <i class="fa fa-globe"></i>
+                        <a href="http://imic.edu.vn">Imic.edu.vn</a>
+                    </div>
+                    <div class="margin-top-20 profile-desc-link">
+                        <i class="fa fa-twitter"></i>
+                        <a href="http://hoidapit.com.vn/">Hoidapit.edu.vn</a>
+                    </div>
+
+                </div>
+            </div>
+            <!-- END PORTLET MAIN -->
+            @{Html.RenderAction("Sidebar_getCategory", "LessonPage");}
+
+        </div>
+        <button type="button" class="quick-sidebar-toggler" data-toggle="collapse">
+            <span class="sr-only">Toggle Quick Sidebar</span>
+            <i class="icon-logout"></i>
+            <div class="quick-sidebar-notification">
+                <span class="badge badge-danger">4</span>
+            </div>
+        </button>
+        <!-- END SIDEBAR MENU -->
+
+    </div>
+</div>

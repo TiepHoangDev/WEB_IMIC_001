@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using WCF.BusinessObjectsLayer.EntityObjects;
+using WCF.BusinessControlLayer.Bcls;
+
+namespace WEB.IMIC.Areas.AdminCP.Controllers
+{
+    public class IntroducePageAdminController : Controller
+    {
+        // GET: AdminCP/IntroducePageAdmin
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        #region IntroduceBannerAdmin
+        public ActionResult Manage_IntroduceBanner()
+        {
+            return View(new IntroduceBcl().ExecOfGetIntroduceBanner());
+        }
+        #endregion
+
+    }
+}

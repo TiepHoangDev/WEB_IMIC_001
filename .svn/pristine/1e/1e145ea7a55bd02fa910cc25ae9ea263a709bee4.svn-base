@@ -1,0 +1,10 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="box-list hidden-xs">
+    <a href="#">
+        <img src="~/Content/images/other/anh5.jpg" class="img-t">
+    </a>
+</div>

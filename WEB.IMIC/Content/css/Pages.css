@@ -1,0 +1,2233 @@
+﻿a.research {
+    color: #ffffff;
+    background-color: #7fc142;
+    border-radius: 31px;
+    display: inline-block;
+    line-height: 41px;
+    padding: 0 20px;
+    font-size: 16px;
+    -webkit-transition: all 150ms ease;
+    -moz-transition: all 150ms ease;
+    transition: all 150ms ease;
+    -webkit-transition-property: background-color border-color color;
+    -moz-transition-property: background-color border-color color;
+    transition-property: background-color border-color color;
+    -webkit-user-select: none;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    white-space: nowrap;
+}
+
+    a.research:before {
+        content: "";
+        border-radius: 31px;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #7fc142;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: 50%;
+        transform-origin: 50%;
+        -webkit-transition-property: transform;
+        transition-property: transform;
+        -webkit-transition-duration: 0.5s;
+        transition-duration: 0.5s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+    }
+
+    a.research:hover, a.research:focus, a.research:active {
+        color: white;
+        text-decoration: none;
+    }
+
+        a.research:hover:before, a.research:focus:before, a.research:active:before {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+        }
+
+    a.research:hover {
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+/* ******************** MenuTop ******************** */
+#menuTop {
+    height: 79px;
+    /*line-height: 130px;*/
+    line-height: 17px;
+}
+
+    #menuTop ul {
+        padding-top: 11px;
+    }
+
+    #menuTop li {
+        display: inline-block;
+        margin-right: 35px;
+    }
+
+        #menuTop li:nth-child(6) {
+            margin-right: 0;
+        }
+
+        #menuTop li a {
+            color: #505050;
+            display: inline-block;
+            font-size: 15px;
+            line-height: 60px;
+            overflow: hidden;
+        }
+
+
+        #menuTop li .cate2 {
+            background: rgba(0, 0, 0, 0) url("../images/menu-top-icon1.png") no-repeat scroll 0 18px;
+            padding-left: 35px;
+        }
+
+        #menuTop li .cate3 {
+            background: rgba(0, 0, 0, 0) url("../images/menu-top-icon2.png") no-repeat scroll 0 10px;
+            padding-left: 35px;
+        }
+
+        #menuTop li .cate6 {
+            background: rgba(0, 0, 0, 0) url("../images/menu-top-icon3.png") no-repeat scroll 0 14px;
+            padding-left: 36px;
+        }
+
+        #menuTop li .cate4 {
+            background: rgba(0, 0, 0, 0) url("../images/menu-top-icon4.png") no-repeat scroll 0 13px;
+            padding-left: 27px;
+        }
+
+        #menuTop li .cate5 {
+            background: rgba(0, 0, 0, 0) url("../images/menu-top-icon5.png") no-repeat scroll 0 14px;
+            padding-left: 33px;
+        }
+
+        #menuTop li .cate16 {
+            background: rgba(0, 0, 0, 0) url("../images/menu-top-icon6.png") no-repeat scroll 0 15px;
+            padding-left: 35px;
+        }
+
+        #menuTop li .cate14 {
+            background: rgba(0, 0, 0, 0) url("../images/menu-top-icon11.png") no-repeat scroll 0 8px;
+            padding-left: 41px;
+        }
+
+        #menuTop li .cate7 {
+            background: rgba(0, 0, 0, 0) url("../images/menu-top-icon8.png") no-repeat scroll 0 11px;
+            padding-left: 39px;
+        }
+
+        #menuTop li .cate8 {
+            background: rgba(0, 0, 0, 0) url("../images/menu-top-icon7.png") no-repeat scroll 0 0;
+            padding-left: 38px;
+        }
+
+        #menuTop li .cate11 {
+            background: rgba(0, 0, 0, 0) url("../images/menu-top-icon12.png") no-repeat scroll 0 13px;
+            padding-left: 41px;
+        }
+
+        #menuTop li .cate12 {
+            background: rgba(0, 0, 0, 0) url("../images/menu-top-icon13.png") no-repeat scroll 0 15px;
+            padding-left: 39px;
+        }
+
+        #menuTop li .cate18 {
+            background: rgba(0, 0, 0, 0) url("../images/menu-top-icon9.png") no-repeat scroll 0 4px;
+            padding-left: 31px;
+        }
+
+        #menuTop li .cate17 {
+            background: rgba(0, 0, 0, 0) url("../images/menu-top-icon14.png") no-repeat scroll 0 11px;
+            padding-left: 33px;
+        }
+
+        #menuTop li .cate15 {
+            background: rgba(0, 0, 0, 0) url("../images/menu-top-icon10.png") no-repeat scroll 0 12px;
+            padding-left: 37px;
+        }
+
+        #menuTop li .cate19 {
+            background: rgba(0, 0, 0, 0) url("../images/menu-top-icon19.png") no-repeat scroll 0 5px;
+            padding-left: 42px;
+            background-size: 37px;
+        }
+
+        #menuTop li a:hover, #menuTop li .current {
+            color: #2db3db;
+        }
+
+        #menuTop li .cate2.current, #menuTop li .cate2:hover,
+        #menuTop li .cate5.current, #menuTop li .cate5:hover,
+        #menuTop li .cate17.current, #menuTop li .cate17:hover {
+            background-position: 0 -57px;
+        }
+
+        #menuTop li .cate3.current, #menuTop li .cate3:hover,
+        #menuTop li .cate4.current, #menuTop li .cate4:hover,
+        #menuTop li .cate12.current, #menuTop li .cate12:hover,
+        #menuTop li .cate14.current, #menuTop li .cate14:hover {
+            background-position: 0 -58px;
+        }
+
+        #menuTop li .cate6.current, #menuTop li .cate6:hover {
+            background-position: 0 -56px;
+        }
+
+        #menuTop li .cate16.current, #menuTop li .cate16:hover,
+        #menuTop li .cate15.current, #menuTop li .cate15:hover,
+        #menuTop li .cate7.current, #menuTop li .cate7:hover {
+            background-position: 0 -59px;
+        }
+
+        #menuTop li .cate11.current, #menuTop li .cate11:hover {
+            background-position: 0 -55px;
+        }
+
+        #menuTop li .cate18.current, #menuTop li .cate18:hover {
+            background-position: 0 -60px;
+        }
+
+        #menuTop li .cate8.current, #menuTop li .cate8:hover {
+            background-position: 0 -61px;
+        }
+
+        #menuTop li .cate19.current, #menuTop li .cate19:hover {
+            background-position: 0 -49px;
+        }
+
+/* ******************** Bizweb, Sapo, Quảng cáo ******************** */
+#eNews .title li.level1,
+#Bizweb .title li.level1,
+#Sapo .title li.level1,
+#Advertisement .title li.level1 {
+    width: 275px;
+    height: 110px;
+    float: left;
+    padding: 10px 32px;
+    background: url('../images/bg_solid_line.png') right 20px no-repeat;
+}
+
+#Bizweb .oneColumnWidth,
+#Bizweb2 .oneColumnWidth,
+#Sapo .oneColumnWidth,
+#Advertisement .oneColumnWidth,
+#Advertisement2 .oneColumnWidth,
+#Personnel .oneColumnWidth,
+#Investors .oneColumnWidth,
+#Career .oneColumnWidth,
+#dktCare .oneColumnWidth,
+#Educate .oneColumnWidth {
+    width: 1150px;
+}
+
+#eNews .title li.level1 .key a,
+#eNews .title li.level1 .value,
+#Bizweb .title li.level1 .key a,
+#Bizweb .title li.level1 .value,
+#Sapo .title li.level1 .key a,
+#Sapo .title li.level1 .value,
+#Advertisement .title li.level1 .key a,
+#Advertisement .title li.level1 .value {
+    color: #555555;
+    font-family: Roboto-Bold;
+    font-size: 21px;
+}
+
+#eNews .title li.level1 .key,
+#Bizweb .title li.level1 .key,
+#Sapo .title li.level1 .key,
+#Advertisement .title li.level1 .key {
+    color: #6d6d6d;
+    text-align: center;
+    padding: 10px 0 4px;
+}
+
+#eNews .title li.level1 .value,
+#Bizweb .title li.level1 .value,
+#Sapo .title li.level1 .value,
+#Advertisement .title li.level1 .value {
+    font-family: Roboto;
+    font-size: 15px;
+    text-align: center;
+}
+
+    #eNews .title li.level1 .value a,
+    #Bizweb .title li.level1 .value a,
+    #Sapo .title li.level1 .value a,
+    #Advertisement .title li.level1 .value a {
+        color: #464646;
+    }
+
+        #eNews .title li.level1 .value a span,
+        #Bizweb .title li.level1 .value a span,
+        #Sapo .title li.level1 .value a span,
+        #Advertisement .title li.level1 .value a span {
+            display: block;
+        }
+
+#eNews .title li.level1.current .key a,
+#Bizweb .title li.level1.current .key a,
+#Sapo .title li.level1.current .key a,
+#Advertisement .title li.level1.current .key a {
+    color: #45b9de;
+}
+
+#Bizweb li.bizweb,
+#Sapo li.bizweb,
+#Advertisement li.bizweb {
+    background-image: none;
+    margin-left: 110px;
+}
+
+#Bizweb li.advertising,
+#Sapo li.advertising,
+#Advertisement li.advertising {
+    background-image: none !important;
+}
+
+/* ******************** eNews ******************** */
+#eNews .content .intro .image {
+    float: left;
+}
+
+#eNews .content .intro .question {
+    float: right;
+    font-family: MyriadPro-Cond;
+    font-size: 24px;
+    color: #767676;
+    margin-top: 160px;
+    margin-right: 30px;
+}
+
+    #eNews .content .intro .question ul li {
+        padding: 5px;
+    }
+
+#eNews .content .details p {
+    color: #6d6d6d;
+    padding-bottom: 5px;
+}
+
+    #eNews .content .details p span,
+    #eNews .content .details .conclusion span {
+        color: #0eb4df;
+    }
+
+#eNews .content .details .conclusion {
+    background-color: #f4f4f4;
+    border-left: 3px solid #0eb4df;
+    padding: 10px;
+    color: #6d6d6d;
+}
+
+/* ******************** Bizweb.vn ******************** */
+#Bizweb .picture {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#Bizweb .description {
+    color: #3d3d3d;
+    font-size: 24px;
+    text-align: center;
+}
+
+    #Bizweb .description strong {
+        color: #2db3db;
+        font-family: Roboto-Bold;
+        font-size: 34px;
+        text-transform: uppercase;
+    }
+
+#Bizweb2 .bizwebBgTop {
+    background-color: #fafafa;
+    padding: 40px 0;
+}
+
+    #Bizweb2 .bizwebBgTop li {
+        float: left;
+        width: 247px;
+        line-height: 1.7em;
+        padding: 5px 20px;
+        color: #636363;
+        height: 75px;
+        font-size: 15px;
+        position: relative;
+    }
+
+        #Bizweb2 .bizwebBgTop li a {
+            color: #636363;
+        }
+
+        #Bizweb2 .bizwebBgTop li .intro {
+            position: absolute;
+            left: 70px;
+            padding-right: 20px;
+        }
+
+            #Bizweb2 .bizwebBgTop li .intro span {
+                color: #16c0f3;
+            }
+
+        #Bizweb2 .bizwebBgTop li img {
+            position: absolute;
+            left: 0;
+            top: -15px;
+        }
+
+#Bizweb2 .bizwebBgBottom {
+    height: 153px;
+    background: url("/Themes/Portal/Default/Images/picture_bizweb_2.jpg") center top no-repeat;
+    margin: 0;
+}
+
+    #Bizweb2 .bizwebBgBottom .confirmation {
+        text-align: center;
+        color: #ffffff;
+        font-size: 21px;
+        padding-top: 30px;
+    }
+
+        #Bizweb2 .bizwebBgBottom .confirmation strong {
+            font-family: Roboto-Bold;
+            font-size: 38px;
+        }
+
+        #Bizweb2 .bizwebBgBottom .confirmation span {
+            display: block;
+        }
+
+#Bizweb2 .mission {
+    margin: 60px auto 50px;
+    color: #636363;
+    font-size: 15px;
+}
+
+    #Bizweb2 .mission h2,
+    #Bizweb2 .mission h2 a {
+        font-weight: normal;
+        font-size: 36px;
+        color: #2db3db;
+        margin-bottom: 30px;
+    }
+
+    #Bizweb2 .mission .column-left {
+        float: left;
+        width: 457px;
+    }
+
+    #Bizweb2 .mission .column-right {
+        float: right;
+        width: 652px;
+    }
+
+        #Bizweb2 .mission .column-left li,
+        #Bizweb2 .mission .column-right li {
+            position: relative;
+            line-height: 1.7em;
+            margin-bottom: 12px;
+        }
+
+            #Bizweb2 .mission .column-left li img {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+
+            #Bizweb2 .mission .column-left li div {
+                position: absolute;
+                left: 40px;
+                top: 3px;
+            }
+
+            #Bizweb2 .mission .column-left li span {
+                color: #2db3db;
+            }
+
+            #Bizweb2 .mission .column-right li img {
+                position: absolute;
+                left: 35px;
+                top: 0;
+            }
+
+            #Bizweb2 .mission .column-right li div {
+                position: absolute;
+                left: 110px;
+                top: 6px;
+            }
+
+            #Bizweb2 .mission .column-right li.conclusion {
+                background: url("/Themes/Portal/Default/Images/icon_bizweb10.png") 50px top no-repeat;
+                padding-top: 13px;
+            }
+
+                #Bizweb2 .mission .column-right li.conclusion div {
+                    position: initial;
+                    background-color: #2db3db;
+                    height: 76px;
+                }
+
+                    #Bizweb2 .mission .column-right li.conclusion div span {
+                        display: block;
+                        color: #fff;
+                        width: 530px;
+                        padding: 13px 0 0 37px;
+                    }
+
+/* ******************** Sapo.vn ******************** */
+#Sapo-detail
+{
+    margin: 0 auto;
+}
+#Sapo-detail .sapo-banner
+{
+    text-align: center;
+    background: url(/Themes/Portal/Default/Images/sapo/bg-sapo-banner.jpg) no-repeat center center;
+    color: #fff;
+    padding: 35px 0 40px;
+}
+#Sapo-detail .sapo-banner span
+{
+    display: block;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    margin: 0 0 10px;
+}
+#Sapo-detail .sapo-banner h1
+{
+    font-size: 48px;
+    font-weight: normal;
+}
+#Sapo-detail .sapo-banner p.desc
+{
+    font-size: 18px;
+    line-height: 27px;
+    margin: 25px 0 0;
+}
+#Sapo-detail .sapo-block:after
+{
+    display: block;
+    content: "";
+    clear: both;
+}
+#Sapo-detail .sapo-block .block-info
+{
+    float: left;
+    width: 50%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    color: #555;
+}
+#Sapo-detail .sapo-block .block-image
+{
+    float: left;
+    width: 50%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+#Sapo-detail .sapo-block .block-info h3
+{
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: 30px;
+}
+#Sapo-detail .sapo-block .block-info p
+{
+    font-size: 14px;
+    line-height: 23px;
+    margin-bottom: 20px;
+}
+#Sapo-detail .sapo-block.block-1
+{
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+#Sapo-detail .sapo-block.block-1 .block-info
+{
+    margin-top: 75px;
+}
+#Sapo-detail .sapo-block.block-2 .block-image
+{
+    float: left;
+}
+#Sapo-detail .sapo-block.block-2 .block-info
+{
+    float: right;
+}
+#Sapo-detail .sapo-block.block-2 img
+{
+    position: absolute;
+    right: 0;
+}
+#Sapo-detail .sapo-block.block-2 .block-info p:first-child
+{
+    font-size: 18px;
+}
+#Sapo-detail .sapo-block.block-2 .block-info li
+{
+    padding-left: 70px;
+}
+#Sapo-detail .sapo-block.block-2 .block-info li.easy
+{
+    background: url(/Themes/Portal/Default/Images/sapo/icon-sapo-easy.jpg) no-repeat top left;
+}
+#Sapo-detail .sapo-block.block-2 .block-info li.saving
+{
+    background: url(/Themes/Portal/Default/Images/sapo/icon-sapo-saving.jpg) no-repeat top left;
+}
+#Sapo-detail .sapo-block.block-2 .block-info li.secure
+{
+    background: url(/Themes/Portal/Default/Images/sapo/icon-sapo-secure.jpg) no-repeat top left;
+}
+#Sapo-detail .sapo-block.block-2 .block-info h3
+{
+    margin-bottom: 10px;
+}
+#Sapo-detail .sapo-block.block-2 .block-info a.viewmore-info
+{
+    background: #41b75e;
+    height: 54px;
+    line-height: 54px;
+    display: inline-block;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 27px;
+    padding: 0 50px;
+    margin: 10px 0 45px;
+}
+#Sapo-detail .sapo-block.block-3
+{
+    background: #3aa053;
+    color: #fff;
+    padding: 50px 0 65px;
+}
+#Sapo-detail .sapo-block.block-3 h2
+{
+    text-align: center;
+    font-size: 32px;
+    margin: 0 0 50px;
+}
+#Sapo-detail .sapo-block.block-3 .block-info:nth-of-type(1)
+{
+    text-align: right;
+    border-right: 1px solid #75bd87;
+    box-sizing: border-box;
+    color: #fff;
+}
+#Sapo-detail .sapo-block.block-3 .block-info:nth-of-type(1) li
+{
+    padding-right: 100px;
+    margin-right: 115px;
+}
+#Sapo-detail .sapo-block.block-3 .block-info:nth-of-type(1) li:nth-of-type(1)
+{
+    background: url(/Themes/Portal/Default/Images/sapo/icon-block-3-saving.jpg) no-repeat top right;
+    margin-bottom: 30px;
+    height: 170px;
+}
+#Sapo-detail .sapo-block.block-3 .block-info:nth-of-type(1) li:nth-of-type(2)
+{
+    background: url(/Themes/Portal/Default/Images/sapo/icon-block-3-control.jpg) no-repeat top right;
+}
+#Sapo-detail .sapo-block.block-3 .block-info:nth-of-type(2)
+{
+    box-sizing: border-box;
+    color: #fff;
+}
+#Sapo-detail .sapo-block.block-3 .block-info:nth-of-type(2) li
+{
+    padding-left: 100px;
+    margin-left: 115px;
+}
+#Sapo-detail .sapo-block.block-3 .block-info:nth-of-type(2) li:nth-of-type(1)
+{
+    background: url(/Themes/Portal/Default/Images/sapo/icon-block-3-cod.jpg) no-repeat top left;
+    margin-bottom: 30px;
+}
+#Sapo-detail .sapo-block.block-3 .block-info:nth-of-type(2) li:nth-of-type(2)
+{
+    background: url(/Themes/Portal/Default/Images/sapo/icon-block-3-shipper.jpg) no-repeat top left;
+}
+
+/* ******************** Quảng cáo ******************** */
+#Advertisement .picture {
+    height: 325px;
+    background: url('../images/bg_adv1.jpg') center 1px no-repeat;
+}
+
+#Advertisement2 {
+    background-color: #2db3db;
+    padding: 54px 0;
+}
+
+    #Advertisement2 .content {
+        background: url('../images/bg_adv2.png') right top 15px no-repeat;
+        min-height: 200px;
+        color: #fff;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 1.7;
+        background-size: 700px;
+    }
+
+        #Advertisement2 .content h1,
+        #Advertisement2 .content h2 {
+            font-weight: normal;
+        }
+
+        #Advertisement2 .content h1 {
+            font-size: 27px;
+            margin-bottom: 13px;
+        }
+
+        #Advertisement2 .content h2 {
+            font-size: 15px;
+            margin-bottom: 23px;
+        }
+
+        #Advertisement2 .content .exp-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+#Advertisement3 {
+    background: rgba(0, 0, 0, 0) url("../images/advertisement3_bg.png") no-repeat scroll left bottom 65px;
+    font-family: roboto-regular;
+    height: 279px;
+    font-size: 15px;
+}
+
+    #Advertisement3 .infoService,
+    #Advertisement3 .compareService {
+        float: left;
+        width: auto;
+    }
+
+    #Advertisement3 .infoService {
+        margin-right: 28px;
+        margin-top: 20px;
+    }
+
+        #Advertisement3 .infoService h3,
+        #Advertisement3 .compareService h4 {
+            font-weight: normal;
+        }
+
+        #Advertisement3 .infoService h3,
+        #Advertisement3 .infoService span,
+        #Advertisement3 .compareService {
+            color: #555555;
+        }
+
+        #Advertisement3 .infoService h3 {
+            font-family: roboto-light;
+            font-size: 45px;
+        }
+
+        #Advertisement3 .infoService p {
+            color: #707070;
+            float: right;
+            line-height: 22px;
+            margin-top: 11px;
+            width: 223px;
+        }
+
+        #Advertisement3 .infoService span {
+            font-family: roboto-bold;
+        }
+
+    #Advertisement3 .compareService {
+        background: rgba(0, 0, 0, 0) url("../images/advertisement3_bgRight.png") no-repeat scroll 0 0;
+        height: 196px;
+        margin-top: 41px;
+        padding-left: 28px;
+    }
+
+        #Advertisement3 .compareService h4 {
+            background: rgba(0, 0, 0, 0) url("../images/advertisement3_icon.png") no-repeat scroll left bottom 16px;
+            font-size: 18px;
+            margin-top: 9px;
+            padding-bottom: 26px;
+        }
+
+        #Advertisement3 .compareService > ul {
+            line-height: 20px;
+        }
+
+/* ******************** DKT Care ******************** */
+#dktCare .picture {
+    height: 419px;
+    background: url("/Themes/Portal/Default/Images/dktcare_bg.jpg") center center no-repeat;
+}
+
+#dktCare .info {
+    background: url("/Themes/Portal/Default/Images/dktcare_info_bg.jpg") right 14px no-repeat;
+}
+
+#dktCare .infoContent {
+    padding: 28px 0 5px;
+}
+
+    #dktCare .infoContent .title {
+        font-family: Roboto-Bold;
+        font-size: 35.77px;
+        color: #00bff3;
+    }
+
+    #dktCare .infoContent .chanceItem {
+        color: #555;
+        font-size: 14px;
+        margin: 0 0 32px;
+    }
+
+    #dktCare .infoContent .intro {
+        font-size: 22px;
+        margin: 0 0 25px;
+    }
+
+    #dktCare .infoContent li {
+        background: url("/Themes/Portal/Default/Images/dktcare_li_bg.png") left top no-repeat;
+        height: 24px;
+        padding: 0 0 0 40px;
+        margin: 0 0 15px;
+    }
+
+/* ******************** Nhà đầu tư ******************** */
+#Investors {
+    font-size: 15px;
+}
+
+    #Investors .bg-partner {
+        height: 420px;
+        background: url('../images/bg_investor1.jpg') top center no-repeat;
+    }
+
+    #Investors .hr-development,
+    #Investors .customer {
+        color: #707070;
+        margin: 45px auto 40px;
+    }
+
+        #Investors .hr-development .hr-content,
+        #Investors .customer .customer-content {
+            float: left;
+            width: 49%;
+        }
+
+            #Investors .hr-development .hr-content h4,
+            #Investors .hr-development .hr-chart h5,
+            #Investors .customer .customer-content h4,
+            #Investors .customer .customer-chart h5 {
+                font-weight: normal;
+            }
+
+            #Investors .hr-development .hr-content h4,
+            #Investors .customer .customer-content h4 {
+                font-size: 28px;
+                color: #363636;
+                margin-bottom: 5px;
+                padding-left: 50px;
+            }
+
+            #Investors .hr-development .hr-content h4 {
+                background: url('../images/icon_investor1.png') left top no-repeat;
+                height: 56px;
+            }
+
+            #Investors .customer .customer-content h4 {
+                background: url('../images/icon_investor2.png') left top no-repeat;
+                height: 61px;
+            }
+
+            #Investors .customer .customer-content p {
+                text-align: justify;
+                width: 454px;
+            }
+
+            #Investors .hr-development .hr-content p,
+            #Investors .customer .customer-content p {
+                line-height: 1.7;
+                margin-bottom: 10px;
+            }
+
+        #Investors .hr-development .hr-chart,
+        #Investors .customer .customer-chart {
+            float: right;
+            width: 49%;
+            text-align: center;
+        }
+
+            #Investors .hr-development .hr-chart h5,
+            #Investors .customer .customer-chart h5 {
+                font-size: 18px;
+                margin-bottom: 15px;
+                color: #464646;
+            }
+
+    #Investors .bg-personnel {
+        height: 303px;
+        background: url('../images/bg_investor2.jpg') top center no-repeat;
+    }
+
+    #Investors .sapo {
+        background: url('../images/bg_investor_transparent.png') left top repeat;
+        padding: 55px 0;
+        text-align: center;
+        color: #555555;
+    }
+
+        #Investors .sapo .picture {
+            background: url('../images/bg_investor3.png') center top no-repeat;
+            height: 379px;
+            margin-bottom: 30px;
+        }
+
+        #Investors .sapo p span {
+            color: #2db3db;
+            font-family: Roboto-Bold;
+            font-size: 24px;
+        }
+
+    #Investors .cyber-agent {
+        margin: 40px auto;
+        min-height: 142px;
+        background: url('../images/bg_investor4.png') 120px top no-repeat;
+        position: relative;
+    }
+
+        #Investors .cyber-agent .introduction {
+            color: #555555;
+            line-height: 1.9;
+            position: absolute;
+            top: 12px;
+            right: 30px;
+            width: 532px;
+            text-align: justify;
+        }
+
+            #Investors .cyber-agent .introduction strong {
+                font-size: 16px;
+            }
+
+    #Investors .conclusion {
+        text-align: center;
+        color: #fff;
+        height: 148px;
+        overflow: hidden;
+        background: url('../images/bg_investor5.jpg') center top repeat;
+    }
+
+        #Investors .conclusion .line1 {
+            font-size: 18px;
+            font-family: Roboto-Italic;
+            margin: 30px 0 4px;
+        }
+
+        #Investors .conclusion .line2 {
+            font-size: 26px;
+            font-family: Roboto-Light;
+            text-transform: uppercase;
+        }
+
+        #Investors .conclusion .line3 {
+            font-size: 21px;
+            font-family: Roboto-Bold;
+        }
+
+/* ******************** NHÂN VIÊN ******************** */
+#Personnel {
+    font-size: 15px;
+}
+
+    #Personnel .environment {
+        height: 367px;
+        background: url('../images/bg_personnel1.jpg') center top no-repeat;
+    }
+
+    #Personnel .introduction {
+        background-color: #f4f4f4;
+        height: 562px;
+        background: url('../images/bg_personnel2.png') center bottom no-repeat #f4f4f4;
+        padding-top: 38px;
+    }
+
+        #Personnel .introduction .content {
+            text-align: center;
+            color: #363636;
+            line-height: 1.7;
+        }
+
+    #Personnel .policy {
+        text-align: center;
+        color: #555;
+        line-height: 1.7;
+        padding-top: 33px;
+    }
+
+        #Personnel .policy .material {
+        }
+
+        #Personnel .policy li {
+            float: left;
+            padding: 5px 22px 20px;
+            width: 200px;
+        }
+
+            #Personnel .policy li:nth-child(1) {
+                margin-left: 260px;
+                width: 215px;
+            }
+
+            #Personnel .policy li .image {
+                height: 62px;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-color: transparent;
+            }
+
+            #Personnel .policy li:nth-child(1) .image {
+                background-image: url('../images/icon_personnel1.png');
+            }
+
+            #Personnel .policy li:nth-child(2) .image {
+                background-image: url('../images/icon_personnel2.png');
+            }
+
+            #Personnel .policy li:nth-child(3) .image {
+                background-image: url('../images/icon_personnel3.png');
+            }
+
+            #Personnel .policy li span {
+                display: block;
+            }
+
+        #Personnel .policy .mind {
+            padding: 20px 0;
+        }
+
+        #Personnel .policy .line {
+            background: url('../images/line_personnel.png') center center no-repeat transparent;
+            height: 1px;
+        }
+
+    #Personnel .conclusion {
+        color: #fff;
+        background-color: #2db3db;
+        padding: 25px 0;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+        #Personnel .conclusion h1,
+        #Personnel .conclusion h2 {
+            font-weight: normal;
+        }
+
+        #Personnel .conclusion h1 {
+            font-size: 16px;
+        }
+
+        #Personnel .conclusion h2 {
+            font-size: 28px;
+        }
+
+/******************* Giới thiệu ********************/
+#container .introduction-Module1 .content,
+#container .introduction-Module2 .content,
+#container .introduction-Module3 .content {
+    margin: 0px auto;
+}
+
+.introduction-Module1 {
+    background: url('../images/introduction_module1_bg.png') no-repeat center center;
+    height: 553px;
+}
+
+    .introduction-Module1 .content {
+        font-family: roboto-Regular;
+        font-size: 15px;
+        padding: 216px 0 0;
+        text-align: center;
+        width: 820px;
+        line-height: 1.6em;
+    }
+
+        .introduction-Module1 .content h1,
+        .introduction-Module2 .content h3 {
+            color: #555555;
+            font-family: roboto-bold;
+            font-size: 18px;
+            font-weight: normal;
+            text-transform: uppercase;
+            color: #7d7d7d;
+        }
+
+        .introduction-Module1 .content span {
+            display: inline-block;
+        }
+
+        .introduction-Module1 .content p {
+            padding-top: 20px;
+            color: #7d7d7d;
+        }
+
+        .introduction-Module1 .content .par {
+            padding: 43px 0 0;
+        }
+
+.introduction-Module2 {
+    background: rgba(0, 0, 0, 0) url("../images/introduction_module2_bg.png") no-repeat scroll center bottom 20px;
+}
+
+    .introduction-Module2 .content {
+        text-align: center;
+        width: 944px;
+    }
+
+        .introduction-Module2 .content h3 {
+            padding-bottom: 5px;
+        }
+
+.introduction-Module3 {
+    background: rgba(0, 0, 0, 0) url("../images/introduction_module3_bg.png") repeat-x scroll left center;
+    margin-top: -20px;
+}
+
+    .introduction-Module3 .content {
+        color: #e0f1f8;
+        font-family: roboto-Regular;
+        font-size: 14px;
+        text-align: center;
+        width: 1140px;
+    }
+
+        .introduction-Module3 .content img {
+            margin-top: -17px;
+            padding-right: 5px;
+        }
+
+        .introduction-Module3 .content p {
+            padding: 30px 0 35px;
+        }
+
+/******************* Sứ mệnh và tầm nhìn ********************/
+.vision-Module1 {
+    background: url('/Themes/Portal/Default/ImagesNew/vision_module1_bg.png') no-repeat center center;
+    height: 360px;
+}
+
+.vision-Module2 .oneColumnWidth {
+    background: url('/Themes/Portal/Default/ImagesNew/vision_module2_bg.png') no-repeat right 51px bottom;
+    height: 500px;
+}
+
+.vision-Module2 .content {
+    margin: 0 auto;
+    width: 945px;
+    padding: 32px 0 0;
+}
+
+    .vision-Module2 .content .title {
+        background: url('/Themes/Portal/Default/ImagesNew/vision_module2_ico1.png') no-repeat center left;
+        font-family: roboto-bold;
+        font-size: 34px;
+        height: 43px;
+        margin: 0 auto;
+        width: 203px;
+        color: #16c0f3;
+    }
+
+        .vision-Module2 .content .title span {
+            padding-left: 48px;
+        }
+
+    .vision-Module2 .content > img {
+        padding: 25px 40px 0 0;
+    }
+
+    .vision-Module2 .content .img1 {
+        padding: 0 0;
+    }
+
+    .vision-Module2 .content p {
+        font-family: Roboto-Regular;
+        font-size: 14px;
+        padding-top: 75px;
+        color: #707070;
+        width: 410px;
+        text-align: justify;
+        font-size: 15px;
+    }
+
+        .vision-Module2 .content p strong {
+            font-family: roboto-bold;
+            font-size: 17px;
+            font-weight: normal;
+        }
+
+.vision-Module3 {
+    background: url('/Themes/Portal/Default/ImagesNew/vision_module3_bg.png') repeat-x center center;
+    height: 94px;
+}
+
+    .vision-Module3 .content {
+        color: #fff;
+        font-family: roboto-light;
+        font-size: 24px;
+        padding-top: 34px;
+        text-align: center;
+    }
+
+.vision-Module4 .oneColumnWidth {
+    background: rgba(0, 0, 0, 0) url("../images/vision_module4_bg.png") no-repeat scroll left 83px top 65px;
+    height: 435px;
+}
+
+.vision-Module4 .content {
+    color: #6d6d6d;
+    font-family: roboto-regular;
+    font-size: 14px;
+    width: 606px;
+    padding: 48px 93px 0;
+}
+
+    .vision-Module4 .content h3 {
+        color: #16c0f3;
+        font-family: roboto-light;
+        font-size: 31px;
+        padding: 0 0 21px;
+    }
+
+    .vision-Module4 .content ul li {
+        background: rgba(0, 0, 0, 0) url("../images/vision_module4_ico.png") no-repeat scroll left top;
+        line-height: 1.5em;
+        padding: 0 0 15px 40px;
+        font-size: 15px;
+    }
+
+    .vision-Module4 .content li strong {
+        font-family: roboto-bold;
+        font-weight: normal;
+        color: #363636;
+    }
+
+
+/******************* Cơ hội nghề nghiệp ********************/
+#Career {
+    color: #555555;
+}
+
+    #Career .nice-job {
+        height: 367px;
+        background: url('../images/bg_career1.jpg') center center no-repeat transparent;
+    }
+
+    #Career .reason {
+        background-color: #2db3db;
+        color: #fff;
+        font-size: 16px;
+        padding: 25px 0 60px;
+    }
+
+        #Career .reason .number {
+            font-size: 42px;
+            font-family: Roboto-Bold;
+        }
+
+        #Career .reason li {
+            clear: both;
+            height: 57px;
+            margin-top: 20px;
+            border-bottom: solid 2px #96d9ed;
+            position: relative;
+        }
+
+            #Career .reason li img {
+                position: absolute;
+                bottom: 0;
+            }
+
+        #Career .reason .one-row {
+            padding-top: 17px;
+        }
+
+        #Career .reason .two-row {
+            padding-top: 7px;
+        }
+
+        #Career .reason .left-col {
+            float: left;
+            width: 49%;
+            text-align: right;
+        }
+
+            #Career .reason .left-col li:nth-child(1) {
+                background: url('../images/ico7.png') left top no-repeat transparent;
+                height: 93px;
+            }
+
+                #Career .reason .left-col li:nth-child(1) strong {
+                    font-size: 37px;
+                    font-family: RobotoCondensed-Bold;
+                    display: inline-block;
+                    padding-top: 41px;
+                }
+
+            #Career .reason .left-col .number {
+                float: right;
+                margin-left: 20px;
+            }
+
+            #Career .reason .left-col li img {
+                right: -1px;
+                bottom: -7px;
+            }
+
+        #Career .reason .right-col {
+            float: right;
+            width: 49%;
+            text-align: left;
+        }
+
+            #Career .reason .right-col li:nth-child(1) {
+                margin-top: 56px;
+            }
+
+            #Career .reason .right-col .number {
+                float: left;
+                margin-right: 20px;
+            }
+
+            #Career .reason .right-col li img {
+                left: -1px;
+                bottom: -7px;
+            }
+
+    #Career .roadmap {
+        padding: 33px 0 42px;
+    }
+
+        #Career .roadmap .logo {
+            float: left;
+            width: 539px;
+            height: 191px;
+            margin-right: 81px;
+        }
+
+        #Career .roadmap .work {
+            float: left;
+            margin-right: 21px;
+        }
+
+            #Career .roadmap .work .title {
+                color: #2db3db;
+                font-size: 21px;
+                font-family: Roboto-Bold;
+            }
+
+            #Career .roadmap .work .time {
+                margin: 3px 0 13px;
+            }
+
+            #Career .roadmap .work .line {
+                height: 4px;
+                background: url('../images/bg_career_line_bottom.png') left center no-repeat transparent;
+            }
+
+            #Career .roadmap .work ul {
+                margin-top: 15px;
+            }
+
+            #Career .roadmap .work li {
+                background: url('../images/icon_bullet.png') left top no-repeat transparent;
+                min-height: 24px;
+                padding: 2px 0 0 30px;
+                margin-bottom: 9px;
+            }
+
+            #Career .roadmap .work.director li {
+                /*color: #2db3db;*/
+            }
+
+/******************* Chương trình đào tạo ********************/
+#Educate {
+}
+
+    #Educate .training-development {
+        height: 367px;
+        background: url('../images/bg_educate1.jpg') center top no-repeat transparent;
+    }
+
+    #Educate .introduction {
+        color: #7d7d7d;
+        min-height: 360px;
+        padding: 70px 0 10px;
+        background: url('../images/bg_educate2.jpg') right 50px no-repeat transparent;
+    }
+
+        #Educate .introduction p {
+            line-height: 1.7;
+            margin-bottom: 23px;
+        }
+
+    #Educate .education-program {
+        padding-bottom: 42px;
+    }
+
+        #Educate .education-program li {
+            color: #555555;
+        }
+
+        #Educate .education-program .logo {
+            float: left;
+            width: 542px;
+            height: 191px;
+            margin-right: 43px;
+        }
+
+        #Educate .education-program .work {
+            float: left;
+            margin-right: 35px;
+        }
+
+            #Educate .education-program .work .title {
+                color: #2db3db;
+                font-size: 21px;
+                font-family: Roboto-Bold;
+            }
+
+            #Educate .education-program .work .line {
+                height: 4px;
+                background: url('../images/bg_career_line_bottom.png') left center no-repeat transparent;
+            }
+
+            #Educate .education-program .work ul {
+                margin-top: 15px;
+            }
+
+            #Educate .education-program .work li {
+                background: url('../images/icon_bullet.png') left top no-repeat transparent;
+                min-height: 24px;
+                padding: 2px 0 0 30px;
+                margin-bottom: 9px;
+            }
+
+            #Educate .education-program .work.first-week {
+                width: 530px;
+            }
+
+                #Educate .education-program .work.first-week li {
+                    width: 220px;
+                    float: left;
+                }
+
+    #Educate .conclusion {
+        background-color: #ececec;
+        height: 101px;
+    }
+
+    #Educate .oneColumnWidth > p {
+        color: #555555;
+        line-height: 22px;
+        padding-top: 31px;
+        text-align: center;
+    }
+/****************************lĩnh vực hoạt động *************/
+.operation-module1 {
+    background: #fff url("../images/operation_module1.png") no-repeat scroll center top;
+    height: 197px;
+    text-align: center;
+}
+
+    .operation-module1 h1 {
+        color: #bbbdc1;
+        font-family: roboto-regular;
+        font-size: 21px;
+        font-weight: normal;
+        padding: 59px 0 0;
+    }
+
+    .operation-module1 span {
+        display: block;
+        font-family: roboto-light;
+        font-size: 45px;
+        margin: -5px 0 0;
+    }
+
+.operation-module2 .content {
+    background: #fff url("../images/operation_module2_bg.png") no-repeat scroll left top 125px;
+    font-family: roboto-regular;
+    font-size: 15px;
+    color: #636363;
+    height: 612px;
+    margin: 0 auto;
+    width: 810px;
+}
+
+.operation-module2 .title {
+    background: #fff url("../images/operation_module2_ico.png") no-repeat scroll center bottom;
+    padding: 36px 0 12px;
+    padding-bottom: 12px;
+    text-align: center;
+}
+
+.operation-module2 .content ul {
+    padding-top: 57px;
+    width: 321px;
+}
+
+.operation-module2 .content li {
+    font-size: 16px;
+    padding-bottom: 33px;
+    padding-left: 62px;
+}
+
+.operation-module2 .line1 {
+    background: rgba(0, 0, 0, 0) url("../images/operation_module2_icoShopping.png") no-repeat scroll left 1px top;
+    padding-top: 15px;
+}
+
+.operation-module2 .line2 {
+    background: rgba(0, 0, 0, 0) url("../images/operation_module2_icoChart.png") no-repeat scroll left 3px top;
+    padding-top: 21px;
+}
+
+.operation-module2 .line3 {
+    background: rgba(0, 0, 0, 0) url("../images/operation_module2_icoSpeak.png") no-repeat scroll left 1px top;
+    padding-top: 11px;
+}
+
+.operation-module2 .line4 {
+    background: rgba(0, 0, 0, 0) url("../images/operation_module2_icoNews.png") no-repeat scroll left 6px top;
+    padding-top: 11px;
+}
+
+.operation-module2 .line5 {
+    background: rgba(0, 0, 0, 0) url("../images/operation_module2_icoEmail.png") no-repeat scroll left 5px top;
+    padding-top: 9px;
+}
+
+.operation-module2 .line6 {
+    background: rgba(0, 0, 0, 0) url("../images/operation_module2_icoBrif.png") no-repeat scroll left 5px top;
+    padding-top: 7px;
+}
+
+.operation-module2 .content li span {
+    color: #898989;
+    display: block;
+    font-style: italic;
+    padding-top: 5px;
+}
+
+.operation-module3 {
+    background: rgba(0, 0, 0, 0) url("../images/vision_module3_bg.png") repeat-x left top;
+    height: 94px;
+}
+
+    .operation-module3 h3 {
+        color: #fff;
+        font-family: roboto-medium;
+        font-size: 21px;
+        font-weight: normal;
+        text-align: center;
+        padding-top: 15px;
+    }
+
+    .operation-module3 span {
+        display: block;
+        font-family: roboto-light;
+        font-size: 24px;
+    }
+
+/*********** Cơ cấu tổ chức***********/
+
+#Organization {
+    background: rgba(0, 0, 0, 0) url("../images/organization_bg.jpg") no-repeat scroll center top;
+    padding-top: 270px;
+    text-align: center;
+}
+
+
+/*************Giá trị cốt lõi**********/
+.borderLeftRadius {
+    border: thin solid #ebebeb;
+    border-bottom-left-radius: 90px;
+    border-top-left-radius: 90px;
+    height: 158px;
+}
+
+#Valuecore {
+    background: rgba(0, 0, 0, 0) url("../images/valuecore_bg.png") repeat-x scroll center top;
+}
+
+    #Valuecore .banner {
+        background: rgba(0, 0, 0, 0) url("../images/valuecore_pic1.png") no-repeat scroll right top 45px;
+        height: 341px;
+    }
+
+        #Valuecore .banner h1 {
+            padding-top: 67px;
+        }
+
+    #Valuecore .content {
+        color: #6d6d6d;
+        font-family: roboto-regular;
+    }
+
+        #Valuecore .content .title {
+            background: rgba(0, 0, 0, 0) url("../images/valuecore_content_icon1.png") no-repeat scroll left top;
+            color: #2db3db;
+            font-size: 34px;
+            height: 50px;
+            padding: 3px 0 31px 60px;
+        }
+
+        #Valuecore .content li {
+            margin-bottom: 33px;
+        }
+
+            #Valuecore .content li .content-child {
+                padding-left: 165px;
+            }
+
+        #Valuecore .content .title-child {
+            background: rgba(0, 0, 0, 0) url("../images/vision_module4_ico.png") no-repeat scroll left bottom 13px;
+            color: #434343;
+            font-family: roboto-bold;
+            font-size: 18px;
+            height: 25px;
+            padding: 0 0 13px 38px;
+            margin-left: 12px;
+        }
+
+        #Valuecore .content .content-child p {
+            font-size: 15px;
+            text-align: justify;
+        }
+
+        #Valuecore .content .line1 {
+            background: rgba(0, 0, 0, 0) url("../images/valuecore_content_bg1.png") no-repeat scroll left 23px center;
+        }
+
+        #Valuecore .content .line2 {
+            background: rgba(0, 0, 0, 0) url("../images/valuecore_content_bg2.png") no-repeat scroll left 23px center;
+        }
+
+        #Valuecore .content .line3 {
+            background: rgba(0, 0, 0, 0) url("../images/valuecore_content_bg3.png") no-repeat scroll left 23px center;
+        }
+
+        #Valuecore .content .line4 {
+            background: rgba(0, 0, 0, 0) url("../images/valuecore_content_bg4.png") no-repeat scroll left 23px center;
+        }
+
+        #Valuecore .content .line5 {
+            background: rgba(0, 0, 0, 0) url("../images/valuecore_content_bg5.png") no-repeat scroll left 23px center;
+        }
+
+        #Valuecore .content .line6 {
+            background: rgba(0, 0, 0, 0) url("../images/valuecore_content_bg6.png") no-repeat scroll left 23px center;
+            margin-bottom: 47px;
+        }
+
+        #Valuecore .content .line1 .content-child {
+            padding-top: 31px;
+            width: 949px;
+        }
+
+        #Valuecore .content .line2 .content-child {
+            padding-top: 31px;
+            width: 933px;
+        }
+
+        #Valuecore .content .line3 .content-child {
+            padding-top: 41px;
+            width: 877px;
+        }
+
+        #Valuecore .content .line4 .content-child {
+            padding-top: 43px;
+            width: 943px;
+        }
+
+        #Valuecore .content .line5 .content-child {
+            padding-top: 41px;
+            width: 943px;
+        }
+
+        #Valuecore .content .line6 .content-child {
+            padding-top: 50px;
+        }
+
+            #Valuecore .content .line6 .content-child p,
+            #Valuecore .content .line2 .content-child p,
+            #Valuecore .content .line3 .content-child p,
+            #Valuecore .content .line4 .content-child p,
+            #Valuecore .content .line5 .content-child p {
+                padding-left: 12px;
+            }
+
+/**********VĂn hóa DKT************/
+#Culture span {
+    display: block;
+}
+
+#Culture {
+    font-family: roboto-regular;
+    text-align: center;
+    color: #6d6d6d;
+}
+
+    #Culture .culture-banner {
+        background: rgba(0, 0, 0, 0) url("../images/culture_picture1.png") no-repeat scroll center top;
+        color: #fff;
+        height: 247px;
+    }
+
+        #Culture .culture-banner h1 {
+            font-family: "UTM Colossalis";
+            font-size: 38px;
+            margin: 0 auto;
+        }
+
+        #Culture .culture-banner span {
+            font-family: "iCiel Simplifica";
+            font-size: 74px;
+            font-weight: normal;
+            margin: -15px 0 0 -15px;
+        }
+
+    #Culture .culture-content .culture-title {
+        background-color: #f5f7f8;
+        height: 127px;
+    }
+
+    #Culture .culture-title h3 {
+        color: #2ab7dd;
+        font-size: 22px;
+        font-weight: normal;
+        padding-top: 37px;
+    }
+
+    #Culture .culture-title span {
+        color: #6d6d6d;
+        font-size: 16px;
+        letter-spacing: 1.6px;
+    }
+
+    #Culture .culture-detail {
+        background: rgba(0, 0, 0, 0) url("../images/culture_picture2.png") no-repeat scroll left top 56px;
+        height: 433px;
+    }
+
+        #Culture .culture-detail .FloatRight {
+            letter-spacing: 0;
+            padding: 50px 11px 0;
+            text-align: left;
+            width: 649px;
+        }
+
+        #Culture .culture-detail p {
+            font-size: 15px;
+            line-height: 1.77em;
+            margin: 0 0 29px;
+            text-align: justify;
+        }
+
+    #Culture .conclusion {
+        border-top: 1px solid #f5f5f5;
+    }
+
+        #Culture .conclusion .oneColumnWidth h3 {
+            font-size: 16px;
+            font-weight: normal;
+            letter-spacing: 1.6px;
+            padding: 57px 0 41px;
+        }
+
+        #Culture .conclusion .oneColumnWidth span {
+            font-family: roboto-light;
+            font-size: 33px;
+            letter-spacing: normal;
+        }
+
+        #Culture .conclusion .oneColumnWidth img {
+            padding: 0 0 53px;
+        }
+
+    #Culture .conclusion2 {
+        background-color: #2db3db;
+        height: 219px;
+        background-repeat: repeat-x;
+        color: #fff;
+    }
+
+        #Culture .conclusion2 p:nth-child(1) {
+            font-size: 16px;
+            padding-top: 39px;
+        }
+
+        #Culture .conclusion2 p:nth-child(3) {
+            width: auto;
+            line-height: 21px;
+        }
+
+        #Culture .conclusion2 ul li {
+            display: inline-block;
+            padding-left: 30px;
+        }
+
+        #Culture .conclusion2 .oneColumnWidth > ul {
+            display: block;
+            line-height: 54px;
+        }
+
+        #Culture .conclusion2 ul li {
+            background: rgba(0, 0, 0, 0) url("../images/culture_picture5.png") no-repeat scroll left center;
+            display: inline-block;
+            font-family: roboto-bold;
+            font-size: 18px;
+            margin-right: 15px;
+            padding-left: 21px;
+        }
+/*******Dành cho khách hàng ******/
+#CustomerFor .banner {
+    background: rgba(0, 0, 0, 0) url("../images/customerfor_bg.png") no-repeat scroll center top;
+    height: 370px;
+}
+
+#CustomerFor .customerFor-module1 {
+    background: rgba(0, 0, 0, 0) url("../images/customerfor_module1_bg.png") repeat-x scroll center top;
+    text-align: center;
+}
+
+    #CustomerFor .customerFor-module1 h3 {
+        color: #fff;
+        font-family: roboto-regular;
+        font-size: 16px;
+        font-weight: normal;
+        margin: 0 auto;
+        width: 737px;
+        padding: 29px 0 33px;
+    }
+
+    #CustomerFor .customerFor-module1 b {
+        font-family: roboto-bold;
+        font-size: 21px;
+        font-weight: normal;
+    }
+
+#CustomerFor .customerFor-module2 {
+    background: #f6f6f6;
+    color: #555;
+    font-family: roboto-regular;
+}
+#CustomerFor .customerFor-module2 .oneColumnWidth {
+    padding-bottom: 45px;
+}
+#CustomerFor .customerFor-module2 .oneColumnWidth:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+#CustomerFor .customerFor-module2 .col-left {
+    float: left;
+    width: 50%;
+}
+#CustomerFor .customerFor-module2 .col-right {
+    float: right;
+    width: 50%;
+}
+#CustomerFor .customerFor-module2 li {
+    margin-bottom: 30px;
+}
+#CustomerFor .customerFor-module2 li:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+#CustomerFor .customerFor-module2 li img {
+    float: left;
+}
+#CustomerFor .customerFor-module2 li .info {
+    margin-left: 85px;
+    font-size: 14px;
+    line-height: 25px;
+}
+#CustomerFor .customerFor-module2 li .info span {
+    font-size: 18px;
+    font-weight: 700;
+    font-style: italic;
+}
+
+    #CustomerFor .customerFor-module2 .oneColumnWidth {
+        padding-top: 45px;
+    }
+
+#CustomerFor .chart {
+    line-height: 1.5;
+    padding: 5px 0 0 138px;
+    width: 459px;
+}
+
+#CustomerFor .customerFor-module2 strong {
+    font-size: 18px;
+}
+
+#CustomerFor .trophy {
+    line-height: 1.7;
+    padding: 0 7px;
+    width: 501px;
+}
+
+#CustomerFor .customerFor-module2 .medal {
+    width: 449px;
+    padding-left: 136px;
+    padding-top: 58px;
+}
+
+    #CustomerFor .customerFor-module2 .medal > ul {
+        margin-top: 23px;
+    }
+
+    #CustomerFor .customerFor-module2 .medal li {
+        padding-bottom: 20px;
+        padding-left: 42px;
+    }
+
+    #CustomerFor .customerFor-module2 .medal b {
+        font-size: 21px;
+    }
+
+#CustomerFor .customerFor-module3 {
+    text-align: center;
+    height: 505px;
+    background: rgba(0, 0, 0, 0) url("../images/customerfor_module3_pic.png") no-repeat scroll center bottom;
+}
+
+    #CustomerFor .customerFor-module3 .title {
+        background: rgba(0, 0, 0, 0) url("../images/customerfor_module3_title.png") no-repeat scroll center bottom;
+        color: #555555;
+        font-family: roboto-medium;
+        font-size: 16px;
+        padding: 41px 0 13px;
+    }
+
+
+        #CustomerFor .customerFor-module3 .title > em {
+            color: #19c1f3;
+            padding-right: 3px;
+        }
+
+#CustomerFor .conclusion > ul {
+    margin: 29px 0 60px;
+}
+
+#CustomerFor .conclusion li {
+    color: #898989;
+    display: inline;
+    font-family: roboto-regular;
+    font-size: 18px;
+    margin-right: 19px;
+}
+
+#CustomerFor .conclusion .current {
+    background: rgba(0, 0, 0, 0) url("../images/customerfor_module3_ico.png") no-repeat scroll left center;
+    color: #19c1f3;
+    padding-left: 21px;
+}
+
+
+#CustomerFor .customerFor-module4 {
+    background: rgba(0, 0, 0, 0) url("../images/customerfor_module3_bg.png") repeat-x scroll center bottom;
+    text-align: center;
+    height: 114px;
+    line-height: 109px;
+}
+
+    #CustomerFor .customerFor-module4 > h3 {
+        color: #fff;
+        font-size: 24px;
+        font-weight: normal;
+    }
+
+    #CustomerFor .customerFor-module4 strong {
+        font-size: 38px;
+    }
+
+/*****************Cam kết chất lượng**************/
+#Quality span {
+    display: block;
+}
+
+#Quality .banner {
+    background: rgba(0, 0, 0, 0) url("../images/quality_bg.png") no-repeat scroll center top;
+    height: 370px;
+}
+
+#Quality .intro {
+    background: rgba(0, 0, 0, 0) url("../images/quality_bg_intro.png") no-repeat scroll center top;
+    height: 103px;
+}
+
+    #Quality .intro h3 {
+        color: #fff;
+        font-size: 16px;
+        text-align: center;
+        padding-top: 31px;
+        font-weight: normal;
+    }
+
+#Quality .content {
+    background: rgba(0, 0, 0, 0) url("../images/quality_bg_content.png") no-repeat scroll left top 53px;
+    height: 410px;
+}
+
+#Quality .content-child {
+    width: 474px;
+    margin: 95px 160px 0 0;
+}
+
+    #Quality .content-child p {
+        margin-bottom: 27px;
+    }
+
+    #Quality .content-child p,
+    #Quality .content li {
+        color: #636363;
+        font-size: 15px;
+    }
+
+#Quality .conclusion {
+    background-color: #656f7e;
+    border-top: 1px solid #78828f;
+    height: 134px;
+}
+
+#Quality .content li {
+    background: rgba(0, 0, 0, 0) url("../images/vision_module4_ico.png") no-repeat scroll left top;
+    height: 25px;
+    margin-bottom: 19px;
+    padding-left: 36px;
+}
+
+#Quality .conclusion > h3 {
+    color: #fff;
+    font-family: roboto-regular;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
+    padding-top: 39px;
+}
+
+#Quality .conclusion span {
+    font-size: 24px;
+}
+
+/*************Chăm sóc khách hàng**********/
+#CustomerCare .banner {
+    background: rgba(0, 0, 0, 0) url("../images/customercare_picture1.png") no-repeat scroll center top;
+    height: 370px;
+}
+
+#CustomerCare .conclusion {
+    background: rgba(0, 0, 0, 0) url("../images/customercare_picture2.png") no-repeat scroll left top 23px;
+    height: 448px;
+}
+
+    #CustomerCare .conclusion.oneColumnWidth {
+        width: 1230px;
+    }
+
+    #CustomerCare .conclusion .content {
+        color: #636363;
+        font-family: roboto-regular;
+        padding: 82px 111px 0;
+        width: 614px;
+    }
+
+    #CustomerCare .conclusion .p1,
+    #CustomerCare .conclusion .p2 {
+        font-size: 15px;
+    }
+
+    #CustomerCare .conclusion .p1 {
+        color: #fff;
+        line-height: 1.8;
+        padding-bottom: 21px;
+        text-align: justify;
+    }
+
+    #CustomerCare .conclusion .p2 {
+        margin-bottom: 12px;
+    }
+
+    #CustomerCare .conclusion color {
+        color: #f26522;
+        font-size: 18px;
+    }
+
+#CustomerCare .yh > img,
+#CustomerCare .ph > img,
+#CustomerCare .em > img,
+#CustomerCare .www > img {
+    position: relative;
+    padding-right: 4px;
+}
+
+#CustomerCare .ph > img,
+#CustomerCare .em > img,
+#CustomerCare .www > img {
+    padding-left: 17px;
+}
+
+#CustomerCare .yh > img {
+    top: 6px;
+}
+
+#CustomerCare .ph > img {
+    top: 2px;
+}
+
+#CustomerCare .em > img {
+    top: 1px;
+}
+
+#CustomerCare .www > img {
+    top: 4px;
+    padding-right: 2px;
+}
+
+#CustomerCare .content.FloatRight > ul {
+    margin-top: 23px;
+}
+
+#CustomerCare .content.FloatRight li {
+    background: rgba(0, 0, 0, 0) url("../images/vision_module4_ico.png") no-repeat scroll left top;
+    height: 25px;
+    margin-bottom: 21px;
+    padding-left: 36px;
+}
+
+/**************Văn phòng DKT************/
+#DktOffice .banner {
+    background: rgba(0, 0, 0, 0) url("../images/dktOffice_picture1.png") no-repeat scroll center top;
+}
+
+    #DktOffice .banner .content {
+        color: #898989;
+        font-family: roboto-regular;
+        font-size: 15px;
+        margin: 0 auto;
+        padding-top: 331px;
+        padding-bottom: 56px;
+        text-align: center;
+        width: 657px;
+    }
+
+        #DktOffice .banner .content h1 {
+            color: #464646;
+            font-family: roboto-bold;
+            font-size: 21px;
+            font-weight: normal;
+            padding: 0 0 21px;
+        }
+
+#DktOffice .picture .title {
+    background: rgba(0, 0, 0, 0) url("../images/dktOffice_picture2.png") no-repeat scroll center top;
+    color: #fff;
+    font-size: 28px;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+    #DktOffice .picture .title span {
+        font-family: roboto-bold;
+    }
+
+#DktOffice .picture .des {
+    margin: 0 auto;
+    width: 1051px;
+}
+
+#DktOffice .picture .item-des {
+    background: rgba(0, 0, 0, 0) url("../images/dktOffice_icon_des.png") no-repeat scroll left center;
+    color: #555555;
+    font-size: 18px;
+    height: 119px;
+    line-height: 119px;
+    padding-left: 25px;
+    width: 325px;
+}
+
+#DktOffice .picture .item-glass {
+    position: relative;
+    height: 0px;
+}
+
+#DktOffice .glass {
+    background-color: #fff;
+    height: 233px;
+    opacity: 0.5;
+    position: absolute;
+    top: -233px;
+    width: 150px;
+    z-index: 100;
+}
+
+    #DktOffice .glass.FloatRight {
+        right: 0px;
+    }
+
+.owl-carousel-people {
+    height: 233px;
+}
+
+    .owl-carousel-people .owl-carousel .owl-stage-outer {
+        height: 233px;
+        overflow: hidden;
+    }
+
+.cus-nav .cus-prev,
+.cus-nav .cus-next {
+    background-color: #fff;
+    color: #2db3db;
+    font-size: 60px;
+    height: 50px;
+    line-height: 44px;
+    opacity: 0.95;
+    position: relative;
+    text-align: center;
+    top: -141px;
+    width: 50px;
+    z-index: 103;
+    cursor: pointer;
+}
+
+.cus-nav .cus-prev {
+    float: left;
+    left: 122px;
+}
+
+.cus-nav .cus-next {
+    float: right;
+    right: 122px;
+}

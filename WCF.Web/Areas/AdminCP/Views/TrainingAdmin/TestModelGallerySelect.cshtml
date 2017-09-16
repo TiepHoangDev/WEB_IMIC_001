@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "TestModelGallerySelect";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<h2>TestModelGallerySelect</h2>
+@section CSS{
+    
+<link href="~/Areas/AdminCP/Content/assets/global/plugins/image-picker-master/image-picker/image-picker.css" rel="stylesheet" />
+}
+
+<select multiple="multiple" class="image-picker show-html hidden">
+    <option data-img-src="../../../../Content/Galleries/OtherCategory/FacebookUserLiked/ahauhuyenmy.jpg" value="1">Cute Kitten 1</option>
+    <option data-img-src="../../../../Content/Galleries/OtherCategory/FacebookUserLiked/12821637_10153261809451793_3923111906457878632_n.jpg" value="2">Cute Kitten 2</option>
+    <option data-img-src="../../../../Content/Galleries/OtherCategory/FacebookUserLiked/14264061_1358664970819056_7464328291343532114_n.jpg" value="3">Cute Kitten 3</option>
+    <option data-img-src="../../../../Content/Galleries/OtherCategory/FacebookUserLiked/306208_10150266815450423_1764930_n.jpg" value="4">Cute Kitten 4</option>
+</select>
+
+@section Scripts{
+
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/image-picker-master/image-picker/image-picker.js"></script>
+<script type="text/javascript">
+
+    jQuery("select.image-picker").imagepicker({
+        hide_select: false,
+        show_label: true
+
+    });
+
+    //jQuery("select.image-picker.show-labels").imagepicker({
+    //    hide_select: false,
+    //    show_label: true,
+    //});
+
+
+
+    var container = jQuery("select.image-picker.masonry").next("ul.thumbnails");
+    container.imagesLoaded(function () {
+        container.masonry({
+            itemSelector: "li",
+        });
+    });
+    var arr = new Array();
+    $('option:selected').each(function() {
+        $(this).val();
+        arr.push($(this).val());
+        var str = arr.join();
+    });
+
+</script>
+}

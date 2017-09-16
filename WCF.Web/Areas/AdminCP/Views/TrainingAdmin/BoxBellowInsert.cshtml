@@ -1,0 +1,53 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.BoxBelowObject
+@{
+    ViewBag.Title = "Đào tạo - Thêm ô thông tin dưới";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> Ô thông tin bên dưới
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm("BoxBellowInsert", "TrainingAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-body">
+                <div class="form-group">
+                    <label>Tiêu đề</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.BoxTitle, new { @class = "form-control", @placeholder = "Nhập tiêu đề..." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Ảnh nền</label>
+                    <input type="file" name="fileAvatar">
+                    <p class="help-block">
+                        Chọn một ảnh nền cho ô này.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Nội dung</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextAreaFor(m => m.BoxDescription, new { @class = "form-control", @placeholder = "Nhập nội dung của ô..." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Đường link trỏ tới</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.BoxLinkTo, new { @class = "form-control", @placeholder = "Link trỏ đến..." })
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn blue">Thêm ô thông tin</button>
+                <button type="button" class="btn default">Huỷ</button>
+            </div>
+        }
+    </div>
+</div>
+

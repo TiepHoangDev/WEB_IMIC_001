@@ -1,0 +1,19 @@
+﻿@using WCF.Web.App_Start
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.OpenClassObject>
+<div class="ecosystem-highlight__cards">
+    @foreach (var item in Model)
+    {
+        <div class="ecosystem-highlight__card">
+            <a href="@Url.Action("DetailCourse", "TrainingPage", new {courseCodeNumber = item.Course.CourseCodeNumber, postName = StringHelpers.ToAscii(item.Course.CourseName)})">
+                <img class="ecosystem-highlight__card-image" src="~/Content/Galleries/Training/CourseImage/@item.ClassAvatar" alt="@item.ClassName">
+                <div class="ecosystem-highlight__card-content">
+                    <div style="height: 75px;overflow: hidden" class="ecosystem-highlight__card-title">
+                        @item.ClassName
+                </div>
+                @*<div style="height: 202px; overflow: hidden" class="ecosystem-highlight__card-description">@Html.Raw(HttpUtility.HtmlDecode(item.ContentPopup)) </div>*@
+            </div>
+        </a>
+        </div>
+    }
+
+</div>

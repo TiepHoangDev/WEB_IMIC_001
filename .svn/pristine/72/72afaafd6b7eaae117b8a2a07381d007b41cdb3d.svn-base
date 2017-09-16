@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = null;
+}
+
+<table border="1" cellpadding="1" cellspacing="1" style="width:100%">
+    <tbody>
+        <tr>
+            <td><strong><span style="font-size:14px"><span style="font-family:Tahoma,Geneva,sans-serif">Người li&ecirc;n hệ</span></span></strong></td>
+            <td><span style="font-size:14px "><span style="font-family:Tahoma,Geneva,sans-serif"></span></span></td>
+        </tr>
+        <tr>
+            <td><strong><span style="font-size:14px"><span style="font-family:Tahoma,Geneva,sans-serif">Địa chỉ li&ecirc;n hệ</span></span></strong></td>
+            <td><span style="font-size:14px"><span style="font-family:Tahoma,Geneva,sans-serif"></span></span></td>
+        </tr>
+        <tr>
+            <td><strong><span style="font-size:14px"><span style="font-family:Tahoma,Geneva,sans-serif">Email li&ecirc;n hệ</span></span></strong></td>
+            <td><span style="font-size:14px"><span style="font-family:Tahoma,Geneva,sans-serif"></span></span></td>
+        </tr>
+        <tr>
+            <td><strong><span style="font-size:14px"><span style="font-family:Tahoma,Geneva,sans-serif">Điện thoại li&ecirc;n hệ</span></span></strong></td>
+            <td><span style="font-size:14px"><span style="font-family:Tahoma,Geneva,sans-serif"></span></span></td>
+        </tr>
+    </tbody>
+</table>

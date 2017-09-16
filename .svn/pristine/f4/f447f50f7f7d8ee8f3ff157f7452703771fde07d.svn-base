@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "Quản lý nhật ký ";
+    Layout = "~/Areas/Class/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using WCF.Web.App_Start
+@model  IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.ClassSessionLogObject>
+    <div class="portlet box red-intense">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-globe"></i>Quản lý nhật ký
+            </div>
+            <div class="tools">
+
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="col-xs-12" style="float:none">
+                <div style="padding-bottom:10px;">
+                    <a class="btn btn-primary btn-sm" style="margin-top:10px;" href="@Url.Action("SessionLogInsert","Class")">
+                        Thêm mới
+                        <span class="fa fa-plus" style="padding-left:6px;"></span>
+                    </a>
+                </div>
+                <table class="table table-striped table-bordered table-hover dataTable no-footer" id="tbl-main" aria-describedby="dataTables-example_info">
+                    <thead>
+                        <tr role="row">
+                            <th>Tên lớp</th>
+                            <th>Tên giáo viên</th>
+                            <th>Ngày học</th>
+                            <th>Nội dung</th>
+                            <th>Mô tả</th>
+                            <th>Trạng thái</th>
+                          
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                <td>@item.objClass.ClassName</td>
+                                <td>@item.objAcc.FullName</td>
+                                <td>@item.OnDate</td>
+                                <td>@item.LessonContent</td>
+                                <td>@item.Description</td>
+                                <td>
+                                    @if (item.IsActived == true)
+                                    {
+                                        <a href="javascript:void(0)" getvalueid="@item.ClassSessionLogId" title="Hoạt động" class="img_Actice_UnActice"><i class="glyphicon glyphicon-ok-sign" style="color:green;"></i></a>
+                                    }
+                                    else
+                                    {
+                                        <a href="javascript:void(0)" getvalueid="@item.ClassSessionLogId" title="Không họat động" class="khonghoatdong"><i class="glyphicon glyphicon-ok-sign" style="color:darkgray;"></i></a>
+                                    }
+                                </td>
+
+                              
+
+                                <th>
+                                    <a href="@Url.Action("ManageStudentAbsent", "Class", new { id = item.ClassSessionLogId,date = item.OnDate })" class="btn btn-success">Học viên vắng</a>
+                                    <a href="@Url.Action("SessionLogUpdate", "Class", new {id = item.ClassSessionLogId})" class="btn btn-info">Sửa</a>
+                                    <a class="btn btn-danger" onclick="Remove('@item.ClassSessionLogId', '@StringHelpers.FormatJSString("" + item.ClassId)', this)">Xóa</a>
+                                </th>
+                            </tr>
+                        }
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    @section PageLevelScript{
+        <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+        <script>
+            $(document)
+                .ready(function () {
+                    $('#tbl-main').dataTable();
+                });
+
+            function Remove(id, name, event) {
+                var sender = event.currentTarget;
+                var answer = confirm("Bạn muốn bản ghi này không ?");
+                if (answer) {
+                    $.ajax({
+                        url: '@Url.Action("SessionLogDelete", "Class")',
+                        data: { id: id },
+                        type: "post",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.rs == 'ok') {
+                                $(event).closest("tr").remove();
+                            }
+                        }
+                    });
+                }
+            }
+
+            $(".img_Actice_UnActice").click(function () {
+                var id = jQuery(this).attr("getvalueid");
+                console.log(id);
+                $.ajax({
+                    url: '@Url.Action("SessionLog_Actived", "Class")',
+                    data: { id: id },
+                    type: 'post'
+                }).success(function (data) {
+                    if (data.rs == "ok") {
+                        //???
+                        $(".hoatdong").show();
+                        $(".khonghoatdong").hide();
+                        location.reload();
+                    }
+
+                });
+            });
+            $(".khonghoatdong").click(function () {
+                var id = jQuery(this).attr("getvalueid");
+                console.log(id);
+                $.ajax({
+                    url: '@Url.Action("SessionLog_Actived", "Class")',
+                    data: { id: id },
+                    type: 'post'
+                }).success(function (data) {
+                    if (data.rs == "ok") {
+                        $(".hoatdong").show();
+                        $(".khonghoatdong").hide();
+                        location.reload();
+                    }
+
+                });
+            });
+
+        </script>
+    }
+
+
+
+

@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Coming Soon</title>
+    <link href="~/Content/css/maintenance.css" rel="stylesheet" type="text/css" media="screen">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="~/Content/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700|Roboto+Slab:700" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable = no">
+
+    
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="left-section"><img src="../../Content/images/other/anh5.jpg"></div>
+        <div class="right-section">
+            <div><img src="../../Content/images/logoiMIC.png"></div>
+            
+            @*<h1 id="logo">iMicrosoft</h1>*@
+            <div class="seprator"></div>
+            <div class="main-content">
+                <h2>Website của chúng tôi sẽ trở lại ngay</h2>
+                <p>Hiện phòng đào tạo imic đang thực hiện bảo trì lại hệ thống website. <br>
+                Bạn quan tâm tới khóa đào tạo vui lòng truy cập facebook của chúng tôi theo đường dẫn dưới đây</p>
+            </div>
+            <ul class="social">
+                <li id="facebook"><a href="https://www.facebook.com/imicrosoft.edu.vn"><i class="fa fa-facebook"></i></a></li>
+                <li id="twitter"><a href="https://www.facebook.com/imicrosoft.edu.vn" ><i class=" fa fa-twitter"></i></a></li>
+                <li id="linkedin"><a href="https://www.facebook.com/imicrosoft.edu.vn" ><i class=" fa fa-linkedin"></i></a></li>
+            </ul>
+            <ul class="info">
+                <li><i class="fa fa-phone-square"></i>043.7557.666</li>
+                <li><i class="fa fa-map-marker"></i>Trụ sở Hà Nội : Tầng 2B - Tòa nhà T6-08, Tổng Cục 5, Bộ Công an, Phạm Văn Đồng, Hà Nội. </li>
+                <li><i class="fa fa-map-marker"></i>Chi nhánh HCM : Tầng 6 - Tòa nhà MetroPolitan, 235 Đồng Khởi, Quận 1, TP Hồ Chí Minh. </li>
+                <li><i class="fa fa-envelope"></i><a href="#">info@bigcompany.com</a></li>
+            </ul>
+
+            <div class="social-links">
+                <ul class="social2">
+                    <li id="facebook"><a href="https://www.facebook.com/imicrosoft.edu.vn" ><i class=" fa fa-facebook"></i></a></li>
+                    <li id="twitter"><a href="https://www.facebook.com/imicrosoft.edu.vn" ><i class=" fa fa-twitter"></i></a></li>
+                    <li id="linkedin"><a href="https://www.facebook.com/imicrosoft.edu.vn" ><i class=" fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+
+
+        </div>
+        <div class="watch-section"><img src="../../Content/images/other/anh5.jpg"></div>
+    </div>
+
+
+
+
+</body>
+</html>

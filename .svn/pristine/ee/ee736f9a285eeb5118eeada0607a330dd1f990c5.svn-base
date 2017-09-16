@@ -1,0 +1,5 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.I>
+@{
+    Layout = null;
+}
+

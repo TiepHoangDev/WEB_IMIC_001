@@ -1,0 +1,34 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.VideoObject>
+@using WCF.Web.App_Start
+@{
+    Layout = null;
+}
+
+@if (Model.Count() > 0)
+{
+     foreach (var item in Model)
+     {
+     <li class="video-top col-md-4 col-sm-6 col-xs-12">
+         <div class="img-box">
+             <a href="@Url.RouteUrl("video-detail", new { videoCodeNumber = item.VideoCodeNumber, videoname = StringHelpers.ToAscii(item.VideoName) })"> <img class="w-100" src="~/Content/Galleries/Video/Thumbnails/@item.VideoThumbnail" /></a>
+             @*<div class="duration">19:00</div>*@
+         </div>
+         @if (item.VideoName.Length > 50)
+         {
+             <div class="video-top-title"><a href="@Url.RouteUrl("video-detail", new { videoCodeNumber = item.VideoCodeNumber, videoname = StringHelpers.ToAscii(item.VideoName) })">@item.VideoName.Substring(0, 50)...</a></div>
+         }
+         else
+         {
+             <div class="video-top-title"><a href="@Url.RouteUrl("video-detail", new { videoCodeNumber = item.VideoCodeNumber, videoname = StringHelpers.ToAscii(item.VideoName) })">@item.VideoName</a></div>
+         }
+         <div class="w-100 text-muted pull-left" style="font-size:12px"><a href="@Url.RouteUrl("user-profile", new { username = item.Account.Username })" class="text-muted"><b>@item.Account.FullName</b></a></div>
+         <div class="w-100 text-muted pull-left"><small>@item.TotalOfViews.ToString("n0") lượt xem</small></div>
+     </li>
+ }
+}
+else
+{
+    <div class="w-100 pull-left">
+        <div class="video-emty-list">Hiện không có video nào.</div>
+    </div>
+}

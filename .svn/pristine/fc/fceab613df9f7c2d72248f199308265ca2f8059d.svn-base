@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WCF.BusinessObjectsLayer.EntityObjects
+{
+    public class IntroducePageObject
+    {
+        public Guid IntroducePageId { get; set; }
+        public string TitleServices { get; set; }
+        public string PassageServices { get; set; }
+        public string PassageExperiencers { get; set; }
+        public string TitlePartner { get; set; }
+        public string PassagePartner { get; set; }
+        public Guid? ModifiedBy { get; set; }
+        public DateTime? ModifiedTime { get; set; }
+        public bool IsDeleted { get; set; }
+        public string TitleExperiencers { get; set; }
+        public AccountObject Account { get; set; }
+    }
+}

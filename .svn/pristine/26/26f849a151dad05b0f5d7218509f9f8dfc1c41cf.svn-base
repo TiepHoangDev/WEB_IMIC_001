@@ -1,0 +1,164 @@
+﻿@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    ViewBag.description = "iMic - Nơi đào tạo lập trình viên hàng đầu Việt Nam. Cơ hội tiếp cận môi trường làm dự án tại các Công ty, trau dồi kinh nghiệm lập trình cùng các chuyên gia, giảng viên nhiều năm kinh nghiệm.";
+    ViewBag.image = "http://imic.edu.vn/Images/Shortcut.jpg";
+}
+@section css{
+    <link href="~/Content/css/contact.css" rel="stylesheet" type="text/css">
+}
+
+<div style="width:100%">
+    <img src="~/Content/images/background/bg-contact.png" style="width:100%">
+</div>
+<div id="page-wrapper">
+    <div class="main">
+        <div class="contact-box">
+            <div class="col-lg-6 col-xs-12">
+                <label>LIÊN HỆ</label>
+                <p style="width:100%;margin-top:15px;" class="text-muted">
+                    Cảm ơn bạn đã ghé thăm website iMIC của chúng tôi. Hãy gửi thông tin cho chúng tôi, vui lòng liên hệ qua
+                    hộp tin nhắn.
+                </p>
+                @*@using (Html.BeginForm("Contact_Request", "ContactPage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                { 
+                    @Html.TextBoxFor(m => m.FullName, new { @type = "text", @class = "form-control", @style = "width:100%", @placeholder = "Họ và tên", @id = "name" })
+
+                    @Html.TextBoxFor(m => m.Email, new { @type = "text", @class = "form-control", @style = "width:100%", @placeholder = "Email", @id = "email" })
+
+                    @Html.TextBoxFor(m => m.Title, new { @type = "text", @class = "form-control", @style = "width:100%", @placeholder = "Tiêu đề", @id = "title" })
+
+                    @Html.TextAreaFor(m => m.ContentContact, new { @style = "width:100%", @class = "form-control", @placeholder = "Nội dung", @rows = "6", @id = "content" })*@
+
+                    <input type="text"  class="form-control" style="width:100%" placeholder="Họ và tên" id = "name">
+                   	<input type="text" class="form-control" style="width:100%" placeholder="Email" id = "email">
+                    <input type="text" class="form-control" style="width:100%" placeholder="Tiêu đề" id = "title">
+                    <textarea style="width:100%" class="form-control" placeholder="Nội dung" rows="6" id = "content"></textarea>
+                    <button class="btn-sm btn-primary" style="margin-bottom:10px;" id="post">Gửi yêu cầu</button>
+
+                    @*<!-- /.modal -->
+                    <div class="modal fade" id="confirm-modal" role="dialog">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h4 class="modal-title">Confirm Dialog</h4>
+                                </div>
+                                <div class="modal-body">
+                                    Bạn có muốn gửi liên hệ này không ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn default" data-dismiss="modal">Hủy</button>
+                                    <button onclick="submit" class="btn blue" id="btn-confirm">Xác nhận</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>*@
+
+                    @*<!-- Modal -->
+                    <div class="modal fade" id="confirm-modal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">Xác nhận</h4>
+                                </div>
+                                <div class="modal-body">
+                                    Bạn có muốn gửi liên hệ này không ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                                    <button onclick="submit" type="button" class="btn btn-primary" id="btn-confirm">Xác nhận</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->*@
+
+                @*}*@
+            </div>
+            <div id="map" class="col-lg-6 col-xs-12" style="height:400px;">My map will go here</div>
+        </div>
+    </div>
+</div>
+
+@Html.Action("Modal_Notification", "ContactPage")
+
+@section scripts{
+<script>
+    function myMap() {
+        var myLatLng = { lat: 21.0503672, lng: 105.7832249 };
+        var mapOptions = {
+            center: myLatLng,
+            zoom: 17,
+            mapTypeId: google.maps.MapTypeId.roadmap
+        }
+
+
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello IMIC!'
+        });
+    }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUgb6i2BLhc9vmrGy2KBt9JJuP07qXC54&callback=myMap"></script>
+
+<script>
+    @*$('#post').on('click', function (e) {
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var title = $('#title').val();
+        var content = $('#content').val();
+        $.ajax({
+            url: '@Url.Action("Contact_Request", "ContactPage")',
+            data: { fullName: name, email: email, title: title, content: content },
+            type: "post",
+            success: function (response) {
+                if (!response.result) {
+                    alert(response.Message);
+                } else {
+                    alert(response.Message);
+                    location.reload();
+                }
+            }
+        });
+    });*@
+
+    $('#post').on('click', function (e) {
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var title = $('#title').val();
+        var content = $('#content').val();
+        $.ajax({
+            url: '@Url.Action("Contact_Request", "ContactPage")',
+            data: { fullName: name, email: email, title: title, content: content },
+            type: "post",
+            success: function (response) {
+                debugger
+                if (!response.result) {
+                    var parsed = (response.Message);
+                    debugger
+                    $("#content-modal").empty();
+                    $("#content-modal").append(parsed);
+                } else {
+                    var parsed = (response.Message);
+                    $("#content-modal").empty();
+                    $("#content-modal").append(parsed);
+                    setTimeout(location.reload.bind(location), 600);
+                }
+            }
+        });
+        $("#detail-modal").modal({ backdrop: false });
+    });
+</script>
+
+}
+
+

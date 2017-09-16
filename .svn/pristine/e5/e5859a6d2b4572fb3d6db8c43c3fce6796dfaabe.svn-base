@@ -1,0 +1,314 @@
+﻿@{
+    ViewBag.Title = "Article_Edit";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@using WCF.BusinessObjectsLayer.EntityObjects
+@model WCF.BusinessObjectsLayer.EntityObjects.TechArticleObject
+<style>
+    .alert-tag {
+        color: red;
+    }
+
+    .tag-group {
+        float: left;
+        vertical-align: central;
+    }
+
+    .post-tag {
+        border-radius: 5px;
+        float: left;
+        margin-left: 5px;
+        height: 28px;
+        line-height: 28px;
+        padding-left: 5px;
+        padding-right: 5px;
+        color: #33658a;
+        vertical-align: middle;
+        background-color: #cee0ed;
+    }
+
+    .delete-tag {
+        width: 14px;
+        height: 14px;
+        vertical-align: middle;
+        display: inline-block;
+        background-position: -40px -319px;
+        cursor: pointer;
+        margin-left: 3px;
+        margin-top: -2px;
+        margin-bottom: -1px;
+    }
+
+    #tag-editor {
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 4px;
+        width: 100%;
+        padding: 3px;
+    }
+
+        #tag-editor input {
+            border: none;
+        }
+</style>
+<div class="portlet box red-intense">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Cập nhật bài viết công nghệ
+        </div>
+        <div class="tools">
+
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        <div style="width:100%">
+            @using (Html.BeginForm("Article_Edit", "TechAdmin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "ck-form" }))
+            {
+                @Html.HiddenFor(q => q.CreatedBy)
+                @Html.HiddenFor(q => q.CreatedTime)
+                @Html.HiddenFor(q => q.isActive)
+                @Html.HiddenFor(q => q.isApproved)
+                @Html.HiddenFor(q => q.isDeleted)
+                @Html.HiddenFor(q => q.LastRepliedTime)
+                @Html.HiddenFor(q => q.ModifiedBy)
+                @Html.HiddenFor(q => q.ModifiedTime)
+                @Html.HiddenFor(q => q.LastReplier)
+                @Html.HiddenFor(q => q.ApprovedBy)
+                @Html.HiddenFor(q => q.TotalOfLinks)
+                @Html.HiddenFor(q => q.TotalOfUsers)
+                @Html.HiddenFor(q => q.TotalOfReplies)
+                @Html.HiddenFor(q => q.TechArticleId)
+                @Html.HiddenFor(q => q.ArticleImageLink)
+                @Html.HiddenFor(q => q.ArticleCodeNumber)
+                <div class="form-group">
+                    <label>Tiêu đề bài viết</label>
+
+                    @Html.TextBoxFor(q => q.ArticleTitle, new
+       {
+           @class = "form-control",
+           @placeholder = "Tiêu đề",
+           @required = "true"
+
+       })
+                </div>
+    <div class="form-group">
+        <label>Nội dung tóm tắt</label>
+        @Html.TextAreaFor(q => q.TechSummary, new
+                   {
+                       @class = "form-control",
+                       @type = "text",
+                       @placeholder = "Nội dung tóm tắt",
+                       @required = "true"
+                   })
+
+    </div>
+                <div class="form-group">
+                    <label>Danh mục bài viết</label>
+
+                    @{
+                var lisCategory = ViewBag.TechCategoryList;
+                List<SelectListItem> lisSelectCategory = new List<SelectListItem>();
+                foreach (var item in lisCategory)
+                {
+                    lisSelectCategory.Add(new SelectListItem()
+                    {
+                        Value = "" + item.TechCategoryId,
+                        Text = item.CategoryName
+                    });
+                }
+                    }
+
+                    @Html.DropDownListFor(m => m.TechCategoryId, lisSelectCategory, new { @class = "form-control" })
+                </div>
+
+                <label style="color:red"><i>Khi chọn ảnh lưu ý để chiều rộng 100%, chiều cao không điền gì</i></label>
+                <div class="form-group">
+                    <label>Nội dung bài viết</label>
+                    <textarea class="form-control" name="ContentArticle">@Html.Raw(Model.ContentArticle)</textarea>
+
+                </div>
+                <div class="form-group">
+                    <label>Rank của bài viết</label>
+
+                    @Html.TextBoxFor(q => q.RankOfPin, new
+       {
+           @class = "form-control",
+           @type = "number"
+
+
+       })
+                </div>
+                <div class="form-group">
+                    <label>Số lượt like</label>
+
+                    @Html.TextBoxFor(q => q.TotalOfLikes, new
+       {
+           @class = "form-control",
+           @type = "number"
+
+       })
+                </div>
+                <div class="form-group">
+                    <label>Số lượt View</label>
+
+                    @Html.TextBoxFor(q => q.TotalOfViews, new
+       {
+           @class = "form-control",
+           @type = "number"
+
+       })
+
+                </div>
+                <div class="form-group">
+                    <label>Số lượt Replies</label>
+                    @Html.TextBoxFor(x => x.TotalOfReplies, new
+       {
+           @class = "form-control",
+           @type = "number"
+       })
+                </div>
+                <div class="form-group">
+                    <label>Số lượt Share</label>
+                    @Html.TextBoxFor(x => x.TotalOfLinks, new
+       {
+           @class = "form-control",
+           @type = "number"
+       })
+                </div>
+                <div class="form-group">
+                    <label>Số Users liên quan</label>
+                    @Html.TextBoxFor(x => x.TotalOfUsers, new
+       {
+           @class = "form-control",
+           @type = "number"
+       })
+                </div>
+
+
+                <div class="form-group">
+                    <label>Ảnh đại diện bài viết</label>
+                    <input type="file" id="ava" name="Avatar" />
+
+                    <div style="margin-top:15px;">
+                        <img style="width:200px;height:180px;" class="img-thumbnail rimage" src="~/Content/Galleries/Tech/Articles/@Model.ArticleImageLink" />
+                    </div>
+
+                </div>
+                List<ArticleTagObject> lstTag = (List<ArticleTagObject>)ViewBag.TagList;
+                List<ArticleTagDetailObject> lstTagDetail = (List<ArticleTagDetailObject>)ViewBag.TagDetailList;
+                <div class="form-group">
+                    <label>Gắn tag cho bài viết</label>
+                    <div style="width:100%;padding:10px;border:1px solid #999">
+                        @foreach (var item in lstTag)
+                        {
+                            <div class="col-xs-4">
+                                @if(lstTagDetail.Find(x=>x.ArticleTagId == item.ArticleTagId) == null)
+                                { 
+                                <input type="checkbox" name="tagbox" value="@item.ArticleTagId" />@item.TagName
+                                }
+                                else
+                                {
+                                    <input type="checkbox" name="tagbox" value="@item.ArticleTagId" checked />@item.TagName
+                                }
+
+                            </div>
+                        }
+                        <div style="clear:both"></div>
+                        <label style="margin-top:10px">Thêm tag mới</label>
+                        <h4 style="color:#00cc00">Gõ tag và ấn Enter để thêm tag mới</h4>
+                        <h4 class="alert-tag"></h4>
+                        <div style="width:100%" id="tag-editor">
+                            <span class="tag-group">
+
+                            </span>
+                            <input type="text" name="newtag" style="float:left" class="form-control" />
+                            <div style="clear:both"></div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+
+            }
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script src="~/Areas/AdminCP/Content/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript">
+        if ($(window).width() > 500) {
+            var editor = CKEDITOR.instances['ContentArticle'];
+
+            if (editor) { editor.destroy(true); }
+            CKEDITOR.replace('ContentArticle', {
+                enterMode: CKEDITOR.ENTER_BR,
+                htmlEncodeOutput: true,
+                //extraPlugins: 'uicolor',
+                height: '700px'
+
+            });
+            CKFinder.setupCKEditor(null, '@Url.Content("~/Areas/AdminCP/Content/ckfinder")');
+        }
+    </script>
+
+
+    <script>
+        $("#ava").change(function () {
+            readURL(this, '.rimage');
+        });
+
+    </script>
+<script>
+    $(document).on("keydown", "input", function (e) {
+        if (e.which == 13) e.preventDefault();
+    });
+    $('input[name=newtag]').on('keyup', function (e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            var input = $(this);
+            var query = $(this).val();
+            if (String(query).trim().length > 0) {
+                $.ajax({
+                    url: '@Url.Action("CheckTag","TechAdmin")',
+                    data: { q: query },
+                    type: 'post',
+                    success: function (response) {
+                        if (response.rs == 'fail') {
+                            $('.alert-tag').fadeIn('fast');
+                            $('.alert-tag').html('Tag ' + query + ' đã bị trùng');
+                            $(input).val('');
+                        }
+                        else {
+                            $('.tag-group').append('<span class="post-tag">' + query + '<span class="delete-tag fa fa-times"></span>'
+                                + '<input name=newtaglist value="' + query + '" type="hidden">'
+                                + '</span>');
+
+                            var width = $('.tag-group').width();
+                            $(input).css('width', 'calc(100% - ' + width + 'px)');
+                            $(input).val('');
+                            $('.alert-tag').fadeOut('fast');
+                        }
+                    }
+                })
+            }
+        }
+
+    });
+    $(document).on("click", ".delete-tag", function () {
+        $(this).parent().remove();
+
+    });
+
+</script>
+
+}
+
+
+
+

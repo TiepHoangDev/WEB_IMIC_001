@@ -1,0 +1,18 @@
+﻿@model List<WCF.BusinessObjectsLayer.EntityObjects.NewsletterTagObject>
+<style>
+    .rec-tag {
+        cursor: pointer;
+    }
+</style>
+<div class="project-list2">
+    <h4>Từ khóa tìm kiếm</h4>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li><a class="rec-tag" data-tag="@item.NewsletterTagName">@item.NewsletterTagName</a></li>
+
+        }
+
+        <div class="clear"></div>
+    </ul>
+</div>

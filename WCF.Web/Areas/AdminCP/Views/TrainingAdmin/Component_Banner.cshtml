@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Areas/AdminCP/Views/TrainingAdmin/_Components.cshtml";
+}
+
+<div id="tab_images_uploader_container" class="text-align-reverse margin-bottom-10">
+    <a id="tab_images_uploader_pickfiles" href="javascript:;" class="btn green">
+        <i class="fa fa-plus"></i> Thêm ảnh
+    </a>
+</div>
+<div class="row">
+    <div id="tab_images_uploader_filelist" class="col-md-6 col-sm-12">
+    </div>
+</div>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr role="row" class="heading">
+            <th width="8%">
+                Ảnh
+            </th>
+            <th width="25%">
+                Tiêu đề
+            </th>
+            <th width="8%">
+                Kích hoạt
+            </th>
+            <th width="10%">
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <a href="D:/Projects/WEB IMIC/web_offline/WCF.Web/Areas/AdminCP/Content/assets/admin/pages/media/works/img1.jpg" class="fancybox-button" data-rel="fancybox-button">
+                    <img class="img-responsive" src="~/Areas/AdminCP/Content/assets/admin/pages/media/works/img1.jpg" alt="">
+                </a>
+            </td>
+            <td>
+                <input type="text" class="form-control" name="product[images][1][label]" value="Dạy lập trình Java Core">
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" name="product[images][1][image_type]" value="3" checked>
+                </label>
+            </td>
+            <td>
+                <a href="javascript:;" class="btn default btn-sm">
+                    <i class="fa fa-save"></i> Lưu
+                </a>
+                <a href="javascript:;" class="btn default btn-sm">
+                    <i class="fa fa-times"></i> Xoá
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

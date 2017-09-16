@@ -1,0 +1,55 @@
+﻿
+@{
+    
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+@section SEO{
+    
+    
+    <meta name="DESCRIPTION" content="iMic cung cấp cho bạn thông tin công nghệ thông tin, tin tức lập trình mới nhất tại Việt Nam và trên Thế giới">
+    <meta name="KEYWORDS" content="Tin tức lập trình, chia sẻ kiến thức lập trình, tin công nghệ thông tin, tin công nghệ">
+}
+
+<div id="page-wrapper">
+    @*<div class="row">
+        <div class="box-timkiem-tintuc">
+            <div class="main">
+                <div class="title-tip">
+                    Trang chủ / Tin Tức
+                </div>
+                @using (Html.BeginForm("News_ResultSearch", "News", FormMethod.Post))
+                {
+                    <div class="box_search">
+                        <div class="box">
+                            <input type="text" autocomplete="off" name="" class="text-select textfield autoText" value="Chọn dạnh mục" id=""/>
+                            <form action="/tim-kiem" method="get">
+                                <input type="text" name="txtKeyword" class="text-input" id="searchString" placeholder="Nhập từ khóa"/>
+                                <button class="bt" onclick="searchByTitle()">Search</button>
+                            </form>
+                            <div id="Box-field" class="box-field">
+                                <div class="col-xs-12">
+                                    @{Html.RenderAction("Index_DropdownCategory", "NewsPage");}
+                                </div>
+                                <a tabindex="9" href="#" onclick="" class="close-from fa-times fa"></a>
+                                <div class="box-li">
+                                    <a href="#">Giới thiệu</a>
+                                    <a href="#">Qui định</a>
+                                    <a href="#">Điều khoản áp dụng</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>*@
+    @RenderBody()
+</div>
+
+@section scripts
+{
+    @RenderSection("NewsScripts", false)    
+}
+
+
+

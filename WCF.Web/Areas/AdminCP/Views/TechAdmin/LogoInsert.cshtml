@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Thêm mới logo";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@model WCF.BusinessObjectsLayer.EntityObjects.TechLogoObject
+<div class="portlet box red-intense">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Thêm mới logo
+        </div>
+        <div class="tools">
+
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        <div style="width:100%">
+            @using (Html.BeginForm("LogoInsert", "TechAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <h4 style="color:red">@Html.ValidationSummary("", true)</h4>
+                <div class="form-group">
+                    <h3>Tiêu đề </h3>
+
+                    @Html.TextBoxFor(q => q.TechLogoTitle, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+                        @required = "true",
+                        @placeholder = "Tiêu đề"
+                    })
+                </div>
+                
+                <div class="form-group">
+                    <label>Hình ảnh</label>
+
+                    <input type="file" name="Avatar" id="ava">
+                    <div style="margin-top:15px;">
+                        <img style="width:200px;height:180px;" class="img-thumbnail rimage" />
+                    </div>
+                </div>
+
+             
+                <div class="form-group">
+                    <h3>Đường dẫn</h3>
+
+                    @Html.TextBoxFor(q => q.TechLogoUrl, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+                        @placeholder = "Đường dẫn"
+                    })
+                </div>
+               
+         
+                <div class="form-group">
+                    <h3>Vị trí</h3>
+
+                    @Html.TextBoxFor(q => q.Rank, new
+       {
+           @type = "number",
+           @class = "form-control",
+          @value ="10"
+        
+       })
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+
+                </div>
+            }
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script>
+        
+        $("#ava").change(function () {
+            readURL(this, '.rimage');
+        });
+
+    </script>
+}

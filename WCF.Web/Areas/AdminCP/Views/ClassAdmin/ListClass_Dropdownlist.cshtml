@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.TrainingCategoryObject>
+@{
+    Layout = null;     
+}
+
+    @*<label>Chọn chuyên mục</label>
+<select name="categoryId">
+
+
+    @foreach (var item in Model)
+    {
+        <a href="@Url.Action("ListClass")"><option>@item.TrainingCategoryName</option></a>
+    }
+
+</select>*@
+
+
+    <div class="row">
+    <div class="col-md-6">
+        <div class="btn-group">
+            <button type="button" class="btn primary">Nhấn vào để lựa chọn chuyên mục</button>
+            <button type="button" class="btn default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></button>
+            <ul class="dropdown-menu" role="menu">
+                @foreach (var item in Model)
+                {
+                    <a href="@Url.Action("ListClass", "ClassAdmin", new { trainingCatId = item.TrainingCategoryId})"><li>@item.TrainingCategoryName</li></a>
+                }
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+

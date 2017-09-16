@@ -1,0 +1,9 @@
+﻿@model List<WCF.BusinessObjectsLayer.EntityObjects.NewsCategoryObject>
+           
+<ul class="col-xs-12">
+    @foreach(var item in Model)
+    {
+        <a href="@Url.Action("Index", new { newsCategoryId = item.NewsCategoryId})"><li class="col-xs-6">@item.NewsCategoryName</li></a>
+        
+    }
+</ul>

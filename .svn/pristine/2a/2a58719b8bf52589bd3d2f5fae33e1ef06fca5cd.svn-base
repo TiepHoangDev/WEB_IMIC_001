@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<repositories>
+  <repository path="..\WCF.DataAccessLayer\packages.config" />
+  <repository path="..\WCF.Web\packages.config" />
+  <repository path="..\WCF.WebApi\packages.config" />
+  <repository path="..\WEB.IMIC\packages.config" />
+</repositories>

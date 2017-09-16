@@ -1,0 +1,40 @@
+﻿@model List<WCF.BusinessObjectsLayer.EntityObjects.LessonDetailObject>
+@using WCF.Web.App_Start
+@if (Model.Count > 0)
+{
+    string[] color = { "bg-red-flamingo", "bg-blue", "bg-green", "bg-yellow-crusta", "bg-grey-cascade", "bg-purple-medium" };
+    int Start = ViewBag.Start;
+    foreach (var item in Model)
+    {
+        Start++;
+        <li>
+            <div class="col1">
+                <div class="cont">
+                    <div class="cont-col1">
+                        <div class="label label-sm label-success" style="padding:0px;">
+
+                            @{
+        int rand = StringHelpers.MYRANDOM.Next(0, 6);
+        <div class="detail-count @color[rand]">@Start</div>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="cont-col2">
+                        <div class="desc">
+                            <a href="@Url.RouteUrl("lessondetail", new { code = item.DetailCode,name = StringHelpers.GenerateURL(item.DetailTitle) })">@item.DetailName [@item.TotalOfView]</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*<div class="col2">
+                <div class="date">
+                   @StringHelpers.FormatDatetime(item.ModifiedTime)
+                </div>
+            </div>*@
+        </li>
+
+    }
+
+}
+

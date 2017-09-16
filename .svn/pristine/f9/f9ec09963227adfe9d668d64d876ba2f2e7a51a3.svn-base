@@ -1,0 +1,23 @@
+﻿@model List<WCF.BusinessObjectsLayer.EntityObjects.LessonObject>
+
+    @foreach (var item in Model)
+    {
+       
+                <li class="detail-li ">
+                    <a href="javascript:;">
+                        <i class="icon-book-open"></i>@item.LessonName<span class="arrow open"></span>
+                    </a>
+
+                    <ul class="sub-menu" >
+                        @{Html.RenderAction("Sidebar_getDetail", "LessonPage", new {lessonid = item.LessonId});}
+                    </ul>
+
+
+
+                </li>
+            }
+
+        
+        
+    
+   

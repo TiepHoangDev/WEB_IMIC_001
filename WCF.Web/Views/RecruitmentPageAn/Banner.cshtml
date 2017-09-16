@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.RecruitmentBannerObject>
+
+<div class="wmuSlider example1">
+    <div class="wmuSliderWrapper">
+        @foreach (var item in Model)
+        {
+            if (item.Rank % 2 == 0)
+            {<article style="position: absolute; width: 100%; opacity: 0;">
+                <div class="banner-wrap">
+                    <div class="slider-left">
+                        <h3>@item.h3text</h3>
+                        <h4>@item.h4text</h4>
+                        <p class="top">@item.pTopText</p>
+                        <p class="middle">@item.pMidText</p>
+                        <p class="bottom">@item.pBotText</p>
+
+                        <!-- start magnific-->
+                        <!-- end magnific-->
+                    </div>
+                    <div class="slider-right">
+                        <img src="~/Content/Galleries/Banner/@item.ImageLink" alt="@item.ImageAlt" />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </article> }
+            else
+            {
+                <article style="position: absolute; width: 100%; opacity: 0;">
+                    <div class="banner-wrap">
+
+                        <div class="slider-right">
+                            <img src="~/Content/Galleries/Banner/@item.ImageLink" alt="@item.ImageAlt"/>
+                        </div>
+                        <div class="slider-left">
+                            <h3>@item.h3text</h3>
+                            <h4>@item.h4text</h4>
+                            <p class="top">@item.pTopText</p>
+                            <p class="middle">@item.pMidText</p>
+                            <p class="bottom">@item.pBotText</p>
+
+                            <!-- start magnific-->
+                            <!-- end magnific-->
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </article>
+            }
+
+        }
+
+    </div>
+    <a class="wmuSliderPrev">Previous</a><a class="wmuSliderNext">Next</a>
+    <ul class="wmuSliderPagination">
+        @foreach (var item1 in Model)
+       {
+        <li><a href="#" class="">@item1.Rank</a></li>
+       }
+    </ul>
+</div>

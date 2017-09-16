@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WCF.BusinessObjectsLayer.EntityObjects
+{
+    public class IntroducePageObject
+    {
+        public Guid IntroducePageId { get; set; }
+        public string TitleServices { get; set; }
+        public string PassageServices { get; set; }
+
+        public string SubArticle { get; set; }
+        public string SubArticlePicture { get; set; }
+        public string SubArticlePictureAlt { get; set; }
+        public string EduProgramPicture { get; set; }
+        public string EduProgramPictureAlt { get; set; }
+        public string PassageExperiencers { get; set; }
+
+        public string TitleExperiencers { get; set; }
+        public AccountObject Account { get; set; }
+    }
+}

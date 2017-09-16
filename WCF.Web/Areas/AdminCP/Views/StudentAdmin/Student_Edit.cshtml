@@ -1,0 +1,193 @@
+﻿
+@{
+    ViewBag.Title = "Chỉnh sửa ảnh học viên";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@model WCF.BusinessObjectsLayer.EntityObjects.StudentGaleryObject
+
+<div class="portlet box red-intense">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Thêm mới học viên
+        </div>
+        <div class="tools">
+
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        <div style="width:100%">
+            @using (Html.BeginForm("Student_Edit", "StudentAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(x => x.ImageID)
+                @Html.HiddenFor(x => x.ImageThumbnail)
+                @Html.HiddenFor(x => x.ImageLink)
+                @Html.HiddenFor(x => x.ApprovedBy)
+
+                <div class="form-group">
+                    <label>Tên ảnh</label>
+                    @Html.TextBoxFor(x => x.imageName, new
+                    {
+                        @class = "form-control",
+                        @type = "text",
+                        @placeholder = "Tiêu đề ảnh",
+                        required = "true",
+                        id = "ImageName"
+                    })
+                </div>
+                if (Model.FlagThumbnail == true)
+                {
+                    <div class="form-group">
+                        <h3>Ảnh học viên</h3>
+                        <label>
+                            <input type="checkbox" id="checkbox1" name="checkbox1" value="1" checked />@Html.Raw("Chọn ảnh từ máy tính")
+                        </label>
+                        <div id="div2" style="display:none">
+                            <input type="file" name="Avatar" id="ava">
+                        </div>
+                        <input name="ImageThumbnailNew" type="text" class="form-control" style="display:none;margin-top:10px" placeholder="Dán link ảnh đại diện vào đây" value="" />
+                        <div style="margin-top:15px;">
+                            <img style="width:30%;height:30%;" class="img-thumbnail rimage" src="~/Content/Galleries/StudentGalery/@Model.ImageThumbnail" />
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        <h3>Ảnh học viên</h3>
+                        <label>
+                            <input type="checkbox" id="checkbox1" name="checkbox1" value="1" />@Html.Raw("Chọn ảnh từ máy tính")
+                        </label>
+                        <div id="div2" style="display:none">
+                            <input type="file" name="Avatar" id="ava">
+                        </div>
+                        <input name="ImageThumbnailNew" type="text" class="form-control" style="display:none;margin-top:10px" placeholder="Dán link ảnh đại diện vào đây" value="@Model.ImageThumbnail" />
+                        <div style="margin-top:15px;">
+                            <img style="width:30%;height:30%;" class="img-thumbnail rimage" src="@Model.ImageThumbnail" />
+                        </div>
+                    </div>
+                }
+                if (Model.FlagLink == true)
+                {
+                    <div class="form-group">
+                        <h3>Link ảnh</h3>
+                        <label>
+                            <input type="checkbox" id="checkbox2" name="checkbox2" value="1" checked />@Html.Raw("Chọn ảnh từ máy tính")
+                        </label>
+                        <div id="div4" style="display:none">
+                            <input type="file" name="Avatar1" id="ava1">
+                        </div>
+                        <input name="ImageLinkNew" type="text" class="form-control" style="display:none;margin-top:10px" placeholder="Dán link ảnh đại diện vào đây" value="" />
+                        <div style="margin-top:15px;">
+                            <img style="width:30%;height:30%;" class="img-thumbnail rimage1" src="~/Content/Galleries/StudentGalery/@Model.ImageLink" />
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        <h3>Link ảnh</h3>
+                        <label>
+                            <input type="checkbox" id="checkbox2" name="checkbox2" value="1" />@Html.Raw("Chọn ảnh từ máy tính")
+                        </label>
+                        <div id="div4" style="display:none">
+                            <input type="file" name="Avatar1" id="ava1">
+                        </div>
+                        <input name="ImageLinkNew" type="text" class="form-control" style="display:none;margin-top:10px" placeholder="Dán link ảnh đại diện vào đây" value="@Model.ImageLink" />
+                        <div style="margin-top:15px;">
+                            <img style="width:30%;height:30%;" class="img-thumbnail rimage1" src="@Model.ImageLink" />
+                        </div>
+                    </div>
+                }
+
+                <div class="form-group">
+                    <label>Số lượt xem</label>
+                    @Html.TextBoxFor(x => x.TotalOfViews, new
+                    {
+                        @class = "form-control",
+                        @type = "number",
+                    })
+                </div>
+                <div class="form-group">
+                    <h3>Mô tả</h3>
+                    @Html.TextAreaFor(x => x.StudentDescription, new { @type = "text", @class = "form-control", @rows = "6" })
+                </div>
+                <div style="padding-left:0px;width:100%;margin-top:30px;margin-bottom:20px">
+                    <a class="btn btn-primary" data-toggle="modal" href="#confirm-modal">Cập nhật</a>
+                    <a href="@Url.Action("ManageStudent", "StudentAdmin")" class="btn btn-default" style="height:34px;width:86.75px">Đóng</a>
+                </div>
+
+               <!-- /.modal -->
+                <div class="modal fade bs-modal-lg" id="confirm-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">Confirm Dialog</h4>
+                            </div>
+                            <div class="modal-body">
+                                Bạn có muốn sửa học viên này không ?
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn default" data-dismiss="modal">Hủy</button>
+                                <button onclick="submit" class="btn blue" id="btn-update">Xác nhận</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $("#ava").change(function () {
+            readURL(this, '.rimage');
+        });
+        $("#ava1").change(function () {
+            readURL(this, '.rimage1');
+        });
+    </script>
+    <script>
+        $('input[name=checkbox1]').on('click', function () {
+            if ($(this).is(':checked')) {
+                $('input[name=ImageThumbnailNew]').fadeOut('fast');
+                $('#div2').fadeIn('fast');
+            }
+            else {
+                $('#div2').fadeOut('fast');
+                $('input[name=ImageThumbnailNew]').fadeIn('fast');
+            }
+        })
+        $('input[name=ImageThumbnailNew]').on('keydown', function (e) {
+
+            if (e.which == 13) {
+                e.preventDefault();
+                var link = $(this).val();
+                $('.rimage').attr('src', link);
+            }
+        })
+    </script>
+    <script>
+        $('input[name=checkbox2]').on('click', function () {
+            if ($(this).is(':checked')) {
+                $('input[name=ImageLinkNew]').fadeOut('fast');
+                $('#div4').fadeIn('fast');
+            }
+            else {
+                $('#div4').fadeOut('fast');
+                $('input[name=ImageLinkNew]').fadeIn('fast');
+            }
+        })
+        $('input[name=ImageLinkNew]').on('keydown', function (e) {
+
+            if (e.which == 13) {
+                e.preventDefault();
+                var link = $(this).val();
+                $('.rimage1').attr('src', link);
+            }
+        })
+    </script>
+}

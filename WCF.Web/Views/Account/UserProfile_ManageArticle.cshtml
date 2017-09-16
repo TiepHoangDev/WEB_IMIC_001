@@ -1,0 +1,105 @@
+﻿@using WCF.BusinessObjectsLayer.EntityObjects;
+@using WCF.BusinessObjectsLayer.Commons;
+@using WCF.Web.App_Start
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.TechArticleObject>
+@{
+    AccountObject account = new AccountObject();
+    if (CommonConstants.SESSION_ACCOUNT != null)
+    {
+        account = (AccountObject)Session[CommonConstants.SESSION_ACCOUNT];
+    }
+    else
+    {
+        account = null;
+    }
+}
+<div>
+    <table class="table table-striped table-bordered table-hover dataTable" id="article-table">
+        <thead>
+            <tr class="uppercase">
+                <th style="text-align:center">
+                    TÊN BÀI VIẾT
+                </th>
+                <th style="width:180px;text-align:center">
+                    NGÀY ĐĂNG
+                </th>
+                <th style="text-align:center">
+                    LƯỢT XEM
+                </th>
+                <th style="text-align:center">
+                    LƯỢT CHIA SẺ
+                </th>
+                <th style="text-align:center">
+                    LIKE
+                </th>
+                <th style="text-align:center">
+                    COMMENT
+                </th>
+                @if (account != null && ViewBag.AccountID == account.AccountId)
+                {
+                    <th style="text-align:center">
+                        TRẠNG THÁI
+                    </th>
+                }
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (item.isApproved == true)
+                {
+                    <td>
+                        <a href="@Url.RouteUrl("tech-detail", new
+                        {
+                            codeNumber = item.ArticleCodeNumber,
+                            PostName = StringHelpers.ToAscii(item.ArticleTitle)
+                        })" class="primary-link" target="_blank">@item.ArticleTitle</a>
+                    </td>
+                }
+                else
+                {
+                    <td>@item.ArticleTitle</td>
+                }
+                <td style="text-align:center">
+                    @item.ModifiedTime.ToString("yyyy/MM/dd HH:mm:ss")
+                </td>
+                <td style="text-align:right">
+                    @item.TotalOfViews.ToString("n0")
+                </td>
+                <td style="text-align:right">
+                    @item.TotalOfLinks.ToString("n0")
+                </td>
+                <td style="text-align:right">
+                    @item.TotalOfLikes.ToString("n0")
+                </td>
+                <td style="text-align:right">
+                    @item.TotalOfReplies.ToString("n0")
+                </td>
+                @if (account != null && ViewBag.AccountID == account.AccountId)
+                {
+                    <td style="text-align:center">
+                        @if (item.isApproved == true && item.isDeleted != true)
+                        {
+                            <span class="label label-success">
+                                Đã được duyệt
+                            </span>
+                        }
+                        else if (item.isApproved == false && item.isDeleted != true)
+                        {
+                            <span class="label label-warning">
+                                Đang chờ duyệt
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="label label-danger">
+                                Đã xóa
+                            </span>
+                        }
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</div>
+

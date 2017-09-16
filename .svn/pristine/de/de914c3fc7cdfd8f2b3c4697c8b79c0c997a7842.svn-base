@@ -1,0 +1,60 @@
+﻿@using Microsoft.Ajax.Utilities
+@using WCF.BusinessObjectsLayer.EntityObjects
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.IntroduceMissionObject>
+@{
+    Layout = null;
+}
+
+@for (int i = 0; i < 3; i++)
+{
+    IntroduceMissionObject objIM = Model.ElementAt(i);
+    string bgdesktop = "";
+    string content = "";
+    <!--Đặt viền cho khung service-->
+    switch (i)
+    {
+        case 0:
+            {
+                bgdesktop = "bg-green-desktop";
+                content = "content-green";
+                break;
+            }
+        case 1:
+            {
+                bgdesktop = "bg-orange-desktop";
+                content = "content-orange";
+                break;
+            }
+        case 2:
+            {
+                bgdesktop = "bg-blue-desktop";
+                content = "content-blue";
+                break;
+            }
+    }
+
+    <div id="@bgdesktop" class="col-sm-4 col-md-4 col-lg-4">
+        <h4><strong>@objIM.Title</strong></h4>
+        <div id="@content" class="col-xs-12">
+            <p>
+                @if (!string.IsNullOrEmpty(objIM.Content1))
+                {
+                    @Html.Raw(objIM.Content1)
+                    <br>
+                }
+                @if (!string.IsNullOrEmpty(objIM.Content2))
+                {
+                    @Html.Raw(objIM.Content2)
+                    <br>
+                }
+                @if (!string.IsNullOrEmpty(objIM.Content3))
+                {
+                    @Html.Raw(objIM.Content3)
+                    <br>
+                }
+
+            </p>
+        </div>
+        <a class="btn-go" href="@objIM.Link"></a>
+    </div>
+}

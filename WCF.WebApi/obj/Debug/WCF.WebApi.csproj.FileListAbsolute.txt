@@ -1,0 +1,16 @@
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.WebApi\bin\WCF.WebApi.dll.config
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.WebApi\bin\WCF.WebApi.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.WebApi\bin\WCF.WebApi.pdb
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.WebApi\bin\EntityFramework.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.WebApi\bin\EntityFramework.SqlServer.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.WebApi\bin\WCF.BusinessControlLayer.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.WebApi\bin\WCF.BusinessObjectsLayer.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.WebApi\bin\WCF.DataAccessLayer.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.WebApi\bin\WCF.BusinessControlLayer.pdb
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.WebApi\bin\WCF.BusinessObjectsLayer.pdb
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.WebApi\bin\EntityFramework.xml
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.WebApi\bin\EntityFramework.SqlServer.xml
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.WebApi\bin\WCF.DataAccessLayer.pdb
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.WebApi\obj\Debug\WCF.WebApi.csprojResolveAssemblyReference.cache
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.WebApi\obj\Debug\WCF.WebApi.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.WebApi\obj\Debug\WCF.WebApi.pdb

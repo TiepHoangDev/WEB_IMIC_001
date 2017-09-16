@@ -1,0 +1,91 @@
+﻿@{
+    Layout = null;
+}
+@model WCF.BusinessObjectsLayer.EntityObjects.LoginObject
+
+<div class="modal fade" id="dangnhap">
+    <div class="modal-dialog login">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Đăng Nhập</h4>
+            </div>
+            <div class="modal-body">
+                <a class="btn btn-block btn-social btn-facebook" href="@Url.Action("LoginFacebook", "Account")">
+                    <i class="fa fa-facebook"></i> Đăng nhập bằng Facebook
+                </a>
+                <a class="btn btn-block btn-social btn-google orange" href="@Url.Action("LoginGoogle", "Account")" style="background-color: orange; color: white;">
+                    <i class="fa fa-google"></i> Đăng nhập bằng Google
+                </a>
+                <div class="box-line">
+                    <span>Hoặc</span>
+                </div>
+                @*<form role="form">*@
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                {
+                    <fieldset>
+                        <span id="errorMess" class="text-danger">
+
+                        </span>
+                        @*@Html.ValidationSummary(false, "", new {@class = "text-danger"})*@
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @placeholder = "Tên đăng nhập...", @autofocus = "true" })
+                            @*<input class="form-control" placeholder="Tên đăng nhập..." name="email" type="email" autofocus>*@
+                        </div>
+                        <div class="form-group">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Mật khẩu..." })
+                            @*<input class="form-control" placeholder="Mật khẩu" name="password" type="password" value="">*@
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input id="RememberMe" name="remember" type="checkbox">Ghi nhớ
+                            </label>
+                            <a href="#" class="pull-right">Quên mật khẩu?</a>
+                        </div>
+                        <div class="form-group margintop30">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                            <button id="btnSubmitLogin" type="button" class="btn btn-primary pull-right">Đăng Nhập</button>
+                        </div>
+                    </fieldset>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="~/Content/js/jquery-1.11.0.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#btnSubmitLogin').click(function () {
+            var username = $('#Username').val();
+            var password = $('#Password').val();
+            //var isRemember = $('#RememberMe').val();
+            
+            $.ajax({
+                type: 'post',
+                url: '@Url.Action("Login", "Account")',
+                data: { Username: username, Password: password },
+                dataType: 'json',
+                success: function (data) {
+                    $('#errorMess').empty();
+                    switch (data.rs) {
+                        case 1:
+                            // Đăng nhập thành công
+                            location.reload();
+                            break;
+                        case 0:
+                            $('#errorMess').append('Tài khoản không tồn tại!');
+                            break;
+                        case -2:
+                            $('#errorMess').append('Mật khẩu không đúng!');
+                            break;
+                        default:
+                            $('#errorMess').append('Đăng nhập thất bại!');
+                            break;
+                    }
+                    //debugger;
+                }
+            });
+        });
+    });
+</script>

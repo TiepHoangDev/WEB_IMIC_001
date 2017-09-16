@@ -1,0 +1,11 @@
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.BusinessControlLayer\bin\Debug\WCF.BusinessControlLayer.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.BusinessControlLayer\bin\Debug\WCF.BusinessControlLayer.pdb
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.BusinessControlLayer\bin\Debug\WCF.BusinessObjectsLayer.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.BusinessControlLayer\bin\Debug\WCF.DataAccessLayer.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.BusinessControlLayer\bin\Debug\EntityFramework.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.BusinessControlLayer\bin\Debug\WCF.BusinessObjectsLayer.pdb
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.BusinessControlLayer\bin\Debug\WCF.DataAccessLayer.pdb
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.BusinessControlLayer\bin\Debug\EntityFramework.xml
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.BusinessControlLayer\obj\Debug\WCF.BusinessControlLayer.csprojResolveAssemblyReference.cache
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.BusinessControlLayer\obj\Debug\WCF.BusinessControlLayer.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.BusinessControlLayer\obj\Debug\WCF.BusinessControlLayer.pdb

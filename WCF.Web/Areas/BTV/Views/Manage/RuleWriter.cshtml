@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Quy tắc viết bài";
+    Layout = "~/Areas/BTV/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model WCF.BusinessObjectsLayer.EntityObjects.RuleWritingObject
+<div class="form-body">
+    
+
+    <p> @Html.Raw(HttpUtility.HtmlDecode(Model.Content)) </p>
+</div>

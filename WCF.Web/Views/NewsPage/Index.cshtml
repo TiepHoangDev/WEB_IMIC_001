@@ -1,0 +1,180 @@
+﻿@{
+    ViewBag.Title = "TIN TỨC LẬP TRÌNH";
+    Layout = "~/Views/NewsPage/_LayoutNews.cshtml";
+    ViewBag.description = "iMic - Nơi đào tạo lập trình viên hàng đầu Việt Nam. Cơ hội tiếp cận môi trường làm dự án tại các Công ty, trau dồi kinh nghiệm lập trình cùng các chuyên gia, giảng viên nhiều năm kinh nghiệm.";
+    ViewBag.image = "http://imic.edu.vn/Images/Shortcut.jpg";
+}
+
+<div class="main" style="min-height: 400px; padding-bottom: 100px;" oncopy="return false" oncut="return false" onpaste="return false" oncontextmenu="return false">
+    <div class="row content_tintuc">
+        <div id="news-list" class="col-xs-12">
+            @Html.Action("Index_MoreArticle", new { newsCategoryId = @ViewBag.newsCategoryId })
+
+        </div>
+
+        <div class="clear"></div>
+        <div class="col-lg-12">
+            <img id="loader-img" alt="" src="~/Content/Galleries/SharedIcons/loading.gif" style="display: none; position: relative; left: 400px; bottom: 233px;" />
+            <button class="bt-bts" onclick=" loadMore() ">Tôi muốn xem thêm nhiều tin bài hơn nữa !!!</button>
+        </div>
+    </div>
+</div>
+<input id="newsCategoryId" type="hidden" name="newsCategoryId" value="@ViewBag.newsCategoryId" />
+@section NewsScripts
+{
+    @*<script>
+        var NewsCategoryId = null;
+        var pageindex = 1;
+        function loadMore() {
+            if (NewsCategoryId == null) {
+                var page = pageindex;
+                $('#loader-img').show(0);
+                $.ajax({
+                    url: '@Url.Action("Index_MoreArticle", "NewsPage")?pageSize=8&pageIndex=' + page,
+                    type: 'get'
+                }).success(function (response) {
+                    debugger
+                    var parsed = $.parseHTML(response);
+                    var result = $(parsed).find(".item");
+                    if (result.length == 0) {
+                        $('.bt-bts').hide(0);
+                    }
+                    else {
+                        $('#news-list').append(parsed);
+                        pageindex = pageindex + 1;
+                    }
+                    $('#loader-img').hide(0);
+                });
+            } else {
+                var page = pageindex;
+                $.ajax({
+                    url: '@Url.Action("Search_NewsCategory", "News")?NewsCategoryId=' + NewsCategoryId + '&pageSize=8&pageIndex=' + page,
+                    type: 'get',
+
+                }).success(function (response) {
+                    var parsed = $.parseHTML(response);
+                    var result = $(parsed).find(".item");
+                    if (result.length != 0) {
+                        var $boxHtml = parsed;
+                        $("#news-list").append(response);
+                        pageindex = pageindex + 1;
+
+                    } else {
+                        $('.bt-bts').hide(0);
+                    }
+                }).fail(function () {
+                    alert('fail');
+                });
+            }
+
+        }
+
+        $('.ava').click(function () {
+            var id = $(this).data("id");
+            NewsCategoryId = id;
+            pageindex = 1;
+
+            $.ajax({
+                url: '@Url.Action("Search_NewsCategory", "News")?NewsCategoryId=' + id + '&pageSize=8&pageIndex=0',
+                type: 'get',
+
+            }).success(function (response) {
+                $('#news-list').empty();
+                var parsed = $.parseHTML(response);
+                var result = $(parsed).find(".item");
+                if (result.length != 0) {
+                    var $boxHtml = parsed;
+                    $("#news-list").append(response);
+                }
+            }).fail(function () {
+                alert('fail');
+            });
+
+            $('.bt-bts').show(0);
+        })
+    </script>*@
+
+    <script>
+
+        var pageindex = 1;
+
+        function loadMore() {
+            var id = $('#newsCategoryId').val();
+            var searchString = $('#searchString').val();
+            var page = pageindex;
+            $('#loader-img').show();
+            $.ajax({
+                url: '@Url.Action("Index_MoreArticle", "NewsPage")',
+                type: 'get',
+                data: { newsCategoryId: id, strSearch: searchString, pageSize: 24, pageindex: page }
+            }).success(function(response) {
+                debugger;
+                var parsed = $.parseHTML(response);
+                var result = $(parsed).find(".item");
+                if (result.length == 0) {
+                    $('.bt-bts').hide();
+                    $('#loader-img').hide();
+                } else {
+                    $('#news-list').append(parsed);
+                    pageindex = pageindex + 1;
+                    $('#loader-img').hide();
+                }
+
+            });
+        }
+    </script>
+    <script>
+        //prevent copy
+        $(document).keydown(function (event) {
+            if (event.keyCode == 123) {
+                return false; //Prevent f12
+            }
+            else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+                return false;  //Prevent from ctrl+shift+i
+            }
+        });
+        //end prevent copy
+    </script>
+@*<script>
+
+    var pageindex = 1;
+    function searchByTitle (){
+        var searchString = $('#searchString').val();
+        var page = pageindex;
+        $('#loader-img').show(0);
+        $.ajax({
+            url: '@Url.Action("Index_MoreArticle", "NewsPage")',
+            type: 'get',
+            data: { strSearch: searchString, pageSize: 8, pageindex: page }
+        }).success(function (response) {
+            debugger
+            var parsed = $.parseHTML(response);
+            var result = $(parsed).find(".item");
+            if (result.length == 0) {
+                $('.bt-bts').hide(0);
+            }
+            else {
+                $('#news-list').append(parsed);
+                pageindex = pageindex + 1;
+            }
+            $('#loader-img').hide(0);
+        });
+    }
+</script>*@
+
+            @*<script>
+                $(document).ready(function () {
+                    $(".bt-bts").click(function () {
+                        $(".ViewBag").hide();
+                    });
+                });
+            </script>
+
+    <script>
+        $(document).ready(function () {
+            $(".button-onclick").click(function () {
+                $(".ViewBag1").hide();
+            });
+        });
+    </script>*@
+}

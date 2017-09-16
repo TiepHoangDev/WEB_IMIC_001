@@ -1,0 +1,251 @@
+﻿@{
+    ViewBag.Title = "Insert New Video";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@using WCF.BusinessObjectsLayer.EntityObjects
+@model WCF.BusinessObjectsLayer.EntityObjects.VideoObject
+<style>
+    .alert-tag {
+        color: red;
+    }
+
+    .tag-group {
+        float: left;
+        vertical-align: central;
+    }
+
+    .post-tag {
+        border-radius: 5px;
+        float: left;
+        margin-left: 5px;
+        height: 28px;
+        line-height: 28px;
+        padding-left: 5px;
+        padding-right: 5px;
+        color: #33658a;
+        vertical-align: middle;
+        background-color: #cee0ed;
+    }
+
+    .delete-tag {
+        width: 14px;
+        height: 14px;
+        vertical-align: middle;
+        display: inline-block;
+        background-position: -40px -319px;
+        cursor: pointer;
+        margin-left: 3px;
+        margin-top: -2px;
+        margin-bottom: -1px;
+    }
+
+    #tag-editor {
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 4px;
+        width: 100%;
+        padding: 3px;
+    }
+
+        #tag-editor input {
+            border: none;
+        }
+</style>
+<div id="add-video-category" style="padding-bottom:20px; width:100%">
+    <div class="portlet light">
+        <div class="portlet-body" style="padding-top:0px">
+            @using (Html.BeginForm("Video_Insert", "VideoAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="form-group">
+                    <h3>Danh mục video</h3>
+                    @{
+                        var lisCategory = ViewBag.CategoryList;
+                        List<SelectListItem> listItem = new List<SelectListItem>();
+                        foreach (var item in lisCategory)
+                        {
+                            listItem.Add(new SelectListItem()
+                            {
+                                Value = "" + item.VideoCategoryId,
+                                Text = item.VideoCategoryName
+                            });
+                        }
+                    }
+                    @Html.DropDownListFor(m => m.VideoCategoryId, listItem, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <h3>Tên video</h3>
+                    @Html.TextBoxFor(m => m.VideoName, new { @type = "text", @class = "form-control", id = "videoName" })
+                </div>
+                <h5 style="color:red; font-weight:bold; display:none" class="name_warning">Tên video không được phép trống.</h5>
+
+                <div class="form-group">
+                    <h3>Liên kết video với youtube</h3>
+                    @Html.TextBoxFor(m => m.VideoLink, new { @type = "text", @class = "form-control" })
+                </div>
+                <h5 style="color:red; font-weight:bold; display:none" class="link_warning">Liên kết không được phép trống hoặc có khoảng trắng.</h5>
+                
+                <div class="form-group">
+                    <h3>Ảnh video</h3>
+                    @Html.TextBoxFor(m => m.VideoThumbnail, new { type = "file", name = "VideoThumbnail", id = "thumbnail" })
+                    <div style="margin-top:15px;">
+                        <img style="width:30%;height:30%;" class="img-thumbnail rimage" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h3>Chỉ định người đăng</h3>
+                    @{
+                        var lisAccount = ViewBag.EditorList;
+                        if (lisAccount != null)
+                        {
+                            List<SelectListItem> listAccount = new List<SelectListItem>();
+                            foreach (var item in lisAccount)
+                            {
+                                listAccount.Add(new SelectListItem()
+                                {
+                                    Value = "" + item.AccountId,
+                                    Text = item.FullName
+                                });
+                            }
+                            @Html.DropDownListFor(m => m.CreatedBy, listAccount, new { @class = "form-control" })
+                        }
+                    }
+                </div>
+                <div class="form-group">
+                    <h3>Tổng lượt xem</h3>
+                    @Html.TextBoxFor(m => m.TotalOfViews, new { @type = "number", @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <h3>Số lượng thích</h3>
+                    @Html.TextBoxFor(m => m.TotalOfLikes, new { @type = "number", @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <h3>Số lượng không thích</h3>
+                    @Html.TextBoxFor(m => m.TotalOfDislikes, new { @type = "number", @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <h3>Mô tả</h3>
+                    @Html.TextAreaFor(m => m.VideoDescription, new { @type = "text", @class = "form-control", @rows = "6" })
+                </div>
+
+                List<VideoTagObject> lstTag = (List<VideoTagObject>)ViewBag.TagList;
+
+                <div class="form-group">
+                    <h4>&nbsp;Gắn tag cho bài viết</h4>
+                    <div style="width:100%;padding:10px;border:1px solid #999">
+                        @foreach (var item in lstTag)
+                        {
+                            <div class="col-xs-4">
+                                <input type="checkbox" name="oldtag" value="@item.VideoTagId" />@item.VideoTagName
+                            </div>
+                        }
+                        <div style="clear:both"></div>
+                        <label style="margin-top:10px">Thêm tag mới</label>
+                        <h4 style="color:#00cc00">Gõ tag và ấn Enter để thêm tag mới</h4>
+                        <h4 class="alert-tag"></h4>
+                        <div style="width:100%" id="tag-editor">
+                            <span class="tag-group">
+
+                            </span>
+                            <input type="text" name="newtag" style="float:left" class="form-control" />
+                            <div style="clear:both"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="padding-left:0px;width:100%;margin-top:30px;margin-bottom:20px">
+                    <a class="btn btn-primary" data-toggle="modal" href="#confirm-modal">Cập nhật</a>
+                    <a href="@Url.Action("Manage_Video", "VideoAdmin", new { vcCodeNumber = 0 })" class="btn btn-default" style="height:34px;width:86.75px">Đóng</a>
+                </div>
+
+                <!-- /.modal -->
+                <div class="modal fade bs-modal-lg" id="confirm-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">Confirm Dialog</h4>
+                            </div>
+                            <div class="modal-body">
+                                Bạn có muốn đăng video này không ?
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn default" data-dismiss="modal">Hủy</button>
+                                <button onclick="submit" class="btn blue" id="btn-update" disabled>Xác nhận</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $("#thumbnail").change(function () {
+            readURL(this, '.rimage');
+        });
+    </script>
+
+    <script>
+        $('#videoName').on('change', function (e) {
+            var name = $('#videoName').val();
+            if (name == null || name.trim() === '') {
+                $('.name_warning').show();
+                $('#btn-update').attr("disabled", true);
+            }
+            else {
+                $('.name_warning').hide();
+                $('#btn-update').attr("disabled", false);
+            }
+        });
+    </script>
+
+    <script>
+        $(document).on("keydown", "input", function (e) {
+            if (e.which == 13) e.preventDefault();
+        });
+        $('input[name=newtag]').on('keyup', function (e) {
+            if (e.keyCode == 13) {
+                var input = $(this);
+                var query = $(this).val();
+                if (String(query).trim().length > 0) {
+                    $.ajax({
+                        url: '@Url.Action("VideoTag_CheckName", "VideoAdmin")',
+                        data: { TagName: query },
+                        type: 'post',
+                        success: function (response) {
+                            if (response.rs == 'fail') {
+                                $('.alert-tag').fadeIn('fast');
+                                $('.alert-tag').html('Tag ' + query + ' đã bị trùng');
+                                $(input).val('');
+                            }
+                            else {
+                                $('.tag-group').append('<span class="post-tag">' + query + '<span class="delete-tag fa fa-times"></span>'
+                                    + '<input name=newtaglist value="' + query + '" type="hidden">'
+                                    + '</span>');
+
+                                var width = $('.tag-group').width();
+                                $(input).css('width', 'calc(100% - ' + width + 'px)');
+                                $(input).val('');
+                                $('.alert-tag').fadeOut('fast');
+                            }
+                        }
+                    })
+                }
+            }
+
+        });
+        $(document).on("click", ".delete-tag", function () {
+            $(this).parent().remove();
+
+        });
+    </script>
+}
+
+

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.IntroduceServiceObject>
+@{
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+    <li class="col-lg-3 col-md-6 col-sm-12">
+        <a href="#">
+
+            <img style="height: 120px" src="~/Content/Galleries/Introduce/Services/@item.ServiceImage" />
+
+            <h4 href="@item.LinkToService">@item.ServiceName</h4>
+            @if (!String.IsNullOrEmpty(@item.Content1))
+            {
+                @item.Content1
+                <br>
+            }
+            @if (!String.IsNullOrEmpty(@item.Content2))
+            {
+                @item.Content2
+                <br>
+            }
+            @if (!String.IsNullOrEmpty(@item.Content3))
+            {
+                @item.Content3
+                <br>
+            }
+            @if (!String.IsNullOrEmpty(@item.Content4))
+            {
+                @item.Content4
+                <br>
+            }
+            
+            
+        </a>
+    </li>
+}
+

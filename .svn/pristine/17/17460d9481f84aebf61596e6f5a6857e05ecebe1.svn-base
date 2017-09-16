@@ -1,0 +1,146 @@
+﻿@using WCF.BusinessObjectsLayer.EntityObjects;
+@using WCF.Web.App_Start
+@{
+    ViewBag.Title = "Quản lý bài học";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.LessonObject>
+<style>
+    th {
+        text-align: center !important;
+    }
+
+    td {
+        text-align: center !important;
+    }
+</style>
+<div id="manage-lesson" class="col-xs-12">
+    <div class="portlet box red-intense">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-video-camera"></i>   Quản lý bài học
+            </div>
+            <div class="tools">
+
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="col-xs-12" style="float:none">
+                <div style="padding-bottom:10px;">
+                    <a class="btn btn-primary btn-sm" style="margin-top:10px;" href="@Url.Action("Lesson_Insert", "LessonAdmin")">
+                        Thêm mới
+                        <span class="fa fa-plus" style="padding-left:6px;"></span>
+                    </a>
+                </div>
+                <div class="col-xs-12" style="padding-bottom:20px;padding-left:0px">
+                    <h4 style="margin-top:10px;">Chọn danh mục :</h4>
+                    @{
+                        List<LessonCategoryObject> lstCategory = (List<LessonCategoryObject>)ViewBag.LessonCategoryList;
+                        <select class="form-control input-inline" id="selectCategory">
+                            <option value="0">Tất cả</option>
+                            @foreach (var category in lstCategory)
+                            {
+                                if (category.LessonCategoryId == ViewBag.LessonCategoryId)
+                                {
+                                    <option selected value="@category.LessonCategoryId">@category.CategoryName</option>
+                                }
+                                else
+                                {
+                                    <option value="@category.LessonCategoryId">@category.CategoryName</option>
+                                }
+                            }
+                        </select>
+                    }
+                </div>
+
+                <table class="table table-striped table-bordered table-hover" id="lesson-table">
+                    <thead>
+                        <tr role="row">
+                            <th>Mã bài học</th>
+                            <th>Tên</th>
+                            <th>Hình ảnh</th>
+                            <th>Lượt xem</th>
+                            <th>Lượt thích</th>
+                            <th>Thứ tự</th>
+                            <th>Rank tổng hợp</th>
+                            <th>Người tạo</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.LessonCode</td>
+                                <td>@item.LessonName</td>
+                                @if (@item.ImageFlag == false)
+                                {
+                                    <td><img width="100 " height="100" src="@item.SeoImage"/></td>
+                                }
+                                else
+                                {
+                                    <td><img width="100 " height="100" src="~/Content/Galleries/Lesson/Lesson/@item.SeoImage"/></td>
+                                }
+                                
+                                <td>@item.TotalOfView.ToString("n0")</td>
+                                <td>@item.TotalOfLike.ToString("n0")</td>
+                                <td>@item.Rank</td>
+                                <td>@item.TotalRank</td>
+                                <td>@item.objAccount.Username</td>
+                                <td>
+                                    <a href="@Url.Action("Lesson_Update", "LessonAdmin", new { LessonId = item.LessonId })" class="btn btn-info">Sửa</a>
+                                    <a onclick="Delete('@item.LessonId','@item.LessonName',event)" class="btn btn-danger">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script>
+    $(document).ready(function () {
+        $('#lesson-table').dataTable();
+    });
+
+    $('#selectCategory').on('change', function (e) {
+        var optionSelected = $("option:selected", this);
+        var valueSelected = this.value;
+        $.ajax({
+            url: "@Url.Action("Manage_Lesson", "LessonAdmin")",
+                type: "get",
+                data: { LessonCategoryId: valueSelected },
+                success: function (data) {
+                    $('body').html(data);
+                }
+            })
+        })
+
+        function Delete(id, name, event) {
+            var sender = event.currentTarget;
+            var answer = confirm("Bạn có muốn xóa bài học: " + name + " ? (Tất cả chi tiết bài học cũng sẽ bị xóa)");
+            if (answer) {
+                $.ajax({
+                    url: '@Url.Action("Lesson_Delete", "LessonAdmin")',
+                    data: { LessonId: id },
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        if (!data.result) {
+                            alert(data.message);
+                        } else {
+                            $(sender).closest("tr").remove();
+                            alert(data.message);
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+}
+

@@ -1,0 +1,100 @@
+﻿@using WCF.BusinessObjectsLayer.Commons
+@using WCF.BusinessObjectsLayer.EntityObjects
+@using WCF.Web.App_Start
+@{
+    Layout = null;
+}
+
+<!-- header -->
+<div class="navbar-header navbar navbar-default navbar-fixed" role="navigation" style="margin-bottom: 0;">
+    <div class="header">
+        <div class=" navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                <span class="logo"><font>I</font>MICROSOFT</span> <span class="suptext"><font> |</font> &nbsp; Khởi nguồn thành công</span>
+            </a>
+
+
+            <div class="right-header">
+
+                @{
+                        var objAccount = (AccountObject)Session[CommonConstants.SESSION_ACCOUNT];
+                        if (objAccount != null)
+                        {
+                            <a href="@Url.Action("LogOut","Account")" class="bt-small dk-bg" style="background-color:red;float:right">Đăng xuất</a>
+                            <div class="text-hotline" style="float:right">
+                                Hotline :
+                                <font>043.7557.666</font>
+                            </div>
+
+                            <p style="width:100%;text-align:right;float:left;margin-top:5px;font-size:17px">Xin chào 
+                                <a href="@Url.RouteUrl("user-profile", new { username = objAccount.Username })">
+                                    <span style="color:royalblue;font-weight:bold">@objAccount.FullName</span>
+                                </a>
+                            </p>
+                        }
+                        else
+                        {
+                            <div class="text-hotline">
+                                Hotline :
+                                <font>043.7557.666</font>
+                            </div>
+                            <a href="#" class="bt-small dk-bg" data-toggle="modal" data-target="#dangky">Đăng ký</a>
+                            <a class="bt-small dn-bg" data-toggle="modal" data-target="#dangnhap">Đăng Nhập</a>
+                        }
+                    }
+            </div>
+
+
+        </div>
+    </div>
+    <!-- menu -->
+    <div class="navbar-default sidebar " role="navigation">
+        <div class="sidebar-nav navbar-collapse  navi">
+            <ul style="max-width: 880px" class="nav" id="side-menu">
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "IntroducePage")">GIỚI THIỆU</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "NewsPage")">TIN TỨC</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "TrainingPage")">ĐÀO TẠO</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "ClassPage")">KHAI GIẢNG</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "TechPage")">CÔNG NGHỆ</a>
+                </li>                
+                @*<li>
+                    <a href="@Url.Action("Index_new", "LessonPage")">KIẾN THỨC</a>
+                </li>*@  
+                @*<li>
+                   <a href="@Url.RouteUrl("video-category", new { vcCodeNumber = 0, catname = StringHelpers.ToAscii("Xem tất cả") })">VIDEO</a>
+
+                </li>*@
+                
+                <li>
+                    <a href="@Url.Action("Index", "RecruitPage")">TUYỂN DỤNG</a>
+                </li>
+                @*<li>
+                    <a href="@Url.Action("Academy", "VideoPage")">HỌC VIỆN</a>
+
+                </li>*@
+                <li>
+                    <a href="@Url.Action("Index", "ContactPage")">LIÊN HỆ</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.sidebar-collapse -->
+    </div>
+</div>

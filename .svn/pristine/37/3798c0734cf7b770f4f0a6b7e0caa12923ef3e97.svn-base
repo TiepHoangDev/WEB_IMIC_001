@@ -1,0 +1,857 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6E31546C-5BB0-4493-956B-5A04BAFDC3B0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WCF.DataAccessLayer</RootNamespace>
+    <AssemblyName>WCF.DataAccessLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Daos\AccountDao.cs" />
+    <Compile Include="Daos\ArticleTagDao.cs" />
+    <Compile Include="Daos\ArticleTagDetailDao.cs" />
+    <Compile Include="Daos\BannerDao.cs" />
+    <Compile Include="Daos\BaseModel.cs" />
+    <Compile Include="Daos\BoxBellowDao.cs" />
+    <Compile Include="Daos\ClassDao.cs" />
+    <Compile Include="Daos\ClassSessionDetailDao.cs" />
+    <Compile Include="Daos\ClassSessionLogAbsentDao.cs" />
+    <Compile Include="Daos\ClassWeekDayDao.cs" />
+    <Compile Include="Daos\ClassShiftDao.cs" />
+    <Compile Include="Daos\ClassDetailDao.cs" />
+    <Compile Include="Daos\ClassSessionLogDao.cs" />
+    <Compile Include="Daos\CommentDao.cs" />
+    <Compile Include="Daos\CommentLikeDao.cs" />
+    <Compile Include="Daos\CommentReplyDao.cs" />
+    <Compile Include="Daos\CommentReplyLikeDao.cs" />
+    <Compile Include="Daos\ContactDao.cs" />
+    <Compile Include="Daos\FacebookUserLikedDao.cs" />
+    <Compile Include="Daos\IntroduceEduProgramDao.cs" />
+    <Compile Include="Daos\JobObjectDao.cs" />
+    <Compile Include="Daos\LessonCategoryDAO.cs" />
+    <Compile Include="Daos\LessonDAO.cs" />
+    <Compile Include="Daos\LessonDao_Alt.cs" />
+    <Compile Include="Daos\LessonDetailDAO.cs" />
+    <Compile Include="Daos\LessonDetailLikeDAO.cs" />
+    <Compile Include="Daos\LessonDetailTagDAO.cs" />
+    <Compile Include="Daos\LessonDetailTagDetailDAO.cs" />
+    <Compile Include="Daos\LocationDao.cs" />
+    <Compile Include="Daos\NewsletterTagDAO.cs" />
+    <Compile Include="Daos\NewsletterTagDetailDAO.cs" />
+    <Compile Include="Daos\OpenClassDao.cs" />
+    <Compile Include="Daos\CourseDao.cs" />
+    <Compile Include="Daos\CourseTechnologyDao.cs" />
+    <Compile Include="Daos\DemoProjectDao.cs" />
+    <Compile Include="Daos\ExperiencerDao.cs" />
+    <Compile Include="Daos\IntroduceMissionDao.cs" />
+    <Compile Include="Daos\IntroducePageDao.cs" />
+    <Compile Include="Daos\IntroduceBannerDao.cs" />
+    <Compile Include="Daos\IntroducePartnerDao.cs" />
+    <Compile Include="Daos\IntroduceServiceDao.cs" />
+    <Compile Include="Daos\MenuDao.cs" />
+    <Compile Include="Daos\NewsCategoryDao.cs" />
+    <Compile Include="Daos\NewsDao.cs" />
+    <Compile Include="Daos\OpenClassPageDao.cs" />
+    <Compile Include="Daos\ProposeDao.cs" />
+    <Compile Include="Daos\RecJobDao.cs" />
+    <Compile Include="Daos\RecruitmentBannerDao.cs" />
+    <Compile Include="Daos\RecruitmentCompanyDAO.cs" />
+    <Compile Include="Daos\RecruitmentGalleryImageDao.cs" />
+    <Compile Include="Daos\RecruitmentNewsLetterDAO.cs" />
+    <Compile Include="Daos\RecruitmentTitleDao.cs" />
+    <Compile Include="Daos\RegisterDetailDao.cs" />
+    <Compile Include="Daos\RegisterPersonDao.cs" />
+    <Compile Include="Daos\RoleDao.cs" />
+    <Compile Include="Daos\RuleWritingDao.cs" />
+    <Compile Include="Daos\SourcePageDao.cs" />
+    <Compile Include="Daos\StudentGaleryDao.cs" />
+    <Compile Include="Daos\TagDao.cs" />
+    <Compile Include="Daos\TagDetailDao.cs" />
+    <Compile Include="Daos\TagNewsDao.cs" />
+    <Compile Include="Daos\TechArticleDao.cs" />
+    <Compile Include="Daos\TechArticleLikeDao.cs" />
+    <Compile Include="Daos\TechBannerDao.cs" />
+    <Compile Include="Daos\TechCategoryDao.cs" />
+    <Compile Include="Daos\TechCmtReplyDao.cs" />
+    <Compile Include="Daos\TechCommentDao.cs" />
+    <Compile Include="Daos\TechCommentLikeDao.cs" />
+    <Compile Include="Daos\TechLinkDao.cs" />
+    <Compile Include="Daos\TechLogoDao.cs" />
+    <Compile Include="Daos\TechRightDao.cs" />
+    <Compile Include="Daos\TrainingBannerDao.cs" />
+    <Compile Include="Daos\TrainingCategoryDao.cs" />
+    <Compile Include="Daos\TrainingPageDao.cs" />
+    <Compile Include="Daos\VideoBannerDao.cs" />
+    <Compile Include="Daos\VideoCategoryDao.cs" />
+    <Compile Include="Daos\VideoCommentDao.cs" />
+    <Compile Include="Daos\VideoCommentLikeDao.cs" />
+    <Compile Include="Daos\VideoCommentReplyDao.cs" />
+    <Compile Include="Daos\VideoCommentReplyLikeDao.cs" />
+    <Compile Include="Daos\VideoDao.cs" />
+    <Compile Include="Daos\VideoLikeDao.cs" />
+    <Compile Include="Daos\VideoSubCategoryDao.cs" />
+    <Compile Include="Daos\VideoTagDao.cs" />
+    <Compile Include="Daos\VideoTagDetailDao.cs" />
+    <Compile Include="Daos\WelcomePageDAO.cs" />
+    <Compile Include="Models\SP_Account_checkUserName_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebIMicModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebIMicModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebIMicModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebIMicModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebIMicModels.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_HOIDAPIT_SP_RegisterDetail_GetbyId_New_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Account_CheckLogin_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Account_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Account_GetByEmail_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Account_GetByFacebookId_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Account_GetByGoogleId_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Account_GetById_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Account_GetByRoleID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Account_GetByUsername_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Baner_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Baner_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_BoxBelow_getAllByCourseId_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_BoxBelow_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_BoxBelow_GetById_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_ClassDetail_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_ClassDetail_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_ClassSessionAbsent_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_ClassSessionAbsent_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_ClassSessionDetail_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_ClassSessionDetail_GetById_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_ClassSessionLog_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_ClassSessionLog_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_ClassShift_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_ClassShift_GetById_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_ClassWeekDay_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_ClassWeekDay_GetById_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Class_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Class_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_CommentReply_GetByCommentId_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_CommentReply_GETBYID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Comment_GetAllByArticleId_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Comment_GETBYID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Contact_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Contact_GetById_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Contact_GetUnseenContact_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_CourseTeacher_getByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_CourseTechnologyDetail_getAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_CourseTechnologyDetail_getByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_CourseTechnology_getAllByCourseId_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_CourseTechnology_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Course_getAllByTrainingCategoryId_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Course_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Course_GetByCodeNumber_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Course_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Course_GetByTCCodeNumber_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_DemoProject_getAllByCourseId_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_DemoProject_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_DemoProject_getByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Experiencer_GetAllByCourseId_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Experiencer_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_FacebookUserLiked_getAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_FacebookUserLiked_getById_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_getUserWhenLogin_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_IntroduceBanner_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_IntroduceEduProgram_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_IntroduceMission_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_IntroducePage_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_IntroducePartner_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_IntroduceService_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_JobObject_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Job_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Job_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonByCategory_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonCategory_GETALL_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonCategory_GETBYID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonDetailLessonAndRank_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonDetailTag_GETALL_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonDetailTag_GETBYID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonDetailTag_GETBYLESSONDETAILID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonDetail_GETALL_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonDetail_GETBYCODE_PrevNext_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonDetail_GETBYCODE_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonDetail_GETBYID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonDetail_GETBYLESSONID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonDetail_GETBYLESSON_CHIEN_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonDetail_GETBYLESSON_PAGING_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonDetail_GETBYLESSON_PAGING_TRUNG_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonDetail_GETBYRank_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonDetail_GETPOPULAR_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonDetail_SearchbyTag_PAGING_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_LessonDetail_SearchbyTitle_PAGING_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Lesson_GETALL_PAGING_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Lesson_GETALL_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Lesson_GETBYCATEGORYID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Lesson_GETBYCATEGORY_CHIEN_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Lesson_GETBYCATEGORY_PAGING_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Lesson_GETBYID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Location_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_MenuCategory_GetAllByWelcomeId_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_NewsCategory_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_NewsCategory_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_NewsletterTagDetail_GETBYNEWS_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_NewsletterTag_GETALL_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_NewsletterTag_GETBYID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_News_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_News_GetByCategoryId_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_News_GetByCodeNumber_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_News_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_News_GetByNCCodeNumber_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_News_SearchByTitle_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_News_TopDetail_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_OpenClassPage_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_OPENCLASS_GetAllByTCCodeNumber_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_OPENCLASS_GetAllByTrainingCatId_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_OPENCLASS_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_OpenClass_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Propose_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Propose_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RecruitmentBanner_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RecruitmentBanner_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RecruitmentCompany_GETALL_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RecruitmentCompany_GETBYID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RecruitmentGalleryImage_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RecruitmentGalleryImage_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RecruitmentNewsLetter_GETALL_PAGING_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RecruitmentNewsLetter_GETALL_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RecruitmentNewsLetter_GETBYCODE_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RecruitmentNewsLetter_GETBYID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RecruitmentNewsLetter_GETPOPULAR_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RecruitmentNewsLetter_GETRELATED_CATEGORY_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RecruitmentNewsLetter_GETRELATED_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RecruitmentTitle_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RegisterDetail_GetAll_NotSeen_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RegisterDetail_GetAll_Seen_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RegisterDetail_GetbyId_New_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RegisterDetail_GetById_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RegisterPerson_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RegisterPerson_GetById_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Role_ByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Role_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_RuleWriting_GEtAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_SourcePage_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_StudentGalery_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_StudentGalery_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TagNews_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TagNews_GetByNewsId_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Tag_GetById_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Tag_GetByMenu_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Tag_GetByPostId_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_tbl_Account_getByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticeTags_getAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticeTags_getByArticle_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticeTags_getByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticeTags_getByName_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetAll_PAGING_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetApprovalInfo_PORTAL_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetByAccountID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetByCategory_PAGING_ALT_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetByCategory_PAGING_ALT_Result1.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetByCategory_PAGING_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetByCategory_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetByCodeNumber_PORTAL_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetByCodeNumber_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetByCodeNumber_Result1.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetByTag_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_getByTitle_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetByUser_PORTAL_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetForViewerByAccountID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetPopularArticle_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetRelatedArticle_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetUnapproved_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechArticle_GetUsers_LikeArticle_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechBanner_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechBanner_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechCategory_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechCategory_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechCommentLike_getByComment_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechCommentReply_getByComment_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechComment_GetByArticle_PAGING_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechComment_GetByArticle_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechComment_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechLink_ByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechLink_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechLogo_ById_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechLogo_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechRight_ByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechRight_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TechTagsDetail_getByArticle_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TrainingBanner_GetToShow_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TrainingCategory_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_TrainingPage_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoBanner_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoCategory_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoCategory_GetById_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoCategory_GetByVCCodeNumber_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoCategory_GetForAdmin_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoCategory_GetForDisplay_PAGING_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoCategory_GetForDisplay_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoCommentReply_GETBYID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoCommentReply_GetByVideoCommentId_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoComment_GetAllByVideoId_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoComment_GETBYID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoComment_GetByVideoId_PAGING_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoSubCategory_GetAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoSubCategory_GetByAccountID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoSubCategory_GetByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoTag_GETALL_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoTag_GETBYID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_VideoTag_GETBYVIDEOCODE_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Video_GetByAccountID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Video_GetById_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Video_GetByVideoCodeNumber_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Video_GetForViewByAccountID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Video_GetForViewByVideoCategoryId_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Video_GetForViewByVideoCategoryNumber_PAGING_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Video_GetForViewByVideoCategoryNumber_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Video_GetForView_GetTop10_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Video_GetForView_PAGING_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Video_GetForView_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Video_GetInvolveVideoForView_PAGING_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Video_GetInvolveVideoForView_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Video_GetPendingVideoByVideoCategoryNumber_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Video_GetPendingVideo_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_Video_GetVideoInPlaylistForView_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_WelcomePage_getAll_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_SP_WelcomePage_getByID_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEB_IMIC_tbl_Account_getEditorAccount_Result.cs">
+      <DependentUpon>WebIMicModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Models\WebIMicModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WebIMicModels.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\WebIMicModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebIMicModels.edmx</DependentUpon>
+      <LastGenOutput>WebIMicModels.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Models\WebIMicModels.edmx.diagram">
+      <DependentUpon>WebIMicModels.edmx</DependentUpon>
+    </None>
+    <None Include="Models\WebIMicModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebIMicModels.edmx</DependentUpon>
+      <LastGenOutput>WebIMicModels.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WCF.BusinessObjectsLayer\WCF.BusinessObjectsLayer.csproj">
+      <Project>{eeb0ee70-bacf-445a-ad3e-61fa9109c0dc}</Project>
+      <Name>WCF.BusinessObjectsLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

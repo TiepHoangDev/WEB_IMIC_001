@@ -1,0 +1,643 @@
+﻿@using WCF.BusinessObjectsLayer.Commons
+@using WCF.BusinessObjectsLayer.EntityObjects
+<!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+<!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+<!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+    @*<li class="start active open">*@
+    @{
+        var objAcc = (AccountObject)Session[CommonConstants.SESSION_ACCOUNT];
+    }
+
+    @if (objAcc.RoleId == 1 || objAcc.RoleId == 0)
+    {
+
+
+        <li class="start">
+            <a href="javascript:;">
+                <i class="icon-loop"></i>
+                <span class="title">TỔNG QUAN</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="active ">
+                    <a href="#">
+                        <i class="icon-screen-desktop"></i>
+                        Bảng tin
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-notebook"></i>
+                        Thông tin chung
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-home"></i>
+                        Địa chỉ công ty
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="#"><i class="icon-power"></i> Danh sách</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon-paper-plane"></i> Thêm</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-home"></i>
+                        Các mạng xã hội
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="#"><i class="icon-power"></i> Danh sách</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon-paper-plane"></i> Thêm</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-home"></i>
+                        Thanh menu
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="#"><i class="icon-power"></i> Danh sách</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon-paper-plane"></i> Thêm</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <i class="icon-book-open"></i>
+                <span class="title">TRANG</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="#">
+                        <i class="icon-home"></i>
+                        Chào mừng
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-home"></i>
+                        Giới thiệu
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="@Url.Action("Index", "IntroduceAdmin")"><i class="icon-power"></i> Thông tin chung</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("BannerList", "IntroduceAdmin")"><i class="icon-paper-plane"></i> Ảnh trình chiếu</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("MissionList", "IntroduceAdmin")"><i class="icon-paper-plane"></i> Sứ mệnh</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon-paper-plane"></i> Dịch vụ</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon-paper-plane"></i> Đối tác</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon-paper-plane"></i> Các chuyên gia</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-home"></i>Tin tức</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-home"></i>
+                        Đào tạo
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="@Url.Action("PageInfo", "TrainingAdmin")"><i class="icon-power"></i> Thông tin chung</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("CourseInsert", "TrainingAdmin")"><i class="icon-paper-plane"></i> Đăng khóa học mới</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ListCourses", "TrainingAdmin")"><i class="icon-paper-plane"></i> Danh sách khóa học</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Component_Banner", "TrainingAdmin")"><i class="icon-paper-plane"></i> Các thành phần</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-home"></i>
+                        Khai giảng
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="#"><i class="icon-power"></i> Thông tin chung</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon-paper-plane"></i> Đăng lớp học mới</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ListClass", "ClassAdmin")"><i class="icon-paper-plane"></i> Danh sách lớp học</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon-paper-plane"></i> Các đơn đăng ký</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-home"></i> Công nghệ</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-home"></i>
+                        Học viên
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="#"><i class="icon-power"></i> Thông tin chung</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon-paper-plane"></i> Đăng học viên mới</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon-paper-plane"></i> Danh sách học viên</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-home"></i>
+                        Video
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="#"><i class="icon-power"></i> Thông tin chung</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon-paper-plane"></i> Ảnh trình chiếu</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon-paper-plane"></i> Đăng video mới</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon-paper-plane"></i> Danh sách video</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon-paper-plane"></i> Chuyên mục video</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <i class="icon-book-open"></i>
+                <span class="title">QUẢN LÝ TRANG GIỚI THIỆU</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="@Url.Action("PageInfo", "IntroduceAdmin")"><i class="icon-power"></i> Thông tin chung</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("BannerList", "IntroduceAdmin")"><i class="icon-paper-plane"></i> Ảnh trình chiếu</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("MissionList", "IntroduceAdmin")"><i class="icon-paper-plane"></i> Sứ mệnh</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("ServiceList", "IntroduceAdmin")"><i class="icon-paper-plane"></i> Dịch vụ</a>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-paper-plane"></i> Đối tác</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-book-open"></i>
+                        Chuyên gia
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="@Url.Action("Index", "ExperiencerAdmin")"><i class="icon-paper-plane"></i> Danh sách chuyên gia</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ExperiencerInsert", "ExperiencerAdmin")"><i class="icon-paper-plane"></i> Thêm chuyên gia</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <i class="icon-book-open"></i>
+                <span class="title">QUẢN LÝ ĐÀO TẠO</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="@Url.Action("PageInfo", "TrainingAdmin")"><i class="icon-power"></i> Thông tin chung</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("CourseInsert", "TrainingAdmin")"><i class="icon-paper-plane"></i> Đăng khóa học mới</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("ListCourses", "TrainingAdmin")"><i class="icon-paper-plane"></i> Danh sách khóa học</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-book-open"></i>
+                        Chuyên gia
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="@Url.Action("Index", "ExperiencerAdmin")"><i class="icon-paper-plane"></i> Danh sách chuyên gia</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ExperiencerInsert", "ExperiencerAdmin")"><i class="icon-paper-plane"></i> Thêm chuyên gia</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-book-open"></i>
+                        Box below
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="@Url.Action("BoxBellowInsert", "TrainingAdmin")"><i class="icon-power"></i> Thêm box bên dưới</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("BoxBelowList", "TrainingAdmin")"><i class="icon-power"></i> Thêm box bên dưới</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-book-open"></i>
+                        Dự án mẫu/Video hướng dẫn
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="@Url.Action("DemoProjectInsert", "TrainingAdmin")"><i class="icon-power"></i> Thêm video training</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="icon-book-open"></i>
+                        Các công nghệ cho khóa học
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="@Url.Action("CourseTech", "TrainingAdmin")"><i class="icon-power"></i> Danh sách chuyên gia</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="@Url.Action("Component_Banner", "TrainingAdmin")"><i class="icon-paper-plane"></i> Các thành phần</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <i class="icon-book-open"></i>
+                <span class="title">QUẢN LÝ KHAI GIẢNG</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="@Url.Action("Index", "ClassAdmin")"><i class="icon-power"></i> Thông tin chung</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("ClassInsert", "ClassAdmin")"><i class="icon-paper-plane"></i> Đăng lớp học mới</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("ListClass", "ClassAdmin")"><i class="icon-paper-plane"></i> Danh sách lớp khai giảng</a>
+                </li>
+
+            </ul>
+        </li>}
+
+    <li>
+        <a href="javascript:;">
+            <i class="icon-book-open"></i>
+            <span class="title">QUẢN LÝ TIN TỨC</span>
+            <span class="arrow "></span>
+        </a>
+        <ul class="sub-menu">
+            <li>
+                <a href="@Url.Action("Index", "NewsAdmin")"><i class="icon-power"></i> Thông tin chung</a>
+            </li>
+            <li>
+                <a href="@Url.Action("NewsInsert", "NewsAdmin")"><i class="icon-paper-plane"></i> Đăng tin mới</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ListNews", "NewsAdmin")"><i class="icon-paper-plane"></i> Danh sách tin</a>
+            </li>
+            <li>
+                <a href="#"><i class="icon-paper-plane"></i> Danh sách tags</a>
+            </li>
+            <li>
+                <a href="#"><i class="icon-paper-plane"></i> Các chuyên mục tin</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascript:;">
+            <i class="icon-book-open"></i>
+            <span class="title">Trang tuyển dụng</span>
+            <span class="arrow "></span>
+        </a>
+        <ul class="sub-menu">
+            <li>
+                <a href="@Url.Action("ManageNews", "RecruitmentAdmin")"><i class="icon-paper-plane"></i>Quản lý thư tuyển dụng đã duyệt</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ManageNewsUnApproved", "RecruitmentAdmin")"><i class="icon-paper-plane"></i>Quản lý thư tuyển dụng chưa duyệt</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ManageTag", "RecruitmentAdmin")"><i class="icon-power"></i> Quản lý Tag tuyển dụng</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ManageCompany", "RecruitmentAdmin")"><i class="icon-paper-plane"></i>Quản lý công ty tuyển dụng</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ManageBanner", "RecruitmentAn")"><i class="icon-paper-plane"></i>Quản lý banner</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ManageGallery", "RecruitmentAn")"><i class="icon-paper-plane"></i>Quản lý hình ảnh</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ManageJob", "RecruitmentAn")"><i class="icon-paper-plane"></i>Quản lý công việc</a>
+
+            </li>
+            <li>
+                <a href="@Url.Action("SetupTitle", "RecruitmentAn")"><i class="icon-paper-plane"></i>Cài đặt tiêu đề</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascript:;">
+            <i class="icon-book-open"></i>
+            <span class="title">DIỄN ĐÀN TECH</span>
+            <span class="arrow "></span>
+        </a>
+        <ul class="sub-menu">
+            <li>
+                <a href="@Url.Action("ManageBanner", "TechAdmin")"><i class="icon-paper-plane"></i>Quản lý Banner</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Article_Insert", "TechAdmin")"><i class="icon-paper-plane"></i>Đăng bài viết mới</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ManageCategory", "TechAdmin")"><i class="icon-power"></i> Danh sách chuyên mục</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ManageArticle", "TechAdmin")"><i class="icon-paper-plane"></i>Bài viết đã duyệt</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Article_Unapproved", "TechAdmin")"><i class="icon-paper-plane"></i>Bài viết chờ duyệt</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Managetag", "TechAdmin")"><i class="icon-paper-plane"></i>Quản lý Tag</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ManageTechRight", "TechAdmin")"><i class="icon-paper-plane"></i>Quản lý nội dung bên phải</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ManageTechLink", "TechAdmin")"><i class="icon-paper-plane"></i>Quản lý đường dẫn tới trang kiến thức</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ManageLogo", "TechAdmin")"><i class="icon-paper-plane"></i>Quản lý logo công nghệ</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascript:;">
+            <i class="icon-book-open"></i>
+            <span class="title">QUẢN LÝ KIẾN THỨC</span>
+            <span class="arrow "></span>
+        </a>
+        <ul class="sub-menu">
+            <li>
+                <a href="@Url.Action("ManageBanner","BannerAdmin")"><i class="icon-power"></i> Quản lý banner</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Manage_LessonCategory","LessonAdmin")"><i class="icon-bar-chart"></i> Danh sách danh mục</a>
+            </li>
+            <li>
+                <a href="@Url.Action("LessonDetail_Insert", "LessonAdmin", new { Option = 0 })"><i class="icon-paper-plane"></i> Đăng bài học mới</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Manage_Lesson", "LessonAdmin")"><i class="icon-graduation"></i> Danh sách bài học</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Manage_LessonDetail", "LessonAdmin", new { pageIndex = 0 })"><i class="icon-speech"></i> Chi tiết bài học</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Manage_LessonDetailTag", "LessonAdmin")"><i class="icon-tag"></i> Tag Bài học</a>
+            </li>
+            <li>
+                <a href="#"><i class="icon-trash"></i> Bài học đã xóa</a>
+            </li>
+        </ul>
+    </li>
+
+    @if (objAcc.RoleId == 1 || objAcc.RoleId == 0)
+    {
+        <li>
+            <a href="javascript:;">
+                <i class="icon-book-open"></i>
+                <span class="title">QUẢN LÝ VIDEO</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="#"><i class="icon-power"></i> Thông tin chung</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Manage_Category", "VideoAdmin")"><i class="icon-bar-chart"></i> Danh sách danh mục</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Video_Insert", "VideoAdmin")"><i class="icon-paper-plane"></i> Đăng video mới</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Manage_Video", "VideoAdmin", new {vcCodeNumber = 0})"><i class="icon-social-youtube"></i>Video đã duyệt</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Manage_PendingVideo", "VideoAdmin", new {vcCodeNumber = 0})"><i class="icon-hourglass"></i>Video chờ duyệt</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Manage_VideoTag", "VideoAdmin")"><i class="icon-tag"></i>Video Tag</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Manage_SubCategory", "VideoAdmin")"><i class="icon-playlist"></i>Playlist</a>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-trash"></i>Video đã xóa</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <i class="icon-book-open"></i>
+                <span class="title">ĐƠN ĐĂNG KÝ HỌC</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="@Url.Action("Register_RegisterDetail_ChuaDuyet", "ClassAdmin")"><i class="icon-power"></i> Đơn chưa duyệt</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Register_RegisterDetail_DaDuyet", "ClassAdmin")"><i class="icon-power"></i> Đơn đã duyệt</a>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-power"></i> Danh sách người đăng ký</a>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-paper-plane"></i> Các mục nghề nghiệp</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <i class="icon-book-open"></i>
+                <span class="title">QUẢN LÝ CÁC MỤC KHÁC</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="#">
+                        <i class="icon-book-open"></i>
+                        Danh sách những người thích trang
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="@Url.Action("ListFaceBookUserLiked", "OthersCategory")"><i class="icon-paper-plane"></i> Danh sách Facebooker</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("FacebookUserLikeInsert", "OthersCategory")"><i class="icon-paper-plane"></i> Thêm Facebooker</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="icon-paper-plane"></i> Mục khác 2</a>
+                </li>
+
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <i class="icon-book-open"></i>
+                <span class="title">TIN NHẮN LIÊN HỆ</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="@Url.Action("Manage_UnseenContact", "ContactAdmin")"><i class="icon-power"></i> Tin nhắn chưa đọc</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Manage_AllContact", "ContactAdmin")"><i class="icon-power"></i> Danh sách tin nhắn</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <i class="icon-book-open"></i>
+                <span class="title">QUẢN LÝ HỌC VIÊN</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="@Url.Action("ManageStudent", "StudentAdmin")"><i class="icon-power"></i> Danh sách học viên</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Student_Insert", "StudentAdmin")"><i class="icon-power"></i> Thêm học viên mới</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <i class="icon-book-open"></i>
+                <span class="title">TÀI KHOẢN</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="@Url.Action("ManageUser", "AccountAdmin")"><i class="icon-home"></i>Quản lý tài khoản</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("UserInsert", "AccountAdmin")"><i class="icon-home"></i>Thêm mới tài khoản</a>
+                </li>
+            </ul>
+        </li>
+        <li class="last ">
+            <a href="javascript:;">
+                <i class="icon-book-open"></i>
+                <span class="title">MARKETING</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="javascript:;">
+                        <i class="icon-book-open"></i>
+                        <span class="title">Các mục Facebook</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="#"><i class="icon-power"></i> Thông tin chung</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon-paper-plane"></i> Quản lý người thích</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon-paper-plane"></i> Quản lý bài post</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-home"></i>Ảnh quảng cáo</a>
+                </li>
+            </ul>
+        </li>
+    }
+</ul>
+

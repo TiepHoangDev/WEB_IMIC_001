@@ -1,0 +1,22 @@
+﻿@using WCF.BusinessControlLayer.Bcls;
+@using WCF.Web.App_Start
+@model WCF.BusinessObjectsLayer.EntityObjects.VideoCategoryObject
+
+@{
+    Layout = null;
+}
+@{
+    int pageIndex = 0;
+    <li class="top-video">
+        @*<a class="cat-header" href="#"><h4 class="pull-left w-100">@Model.First().VideoCategoryName</h4></a>*@
+        <div class="w-100 pull-left">
+            <img style="width:20px; height:20px;margin-top:10px" src="~/Content/Galleries/Video/Categories/@Model.VideoCategoryIcon" class="pull-left" />
+            <h4 class="pull-left" style="margin-left:10px"><a class="cat-header" href="@Url.RouteUrl("video-category", new { vcCodeNumber = Model.VCCodeNumber, catname = StringHelpers.ToAscii(Model.VideoCategoryName) })">@Model.VideoCategoryName</a></h4>
+        </div>
+        <ul class="pull-left video-list w-100">
+            @Html.Action("Index_ListTopVideo", new { pageIndex, Model.VCCodeNumber })
+        </ul>
+        <a class="see-more" onclick="loadMoreHotVideo()">Xem thêm</a>
+        <!--top-video-->
+    </li>
+}

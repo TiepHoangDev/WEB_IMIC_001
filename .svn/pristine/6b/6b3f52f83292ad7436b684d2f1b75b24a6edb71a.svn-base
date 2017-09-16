@@ -1,0 +1,191 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.NewsObject>
+@{
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<div class="portlet box grey-cascade">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Danh sách tin tức
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="table-toolbar">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="btn-group">
+                        <a href="@Url.Action("NewsInsert","NewsAdmin")" c class="btn green">
+                            Thêm tin tức mới <i class="fa fa-plus"></i>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="col-xs-2 pull-right">
+                    <button class="btn btn-block btn-danger btn-flat pull-right" id="DeleteOfChecked">Xóa</button>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="btn-group">
+                        @using (Html.BeginForm("ListNews", "NewsAdmin", FormMethod.Post))
+                        {
+                            <label>Chọn chuyên mục</label>
+                            <select name="categoryId">
+                                @{
+                            var lisCategory = ViewBag.ListCategory;
+                            foreach (var item in lisCategory)
+                            {
+                                <option value="@item.NewsCategoryId">@item.NewsCategoryName</option>
+                            }
+                                }
+                            </select>
+                            <input type="submit" class="btn btn-default" value="OK" />
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-striped table-bordered table-hover" id="sample_1">
+                <thead>
+                    <tr>
+                        <th class="table-checkbox">
+                            <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" />
+                        </th>
+                        <th>
+                            Tiêu đề tin
+                        </th>
+                        <th>
+                            Ảnh
+                        </th>
+                        <th>
+                            Ngày đăng
+                        </th>
+                        <th>
+                            Duyệt
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var oNews in Model)
+                    {
+                        <tr class="odd gradeX">
+                            <td>
+                                <input type="checkbox" class="checkboxes" name="@oNews.NewsTitle" value="@oNews.NewsId" />
+                            </td>
+                            <td>
+                                @oNews.NewsTitle
+                            </td>
+                            <td>
+                                <img align="middle"class="img-thumbnail" style="height: 50px; width: 50px;" src="~/Content/Galleries/News/NewsImage/@oNews.NewsAvatar" />
+                            </td>
+                            <td>
+                                @oNews.ModifiedTime
+                            </td>
+                            <td class="center">
+                                @if (oNews.IsApproved)
+                                {
+                                    <span class="label label-sm label-success">Đã duyệt</span>
+                                }
+                                else
+                                {
+                                    <span class="label label-sm label-fail">Chưa duyệt</span>
+                                }
+                            </td>
+                            <td>
+                                <a href="@Url.Action("NewsEdit", new { newsId = oNews.NewsId })" class="btn btn-info">Sửa</a>
+                                <a href="javascript:" class="btn btn-danger" onclick="Delete('@oNews.NewsId','@oNews.NewsTitle')">Xoá</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/select2/select2.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/admin/pages/scripts/table-managed.js"></script>
+
+    <script>
+        jQuery(document).ready(function() {
+            TableManaged.init();
+        });
+
+
+    </script>
+
+    <script>
+        function Delete(id, title) {
+
+
+            bootbox.confirm("Bạn có đồng ý xóa sự kiện: " + title + "?", function(result) {
+                if (result) {
+                    var url = "@Url.Action("Delete")";
+                    debugger;
+                    $.ajax({
+                        url: url,
+                        data: { newsId: id },
+                        type: "post",
+                        dataType: "json",
+                        success: function(data) {
+                            if (data.Success) {
+                                debugger;
+                                alert(data.Message);
+                            } else {
+                                alert(data.Message);
+                            }
+                        }
+                    });
+                }
+                window.location.href = window.location.href;
+            });
+        }
+    </script>
+    <script>
+        // Khi click vào nút Xoá
+        $("#DeleteOfChecked").on("click", function () {
+            var selected = [];
+            var selectedName = [];
+            debugger;
+            // Lấy list checked
+            $(':checkbox:checked').each(function () {
+                var data = jQuery(this).attr('value');
+                var name = jQuery(this).attr('name');
+                selected.push(data);
+                selectedName.push(name);
+            });
+
+            var ValueArr = selected.join(", ");
+            var NameArr = selectedName.join(', ');
+            //console.log(NameArr);
+
+            bootbox.confirm("Bạn có thực sự muốn xoá các sự kiện: " + NameArr + " ?", function (result) {
+
+                if (result == true) {
+                    //Post dữ liệu từ Ajax --> Action trong Controllers
+                    $.post("@Url.Action("DeleteCheckAll")", { idArr: selected }, function (data) {
+                        if (data.Success) {
+                            alert(data.Message);
+
+                        } else {
+                            alert(data.Message);
+                        }
+
+                    });
+                }
+                window.location.href = window.location.href;
+            });
+            return false;
+        });
+    </script>
+
+}

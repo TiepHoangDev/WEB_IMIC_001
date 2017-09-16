@@ -1,0 +1,37 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.AccountObject
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ConfirmMail</title>
+</head>
+<body>
+@using (Html.BeginForm("ConfirmEmail", "Account", FormMethod.Post, new { }))
+{
+    @Html.HiddenFor(m => m.AccountId)
+    @Html.HiddenFor(m => m.Birthday)
+    @Html.HiddenFor(m => m.Email)
+    @Html.HiddenFor(m => m.FacebookId)
+    @Html.HiddenFor(m => m.FullName)
+    @Html.HiddenFor(m => m.Gender)
+    @Html.HiddenFor(m => m.GoogleId)
+    @Html.HiddenFor(m => m.ImageAvatar)
+    @Html.HiddenFor(m => m.Password)
+    @Html.HiddenFor(m => m.Phone)
+    @Html.HiddenFor(m => m.Username)
+    
+    <label>Địa chỉ email của bạn là: </label><br/>
+    @Html.TextBoxFor(m => m.Email)<br />
+    <input type="submit" value="Đồng ý" />
+}
+
+    @if (ViewBag.ErrorEmail)
+    {
+        <p style="color: red;">Vui lòng check lại </p>
+    }
+</body>
+</html>

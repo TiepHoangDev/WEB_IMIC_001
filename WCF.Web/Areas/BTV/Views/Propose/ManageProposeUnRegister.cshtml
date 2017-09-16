@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "Danh sách bài viết chưa được đăng ký";
+    Layout = "~/Areas/BTV/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using WCF.BusinessControlLayer.Bcls
+@using WCF.BusinessObjectsLayer.EntityObjects
+@using WCF.Web.App_Start
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.ProposeObject>
+<div class="col-xs-12">
+    <div class="portlet box red-intense">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-globe"></i>Bài viết chưa được đăng ký
+            </div>
+            <div class="tools">
+
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="col-xs-12" style="float:none">
+                <div style="padding-bottom:10px;">
+                    <a class="btn btn-primary btn-sm" style="margin-top: 10px;" href="@Url.Action("ProposeInsert", "Propose")">
+                        Thêm mới
+                        <span class="fa fa-plus" style="padding-left: 6px;"></span>
+                    </a>
+                   
+                </div>
+                <table class="table table-striped table-bordered table-hover dataTable no-footer" id="tbl-main" aria-describedby="dataTables-example_info" style="text-align: center;">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting" tabindex="0" aria-controls="category-table" rowspan="1" colspan="1">No</th>
+                            <th class="sorting" tabindex="0" aria-controls="category-table" rowspan="1" colspan="1">Tên bài viết</th>
+                            <th class="sorting" tabindex="0" aria-controls="category-table" rowspan="1" colspan="1">Ngày tạo</th>
+                            <th class="sorting" tabindex="0" aria-controls="category-table" rowspan="1" colspan="1">Người đăng ký</th>
+                            <th class="sorting" tabindex="0" aria-controls="category-table" rowspan="1" colspan="1">Ngày đăng ký</th>
+                            <th class="sorting" tabindex="0" aria-controls="category-table" rowspan="1" colspan="1">Trạng thái</th>
+
+                            <th class="sorting" tabindex="0" aria-controls="category-table" rowspan="1" colspan="1">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th>@item.No</th>
+                                <th>@item.ProposeName</th>
+                                <td>@item.CreateDate</td>
+                                @if (!string.IsNullOrEmpty(item.RegisterBy.ToString()))
+                                {
+                                    AccountObject objUser = new AccountBcl().getAccountByID((Guid)item.RegisterBy);
+                                    <td> @objUser.FullName </td>
+                                }
+                                else
+                                {
+                                    <td>Chưa có </td>
+                                }
+                                @if (!string.IsNullOrEmpty(item.RegisterDate.ToString()))
+                                {
+                                    <td> @item.RegisterDate </td>
+                                }
+                                else
+                                {
+                                    <td>Chưa có </td>
+                                }
+
+                                @if (item.IsRegister == true)
+                                {
+                                    <td> Đã được đăng ký </td>
+                                }
+                                else
+                                {
+                                    <td>Chưa được đăng ký </td>
+                                }
+
+                                <th>
+                                    <a href="@Url.Action("ProposeUpdate", "Propose", new { id = item.ProposeId })" class="btn btn-info">Sửa</a>
+                                    <a class="btn btn-danger" onclick="Remove('@item.ProposeId', '@StringHelpers.FormatJSString(item.ProposeName)', this)">Xóa</a>
+                                    @if (item.IsRegister == true)
+                                    {
+                                        <a class="btn btn-default" onclick="UnRegister('@item.ProposeId','@StringHelpers.FormatJSString(item.ProposeName)',this)">Hủy đăng ký</a>
+                                    }
+
+                                </th>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@section PageLevelScript{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tbl-main').dataTable();
+        });
+        function Remove(id, name, event) {
+            var sender = event.currentTarget;
+            var answer = confirm("Bạn muốn xóa tag này: " + name + " ?");
+            if (answer) {
+                $.ajax({
+                    url: '@Url.Action("Delete", "Propose")',
+                    data: { id: id },
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.rs == 'ok') {
+                            $(event).closest("tr").remove();
+                        }
+                    }
+                });
+            }
+        }
+        function UnRegister(id, name, event) {
+            var sender = event.currentTarget;
+            var answer = confirm("Bạn muốn hủy đăng ký bài này?");
+            if (answer) {
+                $.ajax({
+                    url: '@Url.Action("UnRegister", "Propose")',
+                    data: { id: id },
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.rs == 'ok') {
+                            window.location.reload();
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+}
+

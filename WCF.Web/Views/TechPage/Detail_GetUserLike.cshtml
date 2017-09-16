@@ -1,0 +1,15 @@
+﻿@{
+    Layout = null;
+}
+@model List<WCF.BusinessObjectsLayer.EntityObjects.AccountObject>
+    <ul class="t-likes">
+        @foreach(var item in Model)
+        { 
+        <li id-menu ="@item.Username">
+            <a>
+                <img src="~/Content/images/avatar/@item.ImageAvatar" class="w-100 sm-round-avatar" title="@item.FullName" />
+            </a>
+        </li>
+        }
+
+    </ul>

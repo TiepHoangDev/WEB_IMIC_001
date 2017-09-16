@@ -1,0 +1,16 @@
+﻿
+@{
+    Layout = null;
+}
+@model List<WCF.BusinessObjectsLayer.EntityObjects.TechCategoryObject>
+
+<ul class="col-xs-12 ">
+    @foreach (var item in Model)
+    {
+        <li class="col-xs-12 col-lg-6"><a class="text-muted" href="@Url.Action("Index", "TechPage", new { catid = item.TechCategoryId })">@item.CategoryName</a></li>
+    }
+    @{
+        <li class="col-xs-12 col-lg-6"><a class="text-muted" href="@Url.Action("Index", "TechPage")">Xem tất cả</a></li>
+    }
+
+</ul>

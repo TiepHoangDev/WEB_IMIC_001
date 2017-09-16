@@ -1,0 +1,19 @@
+﻿
+@{
+    Layout = null;
+}
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.TechCategoryObject>
+@using WCF.Web.App_Start
+<div class="box-nt">
+    @foreach (var item in Model)
+    {
+        <div class="col-xs-6 col-md-3">
+            <a href="@Url.RouteUrl("video-category", new { catid = item.TechCategoryId, catname = StringHelpers.ToAscii(item.CategoryName) })" class="ava">
+                <img src="~/Content/Galleries/Tech/Categories/@item.CategoryAvatar" class="cat-img">
+                <h3><b>@item.CategoryName</b></h3>
+            </a>
+        </div>
+
+    }
+
+</div>

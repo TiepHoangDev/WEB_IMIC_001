@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using WCF.BusinessObjectsLayer.EntityObjects;
+using WCF.DataAccessLayer.Daos;
+namespace WCF.BusinessControlLayer.Bcls
+{
+    public class RecruitmentCompanyBCL
+    {
+        public List<RecruitmentCompanyObject> getElements()
+        {
+            return new RecruitmentCompanyDAO().getElements();
+        }
+        public RecruitmentCompanyObject getElementByID(Guid id)
+        {
+            return new RecruitmentCompanyDAO().getElementByID(id);
+        }
+        public void addElement(RecruitmentCompanyObject objCom)
+        {
+            new RecruitmentCompanyDAO().addElement(objCom);
+        }
+        public void updateElement(RecruitmentCompanyObject objCom)
+        {
+            new RecruitmentCompanyDAO().updateElement(objCom);
+        }
+        public void deleteElement(Guid id)
+        {
+            new RecruitmentCompanyDAO().CompanyDelete(id);
+        }
+    }
+}

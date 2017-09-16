@@ -1,0 +1,17 @@
+﻿
+@{
+    Layout = null;
+}
+@using WCF.Web.App_Start
+@model List<WCF.BusinessObjectsLayer.EntityObjects.TechCategoryObject>
+<div class="box-menu-left">
+    <h2 class="title">Các danh mục</h2>
+    <ul class="list-menu">
+         @foreach (var item in Model)
+         {
+            <li><a href="@Url.RouteUrl("tech-category", new { catid = item.TechCategoryId, catname = StringHelpers.ToAscii(item.CategoryName) })">@item.CategoryName<span>(3)</span></a></li>
+         }
+       
+      
+    </ul>
+</div>

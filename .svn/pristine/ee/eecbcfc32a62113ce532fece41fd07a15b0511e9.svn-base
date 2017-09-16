@@ -1,0 +1,23 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.LessonObject>
+<div id="flexiselDemo3" class="market-highlight__cards">
+    @foreach (var item in Model)
+    {
+        <div  class="market-highlight__card">
+            <a href="">
+                @if (item.ImageFlag == true)
+                {
+                    <img class="market-highlight__card-image" src="~/Content/Galleries/Lesson/Lesson/@item.SeoImage" alt="">
+                }
+                else
+                {
+                    <img class="market-highlight__card-image" src="@item.SeoImage" alt="">
+                }
+                <div class="market-highlight__card-content">
+                    <div class="market-highlight__card-title">@item.LessonName</div>
+                    <div class="market-highlight__card-description">@item.LessonSumary</div>
+                </div>
+            </a>
+        </div>
+    }
+    
+</div>

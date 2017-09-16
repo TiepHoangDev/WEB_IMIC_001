@@ -1,0 +1,201 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.TechLinkObject>
+<div class="region region-team-first">
+    @foreach (var item in Model)
+    {
+        <div id="block-block-130" class="block block-block osc-capabilities">
+            <a href="@item.TechLinkUrl">
+                <div class="block-contents ">
+                    @if (item.Rank % 2 == 0)
+{
+                        <div class="content sh-block-content">
+                            <div class="capbilitie-platform">
+
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12">
+                                            <div class="desc-bg">
+                                                
+                                                    <img alt="drupal" height="664" src="~/Content/images/recruit/capabilitie-magento-bg.png" typeof="foaf:Image" width="698">
+                                                
+                                                @*<img alt="drupal" height="664" src="~/Content/images/recruit/capabilitie-adobe-bg.png" typeof="foaf:Image" width="698">*@
+                                            </div>
+                                            <div class="description">
+                                                <h3>@item.TechLinkTitle</h3>
+                                                <h4>@item.Title1</h4>
+                                                <p>
+                                                    @item.Sumary2
+                                                </p>
+                                                <h4>@item.Title2</h4>
+                                                <p>@item.Sumary2</p>
+                                                <div class="counter">
+                                                    <div class="clearfix">
+                                                        <p class="number"><span><strong>@item.Number1+</strong> certified developers</span></p>
+                                                        <p class="number">
+                                                            <span><strong>@item.Number2+</strong> PROJECTS</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image">
+                                    <img alt="drupal" height="664" src="~/Content/Galleries/Tech/TechLink/@item.TechLinkImage" typeof="foaf:Image" width="1100">
+                                </div>
+                            </div>
+                        </div>
+}
+else
+{
+                        <div class="content sh-block-content">
+                            <div class="capbilitie-platform pink-background right-content">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12">
+                                            <div class="desc-bg">
+                                            
+
+    <img alt="drupal" height="664" src="~/Content/images/recruit/capabilitie-sitecore-bg.png" typeof="foaf:Image" width="698">
+                                             
+                                            </div>
+                                            <div class="description">
+                                                <h3>@item.TechLinkTitle</h3>
+                                                <h4>@item.Title1</h4>
+                                                <p>
+                                                    @item.Sumary2
+                                                </p>
+                                                <h4>@item.Title2</h4>
+                                                <p>@item.Sumary2</p>
+                                                <div class="counter">
+                                                    <div class="clearfix">
+                                                        <p class="number"><span><strong>@item.Number1+</strong> certified developers</span></p>
+                                                        <p class="number">
+                                                            <span><strong>@item.Number2+</strong> PROJECTS</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image">
+                                    <img alt="drupal" height="664" src="~/Content/Galleries/Tech/TechLink/@item.TechLinkImage" typeof="foaf:Image" width="1231">
+                                </div>
+                            </div>
+                        </div>
+}
+                </div>
+                <div style="clear: both" class="clear-fix"></div>
+            </a>
+        </div>
+
+    }
+    @*<div id="block-block-133" class="block block-block osc-capabilities">
+
+        <div class="block-contents ">
+
+            <div class="content sh-block-content">
+                <div class="capbilitie-platform pink-background right-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12">
+                                <div class="desc-bg"><img alt="drupal" height="664" src="~/Content/images/recruit/capabilitie-sitecore-bg.png" typeof="foaf:Image" width="672">
+                                </div>
+                                <div class="description">
+                                    <h3>OUR SITECORE CAPABILITY</h3>
+                                    <h4>WHY SITECORE</h4>
+                                    <p>Sitecore is the worldwide leader in .NET Web Content Management System, with high popularity among large enterprises and mid-market commercial. It is a flexible, scalable yet powerful framework that allows users to have full control over presentation, content and functionality of their website.</p>
+                                    <h4>OUR COMPETENCY</h4>
+                                    <p>SmartOSC's focus on Sitecore is not only to provide a smarter and personalized customer journey, based on its Experience Platform but also to integrate with its solid Commerce capabilities.</p>
+                                    <div class="counter">
+                                        <div class="clearfix">
+                                            <p class="number"><span><strong>10+</strong> certified developers</span></p>
+                                            <p class="number">
+                                                <span><strong>10+</strong> PROJECTS</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image"><img alt="drupal" height="664" src="~/Content/images/recruit/capabilitie-sitecore-banner.jpg" typeof="foaf:Image" width="1231">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both" class="clear-fix"></div>
+    </div>
+    <div id="block-block-164" class="block block-block osc-capabilities">
+
+        <div class="block-contents ">
+
+            <div class="content sh-block-content">
+                <div class="capbilitie-platform">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12">
+                                <div class="desc-bg"><img alt="drupal" src="~/Content/images/recruit/capabilitie-adobe-bg.png" typeof="foaf:Image">
+                                </div>
+                                <div class="description">
+                                    <h3>Our Adobe Experience Manager (AEM) Capability</h3>
+                                    <h4>WHY AEM</h4>
+                                    <p>AEM has been recognized by Gartner as a web content management leader for six consecutive years. With a unified interface for asset management, form creation, mobile application, and web development, businesses can deliver a seamless, personalized customer experience across multiple devices.</p>
+                                    <h4>OUR COMPETENCY</h4>
+                                    <p>As a one-stop AEM solution partner, SmartOSC provides merchants site and asset management implementation, data migration, system integration, as well as managed services. Moreover, our ability to bring together AEM and Magento e-Commerce allows merchants to design and deliver a consistent, innovative customer experience across all of their commerce channels.</p>
+                                    <div class="counter">
+                                        <div class="clearfix">
+                                            <p class="number"><span><strong>15+</strong> certified developers</span></p>
+                                            <p class="number">
+                                                <span><strong>6+</strong> PROJECTS</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image"><img alt="drupal" src="~/Content/images/recruit/capabilitie-adobe-banner.jpg" typeof="foaf:Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both" class="clear-fix"></div>
+    </div>
+    <div id="block-block-131" class="block block-block osc-capabilities">
+
+        <div class="block-contents ">
+
+            <div class="content sh-block-content">
+                <div class="capbilitie-platform blue-background right-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12">
+                                <div class="desc-bg"><img alt="drupal" src="~/Content/images/recruit/capabilitie-hybris-bg.png" typeof="foaf:Image">
+                                </div>
+                                <div class="description">
+                                    <h3>Our Hybris Capability</h3>
+                                    <h4>WHY HYBRIS</h4>
+                                    <p>Though being a newly emerging platform, Hybris soon proves itself to be a powerful choice that meets every need of the future changes in E-commerce. Hybris delivers OmniCommerce™ - which helps businesses sell more goods, services and digital content through every touchpoint, channel and device.</p>
+                                    <h4>OUR COMPETENCY</h4>
+                                    <p>SmartOSC believes in the power and the ability for further expansion from Hybris, given the growing demand from its existing enterprise clients for a more robust platform that can serve as the foundation for their next level of growth.</p>
+                                    <div class="counter">
+                                        <div class="clearfix">
+                                            <p class="number"><span><strong>5+</strong> certified developers</span></p>
+                                            <p class="number">
+                                                <span><strong>7+</strong> PROJECTS</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image"><img alt="drupal" src="~/Content/images/recruit/capabilitie-hybris-banner.jpg" typeof="foaf:Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both" class="clear-fix"></div>
+    </div>*@
+</div>

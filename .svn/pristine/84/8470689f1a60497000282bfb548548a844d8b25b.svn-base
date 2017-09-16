@@ -1,0 +1,99 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.IntroducePageObject
+
+@{
+    ViewBag.Title = "Trang giới thiệu - Các thông tin chung";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> Thông tin trang giới thiệu
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm("PageInfoUpdate", "IntroduceAdmin", FormMethod.Post, new {@class = "horizontal-form", enctype = "multipart/form-data"}))
+        {
+            <div class="form-body">
+
+
+                @Html.HiddenFor(m => m.IntroducePageId)
+                @Html.HiddenFor(m=> m.ModifiedBy)
+                @Html.HiddenFor(m=>m.IsDeleted)
+                @*<h3 class="form-section"><b>Mission @(i + 1)</b></h3>*@
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label><b>Tiêu đề các service</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.TitleServices, new {@class = "form-control", @placeholder = "..."})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label><b>Nội dung giới thiệu các service</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextAreaFor(m => m.PassageServices, new { @class = "ckeditor form-control", @placeholder = "..." })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label><b>Tiêu đề các giảng viên</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.TitleExperiencers, new {@class = "form-control", @placeholder = "..."})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label><b>Nội dung giới thiệu các giảng viên</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextAreaFor(m => m.PassageExperiencers, new {@class = "ckeditor form-control", @placeholder = "..."})
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label><b>Tiêu đề các đối tác</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.TitleExperiencers, new { @class = "form-control", @placeholder = "..." })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label><b>Nội dung giới thiệu các service</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextAreaFor(m => m.PassageExperiencers, new { @class = "ckeditor form-control", @placeholder = "dịch vụ..." })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn blue">Cập nhật</button>
+                <button type="button" class="btn default">Huỷ</button>
+            </div>
+        }
+
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/ckeditor/ckeditor.js"></script>}
+

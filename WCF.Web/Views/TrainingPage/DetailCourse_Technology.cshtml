@@ -1,0 +1,18 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.CourseTechnologyObject>
+
+@{
+    Layout = null;
+}
+
+<div class="box-congnghe-lq">
+    <h2>ĐÀO TẠO TRÊN CÁC CÔNG NGHỆ</h2>
+    <div class="boxlist">
+        @foreach (var item in Model)
+        {
+            <img src="~/Content/Galleries/Training/@item.CourseTechImage" />
+        }
+        
+        
+    </div>
+</div>
+

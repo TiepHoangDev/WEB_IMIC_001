@@ -1,0 +1,102 @@
+﻿@using WCF.Web.App_Start
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.LessonDetailObject>
+   
+                     @*@{
+    string[] color = { "bg-red-flamingo", "bg-blue", "bg-green", "bg-yellow-crusta", "bg-grey-cascade", "bg-purple-medium" };
+    
+}*@
+ 
+        @foreach (var item in Model)
+        {
+            int i = item.Rank + 1;
+            //int rand = StringHelpers.MYRANDOM.Next(0, 6);
+            <article data-code ="@item.DetailCode" class="activity-item activity-item--forum" style="display: block;">
+                <span class="activity-item__image" @*style="background-image: url(/Content/Galleries/Lesson/Lesson/@item.objLesson.SeoImage);"*@>
+                    @*<i class="fa fa-2x fa-book" aria-hidden="true"></i>*@ <div class="label label-sm label-success" style="padding:0px;">
+                    <div class="detail-count bg-green">@i</div>
+                </div>
+            </span>
+            <div class="activity-item__content">
+                <h3 class="activity-item__title">
+                    <a style="color: #5488c7" href="@Url.RouteUrl("lesson-detail", new { code = item.DetailCode,name = StringHelpers.GenerateURL(item.DetailTitle) })">@item.DetailTitle</a>
+                </h3>
+                <time class="activity-item__time">@*<i class="fa fa-user"></i>*@ @item.TotalOfView Lượt xem</time>
+            </div>
+        </article>
+        }
+<style>
+
+    .highlight {
+        background: gainsboro;
+    } .label {
+        display: inline-block;
+        padding: 5px 4px 6px 5px;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+   .label.label-sm {
+        font-size: 12px;
+        padding: 0px 4px 1px 4px;
+    }
+
+ /*.label-success {
+        background-color: #45B6AF;
+    }*/
+
+ .label {
+        text-shadow: none !important;
+        font-size: 13px;
+        font-weight: 300;
+        padding: 3px 6px 3px 6px;
+        color: #fff;
+        font-family: "Open Sans", sans-serif;
+    }
+
+    .detail-count {
+        padding: 5px;
+        width: 25px;
+        height: 25px;
+        border-radius: 3px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 15px;
+    }
+
+    .bg-blue {
+        border-color: #5488c7 !important;
+        background-image: none !important;
+        background-color: #5488c7 !important;
+        color: #FFFFFF !important;
+    }
+   .bg-red-flamingo {
+        border-color: #EF4836 !important;
+        background-image: none !important;
+        background-color: #EF4836 !important;
+        color: #FFFFFF !important;
+    }
+    .bg-grey-cascade {
+        border-color: #95A5A6 !important;
+        background-image: none !important;
+        background-color: #95A5A6 !important;
+        color: #FFFFFF !important;
+    }
+    .bg-purple-medium {
+        border-color: #BF55EC !important;
+        background-image: none !important;
+        background-color: #BF55EC !important;
+        color: #FFFFFF !important;
+    }
+    .bg-yellow-crusta {
+        border-color: #f3c200 !important;
+        background-image: none !important;
+        background-color: #f3c200 !important;
+        color: #FFFFFF !important;
+    }
+    .bg-green {
+        border-color: #26a69a !important;
+        background-image: none !important;
+        background-color: #26a69a !important;
+        color: #FFFFFF !important;
+    }
+</style>

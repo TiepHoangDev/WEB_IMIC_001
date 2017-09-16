@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "Trang ảnh học viên";
+    Layout = "~/Views/StudentGalery/_LayoutStudent.cshtml";
+    ViewBag.description = "iMic - Nơi đào tạo lập trình viên hàng đầu Việt Nam. Cơ hội tiếp cận môi trường làm dự án tại các Công ty, trau dồi kinh nghiệm lập trình cùng các chuyên gia, giảng viên nhiều năm kinh nghiệm.";
+}
+@section StudentCss{
+    <link href="~/Content/css/tech.css" rel="stylesheet">
+    <link href="~/Content/css/simplelightbox.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/css/simplelightbox.css" rel="stylesheet" type="text/css">
+
+}
+
+<div id="tech-container" class="grid gallery" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 0}' style="margin-top:100px;padding:0px;border:none">
+    @Html.Action("Index_ListStudent", "StudentGalery", new { pageSize = 10, pageIndex = 0 })
+    <div id="load"></div>
+</div>
+<div class="col-xs-12" style="min-height:200px;position:relative">
+    @*<img id="loader-img" alt="" src="~/Content/images/icon/loading.gif" style="display: none; margin:10px auto" />*@
+    <button id="btn-more" style="position:absolute;bottom:0px" class="col-xs-12 btn btn-primary m-y-20" onclick="loadMore()">
+
+        <strong class="align-center text-uppercase">Tôi muốn xem thêm nhiều bài viết nữa</strong>
+    </button>
+</div>
+@section StudentScript
+{
+    <script type="text/javascript" src="~/Content/js/masonry.pkgd.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/simple-lightbox.js"></script>
+    <script type="text/javascript" src="~/Content/js/simple-lightbox.min.js"></script>
+
+    <script>
+        var pageindex = 1;
+        function loadMore() {
+
+            var page = pageindex;
+            $.ajax({
+                url: "@Url.Action("Index_ListStudent", "StudentGalery")",
+                type: "get",
+                data: { pageIndex: page, pageSize: 10 }
+
+            }).success(function (response) {
+                appliedMasonry(response);
+                pageindex = pageindex + 1;
+                $('.gallery a').simpleLightbox(
+               {
+                   swipeClose: true,
+                   overlay: true,
+                   spinner: true
+               }
+           );
+            });
+
+        }
+        $(window).scroll(function () {
+            var a = document.querySelector("#load");
+            var height = window.innerHeight
+         || document.documentElement.clientHeight
+         || document.body.clientHeight;
+           
+            if (window.scrollY > height-20) {
+                // alert(height);
+                var page = pageindex;
+                $.ajax({
+                    url: "@Url.Action("Index_ListStudent", "StudentGalery")",
+                    type: "get",
+                data: { pageIndex: page, pageSize: 10 }
+
+            }).success(function (response) {
+                appliedMasonry(response);
+                pageindex = pageindex + 1;
+                $('.gallery a').simpleLightbox(
+               {
+                   swipeClose: true,
+                   overlay: true,
+                   spinner: true
+               }
+           );
+            });
+        }
+        });
+
+        $(window).load(function () {
+            $('#tech-container').masonry({
+                itemSelector: '.grid-item',
+                columnWidth: 0,
+                isAnimated: true
+
+            });
+
+        })
+        $(document).ready(function () {
+            $('.gallery a').simpleLightbox(
+               {
+                   swipeClose: true,
+                   overlay: true,
+                   spinner: true
+               }
+           );
+        })
+
+
+        function appliedMasonry(e) {
+            var parsed = $.parseHTML(e);
+            var result = $(parsed).find(".box-item");
+            //Kiểm tra nếu ko có dữ liệu thì ẩn nút xem thêm
+            if (result.length == 0) {
+                $('#btn-more').hide();
+            }
+            else {
+                var $boxHtml = parsed;
+                // $("#tech-container").append($boxHtml).masonry('appended', $boxHtml, true);
+                $("#tech-container").append($boxHtml).masonry('appended', $boxHtml, true);
+                window.setTimeout(function () {
+                    $("#tech-container").masonry('layout');
+                }, 1000);
+            }
+
+
+        }
+    </script>
+}

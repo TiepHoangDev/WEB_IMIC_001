@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "CommentUpdate";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+@model WCF.BusinessObjectsLayer.EntityObjects.CommentObject
+<div style="padding-bottom:20px; width:100%">
+    <div class="portlet light">
+        <div class="portlet-body" style="padding-top:0px">
+            @using (Html.BeginForm("CommentUpdate", "LessonAdmin", FormMethod.Post))
+            {
+                @Html.HiddenFor(x=>x.CommentId)
+                  @Html.HiddenFor(x=>x.ModifiedTime)
+                  @Html.HiddenFor(x=>x.TotalOfLikes)
+                  @Html.HiddenFor(x=>x.TotalOfReplies)
+                 @Html.HiddenFor(x=>x.IsDeleted)
+                @Html.HiddenFor(x=>x.ArticleId)
+                <div class="form-group">
+                    <h4>&nbsp;Nội dùng bình luận:</h4>
+                    <textarea name="ContentComment">@Html.Raw(HttpUtility.HtmlDecode(Model.ContentComment))</textarea>
+                </div>
+
+                <div class="form-group">
+                    <h4>&nbsp;Tổng lượt xem:</h4>
+                    @Html.TextBoxFor(m => m.TotalOfLikes, new { @type = "number", @class = "form-control" })
+                </div>
+                <div style="padding-left:0px;width:100%;margin-top:30px;margin-bottom:20px">
+                    <button type="submit" class="btn btn-primary" id="btn-update">Cập nhật</button>
+                </div>
+
+                <!-- /.modal -->
+                @*<div class="modal fade bs-modal-lg" id="confirm-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                    <h4 class="modal-title">Thông báo xác nhận</h4>
+                                </div>
+                                <div class="modal-body">
+                                    Bạn có muốn thêm bài học này không ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn default" data-dismiss="modal">Hủy</button>
+                                    <button onclick="submit" class="btn blue">Xác nhận</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>*@
+            }
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script src="~/Areas/AdminCP/Content/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript">
+        if ($(window).width() > 500) {
+            var editor = CKEDITOR.instances['ContentComment'];
+
+            if (editor) { editor.destroy(true); }
+            CKEDITOR.replace('ContentComment', {
+                enterMode: CKEDITOR.ENTER_BR,
+                htmlEncodeOutput: true,
+                height: '300px'
+
+            });
+            CKFinder.setupCKEditor(null, '@Url.Content("~/Areas/AdminCP/Content/ckfinder")');
+        }
+    </script>
+
+
+}
+
+
+
+

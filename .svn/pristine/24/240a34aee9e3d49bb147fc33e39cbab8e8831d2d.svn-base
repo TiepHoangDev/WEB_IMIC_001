@@ -1,0 +1,257 @@
+﻿@{
+    ViewBag.Title = "Bài chờ duyệt";
+    Layout = "~/Areas/BTV/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using WCF.BusinessObjectsLayer
+@using WCF.BusinessObjectsLayer.EntityObjects
+@using WCF.Web.App_Start
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.TechArticleObject>
+<style>
+    .cke_dialog_background_cover {
+        
+    }
+</style>
+<div id="manage-tech-article" class="col-xs-12">
+    <div class="portlet box blue-madison">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-globe"></i>Bài viết chờ duyệt
+            </div>
+            <div class="tools">
+
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="col-xs-12" style="float:none">
+                <div style="margin-top:10px;padding-bottom:10px;">
+                    <a class="btn-sm  btn yellow-gold" onclick="openModal()"><b>Duyệt nhiều</b><span style="padding-left: 5px" class="fa fa-database"></span></a>
+                    @using (Html.BeginForm("Index", "Manage", FormMethod.Get))
+                    {
+                        <div class="form-body">
+                            <div class="col-lg-3 no-pad " style="padding: 0">
+                                <label>Chọn User</label>
+                                @{
+                        List<AccountObject> lstUpder = (List<AccountObject>)ViewBag.uploader;
+                        List<SelectListItem> list = new List<SelectListItem>();
+                        list.Add(new SelectListItem()
+                        {
+                            Value = "",
+                            Text = "chọn user"
+                        });
+                        foreach (var item in lstUpder)
+                        {
+
+                            list.Add(new SelectListItem()
+                            {
+                                Value = "" + item.AccountId,
+                                Text = item.FullName
+                            });
+
+                        }@Html.DropDownList("userid", list, new { @class = "form-control" })
+                                }
+                            </div>
+
+
+
+                            <div class="col-lg-3 ">
+                                <label>Từ ngày:</label>
+                                @Html.TextBox("begin", "", new { @class = "form-control" })
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Đến ngày:</label>
+                                @Html.TextBox("end", "", new { @class = "form-control" })
+                            </div>
+                            <div class="input-group-btn">
+                                <button style="margin-top: 24px !important;" class="btn blue" type="submit">Tìm kiếm</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <table class="table table-striped table-bordered table-hover dataTable no-footer" id="tech-unapproved" aria-describedby="dataTables-example_info"
+                       style="margin-top:20px">
+                    <thead>
+                        <tr role="row">
+                            <th>Tiêu đề</th>
+                            <th>Danh mục</th>
+
+                            <th>Người tạo</th>
+                            <th>Thời gian tạo</th>
+                            <th>Trạng thái</th>
+                            <th>Duyệt</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th>@item.ArticleTitle</th>
+                                <td>@item.objTechCategory.CategoryName</td>
+
+                                <td>@item.objCreateBy.FullName</td>
+                                <td>@item.CreatedTime.ToString("dd/MM/yyyy hh:mm")</td>
+                                @if (item.objTS.StatusID == StatusObject.LEVEL_0.StatusID)
+                                {
+                                    <td><button class="btn btn-sm btn-default">Bài mới</button></td>
+                                }
+                                @if (item.objTS.StatusID == StatusObject.LEVEL_2.StatusID)
+                                {
+                                    <td><button class="btn btn-sm btn-danger">Đánh trượt</button></td>
+                                }
+                                @if (item.objTS.StatusID == StatusObject.LEVEL_3.StatusID)
+                                {
+                                    <td><button class="btn btn-sm btn-success">Đã sửa</button></td>
+                                }
+                              
+                               
+                                
+                                <td><input type="checkbox" value="@item.TechArticleId" /></td>
+                                <th>
+                                    <a class="btn btn-sm" style="background:#edb6ba;color:#FFF" href="@Url.Action("Preview", "Upload", new { code = item.ArticleCodeNumber})"><b>Preview</b></a>
+                                    <a class="btn btn-sm btn-primary" onclick="approve('@item.TechArticleId', '@StringHelpers.FormatJSString(item.ArticleTitle)', this)"><b>Duyệt</b></a>
+                                    <a class="btn btn-sm btn-danger" onclick="redo('@item.TechArticleId','@StringHelpers.FormatJSString(item.ArticleTitle)',this)"><b>Làm lại</b></a>
+                                    <div class="message" style="display: none">@Html.Raw(item.objTS.Message) </div>
+                                </th>
+                            </tr>
+                        }
+                    </tbody>
+
+
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="basic" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Thông báo</h4>
+            </div>
+            <div class="modal-body modal-01">
+                Bạn có chắc chắn muốn xóa bài viết không
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn blue" onclick="approveGroup()">Confirm</button>
+                <button type="button" class="btn default" data-dismiss="modal">Bỏ qua</button>
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="redo" tabindex="1" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Lý do đánh trượt bài viết</h4>
+            </div>
+            @using (Html.BeginForm("Article_Redo", "Manage", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="modal-02">Bài viết này bị đánh trượt vì</label>
+                        <textarea class="form-control" rows="5" required name="message"></textarea>
+                        <input type="hidden" name="articleid" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn blue" value="Đánh trượt">
+                    <button type="button" class="btn default" data-dismiss="modal">Bỏ qua</button>
+
+                </div>
+            }
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@section PageLevelScript{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/ckeditor/ckeditor.js"></script>
+<script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+<script src="~/Areas/AdminCP/Content/ckfinder/ckfinder.js"></script>
+<script type="text/javascript">
+       
+</script>
+    <script>
+    var articleid = '';
+    $(document).ready(function () {
+
+        $('#tech-unapproved').dataTable({
+            "order": [[3, 'desc']]
+        });
+    });
+    function openModal() {
+        var count = 0;
+        $("input:checkbox:checked").each(function () {
+            count = count + 1;
+        });
+        $('.modal-01').html('Bạn có chắc chắn muốn duyệt ' + count + ' bài viết?');
+        $('#basic').modal('show');
+    }
+    function approveGroup() {
+        var selected = new Array();
+        $("input:checkbox:checked").each(function () {
+            selected.push($(this).val());
+        });
+        $.ajax({
+            url: '@Url.Action("Article_ApproveGroup","Manage")',
+            type: 'POST',
+            traditional: true,
+            datatype: JSON,
+            data: { 'articlelist': selected.join() },
+            success: function (response) {
+                location.reload(true);
+            }
+
+        })
+    }
+    function approve(id, name, event) {
+        var answer = confirm("Bạn muốn duyệt bài viết này: " + name + " ?");
+        if (answer) {
+            $.ajax({
+                url: '@Url.Action("Article_Approve","Manage")',
+                    type: 'POST',
+                    traditional: true,
+                    datatype: JSON,
+                    data: { 'id': id },
+                    success: function (response) {
+                        $(event).closest('tr').remove();
+                    }
+
+                })
+            }
+        }
+        function redo(id, e, a) {
+            var message = $(a).closest('th').find('.message').html();
+            $('textarea[name=message]').html(message);
+            $('.modal-02').html('Bài viết <b>' + e + '</b> bị đánh trượt vì');
+            $('#redo').modal('show');
+            $('input[name=articleid]').val(id);
+            if ($(window).width() > 500) {
+                var editor = CKEDITOR.instances['message'];
+
+                if (editor) { editor.destroy(true); }
+                CKEDITOR.replace('message', {
+                    enterMode: CKEDITOR.ENTER_BR,
+                    htmlEncodeOutput: true,
+                    //extraPlugins: 'uicolor',
+                    height: '200px'
+
+
+                });
+                CKFinder.setupCKEditor(null, '@Url.Content("~/Areas/AdminCP/Content/ckfinder")');
+            }
+        }
+
+
+    </script>
+}
+

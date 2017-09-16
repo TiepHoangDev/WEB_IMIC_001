@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "ManageArticle";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@using WCF.Web.App_Start
+@model List<WCF.BusinessObjectsLayer.EntityObjects.TechArticleObject>
+<div id="manage-tech-article" class="col-xs-12">
+    <div class="portlet box red-intense">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-globe"></i>Quản lý bài viết công nghệ
+            </div>
+            <div class="tools">
+
+            </div>
+        </div>
+
+        <div class="portlet-body">
+            <div class="col-xs-12" style="background:#FFF;float:none ">
+             
+                <div class="col-xs-12" style="float:none">
+                    <div style="padding-bottom:10px;">
+                        <a class="btn btn-primary btn-sm" style="margin-top:10px;" href="@Url.Action("Article_Insert", "TechAdmin")">
+                            Thêm mới
+                            <span class="fa fa-plus" style="padding-left:6px;"></span>
+                        </a>
+                    </div>
+                    <table class="table table-striped table-bordered table-hover dataTable no-footer" id="tech-article-table" aria-describedby="dataTables-example_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="tech-article-table" rowspan="1" colspan="1">Danh mục</th>
+                                <th class="sorting" tabindex="0" aria-controls="tech-article-table" rowspan="1" colspan="1">Tiêu đề</th>
+                                <th class="sorting" tabindex="0" aria-controls="tech-article-table" rowspan="1" colspan="1">Người đăng</th>
+                                <th class="sorting" tabindex="0" aria-controls="tech-article-table" rowspan="1" colspan="1">Ngày đăng</th>
+                                <th class="sorting" tabindex="0" aria-controls="tech-article-table" rowspan="1" colspan="1">Số lượt xem</th>
+                                <th class="sorting" tabindex="0" aria-controls="tech-article-table" rowspan="1" colspan="1">Số lượt like</th>
+
+                                <th class="sorting" tabindex="0" aria-controls="tech-article-table" rowspan="1" colspan="1">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th>@item.objTechCategory.CategoryName</th>
+                                    <th>@item.ArticleTitle</th>
+                                    <th>@item.objCreateBy.FullName</th>
+                                    <th>@item.CreatedTime.ToString("dd/MM/yyyy hh:mm")</th>
+                                    <th>@item.TotalOfViews</th>
+                                    <th>@item.TotalOfLikes</th>
+                                   
+                                    <th>
+                                        <a href="@Url.Action("Article_Edit", "TechAdmin", new { id = item.TechArticleId})" class="btn btn-info">Sửa</a>
+                                        <a class="btn btn-danger" onclick="Remove('@item.TechArticleId','@StringHelpers.FormatJSString(item.ArticleTitle)',this)">Xóa</a>
+                                    </th>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <a data-minh="/anh1.jpg"></a>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+@section Scripts{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script>
+
+        $(document).ready(function () {
+          
+            $('#tech-article-table').DataTable({
+                "order": [[4, "asc"]],
+                "pageLength": 30
+            });
+
+        });
+        
+        function Remove(id, name, event) {
+            var sender = event.currentTarget;
+            var answer = confirm("Bạn muốn xóa bài viết này: " + name + " ?");
+            if (answer) {
+                $.ajax({
+                    url: '@Url.Action("Article_Delete", "TechAdmin")',
+                    data: { id: id },
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        if (!data.result) {
+                            alert(data.Message);
+                        } else {
+                            $(event).closest("tr").remove();
+                        }
+                    }
+                });
+            }
+        }
+
+    </script>
+}
+
+
+
+

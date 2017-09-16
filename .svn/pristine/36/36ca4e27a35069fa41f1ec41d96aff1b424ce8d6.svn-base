@@ -1,0 +1,109 @@
+﻿@{
+
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.CommentObject>
+    <style>
+        th {
+            text-align: center !important;
+        }
+
+        td {
+            text-align: center !important;
+        }
+    </style>
+    <div id="manage-tech-category" class="col-xs-12">
+        <div class="portlet box red-intense">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-video-camera"></i>Quản lý bình luận
+                </div>
+                <div class="tools">
+
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="col-xs-12" style="float:none">
+                    <div style="padding-bottom:10px;">
+                        <a class="btn btn-primary btn-sm" style="margin-top:10px;" href="@Url.Action("CommentInsert", "LessonAdmin", new { ArticleId = ViewBag.ArticleId })">
+                            Thêm mới
+                            <span class="fa fa-plus" style="padding-left:6px;"></span>
+                        </a>
+                    </div>
+                    <table class="table table-striped table-bordered table-hover dataTable no-footer" id="video-category-table" aria-describedby="dataTables-example_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Họ tên</th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Ngày  bình luận</th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Lượt Like</th>
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Lượt trả lời</th>
+              
+                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.objUser.FullName</td>
+                                    <td>@item.ModifiedTime</td>
+                                   
+                                    <td>@item.TotalOfLikes</td>
+                                    
+                                        <td>
+                                           @item.TotalOfReplies
+                                        </td>
+                                 
+                                    <td>
+                                        <a href="@Url.Action("CommentUpdate", "LessonAdmin", new { id = item.CommentId })" class="btn btn-info">Sửa</a>
+                                       
+                                        <a onclick="Delete('@item.CommentId','@item.objUser.FullName',event)" class="btn btn-danger">Xóa</a>
+                                        
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @section Scripts{
+        <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#video-category-table').dataTable();
+            });
+
+            function Delete(id, name, event) {
+               
+                var answer = confirm("Bạn có muốn xóa bình luận này ?");
+                if (answer) {
+                    $.ajax({
+                        url: '@Url.Action("CommentDelete", "LessonAdmin")',
+                        data: { id: id },
+                        type: "post",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.rs == 'ok') {
+                                $(event).closest("tr").remove();
+                                window.location.reload();
+                            }
+                        }
+                    });
+                }
+            }
+        </script>
+    }
+
+
+
+
+
+
+
+

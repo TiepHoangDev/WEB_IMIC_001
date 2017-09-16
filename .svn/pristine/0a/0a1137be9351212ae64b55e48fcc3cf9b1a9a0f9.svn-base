@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+@section css
+{
+    @RenderSection("TechCss", false)
+}
+<div id="page-wrapper" oncopy="return false" oncut="return false" onpaste="return false" oncontextmenu="return false">
+    <div class="main">
+        @*<div class="row">
+                <div class="box_search">
+                    <div class="box">
+                        <input type="text" autocomplete="off" name="" class="text-select textfield autoText" value="Chọn dạnh mục" id="" />
+                        <input type="text" name="" class="text-input" id="" placeholder="Nhập từ khóa" />
+                        <button class="bt">Search</button>
+                        <div id="Box-field" class="box-field">
+                            <div class="col-xs-12">
+                                @{Html.RenderAction("Index_DropdownCategory", "TechPage");}
+                            </div>
+                            <a tabindex="9" href="#" onclick="" class="close-from fa-times fa"></a>
+                            <div class="box-li">
+                                <a href="#">Giới thiệu</a>
+                                <a href="#">Qui định</a>
+                                <a href="#">Điều khoản áp dụng</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @{Html.RenderAction("Index_GetTopCategory", "TechPage");}
+
+            </div>*@
+        <div class="row">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @RenderSection("TechScript", false)
+<script>
+    //prevent copy
+    $(document).keydown(function (event) {
+        if (event.keyCode == 123) {
+            return false; //Prevent f12
+        }
+        else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+            return false;  //Prevent from ctrl+shift+i
+        }
+    });
+    //end prevent copy
+</script>
+
+}

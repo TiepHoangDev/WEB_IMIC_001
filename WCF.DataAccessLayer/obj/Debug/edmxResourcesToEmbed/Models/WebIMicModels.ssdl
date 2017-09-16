@@ -1,0 +1,1828 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebIMicModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <Function Name="SP_Account_checkUserName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Username" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Account_ChangeAvatar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ImageAvatar" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Account_ChangePassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Account_CheckLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Username" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Account_Create" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="RoleId" Type="tinyint" Mode="In" />
+    <Parameter Name="Username" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImageAvatar" Type="nvarchar" Mode="In" />
+    <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Gender" Type="bit" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="Birthday" Type="date" Mode="In" />
+    <Parameter Name="FacebookId" Type="nvarchar" Mode="In" />
+    <Parameter Name="GoogleId" Type="nvarchar" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Account_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Account_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_Account_GetByEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Account_GetByFacebookId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FacebookId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Account_GetByGoogleId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GoogleId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Account_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Account_GetByRoleID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Account_GetByUsername" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Username" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Account_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="RoleId" Type="tinyint" Mode="In" />
+    <Parameter Name="Username" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImageAvatar" Type="nvarchar" Mode="In" />
+    <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Gender" Type="bit" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="Birthday" Type="date" Mode="In" />
+    <Parameter Name="FacebookId" Type="nvarchar" Mode="In" />
+    <Parameter Name="GoogleId" Type="nvarchar" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Account_Update1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="RoleID" Type="tinyint" Mode="In" />
+    <Parameter Name="Username" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImageAvatar" Type="nvarchar" Mode="In" />
+    <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Gender" Type="bit" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="Birthday" Type="date" Mode="In" />
+    <Parameter Name="FacebookId" Type="nvarchar" Mode="In" />
+    <Parameter Name="GoogleId" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsActived" Type="bit" Mode="In" />
+    <Parameter Name="TotalOfArtice" Type="int" Mode="In" />
+    <Parameter Name="TotalOfBeLikedArtice" Type="int" Mode="In" />
+    <Parameter Name="LastLoginTime" Type="datetime" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Account_UpdateInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="Birthday" Type="date" Mode="In" />
+    <Parameter Name="Gender" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_BoxBelow_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_BoxBelow_getAllByCourseId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_BoxBelow_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BoxBelowId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_BoxBelow_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BoxBelowId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TrainingCategoryId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="BoxTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="Boxlmage" Type="nvarchar" Mode="In" />
+    <Parameter Name="BoxDescription" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="BoxLinkTo" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_BoxBelow_UpdateIsDeleted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BoxBelowId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_BoxBelowDetail_DeleteByBoxBelowId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BoxBelowId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_BoxBelowDetail_DeleteByCourseId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_BoxBelowDetail_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BoxBelowDetailId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CourseId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="BoxBelowId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="RankToShow" Type="tinyint" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Contact_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_Contact_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ContactId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Contact_GetUnseenContact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_Contact_SeenContact" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ContactID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Contact_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ContactId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="ContentContact" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CreatedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsSeen" Type="bit" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Course_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_Course_getAllByTrainingCategoryId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TrainingCategoryId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Course_GetByCodeNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CodeNumber" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Course_GetByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Course_GetByTCCodeNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TCCode" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Course_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TrainingCategoryId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CourseName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CourseImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsOnline" Type="tinyint" Mode="In" />
+    <Parameter Name="Rating" Type="float" Mode="In" />
+    <Parameter Name="TotalOfRating" Type="bigint" Mode="In" />
+    <Parameter Name="SumOfRating" Type="bigint" Mode="In" />
+    <Parameter Name="Price" Type="nvarchar" Mode="In" />
+    <Parameter Name="TotalOfViews" Type="bigint" Mode="In" />
+    <Parameter Name="CourseSummary" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ContentIntroduce" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ContentLearnByVideo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ContentPreferentialPolicy" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ContentEvaluting" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ContentTemplateProject" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TitleIntroduceVideo" Type="nvarchar" Mode="In" />
+    <Parameter Name="ContentIntroduceVideo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsApproved" Type="bit" Mode="In" />
+    <Parameter Name="ApprovedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+    <Parameter Name="RankVip" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Course_updateIsDeleted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_CourseTeacher_DeleteByCourseId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_CourseTeacher_getByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseTeacherId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_CourseTeacher_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseTeacherId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CourseId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ExperiencerId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="RankToShow" Type="tinyint" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_CourseTechnology_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_CourseTechnology_getAllByCourseId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_CourseTechnology_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseTechnologyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TrainingCategoryId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CourseTechnologyName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CourseTechImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="LinkTo" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_CourseTechnologyDetail_DeleteByCourseId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_CourseTechnologyDetail_getAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_CourseTechnologyDetail_getByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseTechDetailId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_CourseTechnologyDetail_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseTechDetailId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CourseId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CourseTechnologyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="RankToShow" Type="tinyint" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_DemoProject_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_DemoProject_getAllByCourseId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_DemoProject_getByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DemoProjectId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_DemoProject_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DemoProjectId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TrainingCategoryId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ProjectName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Thumbnail" Type="nvarchar" Mode="In" />
+    <Parameter Name="DemoLink" Type="nvarchar" Mode="In" />
+    <Parameter Name="TabType" Type="bit" Mode="In" />
+    <Parameter Name="DemoType" Type="bit" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_DemoProjectDetail_DeleteByCourseId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_DemoProjectDetail_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DemoProjectDetailId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CourseId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="DemoProjectId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="RankToShow" Type="tinyint" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Experiencer_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_Experiencer_GetAllByCourseId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CourseId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Experiencer_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ExperiencerId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="RankToShowIntroduce" Type="tinyint" Mode="In" />
+    <Parameter Name="ExperiencerImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Gender" Type="bit" Mode="In" />
+    <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="ExperienceYear" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PassageDescription" Type="nvarchar" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="SummaryContent" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_FacebookUserLiked_getAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_FacebookUserLiked_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FacebookUserLikedId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_FacebookUserLiked_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FacebookUserLikedId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="FacebookAvatar" Type="nvarchar" Mode="In" />
+    <Parameter Name="FacebookName" Type="nvarchar" Mode="In" />
+    <Parameter Name="FacebookLink" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="IsShow" Type="bit" Mode="In" />
+    <Parameter Name="RankVip" Type="int" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_FacebookUserLiked_updateIsDeleted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FacebookUserLikedId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_getUserWhenLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_IntroduceBanner_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BannerId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_IntroduceBanner_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_IntroduceBanner_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IntroduceBanerld" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_IntroduceBanner_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IntroduceBanerld" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Bannerlmage" Type="nvarchar" Mode="In" />
+    <Parameter Name="BannerAlt" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="TitleBanner" Type="nvarchar" Mode="In" />
+    <Parameter Name="Content1" Type="nvarchar" Mode="In" />
+    <Parameter Name="Content2" Type="nvarchar" Mode="In" />
+    <Parameter Name="Content3" Type="nvarchar" Mode="In" />
+    <Parameter Name="Content4" Type="nvarchar" Mode="In" />
+    <Parameter Name="Content5" Type="nvarchar" Mode="In" />
+    <Parameter Name="RankToShow" Type="tinyint" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_IntroduceEduProgram_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_IntroduceEduProgram_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IntroduceEPId" Type="tinyint" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Line1" Type="nvarchar" Mode="In" />
+    <Parameter Name="Line2" Type="nvarchar" Mode="In" />
+    <Parameter Name="Line3" Type="nvarchar" Mode="In" />
+    <Parameter Name="Line4" Type="nvarchar" Mode="In" />
+    <Parameter Name="Line5" Type="nvarchar" Mode="In" />
+    <Parameter Name="Line6" Type="nvarchar" Mode="In" />
+    <Parameter Name="rank" Type="tinyint" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_IntroduceMission_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_IntroduceMission_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IntroduceMissionld" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Link" Type="nvarchar" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Content1" Type="nvarchar" Mode="In" />
+    <Parameter Name="Content2" Type="nvarchar" Mode="In" />
+    <Parameter Name="Content3" Type="nvarchar" Mode="In" />
+    <Parameter Name="RankToShow" Type="tinyint" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_IntroducePage_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_IntroducePage_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IntroducePageId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TitleServices" Type="nvarchar" Mode="In" />
+    <Parameter Name="PassageServices" Type="nvarchar" Mode="In" />
+    <Parameter Name="SubArticle" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SubArticlePicture" Type="nvarchar" Mode="In" />
+    <Parameter Name="SubArticlePictureAlt" Type="nvarchar" Mode="In" />
+    <Parameter Name="EduProgramPicture" Type="nvarchar" Mode="In" />
+    <Parameter Name="EduProgramPictureAlt" Type="nvarchar" Mode="In" />
+    <Parameter Name="PassageExperiencers" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TitleExperiencers" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_IntroducePartner_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_IntroducePartner_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IntroducePartnerId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PartnerName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PartnerLogo" Type="nvarchar" Mode="In" />
+    <Parameter Name="PartnerLinkTo" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="RankToShow" Type="tinyint" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_IntroduceService_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_IntroduceService_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IntroduceServiceId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ServiceName" Type="nvarchar" Mode="In" />
+    <Parameter Name="LinkToService" Type="nvarchar" Mode="In" />
+    <Parameter Name="Content1" Type="nvarchar" Mode="In" />
+    <Parameter Name="Content2" Type="nvarchar" Mode="In" />
+    <Parameter Name="Content3" Type="nvarchar" Mode="In" />
+    <Parameter Name="Content4" Type="nvarchar" Mode="In" />
+    <Parameter Name="ServiceImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="RankToShow" Type="tinyint" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Job_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Job_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_Job_GetByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Job_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="JobTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="JobSummary" Type="nvarchar" Mode="In" />
+    <Parameter Name="JobImage_Link" Type="nvarchar" Mode="In" />
+    <Parameter Name="JobImage_Alt" Type="nvarchar" Mode="In" />
+    <Parameter Name="JobUrl" Type="nvarchar" Mode="In" />
+    <Parameter Name="TagID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Job_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="JobTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="JobSummary" Type="nvarchar" Mode="In" />
+    <Parameter Name="JobImage_Link" Type="nvarchar" Mode="In" />
+    <Parameter Name="JobImage_Alt" Type="nvarchar" Mode="In" />
+    <Parameter Name="JobUrl" Type="nvarchar" Mode="In" />
+    <Parameter Name="TagId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_JobObject_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_Lesson_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Lesson_GETALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_Lesson_GETALL_PAGING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="start" Type="int" Mode="In" />
+    <Parameter Name="length" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Lesson_GETBYCATEGORY_CHIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CategoryID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Lesson_GETBYCATEGORY_PAGING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CatID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="start" Type="int" Mode="In" />
+    <Parameter Name="length" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Lesson_GETBYCATEGORYID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonCategoryId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Lesson_GETBYID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Lesson_GETCOUNT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_Lesson_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LessonCategoryId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LessonName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImageFlag" Type="bit" Mode="In" />
+    <Parameter Name="SeoImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="TotalOfView" Type="bigint" Mode="In" />
+    <Parameter Name="TotalOfLike" Type="bigint" Mode="In" />
+    <Parameter Name="TotalRank" Type="int" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Lesson_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LessonCategoryId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LessonName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImageFlag" Type="bit" Mode="In" />
+    <Parameter Name="SeoImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="TotalOfView" Type="bigint" Mode="In" />
+    <Parameter Name="TotalOfLike" Type="bigint" Mode="In" />
+    <Parameter Name="TotalRank" Type="int" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonCategory_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonCategoryId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonCategory_GETALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_LessonCategory_GETBYID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonCategoryId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonCategory_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonCategoryId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CategoryName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CategoryImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="Rank" Type="int" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonCategory_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonCategoryId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CategoryName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CategoryImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="Rank" Type="int" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetail_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonDetailId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetail_GETALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_LessonDetail_GETBYCODE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Code" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetail_GETBYID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonDetailId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetail_GETBYLESSON_CHIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetail_GETBYLESSON_PAGING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="start" Type="int" Mode="In" />
+    <Parameter Name="length" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetail_GETBYLESSON_PAGING_TRUNG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Start" Type="int" Mode="In" />
+    <Parameter Name="Length" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetail_GETBYLESSONID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetail_GETBYRank" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetail_GETCOUNT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetail_GETPOPULAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_LessonDetail_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonDetailId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LessonId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="DetailName" Type="nvarchar" Mode="In" />
+    <Parameter Name="DetailTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="DetailSummary" Type="nvarchar" Mode="In" />
+    <Parameter Name="DetailContent" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TotalOfLike" Type="bigint" Mode="In" />
+    <Parameter Name="TotalOfComment" Type="bigint" Mode="In" />
+    <Parameter Name="TotalOfShare" Type="bigint" Mode="In" />
+    <Parameter Name="TotalOfView" Type="bigint" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsApproved" Type="bit" Mode="In" />
+    <Parameter Name="ApprovedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetail_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonDetailId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LessonId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="DetailName" Type="nvarchar" Mode="In" />
+    <Parameter Name="DetailTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="DetailSummary" Type="nvarchar" Mode="In" />
+    <Parameter Name="DetailContent" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TotalOfLike" Type="bigint" Mode="In" />
+    <Parameter Name="TotalOfComment" Type="bigint" Mode="In" />
+    <Parameter Name="TotalOfShare" Type="bigint" Mode="In" />
+    <Parameter Name="TotalOfView" Type="bigint" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsApproved" Type="bit" Mode="In" />
+    <Parameter Name="ApprovedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetailTag_CHECKNAME" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TagName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetailTag_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonDetailTagId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetailTag_GETALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_LessonDetailTag_GETBYID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonDetailTagId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetailTag_GETBYLESSONDETAILID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonDetailId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetailTag_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonDetailTagId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LessonDetailTagName" Type="nvarchar" Mode="In" />
+    <Parameter Name="TotalOfLessons" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetailTag_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonDetailTagId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LessonDetailTagName" Type="nvarchar" Mode="In" />
+    <Parameter Name="TotalOfLessons" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetailTagDetail_DELETEBYLESSONDETAILID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonDetailId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_LessonDetailTagDetail_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LessonDetailTagDetailId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LessonDetailId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LessonDetailTagId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Location_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_MenuCategory_GetAllByWelcomeId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="WelcomeId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_MenuCategory_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MenuId" Type="tinyint" Mode="In" />
+    <Parameter Name="MenuText" Type="nvarchar" Mode="In" />
+    <Parameter Name="MenuLink" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_News_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_News_GetByCategoryId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsCategoryId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_News_GetByCodeNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CodeNumber" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_News_GetByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_News_GetByNCCodeNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NCCodeNumber" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_News_SearchByTitle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsTitle" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_News_TopDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="number" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_News_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="NewsCategoryId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="NewsAvatar" Type="nvarchar" Mode="In" />
+    <Parameter Name="NewsTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="NewsSummary" Type="nvarchar" Mode="In" />
+    <Parameter Name="NewsContent" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TotalOfLike" Type="bigint" Mode="In" />
+    <Parameter Name="TotalOfComment" Type="bigint" Mode="In" />
+    <Parameter Name="TotalOfShare" Type="bigint" Mode="In" />
+    <Parameter Name="TotalOfView" Type="bigint" Mode="In" />
+    <Parameter Name="IsVip" Type="bit" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsApproved" Type="bit" Mode="In" />
+    <Parameter Name="ApprovedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_News_updateIsDeleted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_NewsCategory_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_NewsCategory_GetByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsCategoryID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_NewsCategory_GetByNewsID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_NewsCategory_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsCategoryId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="NewsCategoryName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CategoryImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_NewsletterTag_CHECKNAME" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_NewsletterTag_GETALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_NewsletterTag_GETBYID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TagID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_NewsletterTag_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsLetterTagId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="NewsLetterTagName" Type="nvarchar" Mode="In" />
+    <Parameter Name="TotalOfNewsletter" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_NewsletterTag_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsLetterTagId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="NewsLetterTagName" Type="nvarchar" Mode="In" />
+    <Parameter Name="TotalOfNewsletter" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_NewsletterTagDetail_DELETEALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsLetterId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_NewsletterTagDetail_GETBYNEWS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsLetterId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_NewsletterTagDetail_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TagDetailId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="NewsLetterId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="NewsLetterTagId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_OPENCLASS_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_OPENCLASS_GetAllByTCCodeNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TCCodeNumber" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_OPENCLASS_GetAllByTrainingCatId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TrainingCatId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_OpenClass_GetByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClassId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_OPENCLASS_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClassId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CourseId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ClassName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ClassAvatar" Type="nvarchar" Mode="In" />
+    <Parameter Name="ClassTime" Type="nvarchar" Mode="In" />
+    <Parameter Name="Month" Type="nvarchar" Mode="In" />
+    <Parameter Name="DayOfMonth" Type="nvarchar" Mode="In" />
+    <Parameter Name="ContentPopup" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DayOfWeek" Type="nvarchar" Mode="In" />
+    <Parameter Name="TotalOfRegisters" Type="tinyint" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsApproved" Type="bit" Mode="In" />
+    <Parameter Name="ApprovedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="MaxTotalOfStudents" Type="tinyint" Mode="In" />
+    <Parameter Name="LocationID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_OPENCLASS_updateIsDeleted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClassId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_OpenClassPage_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_OpenClassPage_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LinkButton" Type="nvarchar" Mode="In" />
+    <Parameter Name="MiddleTilte" Type="nvarchar" Mode="In" />
+    <Parameter Name="SubTilte" Type="nvarchar" Mode="In" />
+    <Parameter Name="TopImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="TopImageAlt" Type="nvarchar" Mode="In" />
+    <Parameter Name="TopTitle" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_OpenClassPage_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LinkButton" Type="nvarchar" Mode="In" />
+    <Parameter Name="MiddleTilte" Type="nvarchar" Mode="In" />
+    <Parameter Name="SubTilte" Type="nvarchar" Mode="In" />
+    <Parameter Name="TopImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="TopImageAlt" Type="nvarchar" Mode="In" />
+    <Parameter Name="TopTitle" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Propose_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProposeId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Propose_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_Propose_GetByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProposeId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Propose_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProposeId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ProposeName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="isRegister" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Propose_UnRegister" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProposeId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Propose_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProposeId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ProposeName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CreateDate" Type="datetime" Mode="In" />
+    <Parameter Name="isRegister" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Propose_UpdateByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProposeId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="RegisterBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="RegisterDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecCareer_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecCareerId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecCareer_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_RecCareer_GetByRecCareerId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecCareerId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecCareer_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecCareerName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecCareer_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecCareerId" Type="int" Mode="In" />
+    <Parameter Name="RecCareerName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecDip_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecDipId" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecDip_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_RecDip_GetByRecDipId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecDipId" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecDip_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecDip" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecDip_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecDip" Type="nvarchar" Mode="In" />
+    <Parameter Name="RecDipId" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecExperience_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecExperienceId" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecExperience_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_RecExperience_GetByRecExperienceId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecExperienceId" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecExperience_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecExperienceName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecExperience_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecExperienceId" Type="tinyint" Mode="In" />
+    <Parameter Name="RecExperienceName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentBanner_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="HomeBannerId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentBanner_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_RecruitmentBanner_GetByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="HomeBannerId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentBanner_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="HomeBannerId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ImageLink" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImageAlt" Type="nvarchar" Mode="In" />
+    <Parameter Name="h3text" Type="nvarchar" Mode="In" />
+    <Parameter Name="h4text" Type="nvarchar" Mode="In" />
+    <Parameter Name="pTopText" Type="nvarchar" Mode="In" />
+    <Parameter Name="pMidText" Type="nvarchar" Mode="In" />
+    <Parameter Name="pBotText" Type="nvarchar" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentBanner_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="HomeBannerId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ImageLink" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImageAlt" Type="nvarchar" Mode="In" />
+    <Parameter Name="h3text" Type="nvarchar" Mode="In" />
+    <Parameter Name="h4text" Type="nvarchar" Mode="In" />
+    <Parameter Name="pTopText" Type="nvarchar" Mode="In" />
+    <Parameter Name="pMidText" Type="nvarchar" Mode="In" />
+    <Parameter Name="pBotText" Type="nvarchar" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentCompany_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentCompany_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_RecruitmentCompany_GetByCompanyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentCompany_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyCode" Type="int" Mode="In" />
+    <Parameter Name="CompanyFullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CompanyImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyImageAlt" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyLink" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyLogo" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Hotline" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsApproved" Type="bit" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+    <Parameter Name="TotalOfNewsletter" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentCompany_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyCode" Type="int" Mode="In" />
+    <Parameter Name="CompanyFullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CompanyImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyImageAlt" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyLink" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyLogo" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Hotline" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsApproved" Type="bit" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+    <Parameter Name="TotalOfNewsletter" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentGalleryImage_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GalleryImageId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentGalleryImage_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_RecruitmentGalleryImage_GetByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GalleryImageId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentGalleryImage_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GalleryImageId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ImageTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImageSummary" Type="nvarchar" Mode="In" />
+    <Parameter Name="Image_Link" Type="nvarchar" Mode="In" />
+    <Parameter Name="Image_Alt" Type="nvarchar" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentGalleryImage_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="GalleryImageId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ImageTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImageSummary" Type="nvarchar" Mode="In" />
+    <Parameter Name="Image_Link" Type="nvarchar" Mode="In" />
+    <Parameter Name="Image_Alt" Type="nvarchar" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentLocation_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecLocationId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentLocation_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_RecruitmentLocation_GetByRecLocationId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecLocationId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentLocation_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LocationName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentLocation_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LocationName" Type="nvarchar" Mode="In" />
+    <Parameter Name="RecLocationId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentNewsLetter_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsletterID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentNewsLetter_GETALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_RecruitmentNewsLetter_GETALL_PAGING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyCode" Type="int" Mode="In" />
+    <Parameter Name="SearchQuery" Type="nvarchar" Mode="In" />
+    <Parameter Name="Start" Type="int" Mode="In" />
+    <Parameter Name="Length" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentNewsLetter_GETBYCODE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CodeNumber" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentNewsLetter_GETBYID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentNewsLetter_GETPOPULAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_RecruitmentNewsLetter_GETRELATED" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Newsletter" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentNewsLetter_GETRELATED_CATEGORY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentNewsLetter_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsLetterId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ImageLink" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImageServerFlag" Type="bit" Mode="In" />
+    <Parameter Name="ImageAlt" Type="nvarchar" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Content" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ContactInfo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="EmployerInfo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TotalOfShareFacebook" Type="int" Mode="In" />
+    <Parameter Name="TotalOfShareGoogle" Type="int" Mode="In" />
+    <Parameter Name="TotalOfShareTwitter" Type="int" Mode="In" />
+    <Parameter Name="TotalOfShareIn" Type="int" Mode="In" />
+    <Parameter Name="TotalOfLikes" Type="int" Mode="In" />
+    <Parameter Name="TotalOfViews" Type="int" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsApproved" Type="bit" Mode="In" />
+    <Parameter Name="ApprovedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentNewsLetter_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsLetterId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ImageLink" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImageServerFlag" Type="bit" Mode="In" />
+    <Parameter Name="ImageAlt" Type="nvarchar" Mode="In" />
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="Content" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ContactInfo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="EmployerInfo" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TotalOfShareFacebook" Type="int" Mode="In" />
+    <Parameter Name="TotalOfShareGoogle" Type="int" Mode="In" />
+    <Parameter Name="TotalOfShareTwitter" Type="int" Mode="In" />
+    <Parameter Name="TotalOfShareIn" Type="int" Mode="In" />
+    <Parameter Name="TotalOfLikes" Type="int" Mode="In" />
+    <Parameter Name="TotalOfViews" Type="int" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsApproved" Type="bit" Mode="In" />
+    <Parameter Name="ApprovedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitmentTitle_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_RecruitmentTitle_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RecruimentTitleId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Title1" Type="nvarchar" Mode="In" />
+    <Parameter Name="Summary1" Type="nvarchar" Mode="In" />
+    <Parameter Name="Title2" Type="nvarchar" Mode="In" />
+    <Parameter Name="Summary2" Type="nvarchar" Mode="In" />
+    <Parameter Name="Title3" Type="nvarchar" Mode="In" />
+    <Parameter Name="Summary3" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RecruitNewsLetter_Approve" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsLetterId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RegisterDetail_GetAll_NotSeen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_RegisterDetail_GetAll_Seen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_RegisterDetail_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RegisterDetail_GetbyId_New" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RegisterDetailId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RegisterDetail_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RegisterDetailId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ClassId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="RegisterPersonId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Message" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Comment" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Status" Type="tinyint" Mode="In" />
+    <Parameter Name="IsSeen" Type="bit" Mode="In" />
+    <Parameter Name="CreatedTime" Type="datetime" Mode="In" />
+    <Parameter Name="CourseId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RegisterPerson_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_RegisterPerson_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_RegisterPerson_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RegisterPersonId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="JobObjectId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Role_ByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoleId" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Role_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_RuleWriting_GEtAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_RuleWriting_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="title" Type="nvarchar" Mode="In" />
+    <Parameter Name="content" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_SourcePage_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_SourcePage_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="techSource" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="LessonSource" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="RecruitSource" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_StudentGalery_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_StudentGalery_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_StudentGalery_GetByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ImageID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_StudentGalery_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ImageID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ImageName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImageThumbnail" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImageLink" Type="nvarchar" Mode="In" />
+    <Parameter Name="TotalOfViews" Type="int" Mode="In" />
+    <Parameter Name="StudentDescription" Type="nvarchar" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsApproved" Type="bit" Mode="In" />
+    <Parameter Name="ApprovedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="FlagThumbnail" Type="bit" Mode="In" />
+    <Parameter Name="FlagLink" Type="bit" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Tag_CHECKNAME" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TagName" Type="nvarchar" Mode="In" />
+    <Parameter Name="MenuId" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Tag_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TagId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Tag_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TagId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Tag_GetByMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MenuId" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Tag_GetByPostId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PostId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Tag_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TagId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TagName" Type="nvarchar" Mode="In" />
+    <Parameter Name="MenuId" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Tag_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TagId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TagName" Type="nvarchar" Mode="In" />
+    <Parameter Name="MenuId" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TagDetail_DELETEBYPOSTID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PostId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TagDetail_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TagDetailId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PostId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TagId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TagNews_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_TagNews_GetByNewsId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TagNewsDetail_DeleteByNewsId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TagNewsDetail_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NewsTagId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="NewsId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TagNewsId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_tbl_Account_getByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticeTags_CheckName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TagName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticeTags_getAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_TechArticeTags_getByArticle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArticleID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticeTags_getByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TagID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticeTags_getByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TagName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticeTags_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArticeTagId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TagName" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticeTags_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArticeTagId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TagName" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_ApproveArticle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArticleID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CheckedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CheckedTime" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_ApproveGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArticleList" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CheckBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CheckTime" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_EDIT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechArticleId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TechCategoryId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ArticeCodeNumber" Type="int" Mode="In" />
+    <Parameter Name="ArticeTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechSummary" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ArticeAvatar" Type="nvarchar" Mode="In" />
+    <Parameter Name="ContentArticle" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="LastReplier" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LastRepliedTime" Type="datetime" Mode="In" />
+    <Parameter Name="TotalOfReplies" Type="int" Mode="In" />
+    <Parameter Name="TotalOfViews" Type="int" Mode="In" />
+    <Parameter Name="TotalOfLikes" Type="int" Mode="In" />
+    <Parameter Name="TotalOfUsers" Type="int" Mode="In" />
+    <Parameter Name="TotalOfLinks" Type="int" Mode="In" />
+    <Parameter Name="CreatedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CreatedTime" Type="datetime" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="RankOfPin" Type="int" Mode="In" />
+    <Parameter Name="IsApproved" Type="bit" Mode="In" />
+    <Parameter Name="IsAtived" Type="bit" Mode="In" />
+    <Parameter Name="ApprovedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_TechArticle_GetAll_PAGING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start" Type="int" Mode="In" />
+    <Parameter Name="Length" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_GetApprovalInfo_PORTAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechArticleId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_GetByAccountID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_GetByCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CategoryID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_GetByCategory_PAGING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CodeNumber" Type="int" Mode="In" />
+    <Parameter Name="Start" Type="int" Mode="In" />
+    <Parameter Name="Length" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_GetByCategory_PAGING_ALT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CatCode" Type="int" Mode="In" />
+    <Parameter Name="SearchQuery" Type="nvarchar" Mode="In" />
+    <Parameter Name="Start" Type="int" Mode="In" />
+    <Parameter Name="Length" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_GetByCodeNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CodeNumber" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_GetByCodeNumber_PORTAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CodeNumber" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_GetByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechArticleId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_GetByTag" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TagName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Start" Type="int" Mode="In" />
+    <Parameter Name="Length" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_getByTitle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Article" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_GetByUser_PORTAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_GetForViewerByAccountID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_GetPopularArticle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_TechArticle_GetRelatedArticle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechArticleID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_GetUnapproved" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_TechArticle_GetUsers_LikeArticle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArticleID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechArticleId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TechCategoryId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ArticeCodeNumber" Type="int" Mode="In" />
+    <Parameter Name="ArticeTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechSummary" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ArticeAvatar" Type="nvarchar" Mode="In" />
+    <Parameter Name="ContentArticle" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="LastReplier" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LastRepliedTime" Type="datetime" Mode="In" />
+    <Parameter Name="TotalOfReplies" Type="int" Mode="In" />
+    <Parameter Name="TotalOfViews" Type="int" Mode="In" />
+    <Parameter Name="TotalOfLikes" Type="int" Mode="In" />
+    <Parameter Name="TotalOfUsers" Type="int" Mode="In" />
+    <Parameter Name="TotalOfLinks" Type="int" Mode="In" />
+    <Parameter Name="CreatedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CreatedTime" Type="datetime" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="RankOfPin" Type="int" Mode="In" />
+    <Parameter Name="IsApproved" Type="bit" Mode="In" />
+    <Parameter Name="IsAtived" Type="bit" Mode="In" />
+    <Parameter Name="ApprovedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="FromAdmin" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_UnapproveArticle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArticleID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="StatusID" Type="tinyint" Mode="In" />
+    <Parameter Name="CheckedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CheckedTime" Type="datetime" Mode="In" />
+    <Parameter Name="Message" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticle_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechArticleId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TechCategoryId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ArticeCodeNumber" Type="int" Mode="In" />
+    <Parameter Name="ArticeTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="ArticeAvatar" Type="nvarchar" Mode="In" />
+    <Parameter Name="ContentArticle" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="LastReplier" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LastRepliedTime" Type="datetime" Mode="In" />
+    <Parameter Name="TotalOfReplies" Type="int" Mode="In" />
+    <Parameter Name="TotalOfViews" Type="int" Mode="In" />
+    <Parameter Name="TotalOfLikes" Type="int" Mode="In" />
+    <Parameter Name="TotalOfUsers" Type="int" Mode="In" />
+    <Parameter Name="TotalOfLinks" Type="int" Mode="In" />
+    <Parameter Name="CreatedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CreatedTime" Type="datetime" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="RankOfPin" Type="int" Mode="In" />
+    <Parameter Name="IsApproved" Type="bit" Mode="In" />
+    <Parameter Name="IsAtived" Type="bit" Mode="In" />
+    <Parameter Name="ApprovedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="FromAdmin" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticleLike_CheckUserLike" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArticleID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LikeBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticleLike_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArticleID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LikeBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechArticleLike_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LikeID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ArticleID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LikeBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CreateTime" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechBanner_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechBannerId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechBanner_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_TechBanner_GetByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechBannerId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechBanner_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechBannerId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ImageLink" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImageAlt" Type="nvarchar" Mode="In" />
+    <Parameter Name="h3text" Type="nvarchar" Mode="In" />
+    <Parameter Name="h4text" Type="nvarchar" Mode="In" />
+    <Parameter Name="pTopText" Type="nvarchar" Mode="In" />
+    <Parameter Name="pMidText" Type="nvarchar" Mode="In" />
+    <Parameter Name="pBotText" Type="nvarchar" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechBanner_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechBannerId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ImageLink" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImageAlt" Type="nvarchar" Mode="In" />
+    <Parameter Name="h3text" Type="nvarchar" Mode="In" />
+    <Parameter Name="h4text" Type="nvarchar" Mode="In" />
+    <Parameter Name="pTopText" Type="nvarchar" Mode="In" />
+    <Parameter Name="pMidText" Type="nvarchar" Mode="In" />
+    <Parameter Name="pBotText" Type="nvarchar" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechCategory_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechCategory_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_TechCategory_GetByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechCategory" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechCategory_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechCategory" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="RankOfSortingOnTop" Type="tinyint" Mode="In" />
+    <Parameter Name="CategoryName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CategoryAvatar" Type="nvarchar" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechComment_GetByArticle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArticleID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="AccountID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechComment_GetByArticle_PAGING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArticleID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="AccountID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Start" Type="int" Mode="In" />
+    <Parameter Name="Length" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechComment_GetByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechCommentId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechComment_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechCommentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TechArticeId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CommentBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ConTentComment" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TotalOfLikes" Type="int" Mode="In" />
+    <Parameter Name="TotalOfReplies" Type="int" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechCommentLike_CheckIsLiked" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CommentID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="AccountID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechCommentLike_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechCommentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LikedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechCommentLike_getByComment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CommentID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechCommentLike_getLikeCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CommentID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechCommentLike_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechCommentLikeId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TechCommentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LikedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechCommentReply_getByComment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CommentID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechCommentReply_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechCommentReplyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TechCommentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ReplyBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ContentReply" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechLink_ByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechLinkId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechLink_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechLinkId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechLink_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_TechLink_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechLinkId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TechLinkTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="Title1" Type="nvarchar" Mode="In" />
+    <Parameter Name="Sumary1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Title2" Type="nvarchar" Mode="In" />
+    <Parameter Name="Sumary2" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TechLinkUrl" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechLinkImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="Number1" Type="int" Mode="In" />
+    <Parameter Name="Number2" Type="int" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechLink_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechLinkId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TechLinkTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="Title1" Type="nvarchar" Mode="In" />
+    <Parameter Name="Sumary1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Title2" Type="nvarchar" Mode="In" />
+    <Parameter Name="Sumary2" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TechLinkUrl" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechLinkImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="Number1" Type="int" Mode="In" />
+    <Parameter Name="Number2" Type="int" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechLogo_ById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechLogoId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechLogo_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechLogoId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechLogo_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_TechLogo_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechLogoId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TechLogoTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechLogoImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechLogoUrl" Type="nvarchar" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechLogo_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechLogoId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TechLogoTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechLogoImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechLogoUrl" Type="nvarchar" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechRight_ByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechRightId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechRight_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechRightId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechRight_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_TechRight_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechRightId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TechRightTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightUrl" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightLine1" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightUrl1" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightLine2" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightUrl2" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightLine3" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightUrl3" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightLine4" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightUrl4" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightLine5" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightUrl5" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsShowed" Type="bit" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechRight_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechRightId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TechRightTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightUrl" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightLine1" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightUrl1" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightLine2" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightUrl2" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightLine3" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightUrl3" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightLine4" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightUrl4" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightLine5" Type="nvarchar" Mode="In" />
+    <Parameter Name="TechRightUrl5" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsShowed" Type="bit" Mode="In" />
+    <Parameter Name="Rank" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechStatus_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArticleID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechTagsDetail_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DetailID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechTagsDetail_getByArticle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ArticleID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TechTagsDetail_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TagDetailId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ArticleId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ArticleTagId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_TrainingBanner_GetToShow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_TrainingCategory_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_TrainingPage_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_TrainingPage_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TrainingPageId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LearningTimeTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="SessionName1" Type="nvarchar" Mode="In" />
+    <Parameter Name="SessionTime1" Type="nvarchar" Mode="In" />
+    <Parameter Name="SessionName2" Type="nvarchar" Mode="In" />
+    <Parameter Name="SessionTime2" Type="nvarchar" Mode="In" />
+    <Parameter Name="SessionName3" Type="nvarchar" Mode="In" />
+    <Parameter Name="SessionTime3" Type="nvarchar" Mode="In" />
+    <Parameter Name="SessionName4" Type="nvarchar" Mode="In" />
+    <Parameter Name="SessionTime4" Type="nvarchar" Mode="In" />
+    <Parameter Name="CalendarTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="CalendarDescription" Type="nvarchar" Mode="In" />
+    <Parameter Name="CalendarLinkTo" Type="nvarchar" Mode="In" />
+    <Parameter Name="TeacherTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="TeacherDescription" Type="nvarchar" Mode="In" />
+    <Parameter Name="TeacherLinkTo" Type="nvarchar" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Video_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Video_GetByAccountID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Video_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Video_GetByVideoCodeNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCodeNumber" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Video_GetForView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_Video_GetForView_GetTop10" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_Video_GetForView_PAGING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start" Type="int" Mode="In" />
+    <Parameter Name="Length" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Video_GetForViewByAccountID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AccountID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Video_GetForViewByVideoCategoryId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCategoryId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Video_GetForViewByVideoCategoryNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VCCodeNumber" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Video_GetForViewByVideoCategoryNumber_PAGING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VCCodeNumber" Type="int" Mode="In" />
+    <Parameter Name="start" Type="int" Mode="In" />
+    <Parameter Name="length" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Video_GetInvolveVideoForView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="VideoCategoryId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Video_GetInvolveVideoForView_PAGING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start" Type="int" Mode="In" />
+    <Parameter Name="Length" Type="int" Mode="In" />
+    <Parameter Name="VideoId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="VideoCategoryId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Video_GetPendingVideo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_Video_GetPendingVideoByVideoCategoryNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VCCodeNumber" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Video_GetVideoInPlaylistForView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="VideoSubCategoryId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_Video_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="VideoCategoryId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="VideoSubCategoryId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="VideoCodeNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="VideoName" Type="nvarchar" Mode="In" />
+    <Parameter Name="VideoLink" Type="nvarchar" Mode="In" />
+    <Parameter Name="VideoThumbnail" Type="nvarchar" Mode="In" />
+    <Parameter Name="VideoDescription" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TotalOfViews" Type="bigint" Mode="In" />
+    <Parameter Name="TotalOfLikes" Type="bigint" Mode="In" />
+    <Parameter Name="TotalOfDislikes" Type="bigint" Mode="In" />
+    <Parameter Name="TotalOfComments" Type="bigint" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsApproved" Type="bit" Mode="In" />
+    <Parameter Name="ApprovedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CreatedTime" Type="datetime" Mode="In" />
+    <Parameter Name="CreatedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoBanner_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_VideoCategory_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCategoryId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoCategory_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_VideoCategory_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCategoryId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoCategory_GetByVCCodeNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VCCodeNumber" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoCategory_GetForAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_VideoCategory_GetForDisplay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_VideoCategory_GetForDisplay_PAGING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Start" Type="int" Mode="In" />
+    <Parameter Name="Length" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoCategory_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCategoryId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="VideoCategoryName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="VideoCategoryIcon" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoComment_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCommentID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoComment_GetAllByVideoId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoComment_GETBYID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCommentID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoComment_GetByVideoId_PAGING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="AccountID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Start" Type="int" Mode="In" />
+    <Parameter Name="Length" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoComment_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCommentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="VideoId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CommentBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ContentComment" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TotalOfReplies" Type="int" Mode="In" />
+    <Parameter Name="TotalOfLikes" Type="int" Mode="In" />
+    <Parameter Name="TotalOfDislikes" Type="int" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoCommentLike_CheckUserLike" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCommentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LikeBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoCommentLike_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCommentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LikeBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoCommentLike_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCommentLikeId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="VideoCommentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LikeBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CreateTime" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoCommentReply_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCommentReplyID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoCommentReply_GETBYID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCommentReplyID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoCommentReply_GetByVideoCommentId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCommentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="AccountID" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoCommentReply_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCommentReplyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="VideoCommentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ReplyBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ContentReply" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TotalOfLikes" Type="int" Mode="In" />
+    <Parameter Name="TotalOfDislikes" Type="int" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoCommentReplyLike_CheckUserLike" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCommentReplyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LikeBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoCommentReplyLike_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCommentReplyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LikedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoCommentReplyLike_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCommentReplyLikeId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="VideoCommentReplyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LikedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CreateTime" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoLike_CheckUserLike" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LikeBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoLike_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LikeBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoLike_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LikeID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="VideoID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="LikeBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CreateTime" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoSubCategory_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoSubCategoryId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoSubCategory_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_VideoSubCategory_GetByAccountID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoSubCategory_GetByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoSubCategoryId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoSubCategory_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoSubCategoryId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="VideoSubCategoryName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="TotalVideo" Type="int" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoTag_CHECKNAME" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TagName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoTag_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoTagId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoTag_GETALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_VideoTag_GETBYID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoTagId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoTag_GETBYVIDEOCODE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoCodeNumber" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoTag_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoTagId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="VideoTagName" Type="nvarchar" Mode="In" />
+    <Parameter Name="TotalOfVideos" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoTag_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoTagId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="VideoTagName" Type="nvarchar" Mode="In" />
+    <Parameter Name="TotalOfVideos" Type="int" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoTagDetail_DELETEBYVIDEOID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_VideoTagDetail_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VideoTagDetailId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="VideoId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="VideoTagId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_WelcomePage_getAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_SP_WelcomePage_getByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="WelcomeId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_SP_WelcomePage_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="WelcomeId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CompanyName" Type="nvarchar" Mode="In" />
+    <Parameter Name="HomeTextHead" Type="nvarchar" Mode="In" />
+    <Parameter Name="HomeTextDescription" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanySlogan" Type="nvarchar" Mode="In" />
+    <Parameter Name="CompanyLogo" Type="nvarchar" Mode="In" />
+    <Parameter Name="ImageShotcut" Type="nvarchar" Mode="In" />
+    <Parameter Name="Hotline" Type="varchar" Mode="In" />
+    <Parameter Name="Mail" Type="varchar" Mode="In" />
+    <Parameter Name="VideoLink" Type="nvarchar" Mode="In" />
+    <Parameter Name="ModifiedBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+    <Parameter Name="Flag" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_tbl_Account_getEditorAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WEB_IMIC_tbl_TechComment_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechCommentId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="WEB_IMIC_tbl_TechComment_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TechCommentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TechArticeId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CommentBy" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ContentComment" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TotalOfLikes" Type="int" Mode="In" />
+    <Parameter Name="TotalOfReplies" Type="int" Mode="In" />
+    <Parameter Name="ModifiedTime" Type="datetime" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+  </Function>
+  <EntityContainer Name="WebIMicModelsStoreContainer" />
+</Schema>

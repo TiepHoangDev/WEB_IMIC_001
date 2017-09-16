@@ -1,0 +1,743 @@
+@media (min-width: 992px) and (max-width: 1199px) {
+    .blog-menu .main-menu > li > a
+    {
+        font-size: 14px;
+        margin: 0 12px;
+    }
+
+    .main-content .block-1 .bizweb-trial-index .input-form
+    {
+        display: none;
+    }
+
+    .main-content .block-3 .post-item
+    {
+        min-height: 450px;
+    }
+
+    .category-posts .feature-post .feature-item .post-info
+    {
+        padding: 0 15px;
+    }
+    .category-posts .feature-post .feature-item .post-info .category ul
+    {
+        margin: 15px 0 15px;
+    }
+    .category-posts .feature-post .feature-item .post-info .title
+    {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    .category-posts .feature-post .feature-item .post-info .desc
+    {
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .header
+    {
+        background: url("images/index-banner-bg.jpg") no-repeat center center;
+        background-size: cover ;
+        padding-bottom: 10px;
+    }
+    .header .btn-toggle
+    {
+        background: url(https://www.bizweb.vn/Themes/Portal/Default/Styles_New/images/icon-toogle.png) center scroll no-repeat;
+    }
+    .header .user-menu .btn-registration
+    {
+        margin-top: 15px;
+    }
+	#navHeader{
+		display: none !important;
+	}
+	.menu-mobile .menu-nav-mobile {
+		padding: 15px;
+		border-bottom: 1px solid #ebebeb;
+	}
+    .blog-menu
+    {
+        height: auto;
+    }
+    .menu-mobile
+    {
+        position: relative;
+    }
+    .menu-mobile > a
+    {
+        display: inline-block;
+        font-size: 16px;
+        color: #2d2d2d;
+        padding: 15px;
+        border-bottom: 1px solid #ebebeb;
+		text-decoration: none;
+    }
+	.category-posts .feature-post .feature-item .image-thumb img{
+		widows: 100%;
+	}
+    .menu-mobile > a:hover,
+    .menu-mobile > a:active
+    {
+        text-decoration: none;
+    }
+	.menu-mobile .fa-angle-down
+	{
+		
+	font-size: 20px;
+    margin-left: 5px;
+	}
+	.menu-mobile .blog-cate-mobile li a {
+    display: block;
+    padding: 10px 0;
+	color: #2d2d2d;
+	text-decoration: none;
+	}
+/*
+    .menu-mobile .fa-angle-down
+    {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        font-size: 30px;
+    }
+*/
+    .menu-mobile .blog-cate-mobile
+    {
+        display: none;
+        background: #fff;
+        z-index: 9;
+        padding: 15px;
+        font-size: 14px;
+    }
+    .menu-mobile .blog-cate-mobile .sub-menu
+    {
+        margin-left: 30px;
+        display: none;
+    }
+    .menu-mobile .blog-cate-mobile .main-menu-mobile > li
+    {
+        border-bottom: 1px solid #ddd;
+        position: relative;
+    }
+    .menu-mobile .blog-cate-mobile .main-menu-mobile > li.menu-item-has-children:after {
+        background: url(https://www.bizweb.vn/Themes/Portal/Default/Images/icon-submenu.png) no-repeat center center;
+        display: block;
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        right: 0;
+        top: 12px;
+        content: "";
+    }
+    .menu-mobile .blog-cate-mobile .main-menu-mobile > li.active.menu-item-has-children:after {
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+    .menu-mobile .blog-cate-mobile li a
+    {
+        display: block;
+        padding: 5px 0;
+        color: #2d2d2d;
+    }
+    .menu-mobile .main-menu-mobile > li:first-child > a i
+    {
+        font-size: 20px;
+        color: #1c95d2;
+    }
+    .menu-mobile .main-menu-mobile > li:first-child > a:after
+    {
+        content: "Trang chá»§";
+        margin-left: 10px;
+        display: inline-block;
+    }
+
+    .main-content .block-2 .slide-topic .topic-item
+    {
+        padding: 0 15px;
+    }
+    .main-content .block-2 .slide-topic .topic-item a
+    {
+        display: block;
+        background: #fff;
+        padding-top: 15px;
+    }
+    .main-content .block-2 .slide-topic .topic-item span.image
+    {
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+    .main-content .block-2 .slide-topic .topic-item span.title
+    {
+        border: none;
+    }
+
+    .trial-bizweb-bottom input
+    {
+        width: 450px;
+    }
+
+    .category-posts .feature-post
+    {
+        margin-bottom: 10px;
+    }
+    .category-posts .feature-post .feature-item:first-child
+    {
+        margin-bottom: 20px;
+    }
+    .category-posts .feature-post .feature-item .image-thumb
+    {
+        height: 230px;
+    }
+    .category-posts .feature-post .feature-item .post-info .category ul
+    {
+        margin: 15px 0 15px;
+    }
+    .category-posts .feature-post .feature-item .post-info .title
+    {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    .category-posts .feature-post .feature-item .post-info .desc
+    {
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
+
+    .post-content .subscribe-registration .form-subscribe input
+    {
+        width: 100%;
+    }
+
+    .main-content .block-2 .slide-topic .topic-item a span.image.nam-2017
+    {
+        background: url("images/icon-kinh-doanh-2017-hv.png") no-repeat center center;
+    }
+    .main-content .block-2 .slide-topic .topic-item a span.image.kd-nho
+    {
+        background: url("images/icon-kinh-doanh-nho-hv.png") no-repeat center center;
+    }
+    .main-content .block-2 .slide-topic .topic-item a span.image.kiem-tien
+    {
+        background: url("images/icon-cach-kiem-tien-hv.png") no-repeat center center;
+    }
+    .main-content .block-2 .slide-topic .topic-item a span.image.quan-ao
+    {
+        background: url("images/icon-kinh-doanh-quan-ao-hv.png") no-repeat center center;
+    }
+    .main-content .block-2 .slide-topic .topic-item a span.image.my-pham
+    {
+        background: url("images/icon-kinh-doanh-my-pham-hv.png") no-repeat center center;
+    }
+    .main-content .block-2 .slide-topic .topic-item a span.image.trang-suc
+    {
+        background: url("images/icon-kinh-doanh-trang-suc-hv.png") no-repeat center center;
+    }
+}
+
+@media (max-width: 767px) {
+    .header
+    {
+        background: url("images/index-banner-bg.jpg") no-repeat center center;
+        background-size: cover ;
+        padding-bottom: 10px;
+    }
+    .header .btn-toggle
+    {
+        background: url(https://www.bizweb.vn/Themes/Portal/Default/Styles_New/images/icon-toogle.png) center scroll no-repeat;
+    }
+    .header .user-menu .btn-registration
+    {
+        margin-top: 15px;
+    }
+	.menu-mobile .current-cate {
+		font-size: 16px;
+		color: #2d2d2d;
+		display: inline-block;
+		margin-top: 5px;
+	}
+    .blog-menu
+    {
+        height: auto;
+    }
+    .menu-mobile
+    {
+        position: relative;
+    }
+	
+    .menu-mobile > a
+    {
+        display: inline-block;
+        font-size: 16px;
+        color: #2d2d2d;
+        padding: 15px;
+        border-bottom: 1px solid #ebebeb;
+    }
+    .menu-mobile a:hover,
+    .menu-mobile a:active,
+    .menu-mobile a:focus
+    {
+        text-decoration: none !important;
+    }
+    .menu-mobile .current-cate {
+        font-size: 16px;
+        color: #2d2d2d;
+        display: inline-block;
+        margin-top: 5px;
+    }
+    .menu-mobile .show-topic {
+        display: inline-block;
+        float: right;
+        font-size: 12px;
+        color: #ea3939;
+        text-transform: uppercase;
+    }
+    .menu-mobile .menu-nav-mobile {
+        padding: 15px;
+        border-bottom: 1px solid #ebebeb;
+    }
+    .menu-mobile .show-topic:after {
+        display: block;
+        text-align: center;
+        content: "\f0d7";
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .menu-mobile .blog-topic-hot {
+        display: none;
+        background: #fff;
+        z-index: 9;
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    .menu-mobile .blog-topic-hot li {
+        background: url(/wp-content/themes/ver2017/images/icon-top-hot.png) no-repeat top left;
+    }
+    .menu-mobile .blog-topic-hot li.kd-2017 {
+        background-position: top -765px left 0;
+    }
+    .menu-mobile .blog-topic-hot li.quan-ao {
+        background-position: top 10px left 0;
+    }
+    .menu-mobile .blog-topic-hot li.kiem-tien {
+        background-position: top -684px left 0;
+    }
+    .menu-mobile .blog-topic-hot li.kd-nho {
+        background-position: top -645px left 0;
+    }
+    .menu-mobile .blog-topic-hot li.kd-quan-ao {
+        background-position: top 10px left 0;
+    }
+    .menu-mobile .blog-topic-hot li.bh-facebook {
+        background-position: top -205px left 0;
+    }
+    .menu-mobile .blog-topic-hot li a {
+        display: block;
+        padding: 10px 0 10px 40px;
+        color: #2d2d2d;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .menu-mobile .fa-angle-down
+    {
+        font-size: 20px;
+        margin-left: 5px;
+    }
+    .menu-mobile .blog-cate-mobile
+    {
+        display: none;
+        background: #fff;
+        z-index: 9;
+        padding: 15px;
+        font-size: 14px;
+    }
+    .menu-mobile .blog-cate-mobile .sub-menu
+    {
+        margin-left: 30px;
+        display: none;
+    }
+    .menu-mobile .blog-cate-mobile .main-menu-mobile > li
+    {
+        border-bottom: 1px solid #ddd;
+        position: relative;
+    }
+    .menu-mobile .blog-cate-mobile .main-menu-mobile > li.menu-item-has-children:after {
+        background: url(https://www.bizweb.vn/Themes/Portal/Default/Images/icon-submenu.png) no-repeat center center;
+        display: block;
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        right: 0;
+        top: 12px;
+        content: "";
+    }
+    .menu-mobile .blog-cate-mobile .main-menu-mobile > li.active.menu-item-has-children:after {
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+    .menu-mobile .blog-cate-mobile li a
+    {
+        display: block;
+        padding: 10px 0;
+        color: #2d2d2d;
+    }
+    .menu-mobile .main-menu-mobile > li:first-child > a i
+    {
+        font-size: 20px;
+        color: #1c95d2;
+    }
+    .menu-mobile .main-menu-mobile > li:first-child > a:after
+    {
+        content: "Trang chá»§";
+        margin-left: 10px;
+        display: inline-block;
+    }
+
+    .main-content .block-2 .slide-topic .topic-item
+    {
+        padding: 0 10px;
+        width: 40%;
+    }
+    .main-content .block-2 .slide-topic .topic-item a
+    {
+        display: block;
+        background: #fff;
+        padding: 15px 10px 0 10px;
+        min-height: 147px;
+    }
+    .main-content .block-2 .slide-topic .topic-item span.image
+    {
+        margin-top: 0;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+    .main-content .block-2 .slide-topic .topic-item span.title
+    {
+        border: none;
+    }
+
+
+    .main-content .block-1 .post-item
+    {
+        max-height: 260px;
+    }
+    .main-content .block-1 .post-item img
+    {
+        height: 100%;
+        width: auto;
+    }
+    .main-content .block-1 .post-item .post-info
+    {
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+    }
+    .main-content .block-1 .post-item .post-info .title
+    {
+        font-size: 20px;
+    }
+
+    .main-content .block-3 .post-item
+    {
+        height: auto;
+        padding-bottom: 10px;
+    }
+    .main-content .block-3 .post-item .post-thumb img
+    {
+        width: 100%;
+        height: auto;
+    }
+    .main-content .block-3 .post-item .post-thumb a.img-thumb
+    {
+        height: auto;
+    }
+    .wp-pagenavi a, .wp-pagenavi span
+    {
+        margin-bottom: 10px !important;
+    }
+
+    .category-posts .feature-post
+    {
+        margin-bottom: 15px;
+    }
+    .category-posts .feature-post .feature-item
+    {
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+    .category-posts .feature-post .feature-item .image-thumb
+    {
+        width: auto;
+        height: 210px;
+        float: none;
+        border: none;
+    }
+    .category-posts .feature-post .feature-item .image-thumb img
+    {
+        width: 100%;
+        height: auto;
+    }
+    .category-posts .feature-post .feature-item .post-info
+    {
+        margin-left: 0;
+        padding: 0 15px;
+    }
+    .category-posts .feature-post .feature-item .post-info .category ul
+    {
+        margin: 15px 0 10px;
+    }
+    .category-posts .feature-post .feature-item .post-info .desc
+    {
+        margin-bottom: 15px;
+    }
+
+    .post-content .post-image-feature {
+        max-height: 250px;
+    }
+    .post-content .post-image-feature img {
+        height: 250px;
+        width: auto;
+    }
+    .post-content h1
+    {
+        margin-top: 30px;
+        font-size: 24px;
+        line-height: normal;
+    }
+    .post-content .post-info
+    {
+        font-size: 14px;
+    }
+    .post-content .subscribe-registration {
+        padding: 50px 20px;
+        margin: 15px 0 30px;
+    }
+    .post-content .subscribe-registration h3
+    {
+        width: auto;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .post-content .subscribe-registration .form-subscribe
+    {
+        width: 100%;
+    }
+    .post-content .subscribe-registration .form-subscribe input
+    {
+        width: 100%;
+    }
+    .post-content .comment-face {
+        margin-top: 15px;
+    }
+
+    .newest-posts .col-md-4
+    {
+        padding: 0 0;
+    }
+    .main-content .block-3 .post-item
+    {
+        min-height: auto;
+        margin-bottom: 20px;
+    }
+    .main-content .block-3 .post-item a.title
+    {
+        font-size: 18px;
+        font-weight: 500;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .main-content .block-3 .post-item .post-info
+    {
+        padding: 20px 15px 10px;
+    }
+    .main-content .block-3 .post-item .post-thumb .cate-post
+    {
+        left: 15px;
+    }
+
+    .post-content
+    {
+        background: #f9fbff;
+        overflow: hidden;
+    }
+    .post-content .col-md-offset-2 {
+        background: transparent !important;
+        padding: 0 10px !important;
+    }
+    .post-content .detail-content
+    {
+        font-size: 15px;
+        padding: 10px;
+        line-height: 25px;
+        background: #fff;
+    }
+    .post-content .post-info .post-cate
+    {
+        margin-bottom: 15px;
+        float: right !important;
+    }
+    .post-content .post-info .post-cate ul
+    {
+        margin-right: 0;
+    }
+    .post-content .detail-content h2
+    {
+        font-size: 24px;
+    }
+    .post-content .detail-content h3
+    {
+        font-size: 20px;
+    }
+    .post-content .detail-content h4
+    {
+        font-size: 18px;
+    }
+    .post-content .related-post
+    {
+        margin: 20px 0 10px;
+    }
+    .post-content .related-post .relate-item {
+        width: 80%;
+    }
+
+    .post-content .post-tags span.tag-title, .post-content .post-tags a
+    {
+        border: none;
+        padding: 0 0;
+        margin: 0 0;
+        display: inline;
+        color: #696969;
+    }
+    .post-content .post-tags span.tag-title
+    {
+        color: #696969;
+    }
+    .post-content .post-tags span.tag-title:after
+    {
+        content: ": ";
+        color: #696969;
+    }
+    .post-content .post-tags a:after {
+        content: ", ";
+        color: #1c95d2;
+    }
+    .post-content .post-tags a:last-of-type:after {
+        content: '';
+    }
+
+    .post-content .should-read .other-item .post-info a
+    {
+        font-size: 18px;
+    }
+
+    .wp-pagenavi
+    {
+        margin-bottom: 30px;
+    }
+
+    .fancybox-skin {
+        padding: 15px 0 !important;
+    }
+
+    #registrationIFrame {
+        width: 90% !important;
+        display: inline-block;
+    }
+
+    .ios-fancybox {
+        text-align: center !important;
+    }
+
+    .main-content .block-2 .slide-topic .topic-item a span.image.nam-2017
+    {
+        background: url("images/icon-kinh-doanh-2017-hv.png") no-repeat center center;
+    }
+    .main-content .block-2 .slide-topic .topic-item a span.image.kd-nho
+    {
+        background: url("images/icon-kinh-doanh-nho-hv.png") no-repeat center center;
+    }
+    .main-content .block-2 .slide-topic .topic-item a span.image.kiem-tien
+    {
+        background: url("images/icon-cach-kiem-tien-hv.png") no-repeat center center;
+    }
+    .main-content .block-2 .slide-topic .topic-item a span.image.quan-ao
+    {
+        background: url("images/icon-kinh-doanh-quan-ao-hv.png") no-repeat center center;
+    }
+    .main-content .block-2 .slide-topic .topic-item a span.image.my-pham
+    {
+        background: url("images/icon-kinh-doanh-my-pham-hv.png") no-repeat center center;
+    }
+    .main-content .block-2 .slide-topic .topic-item a span.image.trang-suc
+    {
+        background: url("images/icon-kinh-doanh-trang-suc-hv.png") no-repeat center center;
+    }
+
+    /* CTA Box 4 */
+    .cta-box-4 {
+        padding: 10px;
+        border-top: 1px solid dashed #dddddd;
+        border-bottom: 1px solid dashed #dddddd;
+    }
+    .cta-box-4 .box-thumb {
+        float: none;
+        text-align: center;
+        width: auto;
+        margin-bottom: 15px;
+    }
+    .cta-box-4 .box-info {
+        margin-left: 0;
+        text-align: center;
+    }
+    .cta-box-4 .box-info p {
+        margin-bottom: 15px;
+        margin-top: 0;
+    }
+
+    .fancybox-wrap {
+        background: #f3f3f3;
+        top: 0 !important;
+    }
+
+    .new-fancybox-close {
+        right: 10px;
+        top: 5px;
+        width: 30px;
+        height: 30px;
+        background-size: 30px;
+    }
+
+    .trial-bizweb-bottom {
+        padding: 40px 0;
+    }
+    .trial-bizweb-bottom h3 {
+        font-size: 24px;
+        font-weight: 400;
+        line-height: normal;
+        margin-bottom: 20px;
+    }
+    .trial-bizweb-bottom .site-name {
+        display: none;
+    }
+    .trial-bizweb-bottom .btn-registration {
+        height: 54px;
+        line-height: 54px;
+        font-size: 18px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+}

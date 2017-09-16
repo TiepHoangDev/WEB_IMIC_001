@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Quản lý nguồn bài viết";
+    Layout = "~/Areas/BTV/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model WCF.BusinessObjectsLayer.EntityObjects.SourcePageObject
+<div class="portlet box red-intense">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Quản lý nguồn bài viết
+        </div>
+        <div class="tools">
+
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        <div style="width:100%">
+            @using (Html.BeginForm("SourceUpdate", "Manage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "ck-form" }))
+            {
+                @Html.HiddenFor(x => x.SourceId)
+                <div class="form-group">
+                    <label>Nguồn trang công nghệ</label>
+                    <textarea class="form-control" name="TechSource"> @Html.Raw(Model.TechSource) </textarea>
+                </div>
+                <div class="form-group">
+                    <label>Nguồn trang kiến thức</label>
+                    <textarea class="form-control" name="LessonSource"> @Html.Raw(Model.LessonSource) </textarea>
+                </div>
+                <div class="form-group">
+                    <label>Nguồn trang tuyển dụng</label>
+                    <textarea class="form-control" name="RecruitSource"> @Html.Raw(Model.RecruitSource) </textarea>
+                </div>
+
+                <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+
+            }
+        </div>
+    </div>
+</div>
+@section PageLevelScript{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script src="~/Areas/AdminCP/Content/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript">
+        if ($(window).width() > 500) {
+            var editor = CKEDITOR.instances['TechSource'];
+
+            if (editor) { editor.destroy(true); }
+            CKEDITOR.replace('TechSource', {
+                enterMode: CKEDITOR.ENTER_BR,
+                htmlEncodeOutput: true,
+                //extraPlugins: 'uicolor',
+                height: '400px'
+
+            });
+                    CKFinder.setupCKEditor(null, '@Url.Content("~/Areas/AdminCP/Content/ckfinder")');
+        }
+
+        if ($(window).width() > 500) {
+            var editor = CKEDITOR.instances['LessonSource'];
+
+            if (editor) { editor.destroy(true); }
+            CKEDITOR.replace('LessonSource', {
+                enterMode: CKEDITOR.ENTER_BR,
+                htmlEncodeOutput: true,
+                //extraPlugins: 'uicolor',
+                height: '400px'
+
+            });
+            CKFinder.setupCKEditor(null, '@Url.Content("~/Areas/AdminCP/Content/ckfinder")');
+        }
+        if ($(window).width() > 500) {
+            var editor = CKEDITOR.instances['RecruitSource'];
+
+            if (editor) { editor.destroy(true); }
+            CKEDITOR.replace('RecruitSource', {
+                enterMode: CKEDITOR.ENTER_BR,
+                htmlEncodeOutput: true,
+                //extraPlugins: 'uicolor',
+                height: '400px'
+
+            });
+            CKFinder.setupCKEditor(null, '@Url.Content("~/Areas/AdminCP/Content/ckfinder")');
+        }
+    </script>
+
+
+
+}
+
+
+
+

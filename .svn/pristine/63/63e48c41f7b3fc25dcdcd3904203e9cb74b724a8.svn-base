@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.OpenClassObject>
+
+@{
+    ViewBag.Tittle = "";
+    Layout = "~/Areas/AdminCP/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs font-green-sharp"></i>
+                    <span class="caption-subject font-green-sharp bold uppercase">Quản lý Các khóa học khai giảng</span>
+                </div>
+                <div class="tools"></div>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-striped table-bordered table-hover" id="sample_1">
+                    <thead>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ClassName</td>
+                                <td>@item.ClassName</td>
+                                <td>@item.ClassName</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section style{
+
+}
+@section script{
+    <script src="/Areas/AdminCP/theme/assets/global/scripts/datatable.js"></script>
+    TableAdvanced.init();
+}

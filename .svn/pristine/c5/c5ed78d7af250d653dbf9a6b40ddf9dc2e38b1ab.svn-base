@@ -1,0 +1,99 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.VideoCommentObject>
+@using WCF.BusinessObjectsLayer.EntityObjects
+@using WCF.BusinessObjectsLayer.Commons
+@{
+    Layout = null;
+}
+@{
+    var isLogin = false;
+    AccountObject user = (AccountObject)Session[CommonConstants.SESSION_ACCOUNT];
+    if (user != null)
+    {
+        isLogin = true;
+    }
+}
+
+@if (Model.Count() > 0)
+{
+    foreach (var item in Model)
+    {
+        <div class="t-comment">
+            <a href="@Url.RouteUrl("user-profile", new { username = item.Account.Username })">
+                <img src="~/Content/images/avatar/@item.Account.ImageAvatar" class="round-avatar pull-left" />
+            </a>
+            <div class="t-cmt-right" data-cmt="@item.VideoCommentId">
+                <div class="w-100 pull-left">
+                    <a class="pull-left"><b>@item.Account.FullName</b></a>
+                    @{
+        double temp = DateTime.Now.Subtract(item.ModifiedTime).TotalHours;
+        if (temp < 1)
+        {
+            double display = DateTime.Now.Subtract(item.ModifiedTime).TotalMinutes;
+            if (display < 1)
+            {
+                <div class="cmt-time pull-right">Vừa xong</div>
+            }
+            else
+            {
+                <div class="cmt-time pull-right">@Math.Round(display) phút trước</div>
+            }
+        }
+        if (temp >= 1 && temp < 24)
+        {
+            <div class="cmt-time pull-right">@Math.Round(temp) giờ trước</div>
+        }
+        if (temp >= 24 && temp < 72)
+        {
+            double display = DateTime.Now.Subtract(item.ModifiedTime).TotalDays;
+            <div class="cmt-time pull-right">@Math.Round(display) ngày trước</div>
+        }
+        if (temp >= 72)
+        {
+            <div class="cmt-time pull-right">@item.ModifiedTime.ToString("dd/MM/yyyy hh:mm")</div>
+        }
+                    }
+
+                </div>
+                <div class="t-cmt-content">
+                    @Html.Raw(HttpUtility.HtmlDecode(item.ContentComment))
+                </div>
+                <div class="w-100 pull-left m-t-8">
+                    @if (@item.TotalOfReplies > 0)
+                    {
+                        <a class="pull-left t-hide-comment"><b>Xem tất cả @item.TotalOfReplies phản hồi</b></a>
+                    }
+                    <div class="pull-right text-muted">
+                        @if (item.IsLiked == false)
+                        {
+                            <div class="pull-right comment-like"><span class="cmt-like-count">@item.TotalOfLikes</span> likes</div>
+                            <a class="fa fa-heart p-right-6 pull-right cmt-like-btn" data-cmtid="@item.VideoCommentId" style="line-height:inherit"></a>
+                        }
+                        else
+                        {
+                            <div class="pull-right comment-like heart"><span class="cmt-like-count">@item.TotalOfLikes</span> likes</div>
+                            <a class="fa fa-heart p-right-6 pull-right heart cmt-like-btn" data-cmtid="@item.VideoCommentId" style="line-height:inherit"></a>
+                        }
+                        @if (isLogin == true)
+                        {
+                            <div class="pull-right p-right-10 t-reply"><a>Reply</a></div>
+                            <div class="fa fa-reply p-right-10 pull-right" style="line-height:inherit"></div>
+                        }
+                    </div>
+                </div>
+                @{Html.RenderAction("VideoDetail_CommentReply", "VideoPage", new { VideoCommentId = item.VideoCommentId });}
+                <div class="reply-comment-box">
+                    <div class="w-100 pull-left t-reply-box" style="display:none;">
+                        <textarea class="form-control" placeholder="Trả lời bình luận" rows="3" name="subcmt"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="v-comment">
+        <div class="no-comment">Hiện chưa có bình luận nào.</div>
+    </div>
+}
+

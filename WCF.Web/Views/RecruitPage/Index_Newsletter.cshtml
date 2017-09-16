@@ -1,0 +1,48 @@
+﻿@using System.Globalization
+@using WCF.BusinessObjectsLayer.EntityObjects
+@using WCF.Web.App_Start
+@model List<WCF.BusinessObjectsLayer.EntityObjects.RecruitmentNewsletterObject>
+
+
+<div class="c-blog-wrapper">
+    @foreach (var item in Model)
+    {
+        <div class="blog-img">
+            <a href="@Url.RouteUrl("recruit",new{code = item.NewsletterCode,name=StringHelpers.GenerateURL(item.Title)})">
+                @if (item.ImageServerFlag == true)
+                {
+                    <img src="~/Content/Galleries/Recruit/@item.ImageLink" alt="@item.ImageAlt" />
+                }
+                else
+                {
+                    <img src="@item.ImageLink" alt="@item.ImageAlt" />
+                }
+
+                <div class="blog-desc">
+                    <h5 style="margin: 10px 0;">@item.Title</h5>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i><a href="#" style="color: #333; font-size: 10px;"> @item.ModifiedTime.Day @item.ModifiedTime.ToString("MMMM", new CultureInfo("vi")) @item.ModifiedTime.Year</a>
+                    <p>@item.Description</p>
+                    <div class="comment">
+                        <span class="icon">
+                            <!--<img src="~/Content/images/recruit/b-heart.png" title="liked" alt="" />-->
+                            <div class ="fa fa-user" style="color:#f44242;font-size:17px"></div>&nbsp;
+                            @item.TotalOfViews Lượt xem
+                    </span>
+                    <div class="comment-desc">
+                        <a style="font-weight: bold;" href="#">@item.objCompany.CompanyName</a>
+                        @*<a href="#">@item.TotalOfViews views</a> /*@
+                        @*<a href="#">@item.ModifiedTime.ToString("MMMM"). @item.ModifiedTime.Day, @item.ModifiedTime.Year</a>*@
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </a>
+    </div>
+    }
+</div>
+
+
+
+
+
+

@@ -1,0 +1,341 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutLesson.cshtml";
+
+    LessonDetailObject objNext = (LessonDetailObject)ViewBag.Next;
+
+
+    LessonDetailObject objPrev = (LessonDetailObject)ViewBag.Prev;
+  
+}
+@*@{
+    string[] color = { "bg-red-flamingo", "bg-blue", "bg-green", "bg-yellow-crusta", "bg-grey-cascade", "bg-purple-medium" };
+    int rand = StringHelpers.MYRANDOM.Next(0, 6);
+}*@
+@using WCF.BusinessObjectsLayer.EntityObjects
+@using WCF.Web.App_Start
+@model  WCF.BusinessObjectsLayer.EntityObjects.LessonDetailObject
+@section LevelCss{
+   
+    <link href="~/Content/assets/css/prism_patched.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/assets/css/monokai_sublime.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="~/Content/assets/css/content-tag.css" />
+    <script src="~/Content/assets/js/highlight.pack.js"></script>
+<link href="~/Content/assets/css/simple-line-icons.min.css" rel="stylesheet" />
+
+<script>hljs.initHighlightingOnLoad();</script>
+}
+<style>
+    a:hover {
+        text-decoration: none;
+    }
+    code {
+        float: left;
+       
+    }
+    pre{
+        background: #23241f;
+    }
+  
+       
+    
+</style>
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=@System.Configuration.ConfigurationManager.AppSettings["FacebookAppId"]";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<div class="avert avert--leaderboard">
+    <div class="avert__wrapper">
+        <img style="width: 100%; margin-top: 2px;" src="~/Content/assets/images/quang-cao.jpg"/>
+        @*<div class="avert__content" id="div-gpt-1391730982123-0">
+            <div id="google_ads_iframe_/11757429/hub_development_leader_0__container__" style="border: 0pt none; display: inline-block; width: 728px; height: 90px;"><iframe frameborder="0" src="https://tpc.googlesyndication.com/safeframe/1-0-8/html/container.html" id="google_ads_iframe_/11757429/hub_development_leader_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="728" height="90" data-is-safeframe="true" style="border: 0px; vertical-align: bottom;"></iframe></div>
+        </div>
+        <div class="avert__content avert__criteo" id="ctr-1391730982123-0" style="display: none;"></div>
+        <div class="avert__label">Advertisement</div>*@
+    </div>
+</div>
+<!--end ad -->
+<div class="page-content topic-code" style="height: auto;">
+    <main class="content">
+
+        <div class="left-box" style="Width:70%;float:left; padding:10px;border:1px solid #e4e4e4">
+
+            <div class="content-banner">
+                <div class="content-banner-restricted-width">
+                    <ol class="content-banner__content-breadcrumb topic-code">
+                        <li><a href="">@Model.objLesson.objCategory.CategoryName</a></li>
+                        <li><a href="">@Model.objLesson.LessonName</a></li>
+                    </ol>
+                    @*<div class="content-banner__icon" >
+                       
+                            
+                  
+                    </div>*@
+                    <div class="content-banner__body" style="display: inline">
+                        <div class="label label-sm label-success" style="padding: 0px; float: left; margin-top: 7px; margin-right: 10px;">
+                            @{ int rank = Model.Rank + 1;}
+                            <div class="detail-count bg-red-flamingo ">@rank</div>
+
+
+                        </div>
+                        <h1 class="content-banner__title nolinks">@Model.DetailTitle</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="content-title"></div>
+            <article class="post article view view--loaded">
+                <div class="content-heading">
+                    <div class="content-heading__primary">
+                        <div class="content-heading__primary-authorship">
+                            <span class="content-heading__author">by <span class="content-heading__author-name"><a rel="author" href="">@Model.objAccount.FullName</a></span></span><time class="content-heading__publication-date" datetime="" title="">@Model.ModifiedTime</time>
+                        </div>
+                        <div class="content-heading__primary-attributes">
+                            <span class="content-heading__item"><span class="content-heading__label"><i class="fa fa-user"></i></span><span class="content-heading__value">@Model.TotalOfView Lượt xem</span></span><span class="content-heading__item"><span class="content-heading__label"><i class="fa fa-comment-o"></i></span><span class="content-heading__value">@Model.TotalOfComment Bình luận</span></span>
+                        </div>
+                    </div>
+
+                    @{Html.RenderAction("Detail_GetTag", "LessonPage", new {LessonDetailId = Model.LessonDetailId});}
+                    <div class="content-heading__secondary">
+                        <div class="content-heading__secondary-categories">
+                            @if (objPrev != null)
+                            {
+                                <a href="@Url.RouteUrl("lesson-detail", new {code = objPrev.DetailCode, name = StringHelpers.GenerateURL(objPrev.DetailTitle)})" style="float: left;"><span class="content-heading__secondary-categories-tag" style="color: #4cc1be; border: 2px solid #4cc1be;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Prev</span></a>
+                            }
+                            @if (objNext !=null)
+                            {
+                                <a href="@Url.RouteUrl("lesson-detail", new {code = objNext.DetailCode, name = StringHelpers.GenerateURL(objNext.DetailTitle)})" style="float: right;">
+                                <span class="content-heading__secondary-categories-tag" style="color: #4cc1be; border: 2px solid #4cc1be;"> Next <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                            </a>
+                            }
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    </div>
+                        <div class="post-body view view--loaded">
+                            @Html.Raw(HttpUtility.HtmlDecode(Model.DetailContent))
+
+
+                        </div>
+                        <!-- User-->
+                      <div class="content-author">
+                <a href="javascript:;">
+                    <div class="content-author__header">
+                        <img class="content-author__image" src="~/Content/images/avatar/@Model.objAccount.ImageAvatar" alt="Megali chapeu400x400">
+                        <div class="content-author__name">@Model.objAccount.FullName</div>
+                        <div class="content-author__title">Việt Nam</div>
+                    </div>
+                    <div class="content-author__bio"> </div>
+                </a>
+                       @*<div class="content-author__twitter"><a href=""></a><a href=""><i class="fa fa-phone"></i>@Model.objAccount.Phone</a>
+                       </div>*@
+                           </div>
+                <div class="content-heading__secondary" style="border-top: 1px solid #e8e8e8">
+                    <div class="content-heading__secondary-categories">
+                        @if (objPrev != null)
+                        {
+                            <a href="@Url.RouteUrl("lesson-detail", new {code = objPrev.DetailCode, name = StringHelpers.GenerateURL(objPrev.DetailTitle)})" style="float: left;"><span class="content-heading__secondary-categories-tag" style="color: #4cc1be; border: 2px solid #4cc1be;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Prev</span></a>
+                        }
+                        @if (objNext != null)
+                        {
+                            <a href="@Url.RouteUrl("lesson-detail", new {code = objNext.DetailCode, name = StringHelpers.GenerateURL(objNext.DetailTitle)})" style="float: right;">
+                                <span class="content-heading__secondary-categories-tag" style="color: #4cc1be; border: 2px solid #4cc1be;"> Next <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                            </a>
+                        }
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                        <!-- Like - Shared - Comment FB-->
+                        <div class="fb-like" data-href="@Request.Url.ToString()" style="float: left; margin-top: 25px;"
+                             data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true">
+
+                        </div>
+                        <div class="fb-comments" data-href="@Request.Url.ToString()" data-width="100%" data-numposts="5"></div>
+
+                        <!-- Comment User-->
+                <div class="u-padding0 u-clearfix u-backgroundGrayLightest u-print-hide supplementalPostContent js-responsesWrapper" data-action-scope="_actionscope_5">
+                    <div class=" u-maxWidth900">
+                        <div class="responsesStreamWrapper u-maxWidth900 js-responsesStreamWrapper">
+                            <div class=" u-maxWidth900 responsesStream-title u-paddingTop15">
+                                <div class="row">
+                                    <header class="heading u-clearfix">
+                                        <div class="u-clearfix">
+                                            <div style="margin-left: 15px" class="heading-content u-floatLeft"><span class="heading-title heading-title--semibold">Responses</span></div>
+                                        </div>
+                                    </header>
+                                </div>
+                            </div>
+                            @{
+                                Html.RenderAction("PostComment", "LessonPage", new { Lessid = Model.LessonDetailId });
+                            }
+
+
+                            @{Html.RenderAction("CommentByLesson", "LessonPage", new { id = Model.LessonDetailId });}
+                            <div class=" u-maxWidth900 u-hide js-showOtherResponses">
+                                <div class="row"><button style="background:none;" class="button button--primary button--withChrome u-accentColor--buttonNormal responsesStream-showOtherResponses cardChromeless u-sizeFullWidth" data-action="show-other-responses">Show all responses</button></div>
+                            </div>
+                            <div class="responsesStream js-responsesStreamOther"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+</article>
+
+
+        </div>
+
+        <div class="layout__sidebar" style="width:28%; padding:0 0px 10px 0px; float:right; ">
+            <aside class="activity-wrap animated slideDown headroom--top">
+                <article class="activity-item activity-item--forum" style="display: block; min-height: auto; border: none; margin-top: -10px;">
+                    <h4 class="text-uppercase"><i class="icon-book-open" aria-hidden="true" style="color: #5488c7;"></i>  @Model.objLesson.LessonName</h4>
+                    <!-- <hr class="filler-line"> -->
+                </article>
+                @{Html.RenderAction("Detail_GetRelated", "LessonPage", new { id = Model.objLesson.LessonId });}
+            </aside>
+                <div class="sidebar-box popular-tags">
+                    <div class="section-title-line" style="border-bottom:1px solid #e4e4e4; margin-top:20px">
+                        <h4 class="text-uppercase"><i class="fa fa-search" aria-hidden="true" style="color: #5488c7"></i> Từ khóa tìm kiếm</h4>
+                        <!-- <hr class="filler-line"> -->
+                    </div>
+                    @{Html.RenderAction("GetAll_Tag");}
+
+                </div>
+                <div class="adv">
+                    <img style="width: 100%" src="~/Content/assets/images/stack_qc.jpg" />
+
+                </div>
+                <div class="adv">
+                    <img style="width: 100%" src="~/Content/assets/images/satck_qc2.jpg" />
+
+                </div>
+</div>
+        <div class="clear"></div>
+        
+    </main>
+    <div class="hight-light">
+        @*<div class="market-highlight__heading">
+                <div class="market-highlight__intro">Looking for something to help kick start your next project?</div>
+                <div class="market-highlight__title"><a href="https://market.envato.com?ec_unit=market_highlight">Envato Market</a> has a range of items for sale to help get you started.</div>
+            </div>*@
+        @{Html.RenderAction("Lesson_related", "LessonPage", new { catId = Model.objLesson.LessonCategoryId, lessId = Model.LessonId });}
+    </div>
+</div>
+@section Scripts{
+
+<script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/ckeditor/ckeditor.js"></script>
+<script src="~/Content/assets/ckeditor/plugins/codesnippet/dialogs/codesnippet.js"></script>
+    <script src="~/Content/assets/ckeditor/plugins/prism/lib/prism/prism_patched.min.js"></script>
+<script src="~/Areas/AdminCP/Content/ckfinder/ckfinder.js"></script>
+@*<script src="~/Content/assets/js/imagezoom.js"></script>*@
+<script defer src="~/Content/assets/js/jquery.flexslider.js"></script>
+<script type="text/javascript" src="~/Content/assets/js/jquery.flexisel.js"></script>
+    <script>
+        
+        $(document).ready(function(e){
+            var code = @ViewBag.Code;
+            $('.activity-item').removeClass('highlight');
+            $('.activity-item').each(function(index){
+                if($(this).data('code') == code){
+                    $(this).addClass('highlight');
+                    $('.highlight .detail-count').removeClass('bg-green');
+                    $('.highlight .detail-count').addClass('bg-red-flamingo');
+                }
+            });
+        })
+
+        $(window).on('load', function() {
+            $('.flexslider')
+                .flexslider({
+                    animation: "slide",
+                    controlNav: "thumbnails"
+                });
+        });
+    </script>
+<script type="text/javascript">
+    $(window).on('load', function () {
+        $("#flexiselDemo3")
+            .flexisel({
+                visibleItems: 4,
+                animationSpeed: 1000,
+                itemsToScroll: 4,
+                autoPlay: true,
+                autoPlaySpeed: 3000,
+                pauseOnHover: true,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 1,
+                        itemsToScroll: 1
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 2,
+                        itemsToScroll: 2
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 3,
+                        itemsToScroll: 3
+                    }
+                }
+            });
+
+    });
+    $('.tag')
+        .on('click',
+            function (e) {
+                var tag = $(this).data('tag');
+                window.location.href = '@Url.Action("Search", "LessonPage")' + '?tag=' + tag;
+
+            });
+    
+   
+    $('.tag-detail')
+        .on('click',
+            function (e) {
+                var tag = $(this).data('tag');
+                window.location.href = '@Url.Action("Search", "LessonPage")' + '?tag=' + tag;
+
+            });
+    
+    @*$('#btn-update').click(function() {
+        var ArticleId = $('.ArticleId').val();
+        var ContentComment = $('.comment').val();
+        debugger
+        $.ajax({
+            type :"POST",
+            url: "@Url.Action("PostComment", "LessonPage")",
+            data: {ArticleId:ArticleId, ContentComment:ContentComment},
+        Success:function(responese)
+         {
+        //$("#Mymodal").modal("hide");
+            //$('#Mymodal')[0].reset();
+             window.location.reload();
+         }
+            })
+    });*@
+</script>
+
+<script type="text/javascript">
+        if ($(window).width() > 500) {
+            var editor = CKEDITOR.instances['ContentComment'];
+
+            if (editor) { editor.destroy(true); }
+            CKEDITOR.replace('ContentComment', {
+                enterMode: CKEDITOR.ENTER_BR,
+                htmlEncodeOutput: true,
+                height: '300px'
+
+            });
+            CKFinder.setupCKEditor(null, '@Url.Content("~/Areas/AdminCP/Content/ckfinder")');
+        }
+</script>
+
+}

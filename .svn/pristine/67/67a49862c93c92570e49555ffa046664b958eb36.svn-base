@@ -1,0 +1,121 @@
+﻿@using WCF.BusinessObjectsLayer.EntityObjects;
+@{
+    ViewBag.Title = "Quản lý Liên hệ";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.ContactObject>
+<style>
+    th {
+        text-align: center !important;
+    }
+
+    td {
+        text-align: center !important;
+    }
+</style>
+<div id="manage-contact" class="col-xs-12">
+    <div class="portlet box green-jungle">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-video-camera"></i>   Quản lý tất cả liên hệ
+            </div>
+            <div class="tools">
+
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="col-xs-12" style="float:none">
+
+                <table class="table table-striped table-bordered table-hover" id="contact-table">
+                    <thead>
+                        <tr role="row">
+                            <th>Người gửi</th>
+                            <th>Email</th>
+                            <th>Tiêu đề</th>
+                            <th>Ngày gửi</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.FullName</td>
+                                <td>@item.Email</td>
+                                <td>@item.Title</td>
+                                <td>@item.CreatedTime.ToString("dd/MM/yyyy hh:mm:ss tt")</td>
+                                @if (item.IsSeen == false)
+                                {
+                                    <td>
+                                        <span class="label label-lg label-danger">Chưa phản hồi</span>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <span class="label label-lg label-success">Đã phản hồi</span>
+                                    </td>
+                                }
+                                <td>
+                                    <a onclick="Detail('@item.ContactId',event)" class="btn btn-primary">Chi tiết</a>
+                                    @*<a onclick="Seen('@item.ContactId','@item.FullName',event)" class="btn btn-danger">Đã phản hồi</a>*@
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Action("Detail_Contact", "ContactAdmin")
+
+@section Scripts{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script>
+    $(document).ready(function () {
+        $('#contact-table').dataTable();
+    });
+
+    function Seen(id, name, event) {
+        var sender = event.currentTarget;
+        var answer = confirm("Bạn có muốn đánh dấu là đã phản hồi liên hệ này không?");
+        if (answer) {
+            $.ajax({
+                url: '@Url.Action("MarkAsRead", "ContactAdmin")',
+                data: { ContactId: id },
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    if (!data.result) {
+                        alert(data.Message);
+                    } else {
+                        $(sender).closest("tr").remove();
+                    }
+                }
+            });
+        }
+    }
+
+    function Detail(id, event) {
+        $.ajax({
+            url: '@Url.Action("GetDetail_Contact", "ContactAdmin")',
+            data: { ContactId: id },
+            type: "post",
+            success: function (response) {
+                var parsed = $.parseHTML(response);
+                debugger
+                $("#contentContact").empty();
+                $("#contentContact").append(parsed);
+            }
+        });
+        $("#detail-modal").modal({ backdrop: false });
+    }
+
+    </script>
+}
+

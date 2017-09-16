@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "Cập nhật hình ảnh";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@model WCF.BusinessObjectsLayer.EntityObjects.RecruitmentGalleryImageObject
+<div class="portlet box red-intense">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Cập nhật hình ảnh
+        </div>
+        <div class="tools">
+
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        <div style="width:100%">
+            @using (Html.BeginForm("GalleryUpdate", "RecruitmentAn", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(m => m.GalleryImageId)
+                @Html.HiddenFor(m => m.Image_Link)
+                <h4 style="color:red">@Html.ValidationSummary("", true)</h4>
+                <div class="form-group">
+                    <h3>Tiêu đề ảnh</h3>
+
+                    @Html.TextBoxFor(q => q.ImageTitle, new
+       {
+           @type = "text",
+           @class = "form-control",
+           @required = "true",
+           @placeholder = "Tiêu đề ảnh"
+       })
+                </div>
+                <div class="form-group">
+                    <h3>Mô tả</h3>
+
+                    @Html.TextAreaFor(q => q.ImageSummary, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+                        @placeholder = "Mô tả hình ảnh"
+                    })
+                </div>
+
+
+                <div class="form-group">
+                    <label>Hình ảnh</label>
+
+                    <input type="file" name="Avatar" id="ava">
+                    <div style="margin-top:15px;">
+                        <img style="width:200px;height:180px;" class="img-thumbnail rimage" src="~/Content/Galleries/Gallery/@Model.Image_Link" alt="@Model.Image_Alt" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Tiêu đề Seo của ảnh(tự sinh)</label>
+                    @Html.TextBoxFor(x => x.Image_Alt, new { @class = "form-control readimg", @type = "text", @placeholder = "Tiêu đề SEO" })
+
+                </div>
+                <div class="form-group">
+                    <h3>Thứ hạng</h3>
+
+                    @Html.TextBoxFor(q => q.Rank, new
+       {
+           @type = "number",
+           @class = "form-control"
+       })
+                </div>
+
+
+
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+
+                </div>
+            }
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script>
+        $('input[name=Avatar]')
+            .on('change',
+                function (e) {
+                    var fullPath = $(this).val();
+                    if (fullPath) {
+                        var startIndex = (fullPath.indexOf('\\') >= 0
+                            ? fullPath.lastIndexOf('\\')
+                            : fullPath.lastIndexOf('/'));
+                        var filename = fullPath.substring(startIndex);
+                        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                            filename = filename.substring(1);
+                        }
+                        var fn = filename.split('.');
+                        var extension = fn[fn.length - 1];
+                        filename = filename.replace(extension, '');
+                        filename = filename.replace('.', ' ');
+                        $('input[name=Image_Alt]').val(filename);
+                        readURL(this, '.rimage');
+                    }
+                });
+
+    </script>
+}
+
+
+
+

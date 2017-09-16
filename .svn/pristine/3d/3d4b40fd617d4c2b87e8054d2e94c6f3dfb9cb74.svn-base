@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Quản lý Playlist";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.VideoSubCategoryObject>
+<style>
+    th {
+        text-align: center !important;
+    }
+</style>
+<div id="manage-tagVideo" class="col-xs-12">
+    <div class="portlet box green-jungle">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-tags"></i>&nbsp;&nbsp;Quản lý Playlist
+            </div>
+            <div class="tools">
+
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="col-xs-12" style="float:none">
+                <div style="padding-bottom:10px;">
+                    <a class="btn btn-primary btn-sm" style="margin-top:10px;" href="@Url.Action("SubCategory_Insert", "VideoAdmin")">
+                        Thêm mới
+                        <span class="fa fa-plus" style="padding-left:6px;"></span>
+                    </a>
+                </div>
+                <table class="table table-striped table-bordered table-hover dataTable no-footer" id="tag-table" aria-describedby="dataTables-example_info">
+                    <thead>
+                        <tr role="row">
+                            <th>Tên của Playlist</th>
+                            <th>Số lần xuất hiện</th>
+                            <th>Người tạo</th>
+                            <th style="width:240px">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td style="text-align:center">@item.VideoSubCategoryName</td>
+                                <td style="text-align:center">@item.TotalVideo.ToString("n0")</td>
+                                <td style="text-align:center">@item.Account.Username</td>
+                                <td style="text-align:center">
+                                    <a href="@Url.Action("SubCategory_Edit", "VideoAdmin", new { SubCategoryId = item.VideoSubCategoryID })" class="btn btn-info">Sửa</a>
+                                    <a onclick="Delete('@item.VideoSubCategoryID','@item.VideoSubCategoryName',event)" cla class="btn btn-danger">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/select2/select2.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/extensions/Scroller/js/dataTables.scroller.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/admin/pages/scripts/table-advanced.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tag-table').DataTable();
+        });
+
+        function Delete(id, name, event) {
+            var sender = event.currentTarget;
+            var answer = confirm("Bạn có muốn xóa playlist: " + name + " ?");
+            if (answer) {
+                $.ajax({
+                    url: '@Url.Action("SubCategory_Delete", "VideoAdmin")',
+                    data: { SubCategoryId: id },
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        if (!data.rs) {
+                            alert(data.Message);
+                        } else {
+                            $(sender).closest("tr").remove();
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+}
+
+

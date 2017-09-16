@@ -1,0 +1,16 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.RecruitmentGalleryImageObject>
+<div id="main1">
+    <ul id="tiles">
+        <!-- These are our grid blocks -->
+        @foreach (var item in Model)
+        {
+         <li>
+            <a href="~/Content/Galleries/Gallery/@item.Image_Link" rel="lightbox" class="cboxElement">
+                <img src="~/Content/Galleries/Gallery/@item.Image_Link" width="200">
+            </a>
+        </li>   
+        }
+        
+        
+    </ul>
+</div>

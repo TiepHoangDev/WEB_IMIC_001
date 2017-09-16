@@ -1,0 +1,174 @@
+﻿@{
+    Layout = null;
+}
+@using WCF.BusinessObjectsLayer
+@using WCF.BusinessObjectsLayer.Commons
+@using WCF.BusinessObjectsLayer.EntityObjects
+
+@{
+    AccountObject objUser = (AccountObject)Session[CommonConstants.SESSION_USER];
+}
+<div class="page-sidebar-wrapper">
+    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+    <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+    <div class="page-sidebar navbar-collapse collapse">
+        <!-- BEGIN SIDEBAR MENU -->
+        <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+        <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+        <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+        <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+        <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+        <ul id="sidebar-menu" class="page-sidebar-menu page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+
+            @{
+                if (objUser.RoleId == CommonConstants.ADMIN || objUser.RoleId == CommonConstants.SUPER_ADMIN)
+                {
+                    <li id-menu="Manage">
+                        <a href="@Url.Action("Index", "Manage")">
+                            <i class="icon-notebook"></i>
+                            <span class="title">Quản lý bài viết</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+
+                            <li class="active">
+                                <a href="@Url.Action("Index", "Manage")">
+                                    <i class=" icon-graduation">
+                                    </i>
+                                    Bài viết đã duyệt
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="@Url.Action("Unapproved", "Manage")">
+                                    <i class="icon-note">
+                                    </i>
+                                    Bài viết chờ duyệt
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="@Url.Action("approvedFail", "Manage")">
+                                    <i class="icon-note">
+                                    </i>
+                                    Bài viết yêu cầu sửa
+                                </a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li id-menu="rule-1">
+                        <a href="@Url.Action("RuleUpdate", "Manage")">
+                            <i class="icon-docs"></i>
+                            <span class="title">Quản lý quy tắc</span>
+                            <span class="arrow "></span>
+                        </a>
+                    </li>
+                    <li id-menu="source-1">
+                        <a href="@Url.Action("SourceUpdate", "Manage")">
+                            <i class="icon-wallet"></i>
+                            <span class="title">Quản lý danh sách nguồn</span>
+                            <span class="arrow "></span>
+                        </a>
+                    </li>
+                    <li id-menu="pro-1">
+                        <a href="@Url.Action("ManagePropose", "Propose")">
+                            <i class="icon-puzzle"></i>
+                            <span class="title">Quản lý bài viết đề xuất</span>
+                            <span class="arrow "></span>
+                        </a>
+                        <ul class="sub-menu">
+
+                            <li class="active">
+                                <a href="@Url.Action("ManagePropose", "Propose")">
+                                    <i class=" icon-graduation">
+                                    </i>
+                                    Bài viết đã đăng ký
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="@Url.Action("ManageProposeUnRegister", "Propose")">
+                                    <i class="icon-note">
+                                    </i>
+                                    Bài viết chưa được đăng ký
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                }
+            }
+
+            @{
+                if (objUser.RoleId == CommonConstants.UPLOADER)
+                {
+                    <li id-menu="Upload">
+                        <a href="@Url.Action("Index", "Upload")">
+                            <i class="icon-cup"></i>
+                            <span class="title">Đăng bài</span>
+                            <span class="arrow "></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="active">
+                                <a href="@Url.Action("Index", "Upload", new {status = StatusObject.LEVEL_0.StatusID})">
+                                    <i class=" icon-star">
+                                    </i>
+                                    Bài viết mới
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="@Url.Action("Index", "Upload", new {status = StatusObject.LEVEL_2.StatusID})">
+                                    <i class="icon-dislike">
+                                    </i>
+                                    Bài viết bị đánh trượt
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="@Url.Action("Index", "Upload", new {status = StatusObject.LEVEL_3.StatusID})">
+                                    <i class="icon-note">
+                                    </i>
+                                    Bài viết vừa sửa lại
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="@Url.Action("Index", "Upload", new {status = StatusObject.LEVEL_1.StatusID})">
+                                    <i class=" icon-graduation">
+                                    </i>
+                                    Bài viết được duyệt
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li id-menu="rule">
+                        <a href="@Url.Action("RuleWriter", "Manage")">
+                            <i class="icon-graduation"></i>
+                            <span class="title">Quy tắc đăng bài</span>
+                            <span class="arrow "></span>
+                        </a>
+                    </li>
+                    <li id-menu="source">
+                        <a href="@Url.Action("SourcePage", "Manage")">
+                            <i class="icon-notebook"></i>
+                            <span class="title">Danh sách nguồn bài viết</span>
+                            <span class="arrow "></span>
+                        </a>
+                    </li>
+                    <li id-menu="Propose">
+                        <a href="@Url.Action("Index", "Propose",new {IsRegister =false})">
+                            <i class="icon-puzzle"></i>
+                            <span class="title">Danh sách bài viết được đề xuất</span>
+                            <span class="arrow "></span>
+                        </a>
+                    </li>
+                }
+            }
+
+
+
+
+
+
+
+        </ul>
+        <!-- END SIDEBAR MENU -->
+    </div>
+</div>

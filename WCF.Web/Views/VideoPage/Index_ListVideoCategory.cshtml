@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.VideoCategoryObject>
+@using WCF.Web.App_Start
+@{
+    Layout = null;
+}
+@{
+    int vcCode = ViewBag.vcCodeNumber;
+    if (vcCode == 0)
+    {
+        foreach (var item in Model)
+        {
+            int pageIndex = 0;
+            <div class="row-wrapper w-100 pull-left">
+                <div class="w-100 pull-left">
+                    <img style="width:20px; height:20px;margin-top:10px" src="~/Content/Galleries/Video/Categories/@item.VideoCategoryIcon" class="pull-left" />
+                    <h4 class="pull-left" style="margin-left:10px"><a class="cat-header" href="@Url.RouteUrl("video-category", new { vcCodeNumber = item.VCCodeNumber, catname = StringHelpers.ToAscii(item.VideoCategoryName) })">@item.VideoCategoryName</a></h4>
+                </div>
+                <div class="customNavigation">
+                    <a class="next-slide fa fa-angle-right"></a>
+                    <a class="prev-slide fa fa-angle-left"></a>
+                </div>
+                <div class="w-100 pull-left cat-video">
+                    @Html.Action("Index_ListVideo", new { pageIndex, item.VCCodeNumber })
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            int pageIndex = 0;
+            <div class="row-wrapper w-100 pull-left">
+                <div class="w-100 pull-left">
+                    <img style="width:20px; height:20px;margin-top:10px" src="~/Content/Galleries/Video/Categories/@item.VideoCategoryIcon" class="pull-left" />
+                    <h4 class="pull-left" style="margin-left:10px"><a class="cat-header" href="@Url.RouteUrl("video-category", new { vcCodeNumber = item.VCCodeNumber, catname = StringHelpers.ToAscii(item.VideoCategoryName) })">@item.VideoCategoryName</a></h4>
+                </div>
+                <div class="customNavigation">
+                    <a class="next-slide fa fa-angle-right"></a>
+                    <a class="prev-slide fa fa-angle-left"></a>
+                </div>
+                <div class="w-100 pull-left cat-video">
+                    @Html.Action("Index_ListVideo", new { pageIndex, item.VCCodeNumber })
+                </div>
+            </div>
+        }
+    }
+}
+

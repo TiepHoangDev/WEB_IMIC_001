@@ -1,0 +1,286 @@
+
+body {
+    font-family: "Roboto",Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 1.3em;
+}
+.ld-thietkewebsitebanhang .thietkewebsitebanhang-banner {
+    background: url(../../images/khai-giang/thietkewebsitebanhang-banner.jpg) no-repeat center bottom;
+    padding-top: 93px;
+  
+	position: relative;}
+
+.ld-thietkewebsitebanhang .thietkewebsitebanhang-banner .image-banner {
+    position: relative;
+}
+.ld-thietkewebsitebanhang .thietkewebsitebanhang-banner .image-banner img {
+    position: absolute;
+    right: 0;
+    top: 55px;
+}
+
+.ld-thietkewebsitebanhang .thietkewebsitebanhang-banner h1 {
+    margin-top: 120px;
+    font-family: "HELVETICANEUE";
+    font-size: 41px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 48px;
+    margin-bottom: 20px;
+}
+
+.ld-thietkewebsitebanhang .thietkewebsitebanhang-banner p.desc {
+    font-family: "Roboto";
+    font-weight: 300;
+    color: #fff;
+    font-size: 21px;
+    line-height: 30px;
+    margin-bottom: 75px;
+}
+
+p {
+    margin: 0 0 10px;
+}
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+.ld-thietkewebsitebanhang .thietkewebsitebanhang-banner .btn-registration {
+    height: 65px;
+    line-height: 65px;
+    font-weight: 500;
+    font-size: 29px;
+    padding: 0 45px;
+    margin-bottom: 250px;
+}
+
+.btn-registration {
+    color: #fff;
+    background-color: #7fc142;
+    border-radius: 45px;
+    display: inline-block;
+    line-height: 63px;
+    padding: 0 35px;
+    outline: none;
+    -webkit-transition: all 150ms ease;
+    -moz-transition: all 150ms ease;
+    transition: all 150ms ease;
+    -webkit-transition-property: background-color border-color color;
+    -moz-transition-property: background-color border-color color;
+    transition-property: background-color border-color color;
+    -webkit-user-select: none;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: .5s;
+    transition-duration: .5s;
+    white-space: nowrap;
+    font-size: 16px;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+.btn-registration:before {
+    content: "";
+    border-radius: 45px;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #7fc142;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 50%;
+    transform-origin: 50%;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: .5s;
+    transition-duration: .5s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+.btn-registration:hover,
+.btn-registration:focus,
+.btn-registration:active {
+    color: #fff;
+    text-decoration: none;
+}
+.btn-registration:hover:before,
+.btn-registration:focus:before,
+.btn-registration:active:before {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+.btn-registration:hover {
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.ld-thietkewebsitebanhang .thietkewebsitebanhang-block-1 h2 {
+    font-family: "Roboto";
+    font-size: 38px;
+    font-weight: 700;
+    color: #444ab3;
+    line-height: 60px;
+    text-align: center;
+    margin: 45px 0 35px;
+}
+.clearfix:before, .clearfix:after, .dl-horizontal dd:before, .dl-horizontal dd:after, .container:before, .container:after, .container-fluid:before, .container-fluid:after, .row:before, .row:after, .form-horizontal .form-group:before, .form-horizontal .form-group:after, .btn-toolbar:before, .btn-toolbar:after, .btn-group-vertical>.btn-group:before, .btn-group-vertical>.btn-group:after, .nav:before, .nav:after, .navbar:before, .navbar:after, .navbar-header:before, .navbar-header:after, .navbar-collapse:before, .navbar-collapse:after, .pager:before, .pager:after, .panel-body:before, .panel-body:after, .modal-footer:before, .modal-footer:after {
+    display: table;
+    content: " ";
+}
+
+/* css imic*/
+
+#page-wrapper {
+    padding: 15px 0;
+}
+
+.pull-left {
+    float: left !important;
+}
+
+w-100 {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.course-list {
+    width: 100%;
+    float: left;
+    padding: 0px;
+}
+.course-list li {
+    float: left;
+    list-style-type: none;
+    background: #FFF;
+    box-shadow: 0 4px 2px 0 rgba(0,0,0,.3);
+    border-radius: 2px;
+    margin: 20px 0;
+    position: relative;
+}
+.e-marker {
+    width: 52px;
+    height: 52px;
+    top: -4px;
+    left: -4px;
+    background-size: 150px!important;
+    position: absolute;
+    background-position: 1px -331px;
+}
+.fullimg {
+    position: relative;
+}
+.course-list .cover-img {
+    width: 100%;
+    height: 250px;
+}
+.item__location {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.55);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 8px;
+    z-index: 7;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.course-list li .bottom-box {
+    width: 100%;
+    padding: 15px;
+    padding-bottom: 10px;
+    float: left;
+}
+.course-list li .course-link {
+    font-size: 15px;
+    display: inline-block;
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: initial;
+    text-decoration: none;
+}
+.course-list .btn-signup {
+    font-size: 12px;
+    height: 25px;
+    padding: 1px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 5px;
+    color: #666;
+}
+.course-list .time {
+    line-height: 25px;
+    margin-left: 5px;
+}
+.event-date {
+    position: absolute;
+    bottom: 4px;
+    right: 5px;
+    width: 54px;
+}
+.event-date .month {
+    text-transform: uppercase;
+    border-radius: 2px 2px 0 0;
+    background: #EB1212;
+    color: #fff;
+    font-weight: 600;
+    height: 18px;
+    line-height: 16px;
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+}
+.event-date .detail {
+    display: inline-block;
+    height: 36px;
+    width: 100%;
+    background: #FFF;
+    border: 1px solid #CCC;
+    border-bottom-width: 3px;
+    border-top: 0;
+}
+.event-date .detail p:nth-child(2) {
+    font-size: 11px;
+}
+
+.event-date .detail p {
+    margin: 0px;
+}
+.text-center {
+    text-align: center;
+}
+.tkb-sprites {
+    background: url(../images/ticketbox-sprites.png?v7) no-repeat;
+}
+@media (min-width: 1200px){
+
+.course-content .container {
+    width: 1170px;
+}
+
+}
+

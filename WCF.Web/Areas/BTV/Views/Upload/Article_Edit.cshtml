@@ -1,0 +1,269 @@
+﻿@{
+    ViewBag.Title = "Cập nhật bài viết công nghệ";
+    Layout = "~/Areas/BTV/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model WCF.BusinessObjectsLayer.EntityObjects.TechArticleObject
+@section PageStyle{
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Social Buttons CSS -->
+    <!-- Custom CSS -->
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <link href="~/Content/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/tech.css" rel="stylesheet" type="text/css" />
+    <style>
+        .t-item {
+            float: none;
+        }
+    </style>
+}
+<div class="portlet box red-intense">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Cập nhật bài viết công nghệ
+        </div>
+        <div class="tools">
+
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        <div style="width:100%">
+            @using (Html.BeginForm("Article_Edit", "Upload", FormMethod.Post, new { enctype = "multipart/form-data", @class = "ck-form" }))
+            {
+                @Html.HiddenFor(q => q.CreatedBy)
+                @Html.HiddenFor(q => q.CreatedTime)
+                @Html.HiddenFor(q => q.isActive)
+                @Html.HiddenFor(q => q.isApproved)
+                @Html.HiddenFor(q => q.isDeleted)
+                @Html.HiddenFor(q => q.LastRepliedTime)
+                @Html.HiddenFor(q => q.ModifiedBy)
+                @Html.HiddenFor(q => q.ModifiedTime)
+                @Html.HiddenFor(q => q.LastReplier)
+                @Html.HiddenFor(q => q.ApprovedBy)
+                @Html.HiddenFor(q => q.TotalOfLinks)
+                @Html.HiddenFor(q => q.TotalOfUsers)
+                @Html.HiddenFor(q => q.TotalOfReplies)
+                @Html.HiddenFor(q => q.TechArticleId)
+                @Html.HiddenFor(q => q.ArticleImageLink)
+                @Html.HiddenFor(q => q.ArticleCodeNumber)
+                <div class="form-group">
+                    <label>Tiêu đề bài viết</label>
+
+                    @Html.TextBoxFor(q => q.ArticleTitle, new
+       {
+           @class = "form-control",
+           @placeholder = "Tiêu đề"
+
+       })
+                </div>
+                <div class="form-group">
+                    <label>Danh mục bài viết</label>
+
+                    @{
+                        var lisCategory = ViewBag.TechCategoryList;
+                        List<SelectListItem> lisSelectCategory = new List<SelectListItem>();
+                        foreach (var item in lisCategory)
+                        {
+                            lisSelectCategory.Add(new SelectListItem()
+                            {
+                                Value = "" + item.TechCategoryId,
+                                Text = item.CategoryName
+                            });
+                        }
+                    }
+
+                    @Html.DropDownListFor(m => m.TechCategoryId, lisSelectCategory, new {@class = "form-control"})
+                </div>
+                    <div class="form-group">
+                    <label>Mô tả </label>
+                    @Html.TextAreaFor(x => x.TechSummary, new
+                       {
+                           @class = "form-control",
+                           @rows = "6"
+                       })
+
+                </div>
+                <p><i style="color:red">Lưu ý khi chọn ảnh để chiều rộng là 100%, chiều cao không điền gì cả</i></p>
+                <div class="form-group">
+                    <label>Nội dung bài viết</label>
+                    <textarea class="form-control" name="ContentArticle">@Html.Raw(Model.ContentArticle)</textarea>
+
+                </div>
+                <div class="form-group">
+                    <label>Số lượt like</label>
+
+                    @Html.TextBoxFor(q => q.TotalOfLikes, new
+       {
+           @class = "form-control",
+           @type = "number"
+
+       })
+                </div>
+                <div class="form-group">
+                    <label>Số lượt View</label>
+
+                    @Html.TextBoxFor(q => q.TotalOfViews, new
+       {
+           @class = "form-control",
+           @type = "number"
+
+       })
+
+                </div>
+          
+                <div class="form-group">
+                    <label>Số lượt Replies</label>
+                    @Html.TextBoxFor(x => x.TotalOfReplies, new
+       {
+           @class = "form-control",
+           @type = "number"
+       })
+                </div>
+                <div class="form-group">
+                    <label>Số lượt Share</label>
+                    @Html.TextBoxFor(x => x.TotalOfLinks, new
+       {
+           @class = "form-control",
+           @type = "number"
+       })
+                </div>
+                <div class="form-group">
+                    <label>Số Users liên quan</label>
+                    @Html.TextBoxFor(x => x.TotalOfUsers, new
+       {
+           @class = "form-control",
+           @type = "number"
+       })
+                </div>
+    <div class="form-group">
+        <label>Rank của bài viết</label>
+
+        @Html.TextBoxFor(q => q.RankOfPin, new
+       {
+           @class = "form-control",
+           @type = "number"
+
+
+       })
+    </div>
+                <div class="form-group">
+                    <label>Ảnh đại diện bài viết</label>
+                    <input type="file" id="ava" name="Avatar" />
+
+                    <div style="margin-top:15px;">
+                        <img style="width:200px;height:180px;" class="img-thumbnail rimage" src="~/Content/Galleries/Tech/Articles/@Model.ArticleImageLink" />
+                    </div>
+
+                </div>
+                <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+                <button class="btn btn-default btn-sm preview" style="margin-left:5px;" type="button">Preview</button>
+
+            }
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="basic" tabindex="-1">
+    <div class="modal-dialog" style="width:auto;max-width:1024px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Preview Panel</h4>
+            </div>
+            <div class="modal-body modal-01 preview-panel">
+                <div style="width:100%">
+                    <div class="w-100 bg-white">
+                        <div class="tech-main" style="float:none">
+                            <div class="t-content" style="float:none">
+
+                                <div class="t-box-right" style="float:none">
+                                    <ul class="t-article" style="float:none">
+                                        <!--title-->
+                                        <li class="t-item" style="float:none">
+                                            <h4 id="title"></h4>
+                                        </li>
+                                        <!--category-->
+                                        <li class="t-item" style="float:none;padding-bottom:25px">
+                                            <ul class="t-category" style="float:none">
+                                                <li><a><b id="category"></b></a></li>
+                                                <li class="text-muted">17/02/2017</li>
+                                                <li class="text-muted">20.301 lượt xem</li>
+                                            </ul>
+                                        </li>
+                                        <!--actual content--><!--ck editor-->
+                                        <li class="t-item" style="float:none">
+                                            <div class="w-100 tech-content" style="float:none">
+
+                                            </div>
+                                        </li>
+                                        <!-- likes -->
+                                        <!--same-poster-->
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--t content-->
+                            <!--t-comment-sec-->
+                            <!--adrvetise-->
+                            <!--suggested-->
+                        </div>
+                        <!--tech-main-->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn default" data-dismiss="modal">Ok</button>
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@section PageLevelScript{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script src="~/Areas/AdminCP/Content/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript">
+        if ($(window).width() > 500) {
+            var editor = CKEDITOR.instances['ContentArticle'];
+
+            if (editor) { editor.destroy(true); }
+            CKEDITOR.replace('ContentArticle', {
+                enterMode: CKEDITOR.ENTER_BR,
+                htmlEncodeOutput: true,
+                //extraPlugins: 'uicolor',
+                height: '700px'
+
+            });
+              CKFinder.setupCKEditor(null, '@Url.Content("~/Areas/AdminCP/Content/ckfinder")');
+        }
+    </script>
+
+
+    <script>
+        $("#ava").change(function () {
+            readURL(this, '.rimage');
+        });
+        $('.preview').on('click', function (e) {
+
+            var title = $('input[name=ArticleTitle]').val();
+            var content = CKEDITOR.instances.ContentArticle.getData();
+            var category = $('select option:selected').text();
+            for (instance in CKEDITOR.instances)
+                CKEDITOR.instances[instance].updateElement();
+
+            $('#title').html(title);
+            $('#category').html(category);
+            $('.tech-content').html(content);
+            $('#basic').modal('show');
+
+        })
+
+    </script>
+}
+
+
+
+

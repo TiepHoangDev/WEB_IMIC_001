@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "ManageVideoCategory";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.VideoCategoryObject>
+<style>
+    th {
+        text-align: center !important;
+    }
+
+    td {
+        text-align: center !important;
+    }
+</style>
+<div id="manage-tech-category" class="col-xs-12">
+    <div class="portlet box red-intense">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-video-camera"></i>Quản lý danh mục video
+            </div>
+            <div class="tools">
+
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="col-xs-12" style="float:none">
+                <div style="padding-bottom:10px;">
+                    <a class="btn btn-primary btn-sm" style="margin-top:10px;" href="@Url.Action("Category_Insert", "VideoAdmin")">
+                        Thêm mới
+                        <span class="fa fa-plus" style="padding-left:6px;"></span>
+                    </a>
+                </div>
+                <table class="table table-striped table-bordered table-hover dataTable no-footer" id="video-category-table" aria-describedby="dataTables-example_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting" tabindex="0" rowspan="1" colspan="1">Số code</th>
+                            <th class="sorting" tabindex="0" rowspan="1" colspan="1">Tên</th>
+                            <th class="sorting" tabindex="0" rowspan="1" colspan="1">Biểu tượng</th>
+                            <th class="sorting" tabindex="0" rowspan="1" colspan="1">Người tạo</th>
+                            <th class="sorting" tabindex="0" rowspan="1" colspan="1">Trạng thái</th>
+                            <th class="sorting" tabindex="0" rowspan="1" colspan="1">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.VCCodeNumber</td>
+                                <td>@item.VideoCategoryName</td>
+                                <td><img style="height:100px;width:150px;" src="~/Content/Galleries/Video/Categories/@item.VideoCategoryIcon" /></td>
+                                <td>@item.Account.Username</td>
+                                @if (item.IsDeleted == false)
+                                {
+                                    <td>
+                                        <h4><span class="label label-lg label-success">Active</span></h4>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <h4><span class="label label-lg label-danger">Deactive</span></h4>
+                                    </td>
+                                }
+                                <td>
+                                    <a href="@Url.Action("Category_Edit", "VideoAdmin", new { VideoCategoryId = item.VideoCategoryId })" class="btn btn-info">Sửa</a>
+                                    @if (item.IsDeleted == false)
+                                    {
+                                        <a onclick="Delete('@item.VideoCategoryId','@item.VideoCategoryName',event)" class="btn btn-danger">Xóa</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-warning">Khôi phục</a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#video-category-table').dataTable();
+        });
+
+        function Delete(id, name, event) {
+            var sender = event.currentTarget;
+            var answer = confirm("Bạn có muốn xóa danh mục: " + name + " ?");
+            if (answer) {
+                $.ajax({
+                    url: '@Url.Action("Delete_VideoCategory", "VideoAdmin")',
+                    data: { VideoCategoryId: id },
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        if (!data.result) {
+                            alert(data.Message);
+                        } else {
+                            //$(sender).closest("tr").remove();
+                            location.reload();
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+}
+

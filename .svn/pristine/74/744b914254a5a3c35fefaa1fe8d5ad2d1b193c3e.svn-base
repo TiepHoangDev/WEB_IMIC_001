@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.FacebookUserLikedObject>
+@{
+    Layout = null;
+}
+
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=181306608970834";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<div class="box-list hidden-xs">
+    <div class="fb-box">
+        <img src="~/Content/images/icon/fb.png" class="img-t" />
+        <div class="box-icon-imic">
+            <a href="https://www.facebook.com/imicrosoft.edu.vn"><img src="~/Content/images/other/imic-kinhnghiem.png" /></a>
+        </div>
+        <div class="fb">
+            <h2 class="text-user">863K thích iMicroSoft Việt Nam</h2>
+            @foreach (var item in Model)
+            {
+                <div class="row-user">
+                    <div class="box-user col-lg-3">
+                        <a href="@item.FacebookLink">
+                            <img src="~/Content/Galleries/OtherCategory/FacebookUserLiked/@item.FacebookAvatar" class="photo1" />
+                        </a>
+                        <h3 class="name">@item.FacebookName</h3>
+                    </div>
+                </div>
+            }
+
+            @*<img src="~/Content/images/other/anh6.jpg">*@
+        </div>
+    </div>
+    @*<div style="margin-top: 10px; width: 100%; overflow: hidden;" class="fb-post" data-href="https://www.facebook.com/imicrosoft.edu.vn/posts/1807101222838644" data-show-text="true"></div>*@
+</div>

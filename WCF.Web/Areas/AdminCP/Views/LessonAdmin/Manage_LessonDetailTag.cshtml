@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Quản lý Tag";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.LessonDetailTagObject>
+<style>
+    th {
+        text-align: center !important;
+    }
+</style>
+<div id="manage-tagLessonDetail" class="col-xs-12">
+    <div class="portlet box green-jungle">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-tags"></i>&nbsp;&nbsp;Quản lý Tag trang Kiến thức
+            </div>
+            <div class="tools">
+
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="col-xs-12" style="float:none">
+                <div style="padding-bottom:10px;">
+                    <a class="btn btn-primary btn-sm" style="margin-top:10px;" href="@Url.Action("LessonDetailTag_Insert", "LessonAdmin")">
+                        Thêm mới
+                        <span class="fa fa-plus" style="padding-left:6px;"></span>
+                    </a>
+                </div>
+                <table class="table table-striped table-bordered table-hover dataTable no-footer" id="tag-table" aria-describedby="dataTables-example_info">
+                    <thead>
+                        <tr role="row">
+                            <th>Tên của Tag</th>
+                            <th>Số lần xuất hiện</th>
+                            <th style="width:240px">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td style="text-align:center">@item.LessonDetailTagName</td>
+                                <td style="text-align:center">@item.TotalOfLessons.ToString("n0")</td>
+                                <td style="text-align:center">
+                                    <a href="@Url.Action("LessonDetailTag_Update", "LessonAdmin", new { LessonDetailTagId = item.LessonDetailTagId })" class="btn btn-info">Sửa</a>
+                                    <a onclick="Delete('@item.LessonDetailTagId','@item.LessonDetailTagName',event)" cla class="btn btn-danger">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/select2/select2.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/extensions/Scroller/js/dataTables.scroller.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/admin/pages/scripts/table-advanced.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tag-table').DataTable();
+        });
+
+        function Delete(id, name, event) {
+            var sender = event.currentTarget;
+            var answer = confirm("Bạn có muốn xóa tag: " + name + " ?");
+            if (answer) {
+                $.ajax({
+                    url: '@Url.Action("LessonDetailTag_Delete", "LessonAdmin")',
+                    data: { LessonDetailTagId: id },
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        if (!data.rs) {
+                            alert(data.Message);
+                        } else {
+                            $(sender).closest("tr").remove();
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+}
+
+

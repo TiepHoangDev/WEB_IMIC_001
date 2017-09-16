@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+@using WCF.Web.App_Start;
+@model List<WCF.BusinessObjectsLayer.EntityObjects.NewsObject>
+<h2 class="title">BÀI VIẾT ĐƯỢC QUAN TÂM</h2>
+<ul class="newlist">
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="@Url.Action("NewsDetail", "NewsPage", new { newsCodeNumber = item.NewsCodeNumber, postName = StringHelpers.ToAscii(item.NewsTitle) })">
+                <img style="width: 120px;height: 70px"src="@Url.Content("~/Content/Galleries/News/NewsImage/" + item.NewsAvatar)" class="img" />
+                <div class="text">
+                    @if (item.NewsTitle.Length > 75)
+                    {
+                        
+                            <h6>@item.NewsTitle.Substring(0, 75)...</h6>
+                        
+                    }
+                    else
+                    {
+                        
+                            <h6>@item.NewsTitle</h6>
+                        
+                    }
+                </div>
+            </a>
+        </li>
+    }
+</ul>

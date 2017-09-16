@@ -1,0 +1,167 @@
+﻿@{
+    ViewBag.Title = "Bài viết của tôi";
+    Layout = "~/Areas/BTV/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using WCF.BusinessObjectsLayer.EntityObjects
+@model List<WCF.BusinessObjectsLayer.EntityObjects.TechArticleObject>
+<div class="portlet box  @ViewBag.Color">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>@ViewBag.Header
+        </div>
+        <div class="tools">
+
+        </div>
+    </div>                                                          
+    <div class="portlet-body">
+        <div class="col-xs-12" style="padding-bottom:20px;padding-left:0px">
+            <a href="@Url.Action("Article_Insert","Upload")" class="btn btn-sm btn-primary">
+                Thêm mới
+                <span class="fa fa-plus" style="padding-left:6px;"></span>
+            </a>
+
+
+            <a class="btn btn-sm btn-danger hidden-xs" onclick="RemoveSelected()">
+                Xóa nhiều
+                <span class="fa fa-times" style="padding-left:6px;"></span>
+            </a>
+
+
+        </div>
+        <table class="table table-striped table-bordered table-hover" id="tbl_Article">
+            <thead>
+
+                <tr>
+                    <th>Tiêu đề</th>
+                    <th>Danh mục</th>
+                    <th>Views</th>
+                    <th>Likes</th>
+                    <th>Lần sửa cuối</th>
+                    <th>Chọn</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><b>@item.ArticleTitle</b></td>
+                        <td>@item.objTechCategory.CategoryName</td>
+                        <td>@item.TotalOfViews</td>
+                        <td>@item.TotalOfLikes</td>
+                        <td>@item.ModifiedTime.ToString("dd/MM/yyyy hh:mm")</td>
+                        <td><input type="checkbox" /></td>
+                        @if (item.objTS.objStatus.StatusID == StatusObject.LEVEL_0.StatusID)
+                        {
+                            <td><button data-id="@item.TechArticleId" class="btn btn-sm btn-default status">@item.objTS.objStatus.StatusName</button></td>
+                        }
+                        else if (item.objTS.objStatus.StatusID == StatusObject.LEVEL_1.StatusID)
+                        {
+                            <td><button data-id="@item.TechArticleId" class="btn btn-sm btn-success status">@item.objTS.objStatus.StatusName</button></td>
+                        }
+                        else if (item.objTS.objStatus.StatusID == StatusObject.LEVEL_2.StatusID)
+                        {
+                            <td><button data-id="@item.TechArticleId" class="btn btn-sm btn-danger status">@item.objTS.objStatus.StatusName</button></td>
+                        }
+                        else if (item.objTS.objStatus.StatusID == StatusObject.LEVEL_3.StatusID)
+                        {
+                            <td><button data-id="@item.TechArticleId" class="btn btn-sm btn-primary status">@item.objTS.objStatus.StatusName</button></td>
+                        }
+                        <th>
+                            @if (item.objTS.objStatus.StatusID == StatusObject.LEVEL_2.StatusID)
+                            {
+                                <a class="btn btn-sm" style="background:#92cdd1" href="@Url.Action("Article_Edit", "Upload", new { code = item.ArticleCodeNumber})"><b>Sửa</b></a>
+                            }
+                            <a class="btn btn-sm" style="background:#edb6ba" href="@Url.Action("Preview", "Upload", new {  code = item.ArticleCodeNumber})"><b>Preview</b></a>
+                        </th>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="reason" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Thông tin duyệt</h4>
+            </div>
+            
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Người duyệt:</label>
+                        <label class ="name" style="font-weight:bold"></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Duyệt lúc</label>
+                        <label class="time" style="font-weight:bold"></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Thông tin</label>
+                        <textarea class="mess" name="mess" rows="5" style="width:100%"></textarea>
+                    </div>  
+                </div>
+                <div class="modal-footer">
+                   
+                    <button type="button" class="btn default" data-dismiss="modal">OK</button>
+
+                </div>
+            
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@section PageLevelScript{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/ckeditor/ckeditor.js"></script>
+<script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+<script src="~/Areas/AdminCP/Content/ckfinder/ckfinder.js"></script>
+    <script>
+        $('#tbl_Article').DataTable({
+            "order": [[4, "asc"]],
+            "pageLength": 30
+        });
+    </script>
+    <script>
+    $('.status').on('click', function () {
+        var id = $(this).data('id');
+        $.ajax({
+            url: '@Url.Action("Article_GetFailReason", "Upload")',
+            dataType: 'json',
+            type: 'post',
+            data: { articleid: id },
+            success: function (response) {
+                var name = response["name"];
+                var time = response["time"];
+                var mess = response["mess"];
+                $('.name').html(name);
+                $('.time').html(time);
+                $('.mess').html(mess);
+                $('#reason').modal('show');
+                if ($(window).width() > 500) {
+                    var editor = CKEDITOR.instances['mess'];
+
+                    if (editor) { editor.destroy(true); }
+                    CKEDITOR.replace('mess', {
+                        enterMode: CKEDITOR.ENTER_BR,
+                        htmlEncodeOutput: true,
+                        //extraPlugins: 'uicolor',
+                        height: '200px'
+
+
+                    });
+                    CKFinder.setupCKEditor(null, '@Url.Content("~/Areas/AdminCP/Content/ckfinder")');
+                }
+            }
+        })
+        
+    })
+
+    </script>
+}

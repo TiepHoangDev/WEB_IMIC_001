@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "IntroduceBanner_Insert";
+    Layout = "~/Areas/AdminCP/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model WCF.BusinessObjectsLayer.EntityObjects.IntroduceBannerObject
+
+<div style="padding-bottom:20px;width:100%">
+    <div class="portlet box purple-studio">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-list"></i>&nbsp;Thêm banner quảng cáo mới
+            </div>
+            <div class="tools">
+
+            </div>
+        </div>
+        <div class="portlet-body" style="padding-top:6px">
+            @using (Html.BeginForm("IntroduceBanner_Insert", "IntroducePageAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="form-group" style="margin-top:16px">
+                    <h4>&nbsp;Tiêu đề banner:</h4>
+                    @Html.TextBoxFor(q => q.TitleBanner, new { @class = "form-control", @id = "TitleBanner" })
+                </div>
+                <h5 style="color:red; font-weight:bold; display:none" class="name_warning">Tên danh mục không được phép trống.</h5>
+
+                <div class="form-group">
+                    <h4>&nbsp;Ảnh banner:</h4>
+                    <input type="file" name="Avatar" id="ava" style="margin-top:10px" required>
+                    <div style="margin-top:15px;">
+                        <img style="width:30%;height:30%;" class="img-thumbnail rimage" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h4>&nbsp;Banner Alt:</h4>
+                    @Html.TextBoxFor(x => x.BannerAlt, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <h4>&nbsp;Nội dung 1:</h4>
+                    @Html.TextAreaFor(x => x.Content1, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <h4>&nbsp;Nội dung 2:</h4>
+                    @Html.TextAreaFor(x => x.Content2, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <h4>&nbsp;Nội dung 3:</h4>
+                    @Html.TextAreaFor(x => x.Content3, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <h4>&nbsp;Nội dung 4:</h4>
+                    @Html.TextAreaFor(x => x.Content4, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <h4>&nbsp;Nội dung 5:</h4>
+                    @Html.TextAreaFor(x => x.Content5, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <h4>&nbsp;Mức độ ưu tiên:</h4>
+                    @Html.TextBoxFor(q => q.RankToShow, new { @class = "form-control", @type = "number" })
+                </div>
+
+                <div style="padding-left:0px;width:100%;margin-top:30px;margin-bottom:20px">
+                    <a class="btn btn-primary" id="btn-update">Cập nhật</a>
+                    <a href="@Url.Action("Manage_IntroduceBanner", "IntroducePageAdmin")" class="btn btn-default" style="height:34px;width:86.75px">Đóng</a>
+                </div>
+
+                <!-- /.modal -->
+                <div class="modal fade bs-modal-lg" id="confirm-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">Thông báo Xác nhận</h4>
+                            </div>
+                            <div class="modal-body">
+                                Bạn có muốn thêm danh mục này không?
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn default" data-dismiss="modal">Hủy</button>
+                                <button onclick="submit" class="btn blue">Xác nhận</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+@section script{
+    <script>
+        $("#btn-update").click(function () {
+            var name = $('#TitleBanner').val();
+            if (name == null || name.trim() == '') {
+                $('.name_warning').show();
+            }
+            else {
+                $("#confirm-modal").modal({ show: true });
+            }
+        });
+    </script>
+
+    <script>
+        $("#ava").change(function () {
+            readURL(this, '.rimage');
+        });
+    </script>
+}
+
+
+
+

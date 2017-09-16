@@ -1,0 +1,422 @@
+﻿
+@{
+    ViewBag.Title = "Học viện Imic";
+    Layout = "~/Views/VideoPage/_LayoutVideo.cshtml";
+}
+<style>
+                    .hero__background_index_0 {
+                        background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Newsletter/2000x800.jpg?w=640&h=480&fit=crop&crop=faces');
+                    }
+
+                   @@media (min-width: 1024px) {
+                        .hero__background_index_0 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Newsletter/2000x800.jpg?w=1280&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1280px) {
+                        .hero__background_index_0 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Newsletter/2000x800.jpg?w=1440&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1440px) {
+                        .hero__background_index_0 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Newsletter/2000x800.jpg?w=1680&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1680px) {
+                        .hero__background_index_0 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Newsletter/2000x800.jpg?w=1920&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                    .hero__background_index_1 {
+                        background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Homepage/underpass_30_secs.jpg?w=640&h=480&fit=crop&crop=faces');
+                    }
+
+                   @@media (min-width: 1024px) {
+                        .hero__background_index_1 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Homepage/underpass_30_secs.jpg?w=1280&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1280px) {
+                        .hero__background_index_1 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Homepage/underpass_30_secs.jpg?w=1440&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1440px) {
+                        .hero__background_index_1 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Homepage/underpass_30_secs.jpg?w=1680&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1680px) {
+                        .hero__background_index_1 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Homepage/underpass_30_secs.jpg?w=1920&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                    .hero__background_index_2 {
+                        background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Newsletter/Collection-Carousel_2000x800_1.jpg?w=640&h=480&fit=crop&crop=faces');
+                    }
+
+                   @@media (min-width: 1024px) {
+                        .hero__background_index_2 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Newsletter/Collection-Carousel_2000x800_1.jpg?w=1280&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1280px) {
+                        .hero__background_index_2 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Newsletter/Collection-Carousel_2000x800_1.jpg?w=1440&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1440px) {
+                        .hero__background_index_2 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Newsletter/Collection-Carousel_2000x800_1.jpg?w=1680&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1680px) {
+                        .hero__background_index_2 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Newsletter/Collection-Carousel_2000x800_1.jpg?w=1920&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                    .hero__background_index_3 {
+                        background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Newsletter/Sassoon_Sassoon-Blondes-Course-Header.jpg?w=640&h=480&fit=crop&crop=faces');
+                    }
+
+                   @@media (min-width: 1024px) {
+                        .hero__background_index_3 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Newsletter/Sassoon_Sassoon-Blondes-Course-Header.jpg?w=1280&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1280px) {
+                        .hero__background_index_3 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Newsletter/Sassoon_Sassoon-Blondes-Course-Header.jpg?w=1440&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1440px) {
+                        .hero__background_index_3 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Newsletter/Sassoon_Sassoon-Blondes-Course-Header.jpg?w=1680&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1680px) {
+                        .hero__background_index_3 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Newsletter/Sassoon_Sassoon-Blondes-Course-Header.jpg?w=1920&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                    .hero__background_index_4 {
+                        background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Collections/1280-x-700-finance-free.jpg?w=640&h=480&fit=crop&crop=faces');
+                    }
+
+                   @@media (min-width: 1024px) {
+                        .hero__background_index_4 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Collections/1280-x-700-finance-free.jpg?w=1280&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1280px) {
+                        .hero__background_index_4 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Collections/1280-x-700-finance-free.jpg?w=1440&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1440px) {
+                        .hero__background_index_4 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Collections/1280-x-700-finance-free.jpg?w=1680&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1680px) {
+                        .hero__background_index_4 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Collections/1280-x-700-finance-free.jpg?w=1920&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                    .hero__background_index_5 {
+                        background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/NEW%20TEMPLATE%20IMAGES/1280-x-700-1-2-1-1.jpg?w=640&h=480&fit=crop&crop=faces');
+                    }
+
+                   @@media (min-width: 1024px) {
+                        .hero__background_index_5 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/NEW%20TEMPLATE%20IMAGES/1280-x-700-1-2-1-1.jpg?w=1280&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1280px) {
+                        .hero__background_index_5 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/NEW%20TEMPLATE%20IMAGES/1280-x-700-1-2-1-1.jpg?w=1440&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1440px) {
+                        .hero__background_index_5 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/NEW%20TEMPLATE%20IMAGES/1280-x-700-1-2-1-1.jpg?w=1680&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1680px) {
+                        .hero__background_index_5 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/NEW%20TEMPLATE%20IMAGES/1280-x-700-1-2-1-1.jpg?w=1920&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                    .hero__background_index_6 {
+                        background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Courses%20Landing%20Page/Beginners%20Landing%20Page/all%20weeks/Equip/Colour-Course.jpg?w=640&h=480&fit=crop&crop=faces');
+                    }
+
+                   @@media (min-width: 1024px) {
+                        .hero__background_index_6 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Courses%20Landing%20Page/Beginners%20Landing%20Page/all%20weeks/Equip/Colour-Course.jpg?w=1280&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1280px) {
+                        .hero__background_index_6 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Courses%20Landing%20Page/Beginners%20Landing%20Page/all%20weeks/Equip/Colour-Course.jpg?w=1440&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1440px) {
+                        .hero__background_index_6 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Courses%20Landing%20Page/Beginners%20Landing%20Page/all%20weeks/Equip/Colour-Course.jpg?w=1680&h=640&fit=crop&crop=faces');
+                        }
+                    }
+
+                   @@media (min-width: 1680px) {
+                        .hero__background_index_6 {
+                            background-image: url('https://sassoon.imgix.net/SassoonAcademy/media/Media/Courses%20Landing%20Page/Beginners%20Landing%20Page/all%20weeks/Equip/Colour-Course.jpg?w=1920&h=640&fit=crop&crop=faces');
+                        }
+                    }
+</style>
+<div class="hero-gallery">
+
+    <section class="hero hero_light hero_focus-position_center">
+        <div class="hero__background hero__background_index_0">
+
+        </div>
+
+        <div class="hero__container">
+            <div class="hero__content">
+                <h2 class="hero__title">We Are Moving! </h2>
+                <p class="hero__text hero__text_simple">June 2017 </p>
+
+                <a href="https://www.sassoon-academy.com/en/academy/uk/News/We-Are-Moving!" class="hero__button">FIND OUT MORE...</a>
+
+            </div>
+        </div>
+
+    </section>
+
+    <section class="hero hero_none hero_focus-position_center hero_animated-background">
+        <div class="hero__background hero__background_index_1">
+
+            <div class="hero__animation">
+                <video class="hero__animation-content" loop poster="https://sassoon.imgix.net/SassoonAcademy/media/Media/Homepage/underpass_30_secs.jpg?w=1280&h=640&fit=crop&crop=faces" muted>
+                    <source src="/SassoonAcademy/media/Media/Videos/Jan-2014/underpass_lo_30_sec.mp4?width=300&amp;height=200&amp;ext=.mp4&ext=.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="hero__controls"><a href="?mute" class="hero__mute-button hero__mute-button_off"></a></div>
+
+        </div>
+
+    </section>
+
+    <section class="hero hero_light hero_focus-position_center">
+        <div class="hero__background hero__background_index_2">
+
+        </div>
+
+        <div class="hero__container">
+            <div class="hero__content">
+                <h2 class="hero__title">Underpass | SS17 Collection</h2>
+                <p class="hero__text hero__text_simple">This season, inspiration is drawn from the Brutalist city and the freedom found down in the raw concrete of its underpasses.</p>
+
+                <a href="https://www.sassoon-academy.com/en/academy/uk/collections/Underpass" class="hero__button">Read More</a>
+
+            </div>
+        </div>
+
+    </section>
+
+    <section class="hero hero_light hero_focus-position_center">
+        <div class="hero__background hero__background_index_3">
+
+        </div>
+
+        <div class="hero__container">
+            <div class="hero__content">
+                <h2 class="hero__title">Sassoon Blondes</h2>
+                <p class="hero__text hero__text_simple">Do you want to achieve blonde perfection?</p>
+
+                <a href="https://www.sassoon-academy.com/en/academy/uk/courses/short-term/COLOUR-COURSES/Sassoon-Blondes" class="hero__button">Read More...</a>
+
+            </div>
+        </div>
+
+    </section>
+
+    <section class="hero hero_light hero_focus-position_center">
+        <div class="hero__background hero__background_index_4">
+
+        </div>
+
+        <div class="hero__container">
+            <div class="hero__content">
+                <h2 class="hero__title">FINANCE AVAILABLE </h2>
+                <p class="hero__text hero__text_simple">We now offer 12 months Interest Free Finance</p>
+
+                <a href="/academy/uk/news-(1)/INTEREST-FREE-FINANCE-ON-ALL-COURSES" class="hero__button">Read More</a>
+
+            </div>
+        </div>
+
+    </section>
+
+    <section class="hero hero_light hero_focus-position_center">
+        <div class="hero__background hero__background_index_5">
+
+        </div>
+
+        <div class="hero__container">
+            <div class="hero__content">
+                <h2 class="hero__title">1-ON-1 Tuition </h2>
+                <p class="hero__text hero__text_simple">If you have individual objectives that supersede the current range of Sassoon courses, then contact us for a personalised 1-ON-1 programme. </p>
+
+                <a href="/academy/uk/courses/specialist/1-2-1-Tuition" class="hero__button">Read more...</a>
+
+            </div>
+        </div>
+
+    </section>
+
+    <section class="hero hero_light hero_focus-position_center">
+        <div class="hero__background hero__background_index_6">
+
+        </div>
+
+        <div class="hero__container">
+            <div class="hero__content">
+                <h2 class="hero__title">Colour Courses </h2>
+                <p class="hero__text hero__text_simple">
+                    Perfect your colouring skills, with a choice of six courses for all levels, from beginner to advanced - there's an ideal course for you.
+
+                </p>
+
+                <a href="/academy/uk/news/Colourful-Courses" class="hero__button">Read More...</a>
+
+            </div>
+        </div>
+
+    </section>
+
+</div>
+
+
+<section class="frames">
+    <div class="frames__layout">
+        <div class="frames__item frame frame_cell-2">
+            <a href="@Url.Action("Index_new","VideoPage")" class="frame__link">
+                <span class="frame__picture" style="background-image: url(/Content/assets/images/Home-Promo_Courses.jpg)"></span>
+
+                <div class="frame__content">
+                    <h2 class="frame__title">Video </h2>
+                    <p class="frame__intro">Celebrating cutting and colouring in its purest form, Sassoon Academy Courses allow you to release your potential and express your talent in full.</p>
+                </div>
+
+            </a>
+        </div>
+        <div class="frames__item frame frame_cell-2">
+            <a href="@Url.Action("Index","TrainingPage")" class="frame__link">
+                <span class="frame__picture" style="background-image: url(/Content/assets/images/Square_800x800_1.jpg)"></span>
+
+                <div class="frame__content">
+                    <h2 class="frame__title">Đào tạo </h2>
+                    <p class="frame__intro">Be inspired by the latest innovation in cutting and colouring techniques from the ground breaking seasonal academy collections.</p>
+                </div>
+
+            </a>
+        </div>
+        <div class="frames__item frame frame_cell-3">
+            <a href="@Url.Action("Index", "TechPage")" class="frame__link">
+                <span class="frame__picture" style="background-image: url(/Content/assets/images/Home-Promo_Book-an-Event.jpg)"></span>
+
+                <div class="frame__content">
+                    <h2 class="frame__title">Công nghệ </h2>
+                    <p class="frame__intro">Our dedicated Academy Team will transform your show or event with the very best in cut and colour.</p>
+                </div>
+
+            </a>
+        </div>
+        <div class="frames__item frame frame_cell-3">
+            <a href="@Url.Action("Index", "NewsPage")" class="frame__link">
+                <span class="frame__picture" style="background-image: url(/Content/assets/images/600-x-60-0-1_1.jpg)"></span>
+
+                <div class="frame__content">
+                    <h2 class="frame__title">Tin tức</h2>
+                    <p class="frame__intro">Sassoon Academy offers everyone a great hair experience – whatever style, whatever colour, at a fraction of salon prices.</p>
+                </div>
+
+            </a>
+        </div>
+        <div class="frames__item frame frame_cell-3">
+            <a href="@Url.Action("Index", "RecruitPage")" class="frame__link">
+                <span class="frame__picture" style="background-image: url(/Content/assets/images/Tools-Equipment.jpg)"></span>
+
+                <div class="frame__content">
+                    <h2 class="frame__title">Tuyển dụng </h2>
+                    <p class="frame__intro">The Sassoon range of professional products designed and tested by our International Creative Team of stylists, colourists and instructors, reflects our relentless pursuit of functional, well designed items with a passion for excellence.</p>
+                </div>
+
+            </a>
+        </div>
+        <div class="frames__item frame frame_cell-3">
+            <a href="@Url.Action("Index", "ClassPage")" class="frame__link">
+                <span class="frame__picture" style="background-image: url(/Content/assets/images/silvia.jpg)"></span>
+
+                <div class="frame__content">
+                    <h2 class="frame__title">Khai giảng </h2>
+                    <p class="frame__intro">From Academy Directors to Management and Instructors, meet the talented individuals who make up the Sassoon Academy Team.</p>
+                </div>
+
+            </a>
+        </div>
+        <div class="frames__item frame frame_cell-3">
+            <a href="@Url.Action("Index_new","LessonPage")" class="frame__link">
+                <span class="frame__picture" style="background-image: url(/Content/assets/images/Home-Promo_Latest-News.jpg)"></span>
+
+                <div class="frame__content">
+                    <h2 class="frame__title">Kiến thức </h2>
+                    <p class="frame__intro">
+                        Bringing you the latest news, events and special offers from all the Sassoon Academies across the world.
+                    </p>
+                </div>
+
+            </a>
+        </div>
+        <div class="frames__item frame frame_cell-3">
+            <a href="@Url.Action("Index","ContactPage")" class="frame__link">
+                <span class="frame__picture" style="background-image: url(/Content/assets/images/Home-Promo_Join-us-on-Facebook_1.jpg)"></span>
+
+                <span class="visuallyhidden">Liên hệ</span>
+
+            </a>
+        </div>
+    </div>
+</section>
+   @section scripts{
+      
+   }
+

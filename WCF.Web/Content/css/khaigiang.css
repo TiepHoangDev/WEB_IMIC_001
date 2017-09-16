@@ -1,0 +1,304 @@
+@charset "utf-8";
+/* CSS Document */
+.filter{
+	width:100%;
+	float:left;
+	padding:15px;
+	background:#FFF;
+}
+.filter-selector{
+	position:relative;
+	padding:0px;
+	border-left: 1px solid #eee;	
+}
+.filter-group{
+    border: 3px solid #eee;
+    border-radius: 3px;
+}
+.filter-selector .dropdown-toggle {
+    text-align: left;
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+}
+.course-list{
+	width:100%;
+	float:left;
+	padding:0px;
+}
+.course-list li{
+	float:left;
+	list-style-type:none;
+    background: #FFF;
+    box-shadow: 0 4px 2px 0 rgba(0,0,0,.3);
+    border-radius: 2px;
+    margin: 20px 0;
+	position:relative;
+}
+   .course-list li .course-link {
+    font-size: 15px;
+    display: inline-block;
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: initial;   
+    text-decoration: none;    
+}
+.course-list .special {
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+.course-list .time{
+	line-height:25px;
+	margin-left:5px;
+}
+.e-marker{
+	width: 52px;
+    height: 52px;
+    top: -4px;
+    left: -4px;
+    background-size: 150px!important;
+	position:absolute;
+	background-position: 1px -331px;
+}
+.course-list li .bottom-box
+{	
+	width:100%;
+	padding:15px;
+	padding-bottom:10px;
+	float:left;
+}
+.course-list .cover-img{
+	width:100%;
+	height:250px;
+}
+.course-list .btn-signup {
+    font-size: 12px;
+    height: 25px;
+    padding: 1px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 5px;
+    color: #666;    
+}
+.event-date {
+    position: absolute;
+    bottom: 4px;
+    right: 5px;
+    width: 54px;
+}
+.event-date .month {
+    text-transform: uppercase;
+    border-radius: 2px 2px 0 0;
+    background: #EB1212;
+    color: #fff;
+    font-weight: 600;
+    height: 18px;
+    line-height: 16px;
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+}
+
+.event-date .detail {
+    display: inline-block;
+    height: 36px;
+    width: 100%;
+    background: #FFF;
+    border: 1px solid #CCC;
+    border-bottom-width: 3px;
+    border-top: 0;
+}
+.event-date .detail p{
+	margin:0px;
+}
+.event-date .detail p:first-child {
+    font-size: 12px;
+}
+.event-date .detail p:nth-child(2) {
+    font-size: 11px;
+}
+.btn-loadmore{
+	background-color: transparent;
+    border: 2px solid #666;
+    color: #666;
+    height: 50px;
+    line-height: 50px;
+    width: 300px;
+    padding: 0;
+    font-size: 16px;
+    margin-top: 30px;
+    font-weight: 600;
+}
+.buying-helper {
+    padding: 50px 0;
+}
+.buysteps {
+    border: 1px solid #ccc;
+}
+	.buysteps .step-line {
+    width: 1px;
+    position: absolute;
+    height: 140px;
+    top: 50%;
+    margin-top: -70px;
+    left: 20px;
+    border-left: 1px dashed #ccc;
+    z-index: 1;
+}
+.buysteps .a-buystep {
+    position: relative;
+    z-index: 2;
+    display: table;
+    margin-bottom: 20px;
+}
+.buying-helper .step-intro {
+    padding-left: 15px;
+}
+.buying-helper .step-name {
+    font-weight: 700;
+}
+.buying-helper .step-ico, .buying-helper .step-intro {
+    display: table-cell;
+    vertical-align: middle;
+}
+.buying-helper .step-ico .circle {
+    background-color: #ccc;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+}
+@media only screen and (min-width: 300px) and (max-width: 450px){
+	.special{
+		padding-bottom:10px;
+	}
+	.course-list .time{
+		width:100%;
+		float:left;
+	}
+	.course-list .time{
+		margin-left:0px;
+	}
+}
+@media (max-width: 768px){
+.course-list .cover-img{
+	height:auto;
+}
+.buysteps .step-arrow.first {
+    left: 33.33%;
+}
+
+}
+@media (min-width: 768px){
+.filter-collapse {
+    height: auto!important;
+    display: initial;
+    visibility: visible;
+}
+.course-content .container{
+	width: 750px;
+}
+.buying-helper .a-buystep {
+    margin: 0;
+    border: 0;
+    width: 33.33%;
+    float: left;
+    text-align: center;
+}
+.buysteps .step-arrow {
+    position: absolute;
+    top: 50%;
+}
+.buying-helper .step-ico .circle {
+    font-size: 26px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+}
+.buysteps .step-arrow.first {
+    left: 33.33%;
+}
+}
+@media (min-width: 992px){
+.course-content .container {
+	width: 970px;
+}
+.buying-helper .buysteps {
+    padding: 15px 0;
+}
+.buying-helper .a-buystep {
+    padding: 0 15px;
+}
+.buysteps .step-arrow {
+    width: 20px;
+    margin-left: -20px;
+    margin-top: -22px;
+}
+.buying-helper .step-ico {
+    text-align: right;
+}
+.buying-helper .step-ico .circle {
+    margin-bottom: 0;
+}
+.buying-helper .step-intro {
+    text-align: left;
+}
+}
+
+@media (min-width: 1200px){
+.course-content .container {
+	width: 1170px;
+}
+}
+@media (max-width: 992px) and (min-width: 768px)
+{
+.buying-helper .step-ico, .buying-helper .step-intro {
+    display: block;
+    width: 100%;
+    clear: both;
+}
+.buying-helper .step-ico .circle {
+    display: inline-block;
+}
+.buysteps .step-arrow {
+    width: 30px;
+    margin-top: -32px;
+    margin-left: -15px;
+}
+.buying-helper .buysteps {
+    padding: 20px 0;
+}
+}
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	opacity:0.9;
+	background:#FFF;
+}
+.my-loader{
+	position:absolute;
+	top:40%;
+	left:45%;
+	opacity:1;
+}
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+
+
+

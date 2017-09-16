@@ -1,0 +1,49 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using WCF.BusinessObjectsLayer.EntityObjects;
+using WCF.DataAccessLayer.Models;
+
+namespace WCF.DataAccessLayer.Daos
+{
+    public class IntroducePageDao : BaseModel<IntroducePageObject>
+    {
+        public override List<IntroducePageObject> getElements()
+        {
+            List<IntroducePageObject> lisIP = new List<IntroducePageObject>();
+            using (var dbContext = new WebIMicEntities())
+            {
+                var objTemp = dbContext.WEB_IMIC_SP_IntroducePage_GetAll().FirstOrDefault();
+                IntroducePageObject objPO = new IntroducePageObject();
+
+                objPO.IntroducePageId = objTemp.IntroducePageId;
+                objPO.TitleServices = objTemp.TitleServices;
+                objPO.PassageServices = objTemp.PassageServices;
+                objPO.SubArticle = objTemp.SubArticle;
+                objPO.SubArticlePicture = objTemp.SubArticlePicture;
+                objPO.PassageExperiencers = objTemp.PassageExperiencers;
+
+
+                objPO.TitleExperiencers = objTemp.TitleExperiencers;
+
+
+                lisIP.Add(objPO);
+
+            }
+            return lisIP;
+        }
+        public bool PageUpdate(IntroducePageObject objP)
+        {
+            using (var db = new WebIMicEntities())
+            {
+                db.WEB_IMIC_SP_IntroducePage_Update(objP.IntroducePageId, objP.TitleServices, objP.PassageServices,
+                    objP.PassageExperiencers, objP.SubArticle, objP.SubArticlePictureAlt, objP.EduProgramPicture, objP.EduProgramPictureAlt, objP.PassageExperiencers
+                , objP.TitleExperiencers);
+            }
+            return true;
+        }
+
+    }
+}

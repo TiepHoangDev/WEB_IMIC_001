@@ -1,0 +1,452 @@
+/* CSS tuyen dung */
+dl, dt, dd, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+a, a:link, a:visited {
+    text-decoration: none;
+    color: #575757;
+}
+#menuTop {
+    height: 79px;
+    /* line-height: 130px; */
+    line-height: 17px;
+}
+.w1220 {
+    width: 1100px;
+    margin: 0 auto;
+}
+#menuTop ul {
+    padding-top: 11px;
+}
+#menuTop li {
+    display: inline-block;
+    width: auto;
+    margin-right: 35px;
+}
+#menuTop li a {
+    color: #505050;
+    display: inline-block;
+    font-size: 15px;
+    line-height: 60px;
+    overflow: hidden;
+    padding-left: 32px;
+}
+#menuTop li:first-child .current, #menuTop li a.cate1:hover,#menuTop li a.cate2:hover,#menuTop li a.cate3:hover,#menuTop li a.cate5:hover {
+    background-position: 0 -61px;
+}
+#menuTop li a.cate4:hover {
+    background-position: 0 -60px;
+}
+#menuTop li a.cate4 {
+    background: url(../../images/icon/menutop_icon_fly.png) no-repeat left top 15px;
+}
+#menuTop li a.cate2 {
+    background: url(../../images/icon/menutop_icon_question.png) no-repeat left top 11px;
+}
+#menuTop li a.cate1 {
+    background: url(../../images/icon/menutop_icon_id.png) no-repeat left top 3px;
+}
+#menuTop li a.cate3 {
+    background: url(../../images/icon/menutop_icon_culture.png) no-repeat left top 15px;
+}
+#menuTop li a.cate5 {
+    background: url(../../images/icon/menutop_icon_book.png) no-repeat left top 8px;
+    padding-left: 38px;
+}
+#menuTop li .current, #menuTop li a:hover {
+    color: #2db3db;
+}
+
+#bannerLayout {
+    background: transparent url(../../images/tuyen-dung/layout_Bg.png) no-repeat scroll center top;
+    min-height: 221px;
+    text-align: center;
+}
+
+#bannerLayout h1 {
+    background: rgba(0, 0, 0, 0) url(../../images/icon/layout_icon_phone.png) no-repeat scroll 380px 30px;
+    color: #fff;
+    font-size: 31px;
+    font-weight: normal;
+    line-height: 1.2em;
+    margin-bottom: 32px;
+    padding: 39px 0 0 57px;
+	margin-top: 0;
+}
+a.re-button.btn-send-fast {
+    background-color: #2db3db;
+    border-radius: 57px;
+    font-family: Helvetica;
+    font-size: 18px;
+    min-height: 34px;
+    padding: 18px 53px;
+}
+
+a.re-button {
+    background-color: #2db3db;
+    border-radius: 22px;
+    color: #fff;
+    font-size: 16px;
+    padding: 9px 31px;
+	font-family: Helvetica;
+}
+#RecruitmentSearch .searchChild-title {
+    font-family: roboto-italic;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+
+#RecruitmentSearch .searchChild-title, #RecruitmentSearch .searchChild select {
+    color: #898989;
+}
+
+#RecruitmentSearch .searchChild select {
+    /* padding: 8px 30px !important; */
+    width: 392px;
+}
+
+#RecruitmentSearch .searchChild-title, #RecruitmentSearch .searchChild select {
+    color: #898989;
+}
+
+input, select, textarea {
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    width: 200px;
+    padding: 0 21px !important;
+    font-family: Roboto-Regular;
+    height: 40px;
+    line-height: 40px;
+}
+
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: rgba(0, 0, 0, 0) url(../../images/icon/icon_dropdown.png) no-repeat scroll right 15px center;
+    border: 1px solid #ebebeb;
+    cursor: pointer;
+    height: 30px;
+    line-height: 44px;
+}
+select option {
+    background-color: transparent;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    padding: 5px 8px;
+}
+input, select, textarea {
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    width: 200px;
+    padding: 0 21px !important;
+    font-family: Roboto-Regular;
+    height: 40px;
+    line-height: 40px;
+}
+
+
+.recruitment-list table th {
+    background-color: #121929;
+    color: #fff;
+    font-weight: normal;
+    padding: 10px 0;
+    border: solid 1px #ebebeb;
+}
+.recruitment-list table td {
+    text-align: center;
+    padding: 10px 5px;
+    border: solid 1px #ebebeb;
+}
+.recruitment-list table {
+    border-collapse: collapse;
+}
+ .recruitment-list table tr td:nth-child(3) {
+    text-align: justify;
+    line-height: 1.8em;
+}
+.recruitment-list table tr td:nth-child(2){
+	text-align: left;
+    line-height: 1.8em;
+}
+.career-chance table td:nth-child(2n) {
+    padding-right: 10px;
+}
+
+
+
+.recruitment-list table tr td:nth-child(2) a {
+    color: #2db3db;
+}
+th {
+    display: table-cell;
+    vertical-align: inherit;
+	text-align: center;
+}
+.recruitment-list span {
+    color: #898989;
+    display: block;
+    font-family: roboto-italic;
+}
+
+ul.pagination_a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-top: .5rem;
+    margin-left: -.5rem;
+}
+
+.fa-ul, .sidebar-list, ul.pagination_a {
+    list-style-type: none;
+}
+
+
+.alert, .pagination {
+    margin-bottom: 1rem;
+}
+
+.pagination_a {
+    display: block;
+    position: relative;
+    font-size: 12px;
+    text-align: center;
+    clear: both;
+}
+ul.pagination_a>li {
+    display: block !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    line-height: 38px !important;
+    font-size: 16px !important;
+    color: #9b9b9b !important;
+    text-align: center !important;
+    border-radius: 3px !important;
+    border: 2px solid #9b9b9b!important;
+    font-weight: 700 !important;
+    margin-top: .5rem !important;
+    margin-left: .5rem !important;
+}
+.pagination_a {
+    margin-bottom: 22px;
+    margin-bottom: 1.5714286rem;
+    margin-top: 22px;
+    margin-top: 1.5714286rem;
+    display: block;
+    text-align: center;
+}
+ul.pagination_a>li a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+#Recruitment-detail .recruitment-infor, #Recruitment-detail .recruitment-content h2 {
+    font-size: 16px;
+}
+
+#Recruitment-detail .recruitment-infor {
+    background: url(../../images/icon/recruitment_infor_bg.png) repeat-x top center;
+    height: 171px;
+    color: #fff;
+}
+#Recruitment-detail .recruitment-infor .re-title {
+    padding: 30px 0 15px;
+}
+
+#Recruitment-detail .recruitment-infor .re-title, #Recruitment-detail .recruitment-content h2 {
+    font-family: roboto-bold;
+/*    font-weight: normal;*/
+    text-transform: uppercase;
+	font-weight: bold;
+}
+#Recruitment-detail .recruitment-infor .re-infor-child:first-child ul li:first-child {
+    background: rgba(0, 0, 0, 0) url(../../images/icon/recruitment_infor_place.png) no-repeat scroll left top 5px;
+}
+
+#Recruitment-detail .recruitment-infor .re-infor-child ul li:first-child, #Recruitment-detail .recruitment-infor .re-infor-child ul li:last-child {
+    width: 326px;
+}
+#Recruitment-detail .recruitment-infor .re-infor-child:first-child ul li:nth-child(2) {
+    background: rgba(0, 0, 0, 0) url(../../images/icon/recruitment_infor_map.png) no-repeat scroll left top 5px;
+}
+
+#Recruitment-detail .recruitment-infor .re-infor-child ul li {
+    display: inline-block;
+    width: 300px;
+    padding: 10px 0 10px 39px;
+}
+#Recruitment-detail .recruitment-infor .re-infor-child:first-child ul li:nth-child(3) {
+    background: rgba(0, 0, 0, 0) url(../../images/icon/recruitment_infor_Id.png) no-repeat scroll left top 3px;
+}
+#Recruitment-detail .recruitment-infor .re-infor-child:nth-child(2) ul li:first-child {
+    background: rgba(0, 0, 0, 0) url(../../images/icon/recruitment_infor_monney.png) no-repeat scroll left top 5px;
+}
+#Recruitment-detail .recruitment-infor .re-infor-child:nth-child(2) ul li:nth-child(2) {
+    background: url(../../images/icon/recruitment_infor_time.png) no-repeat top left;
+}
+#Recruitment-detail .recruitment-infor .re-infor-child:nth-child(2) ul li:nth-child(3) {
+    background: rgba(0, 0, 0, 0) url(../../images/icon/recruitment_infor_sta.png) no-repeat scroll left top 3px;
+}
+
+#Recruitment-detail .recruitment-infor .re-time {
+    border: 2px solid #fff;
+    border-radius: 18px;
+    padding: 11px 0;
+    text-align: center;
+    width: 165px;
+    margin: 4px 0 0;
+}
+
+#Recruitment-detail .recruitment-infor .re-infor, #Recruitment-detail .recruitment-infor .re-time, #Recruitment-detail .recruitment-CareerBranch, #Recruitment-detail .recruitment-News {
+    float: left;
+    width: auto;
+}
+#Recruitment-detail .recruitment-content h2 {
+    color: #2db3db;
+    margin: 40px 0 15px;
+}
+#Recruitment-detail .recruitment-button {
+    line-height: 100px;
+}
+#Culture {
+/*    font-family: roboto-regular;*/
+    text-align: center;
+    color: #6d6d6d;
+}
+#Culture .culture-banner {
+    background: rgba(0, 0, 0, 0) url(../../images/tuyen-dung/culture_picture1.png) no-repeat scroll center top;
+    color: #fff;
+    height: 247px;
+}
+#Culture .culture-content .culture-title {
+    background-color: #f5f7f8;
+    height: 127px;
+}
+#Culture .culture-title h3 {
+    color: #2ab7dd;
+    font-size: 22px;
+    font-weight: normal;
+    padding-top: 37px;
+	margin: 0;
+}
+#Culture .culture-title span {
+    color: #6d6d6d;
+    font-size: 16px;
+	letter-spacing: 1.6px;
+}
+
+#Culture span {
+    display: block;
+}
+#Culture .culture-detail {
+    background: rgba(0, 0, 0, 0) url(../../images/tuyen-dung/culture_picture2.png) no-repeat scroll left top 56px;
+    height: 433px;
+}
+#Culture .culture-detail .FloatRight {
+    letter-spacing: 0;
+    padding: 50px 11px 0;
+    text-align: left;
+    width: 575px;
+}
+
+.FloatRight {
+    float: right;
+}
+#Culture .culture-detail p {
+    font-size: 15px;
+    line-height: 1.77em;
+    margin: 0 0 29px;
+    text-align: justify;
+}
+#Culture .conclusion .w1220 h3 {
+    font-size: 16px;
+    font-weight: normal;
+    letter-spacing: 1.6px;
+    padding: 57px 0 41px;
+}
+#Culture .conclusion .w1220 span {
+/*    font-family: roboto-light;*/
+    font-size: 33px;
+    letter-spacing: normal;
+}
+
+#Culture span {
+    display: block;
+}
+#Culture .conclusion {
+    border-top: 1px solid #f5f5f5;
+}
+#Culture .conclusion2 {
+    background-color: #2db3db;
+    height: 219px;
+    background-repeat: repeat-x;
+    color: #fff;
+}
+#Culture .conclusion2 p:nth-child(1) {
+    font-size: 16px;
+    padding-top: 39px;
+}
+#Culture .conclusion2 .w1220 > ul {
+    display: block;
+    line-height: 54px;
+}
+#Culture .conclusion .w1220 img {
+    padding: 0 0 53px;
+}
+#Culture .conclusion2 ul li {
+    background: rgba(0, 0, 0, 0) url(/Themes/Portal/Default/ImagesNew/culture_picture5.png) no-repeat scroll left center;
+    display: inline-block;
+/*    font-family: roboto-bold;*/
+    font-size: 18px;
+    margin-right: 15px;
+    padding-left: 21px;
+	
+	font-weight: bold
+}
+.question h1 {
+    font-size: 28px;
+    font-weight: normal;
+    padding: 48px 0 0;
+}
+
+h1 {
+    color: #2db3db;
+    font-size: 18px;
+    padding: 5px 0;
+}
+.detail h2 {
+    color: #2db3db;
+    
+    font-size: 16px;
+    font-weight: bold;
+    margin: 15px 0 20px;
+}
+
+.detail li.question-item p span:first-child {
+    background: rgba(0, 0, 0, 0) url(../../images/icon/question_icon_Reply.png) no-repeat scroll left top;
+    color: #555555;
+    display: block;
+    font-weight: bold;
+    
+    margin: 0 0 12px;
+    padding: 3px 22px;
+}
+.detail p, .detail li {
+    line-height: 1.5em;
+}
+.detail li.question-item, .detail li.step {
+    list-style: none;
+}
+
+.detail li {
+    list-style: inside disc;
+}
+

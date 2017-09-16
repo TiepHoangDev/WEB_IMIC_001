@@ -1,0 +1,23 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.TrainingBannerObject>
+@{
+    Layout = null;
+}
+
+@*<div class="slide widhfull">
+    <div id="wowslider">
+        <div class="ws_images">
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <img src="~/Content/Galleries/Training/Banner/@item.BannerlmageBackground" alt="@item.BannerTitle" title="@item.BannerTitle" />
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <div class="ws_shadow"></div>
+    </div>
+</div>*@
+@*<div class="tr-banner" style="background-image: url('../../Content/Galleries/Training/Banner/train-banner.jpg'); ">*@
+<div class="tr-banner" style="background-image: url('../../Content/Galleries/Training/Banner/@Model.First().BannerlmageBackground'); ">

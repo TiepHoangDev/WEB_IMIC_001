@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D07D0D20-AF44-4268-9EE0-8C6F06DA326D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WCF.BusinessControlLayer</RootNamespace>
+    <AssemblyName>WCF.BusinessControlLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bcls\AccountBcl.cs" />
+    <Compile Include="Bcls\ArticleTagBcl.cs" />
+    <Compile Include="Bcls\ArticleTagDetailBcl.cs" />
+    <Compile Include="Bcls\BannerBcl.cs" />
+    <Compile Include="Bcls\BaseController.cs" />
+    <Compile Include="Bcls\ClassBcl.cs" />
+    <Compile Include="Bcls\ClassSessionDetailBcl.cs" />
+    <Compile Include="Bcls\ClassDetailBcl.cs" />
+    <Compile Include="Bcls\ClassSessionLogAbsentBcl.cs" />
+    <Compile Include="Bcls\ClassSessionLogBcl.cs" />
+    <Compile Include="Bcls\CommentBCL.cs" />
+    <Compile Include="Bcls\ContactPageBcl.cs" />
+    <Compile Include="Bcls\ExperiencerBcl.cs" />
+    <Compile Include="Bcls\IntroduceBcl.cs" />
+    <Compile Include="Bcls\JobBcl.cs" />
+    <Compile Include="Bcls\LessonBCL.cs" />
+    <Compile Include="Bcls\LessonBCL_Alt.cs" />
+    <Compile Include="Bcls\LessonCategoryBCL.cs" />
+    <Compile Include="Bcls\LessonDetailBCL.cs" />
+    <Compile Include="Bcls\LessonDetailLikeBCL.cs" />
+    <Compile Include="Bcls\LessonDetailTagBCL.cs" />
+    <Compile Include="Bcls\LessonDetailTagDetailBCL.cs" />
+    <Compile Include="Bcls\LocationBcl.cs" />
+    <Compile Include="Bcls\NewsBcl.cs" />
+    <Compile Include="Bcls\NewsCategoryBcl.cs" />
+    <Compile Include="Bcls\NewsletterTagBCL.cs" />
+    <Compile Include="Bcls\NewsletterTagDetailBCL.cs" />
+    <Compile Include="Bcls\OpenClassBcl.cs" />
+    <Compile Include="Bcls\OpenClassPageBbl.cs" />
+    <Compile Include="Bcls\OthersBcl.cs" />
+    <Compile Include="Bcls\ProposeBcl.cs" />
+    <Compile Include="Bcls\RecCareerBbl.cs" />
+    <Compile Include="Bcls\RecDipBbl.cs" />
+    <Compile Include="Bcls\RecExperienceBbl.cs" />
+    <Compile Include="Bcls\RecruitmentBannerBcl.cs" />
+    <Compile Include="Bcls\RecruitmentCompanyBbl.cs" />
+    <Compile Include="Bcls\RecruitmentCompanyBCL.cs" />
+    <Compile Include="Bcls\RecruitmentGalleryImageBcl.cs" />
+    <Compile Include="Bcls\RecruitmentLocationBbl.cs" />
+    <Compile Include="Bcls\RecruitmentNewsletterBCL.cs" />
+    <Compile Include="Bcls\RecruitmentTitleBcl.cs" />
+    <Compile Include="Bcls\RoleBcl.cs" />
+    <Compile Include="Bcls\RuleWritingBcl.cs" />
+    <Compile Include="Bcls\SourcePageBcl.cs" />
+    <Compile Include="Bcls\StudentGaleryBcl.cs" />
+    <Compile Include="Bcls\TagBcl.cs" />
+    <Compile Include="Bcls\TagDetailBcl.cs" />
+    <Compile Include="Bcls\TechArticleBcl.cs" />
+    <Compile Include="Bcls\TechArticleLikeBcl.cs" />
+    <Compile Include="Bcls\TechBannerBcl.cs" />
+    <Compile Include="Bcls\TechCategoryBcl.cs" />
+    <Compile Include="Bcls\TechCommentBcl.cs" />
+    <Compile Include="Bcls\TechCommentLikeBcl.cs" />
+    <Compile Include="Bcls\TechCommentReplyBcl.cs" />
+    <Compile Include="Bcls\TechLinkBcl.cs" />
+    <Compile Include="Bcls\TechLogoBcl.cs" />
+    <Compile Include="Bcls\TechRightBcl.cs" />
+    <Compile Include="Bcls\TrainingBcl.cs" />
+    <Compile Include="Bcls\VideoPageBcl.cs" />
+    <Compile Include="Bcls\VideoTagBcl.cs" />
+    <Compile Include="Bcls\VideoTagDetailBcl.cs" />
+    <Compile Include="Bcls\WelcomePageBcl.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WCF.BusinessObjectsLayer\WCF.BusinessObjectsLayer.csproj">
+      <Project>{eeb0ee70-bacf-445a-ad3e-61fa9109c0dc}</Project>
+      <Name>WCF.BusinessObjectsLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WCF.DataAccessLayer\WCF.DataAccessLayer.csproj">
+      <Project>{6e31546c-5bb0-4493-956b-5a04bafdc3b0}</Project>
+      <Name>WCF.DataAccessLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,301 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    @*<link rel="stylesheet" media="all" href="~/Content/assets/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" media="all" href="~/Content/assets/css/content-main.css"/>
+    <link rel="stylesheet" media="all" href="~/Content/assets/css/layout-main.css"/>
+    <link rel="stylesheet" media="all" href="~/Content/assets/css/content-footer.css"/>
+
+    @*<link rel="stylesheet" media="all" href="~/Content/css/plugins/social-buttons.css"/>*@
+    @*<link rel="stylesheet" media="all" href="~/Content/css/style.css"/>*@
+
+    <link rel="stylesheet" href="~/Content/font-awesome-4.1.0/css/font-awesome.css"/>
+
+    <meta charset="utf-8"/>
+    <title>@Html.Raw(ViewBag.Title)</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="@Html.Raw(ViewBag.description)">
+    <meta name="keywords" content="@Html.Raw(ViewBag.keywords)">
+    <meta name="news_keywords" content="@Html.Raw(ViewBag.news_keyword)">
+    <meta name="author" content="">
+
+    <meta property="og:title" content="@Html.Raw(ViewBag.Title)">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="@Html.Raw(HttpContext.Current.Request.Url.AbsoluteUri)">
+    <meta property="og:image" content="@Html.Raw(ViewBag.image)">
+    <meta property="og:site_name" content="iMICROSOFT Việt Nam">
+    <meta property="fb:app_id" content="181306608970834">
+    <meta property="og:description" content="@Html.Raw(ViewBag.description)">
+
+    @RenderSection("LevelCss", false)
+</head>
+
+<body am-grid="" class="responsive" smock="">
+    @if (ViewBag.header == "search")
+    {
+        <header class="header" data-role="header_container">
+            <div class="header__content">
+                <a class="header__logo svg__logo--inverse" href="@Url.Action("Index","Home")">Imicrosoft</a>
+                <div class="header__menu-button">
+                    <a class="header__menu-button__icon svg__hamburger" data-role="mobile_menu_toggle" href="#"></a>
+                </div>
+                <div class="header__links">
+                    <div class="header__search">
+                        <div class="header__search__form has-validation">
+                            @*<input name="utf8" type="hidden" value="✓">*@
+                        <button class="header__search__button" >
+                            <i class=" header__search__button__icon hot-icon__search-glass">
+                            </i>
+                        </button>
+                        <input class="header__search__input" id="search_query" name="query" placeholder="Nhập từ khóa tìm kiếm" type="text">
+                    </div>
+                </div><a class="header__link header__link--primary" href="@Url.Action("Index_new","LessonPage")">Quay lại trang kiến thức</a>
+
+                @*<div class="header__links--right">
+                    <section class="header__login header__nav__profile"><a class="header__link--button">Đăng nhập</a></section>
+                </div>*@
+
+            </div>
+        </div>
+    </header>
+        <div class="header__menu-overlay is-hidden" data-role="header_menu_overlay"></div>
+        <section class="hero">
+            <div class="hero__container">
+
+                <div class="hero__headings--search">
+                    @if (ViewBag.total != null)
+                    {
+                        if (ViewBag.query != null)
+                        {
+                            <h1 class="hero__headings__main--search" data-role="search_results_heading">
+                                có @ViewBag.total kết quả với từ khóa <strong>“@ViewBag.query”</strong>
+                            </h1>
+                        }
+                        if (ViewBag.tag != null)
+                        {
+                            <h1 class="hero__headings__main--search" data-role="search_results_heading">
+                                Có @ViewBag.total kết quả với từ khóa <strong>“@ViewBag.tag”</strong>
+                            </h1>
+                        }
+
+                    }
+                    else
+                    {
+                        <h1 class="hero__headings__main--search" data-role="search_results_heading">
+                               Không có kết quả nào thích hợp
+                            </h1>
+                    }
+
+                </div>
+            </div>
+        </section>
+    }
+    else
+    {
+        <header class="header" data-role="header_container">
+            <div class="header__content">
+                <a class="header__logo svg__logo--inverse" href="javascript:;">Imicrosoft</a>
+                <div class="header__menu-button">
+                    <a class="header__menu-button__icon svg__hamburger" data-role="mobile_menu_toggle" href="#"></a>
+                </div>
+
+
+                <div class="header__links">
+                    @*<a class="header__link header__link--primary" href="@Url.Action("Index", "NewsPage")">Tin tức </a>
+                    <a class="header__link header__link--primary" href="@Url.Action("Index", "TrainingPage")">Đào tạo</a>
+                    <a class="header__link header__link--primary" href="@Url.Action("Index", "TechPage")">Công nghệ</a>
+                    <a class="header__link header__link--primary" href="@Url.Action("Index_new", "LessonPage")">Kiến thức</a>
+                    <a class="header__link header__link--primary" href="@Url.Action("Index", "RecruitPage")">Tuyển dụng</a>
+                    <a class="header__link header__link--primary" href="@Url.Action("Index", "StudentGalery")">Học viện</a>*@
+                    <a class="header__link header__link--primary" href="@Url.Action("Index_new", "LessonPage")">Chia sẻ kiến thức</a>
+                    <a class="header__link header__link--primary" href="@Url.Action("Index", "TechPage")">CNTT-CNPM</a>
+                    <a class="header__link header__link--primary" href="http://hoidapit.com.vn/">Hỏi-Đáp IT</a>
+                    <a class="header__link header__link--primary" href="@Url.Action("Index", "RecruitPage")">Tuyển dụng</a>
+                    <a class="header__link header__link--primary" href="@Url.Action("Academy", "VideoPage")">Học viện</a>
+                    @*<div class="header__links--right">
+                        <section class="header__login header__nav__profile"><a class="header__link--button" data-toggle="modal" data-target="#dangnhap" href="javascript:;">Đăng nhập</a></section>
+                    </div>*@
+
+                </div>
+            </div>
+        </header>
+        <div class="header__menu-overlay is-hidden" data-role="header_menu_overlay"></div>
+
+        <header class="hero homepage__header">
+            <div class="container--fluid th-size-medium">
+                <div class="header-content th-inverse th-align-center">
+                    <h1 class="th-size-large s-tiny-above s-tiny-below header-content__heading">Mang đến cho bạn hành trang là Kiến thức và Kinh nghiệm </h1>
+                    <div class="header-content__steps">
+                        <div class="header-content__step">
+                            <div class="header-content__step-icon">
+                                <i class="header-content__icon svg__step-1"></i>
+                            </div>
+                            <p class="header-content__step-text">Lựa chọn chủ đề bạn quan tâm</p>
+                        </div><i class="header-content__icon svg__next"></i>
+                        <div class="header-content__step">
+                            <div class="header-content__step-icon">
+                                <i class="header-content__icon svg__step-2"></i>
+                            </div>
+                            <p class="header-content__step-text">Cùng nhau thảo luận về các vấn đề</p>
+                        </div><i class="header-content__icon svg__next"></i>
+                        <div class="header-content__step">
+                            <div class="header-content__step-icon">
+                                <i class="header-content__icon svg__step-3"></i>
+                            </div>
+                            <p class="header-content__step-text">Hãy theo dõi chúng tôi nếu bạn thấy bổ ích</p>
+                        </div>
+                    </div>
+                    <form class="lh-clear">
+
+                        <fieldset class="large-search s-small-below">
+                            <label class="large-search__label" for="search_query">Tìm kiếm</label>
+                            <input class="large-search__body" id="search_query" name="query" placeholder="Nhập từ khóa tìm kiếm" type="text" />
+                            <button class="button button--green large-search__button ">
+                                <span class="large-search__button__label">Search</span>
+                            </button>
+                        </fieldset>
+                    </form>
+                    <div am-grid-col="l:pre2 l:8" am-grid-row="l:start" class="s-large-below">
+                        <div class="header-content__trending-services lh-flexed--spaced s-tiny-above s-no-below th-size-medium">
+                            <p class="header-content__trending-services-label">Chủ đề nổi bật:</p>
+                            <a class="header-content__trending-services-link" href="javascript:;">Java-J2EE Web</a>
+                            <a class="header-content__trending-services-link" href="javascript:;">Android Game/App</a>
+                            <a class="header-content__trending-services-link" href="javascript:;">ASP.NET MVC</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    }
+
+
+    @RenderBody()
+    <div class="ecosystem-highlight">
+        @{Html.RenderAction("GettopClass", "LessonPage");}
+    </div>
+<footer class="footer">
+    <div class="footer__container container--fluid" style="max-width:100%">
+        <ul class="footer-list footer__column">
+            <li class="footer-list__label">Envato Studio</li>
+            <li class="footer-list__item"><a class="footer-list__link" href="/how-it-works">How It Works</a></li>
+            <li class="footer-list__item"><a class="footer-list__link" href="https://studiosupport.envato.com/hc/en-us">FAQ</a></li>
+            <li class="footer-list__item"><a class="footer-list__link" href="/about-us">About Us</a></li>
+            <li class="footer-list__item"><a class="footer-list__link" href="/testimonials">Testimonials</a></li>
+        </ul>
+        <ul class="footer-list footer__column">
+            <li class="footer-list__label">Help</li>
+            <li class="footer-list__item"><a class="footer-list__link" href="/user-terms">Terms &amp; Conditions</a></li>
+            <li class="footer-list__item"><a class="footer-list__link" href="/content-policy">Content Policy</a></li>
+            <li class="footer-list__item"><a class="footer-list__link" href="/privacy-policy">Privacy Policy</a></li>
+            <li class="footer-list__item"><a class="footer-list__link" href="/contact">Contact Us</a></li>
+        </ul>
+        <ul class="footer-list footer__column">
+            <li class="footer-list__label">Community</li>
+            <li class="footer-list__item"><a class="footer-list__link" href="https://studioblog.envato.com">Blog</a></li>
+            <li class="footer-list__item"><a class="footer-list__link" href="http://community.envato.com/#/events/">Meetups</a></li>
+            <li class="footer-list__item"><a class="footer-list__link" href="/affiliates">Affiliates</a></li>
+            <li class="footer-list__item"><a class="footer-list__link" href="https://forums.envato.com/">Forums</a></li>
+        </ul>
+        <ul class="footer__column">
+            <a class="footer__logo svg__logo--inverse" href="/">Envato Studio</a>
+            <ul class="footer-list">
+                <li class="footer-list__item--social"><a class="footer-list__link" href="https://www.facebook.com/envato" title="Envato Facebook"><i class="svg__facebook"></i><span class="footer-list__item-body">Facebook</span></a></li>
+                <li class="footer-list__item--social"><a class="footer-list__link" href="https://twitter.com/envato" title="Envato Twitter"><i class="svg__twitter"></i><span class="footer-list__item-body">Twitter</span></a></li>
+                <li class="footer-list__item--social"><a class="footer-list__link" href="https://instagram.com/envato" title="Envato Instagram"><i class="svg__instagram"></i><span class="footer-list__item-body">Instagram</span></a></li>
+                <li class="footer-list__item--social"><a class="footer-list__link" href="https://youtube.com/envato" title="Envato YouTube"><i class="svg__youtube"></i><span class="footer-list__item-body">YouTube</span></a></li>
+            </ul>
+        </ul>
+    </div>
+    <div class="container--fluid" style="max-width:100%">
+        <footer class="sub-footer">
+            <ul class="sub-footer__sister-sites">
+                <li><a class="sub-footer__sister-site" href="http://market.envato.com/" rel="noopener" target="_blank">Envato Market</a></li>
+                <li><a class="sub-footer__sister-site" href="https://elements.envato.com/" rel="noopener" target="_blank">Envato Elements</a></li>
+                <li><a class="sub-footer__sister-site" href="http://tutsplus.com/" rel="noopener" target="_blank">Envato Tuts+</a></li>
+                <li><a class="sub-footer__sister-site" href="https://sites.envato.com/" rel="noopener" target="_blank">Envato Sites</a></li>
+            </ul>
+            <p class="sub-footer__copyright">Copyright &copy; 2017 Envato Studio. All Rights Reserved</p>
+        </footer>
+    </div>
+</footer>
+
+    @*<!-- /#wrapper -->
+    @{
+        var objAccount = (AccountObject)Session[CommonConstants.SESSION_ACCOUNT];
+        if (objAccount == null)
+        {
+            <!--dang nhâp-->
+            @Html.Action("Index", "Account")
+            <!--end dang nhap-->
+            <!--dang ki-->
+            @*Html.Action("Register", "Account")
+            <!--end dang ki-->
+        }
+    }*@
+<div class="scroll-back-to-top-wrapper" id="myBtn">
+        <span class="scroll-back-to-top-inner">
+            <i class="fa fa-2x fa-arrow-circle-up"></i>
+        </span>
+    </div>
+    @*<script src="~/Content/assets/js/layout_main.js"></script>*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js "></script>
+
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"></script>*@
+                        <script src="~/Content/assets/js/bootstrap.min.js"></script>
+                        <script>
+                            $(document)
+                                  .ready(function () {
+                                      $('#myBtn').hide();
+                                  });
+                            $('.svg__hamburger')
+                                .on('click',
+                                    function () {
+
+                                        if ($('.header').hasClass('is-open')) {
+                                            $('.header').removeClass('is-open');
+                                            $('.header__menu-overlay').addClass('is-hidden');
+                                        } else {
+                                            $('.header').addClass('is-open');
+                                            $('.header__menu-overlay').removeClass('is-hidden');
+                                        }
+                                    });
+                            $('.large-search__button')
+                                .on('click',
+                                    function (e) {
+                                        e.preventDefault();
+                                        debugger;
+                                        var query = $('input[name=query]').val();
+                                        window.location.href = '@Url.Action("Search", "LessonPage")' + '?query=' + query;
+                                    });
+                            window.onscroll = function () { scrollFunction() };
+
+                            function scrollFunction() {
+                                if ($(window).scrollTop() > $(window).height()) {
+                                    $('#myBtn').fadeIn('slow');
+
+                                } else {
+                                    $('#myBtn').fadeOut('slow');
+                                }
+                            }
+
+                            // When the user clicks on the button, scroll to the top of the document
+                            $('#myBtn').on('click', function () {
+
+                                $('html,body').animate({ scrollTop: 0 }, 1000);
+                            });
+
+                        </script>
+                        @RenderSection("Scripts", false)
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+﻿@{
+    Layout = null;
+}
+@model List<WCF.BusinessObjectsLayer.EntityObjects.LessonDetailObject>
+<style>
+    th {
+        text-align: center !important;
+    }
+
+    td {
+        text-align: center !important;
+    }
+</style>
+<div class="form-group">
+    <h4>&nbsp;Bảng chi tiết bài học:</h4>
+    <div class="col-xs-12" style="float:none">
+        <div style="padding-bottom:10px;">
+            <a class="btn btn-primary btn-sm" style="margin-top:10px;" href="@Url.Action("LessonDetail_Insert", "LessonAdmin", new { LessonId = ViewBag.LessonId, Option = 1 })">
+                Thêm chi tiết mới
+                <span class="fa fa-plus" style="padding-left:6px;"></span>
+            </a>
+        </div>
+        <table class="table table-striped table-bordered table-hover" id="detail-table">
+            <thead>
+                <tr role="row">
+                    <th>Mã</th>
+                    <th>Tên</th>
+                    <th>Lượt xem</th>
+                    <th>Lượt thích</th>
+                    <th>Ưu tiên</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.DetailCode</td>
+                        <td>@item.DetailName</td>
+                        <td>@item.TotalOfView.ToString("n0")</td>
+                        <td>@item.TotalOfLike.ToString("n0")</td>
+                        <td>@item.Rank</td>
+                        @if (item.IsDeleted == true)
+                        {
+                            <td>
+                                <span class="label label-lg label-danger">Deleted</span>
+                            </td>
+                        }
+                        else
+                        {
+                            if (item.IsApproved == false)
+                            {
+                                <td>
+                                    <span class="label label-lg label-warning">Pending</span>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <span class="label label-lg label-success">Active</span>
+                                </td>
+                            }
+                        }
+                        <td style="width: 235px; text-align: left !important">
+                            <a href="@Url.Action("LessonDetail_Update", "LessonAdmin", new { LessonDetailId = item.LessonDetailId, Option = 1 })" class="btn btn-info">Sửa</a>
+                            <a href="@Url.Action("ManageComment", "LessonAdmin", new { ArticleId = item.LessonDetailId,Title = item.DetailTitle })" class="btn btn-success">Bình luận</a>
+                            <a onclick="Delete('@item.LessonDetailId','@item.DetailName',event)" class="btn btn-danger">Xóa</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

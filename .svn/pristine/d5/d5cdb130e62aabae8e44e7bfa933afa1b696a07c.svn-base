@@ -1,0 +1,26 @@
+﻿@model List<WCF.BusinessObjectsLayer.EntityObjects.RecruitmentCompanyObject>
+<style>
+    .rec-com {
+        cursor: pointer;
+    }
+</style>
+<div class="project-list" style="padding: 0px; margin-top: 20px;">
+    @*<h4>Đối tác tuyển dụng</h4>*@
+
+        <img style="width: 100%;" src="~/Content/images/recruit/image-qc.jpg">
+        @*@foreach (var item in Model)
+        {
+            <li>
+                <a class="rec-com" data-id="@item.CompanyCode"><img style="width: 100%;" src="~/Content/Galleries/Recruit/@item.CompanyLogo" alt="@item.CompanyName"></a>
+                <p style="text-align: center; width: 100%">
+                    <a class="rec-com"  data-id="@item.CompanyCode">@item.CompanyName</a>
+                </p>
+                <div class="clear"></div>
+            </li>
+        }*@
+
+
+
+
+    <div class="clear"></div>
+</div>

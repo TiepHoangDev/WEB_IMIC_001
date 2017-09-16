@@ -1,0 +1,581 @@
+﻿@using WCF.Web.App_Start
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.LessonDetailObject>
+@{
+    Layout = "~/Views/Shared/_LayoutLesson.cshtml";
+    ViewBag.Title = "Trang tìm kiếm";
+    ViewBag.header = "search";
+}
+@section LevelCss{
+    <link rel="stylesheet" href="~/Content/assets/css/content-tag.css"/>
+    @*<link rel="stylesheet" type="text/css" href="~/Areas/AdminCP/Content/assets/admin/pages/css/simplePagination.css"/>*@
+}
+    <style>
+        .activity-item {
+            border: none;
+            border-bottom: 1px solid #e4e4e4;
+        }
+        /*<!-- .activity-item:nth-child(1) { -->
+                <!-- border-top: 1px solid #e4e4e4; -->
+                <!--
+            }
+        -->*/
+        .activity-item__content {
+            padding-left: 0;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .comment-count {
+            float: left;
+            list-style: none;
+            color: rgba(0, 0, 0, .54);
+        }
+
+        .comment-count li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .activity-item__title a:hover {
+            text-decoration: none;
+            color: #5488c7 !important;
+        }
+
+        .activity-item__title a {
+            color: black !important;
+        }
+
+        .activity-item__title {
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .list-unstyled {
+            float: right;
+        }
+
+        .list-unstyled li {
+            display: inline-block;
+            margin-left: 8px;
+        }
+
+        .adv {
+            margin-top: 10px;
+        }
+    </style>
+
+
+
+
+<main class="content">
+<div class="left-box" style="Width: 75%; float: left; padding: 10px;">
+<div style="padding: 0px 10px" class="s-large-below s-large-above">
+<aside class="activity-wrap animated slideDown headroom--top">
+@foreach (var item in Model)
+{
+
+
+
+    <article class="activity-item activity-item--forum" style="display: block;">
+        <div class="u-clearfix u-marginBottom10">
+            <div class="postMetaInline u-floatLeft">
+                <div class="u-flexCenter">
+                    <div class="postMetaInline-avatar u-flex0">
+                        <a class="link avatar u-baseColor--link" href="">
+                            <img src="~/Content/images/avatar/@item.objAccount.ImageAvatar" class="avatar-image u-size36x36 u-xs-size32x32" >
+                        </a>
+                    </div>
+                    <div class="postMetaInline postMetaInline-authorLockup u-flex1 u-noWrapWithEllipsis">
+                        <a class="link link link--darken link--accent u-accentColor--textNormal u-accentColor--textDarken u-baseColor--link" >@item.objAccount.FullName</a>
+                        <div class="u-fontSize12 u-baseColor--textNormal u-textColorNormal js-postMetaInlineSupplemental"><a class="link link--darken" ><time >@item.ModifiedTime</time></a><span class="middotDivider u-fontSize12"></span><span class="readingTime"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity-item__content">
+            <h3 class="activity-item__title"> <a href="@Url.RouteUrl("lesson-detail", new {code = item.DetailCode, name = StringHelpers.GenerateURL(item.DetailTitle)})" > @item.DetailTitle</a>
+            </h3>
+
+            <p style="font-size: 14px; clear: both;"> @item.DetailSummary</p>
+
+            <ul class="comment-count">
+                <li> <i class="fa fa-heart-o" aria-hidden="true"></i> @item.TotalOfLike
+                <li>
+                <li> <i class="fa fa-comment-o" aria-hidden="true"></i> @item.TotalOfComment
+                <li>
+            </ul>
+
+            <ul class="tags list-unstyled">
+                @{Html.RenderAction("Detail_SearchTag", "LessonPage", new {LessonDetailID = item.LessonDetailId});}
+            </ul>
+</div>
+
+    </article>
+}
+
+@*<article class="activity-item activity-item--forum" style="display: block;">
+                        <div class="u-clearfix u-marginBottom10">
+                            <div class="postMetaInline u-floatLeft">
+                                <div class="u-flexCenter">
+                                    <div class="postMetaInline-avatar u-flex0">
+                                        <a class="link avatar u-baseColor--link" href="https://medium.com/kilianmarkert" data-action="show-user-card" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto"><img src="https://cdn-images-1.medium.com/fit/c/36/36/1*LX0LNy9CBJac5mbE-FAfVw.jpeg" class="avatar-image u-size36x36 u-xs-size32x32" alt="Go to the profile of Kilian Markert"></a>
+                                    </div>
+                                    <div class="postMetaInline postMetaInline-authorLockup u-flex1 u-noWrapWithEllipsis">
+                                        <a class="link link link--darken link--accent u-accentColor--textNormal u-accentColor--textDarken u-baseColor--link" href="https://medium.com/kilianmarkert?source=responses---------0-----------" data-action="show-user-card" data-action-source="responses---------0-----------" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto">Kilian Markert</a>
+                                        <div class="u-fontSize12 u-baseColor--textNormal u-textColorNormal js-postMetaInlineSupplemental"><a class="link link--darken" href="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action="open-post" data-action-value="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action-source="preview-listing"><time datetime="2017-06-06T01:44:00.753Z">Jun 6</time></a><span class="middotDivider u-fontSize12"></span><span class="readingTime" title="1 min read"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item__content">
+                            <h3 class="activity-item__title"> <a href="https://forums.envato.com/t/level-3/109466" target="_blank"> Kannonh replied to evel 3 :)</a></h3>
+
+                            <p style="font-size:14px; clear:both; "> Để định nghĩa một hằng số trong PHP, bạn phải sử dụng hàm define() và để lấy giá trị của một hằng, bạn phải chỉ ra tên của nó. Không giống như biến, bạn không cần thêm $ vào hằng. Bạn cũng có thể sử dụng hàm constant() để đọc một giá trị của hằng nếu bạn muốn lấy tên của hằng một cách linh hoạt.  </p>
+
+                            <ul class="comment-count">
+                                <li> <i class="fa fa-heart-o" aria-hidden="true"></i> 69
+                                <li>
+                                <li> <i class="fa fa-comment-o" aria-hidden="true"></i> 19
+                                <li>
+                            </ul>
+                            <ul class="tags list-unstyled">
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                            </ul>
+                        </div>
+
+                    </article>
+
+                    <article class="activity-item activity-item--forum" style="display: block;">
+                        <div class="u-clearfix u-marginBottom10">
+                            <div class="postMetaInline u-floatLeft">
+                                <div class="u-flexCenter">
+                                    <div class="postMetaInline-avatar u-flex0">
+                                        <a class="link avatar u-baseColor--link" href="https://medium.com/kilianmarkert" data-action="show-user-card" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto"><img src="https://cdn-images-1.medium.com/fit/c/36/36/1*LX0LNy9CBJac5mbE-FAfVw.jpeg" class="avatar-image u-size36x36 u-xs-size32x32" alt="Go to the profile of Kilian Markert"></a>
+                                    </div>
+                                    <div class="postMetaInline postMetaInline-authorLockup u-flex1 u-noWrapWithEllipsis">
+                                        <a class="link link link--darken link--accent u-accentColor--textNormal u-accentColor--textDarken u-baseColor--link" href="https://medium.com/kilianmarkert?source=responses---------0-----------" data-action="show-user-card" data-action-source="responses---------0-----------" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto">Kilian Markert</a>
+                                        <div class="u-fontSize12 u-baseColor--textNormal u-textColorNormal js-postMetaInlineSupplemental"><a class="link link--darken" href="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action="open-post" data-action-value="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action-source="preview-listing"><time datetime="2017-06-06T01:44:00.753Z">Jun 6</time></a><span class="middotDivider u-fontSize12"></span><span class="readingTime" title="1 min read"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item__content">
+                            <h3 class="activity-item__title"> <a href="https://forums.envato.com/t/level-3/109466" target="_blank"> Kannonh replied to evel 3 :)</a></h3>
+
+                            <p style="font-size:14px; clear:both; "> Để định nghĩa một hằng số trong PHP, bạn phải sử dụng hàm define() và để lấy giá trị của một hằng, bạn phải chỉ ra tên của nó. Không giống như biến, bạn không cần thêm $ vào hằng. Bạn cũng có thể sử dụng hàm constant() để đọc một giá trị của hằng nếu bạn muốn lấy tên của hằng một cách linh hoạt.  </p>
+
+                            <ul class="comment-count">
+                                <li> <i class="fa fa-heart-o" aria-hidden="true"></i> 69
+                                <li>
+                                <li> <i class="fa fa-comment-o" aria-hidden="true"></i> 19
+                                <li>
+                            </ul>
+                            <ul class="tags list-unstyled">
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                            </ul>
+                        </div>
+
+                    </article>
+                    <article class="activity-item activity-item--forum" style="display: block;">
+                        <div class="u-clearfix u-marginBottom10">
+                            <div class="postMetaInline u-floatLeft">
+                                <div class="u-flexCenter">
+                                    <div class="postMetaInline-avatar u-flex0">
+                                        <a class="link avatar u-baseColor--link" href="https://medium.com/kilianmarkert" data-action="show-user-card" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto"><img src="https://cdn-images-1.medium.com/fit/c/36/36/1*LX0LNy9CBJac5mbE-FAfVw.jpeg" class="avatar-image u-size36x36 u-xs-size32x32" alt="Go to the profile of Kilian Markert"></a>
+                                    </div>
+                                    <div class="postMetaInline postMetaInline-authorLockup u-flex1 u-noWrapWithEllipsis">
+                                        <a class="link link link--darken link--accent u-accentColor--textNormal u-accentColor--textDarken u-baseColor--link" href="https://medium.com/kilianmarkert?source=responses---------0-----------" data-action="show-user-card" data-action-source="responses---------0-----------" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto">Kilian Markert</a>
+                                        <div class="u-fontSize12 u-baseColor--textNormal u-textColorNormal js-postMetaInlineSupplemental"><a class="link link--darken" href="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action="open-post" data-action-value="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action-source="preview-listing"><time datetime="2017-06-06T01:44:00.753Z">Jun 6</time></a><span class="middotDivider u-fontSize12"></span><span class="readingTime" title="1 min read"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item__content">
+                            <h3 class="activity-item__title"> <a href="https://forums.envato.com/t/level-3/109466" target="_blank"> Kannonh replied to evel 3 :)</a></h3>
+
+                            <p style="font-size:14px; clear:both; "> Để định nghĩa một hằng số trong PHP, bạn phải sử dụng hàm define() và để lấy giá trị của một hằng, bạn phải chỉ ra tên của nó. Không giống như biến, bạn không cần thêm $ vào hằng. Bạn cũng có thể sử dụng hàm constant() để đọc một giá trị của hằng nếu bạn muốn lấy tên của hằng một cách linh hoạt.  </p>
+
+                            <ul class="comment-count">
+                                <li> <i class="fa fa-heart-o" aria-hidden="true"></i> 69
+                                <li>
+                                <li> <i class="fa fa-comment-o" aria-hidden="true"></i> 19
+                                <li>
+                            </ul>
+                            <ul class="tags list-unstyled">
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                            </ul>
+                        </div>
+
+                    </article>
+                    <article class="activity-item activity-item--forum" style="display: block;">
+                        <div class="u-clearfix u-marginBottom10">
+                            <div class="postMetaInline u-floatLeft">
+                                <div class="u-flexCenter">
+                                    <div class="postMetaInline-avatar u-flex0">
+                                        <a class="link avatar u-baseColor--link" href="https://medium.com/kilianmarkert" data-action="show-user-card" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto"><img src="https://cdn-images-1.medium.com/fit/c/36/36/1*LX0LNy9CBJac5mbE-FAfVw.jpeg" class="avatar-image u-size36x36 u-xs-size32x32" alt="Go to the profile of Kilian Markert"></a>
+                                    </div>
+                                    <div class="postMetaInline postMetaInline-authorLockup u-flex1 u-noWrapWithEllipsis">
+                                        <a class="link link link--darken link--accent u-accentColor--textNormal u-accentColor--textDarken u-baseColor--link" href="https://medium.com/kilianmarkert?source=responses---------0-----------" data-action="show-user-card" data-action-source="responses---------0-----------" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto">Kilian Markert</a>
+                                        <div class="u-fontSize12 u-baseColor--textNormal u-textColorNormal js-postMetaInlineSupplemental"><a class="link link--darken" href="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action="open-post" data-action-value="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action-source="preview-listing"><time datetime="2017-06-06T01:44:00.753Z">Jun 6</time></a><span class="middotDivider u-fontSize12"></span><span class="readingTime" title="1 min read"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item__content">
+                            <h3 class="activity-item__title"> <a href="https://forums.envato.com/t/level-3/109466" target="_blank"> Kannonh replied to evel 3 :)</a></h3>
+
+                            <p style="font-size:14px; clear:both; "> Để định nghĩa một hằng số trong PHP, bạn phải sử dụng hàm define() và để lấy giá trị của một hằng, bạn phải chỉ ra tên của nó. Không giống như biến, bạn không cần thêm $ vào hằng. Bạn cũng có thể sử dụng hàm constant() để đọc một giá trị của hằng nếu bạn muốn lấy tên của hằng một cách linh hoạt.  </p>
+
+                            <ul class="comment-count">
+                                <li> <i class="fa fa-heart-o" aria-hidden="true"></i> 69
+                                <li>
+                                <li> <i class="fa fa-comment-o" aria-hidden="true"></i> 19
+                                <li>
+                            </ul>
+                            <ul class="tags list-unstyled">
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                            </ul>
+                        </div>
+
+                    </article>
+                    <article class="activity-item activity-item--forum" style="display: block;">
+                        <div class="u-clearfix u-marginBottom10">
+                            <div class="postMetaInline u-floatLeft">
+                                <div class="u-flexCenter">
+                                    <div class="postMetaInline-avatar u-flex0">
+                                        <a class="link avatar u-baseColor--link" href="https://medium.com/kilianmarkert" data-action="show-user-card" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto"><img src="https://cdn-images-1.medium.com/fit/c/36/36/1*LX0LNy9CBJac5mbE-FAfVw.jpeg" class="avatar-image u-size36x36 u-xs-size32x32" alt="Go to the profile of Kilian Markert"></a>
+                                    </div>
+                                    <div class="postMetaInline postMetaInline-authorLockup u-flex1 u-noWrapWithEllipsis">
+                                        <a class="link link link--darken link--accent u-accentColor--textNormal u-accentColor--textDarken u-baseColor--link" href="https://medium.com/kilianmarkert?source=responses---------0-----------" data-action="show-user-card" data-action-source="responses---------0-----------" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto">Kilian Markert</a>
+                                        <div class="u-fontSize12 u-baseColor--textNormal u-textColorNormal js-postMetaInlineSupplemental"><a class="link link--darken" href="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action="open-post" data-action-value="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action-source="preview-listing"><time datetime="2017-06-06T01:44:00.753Z">Jun 6</time></a><span class="middotDivider u-fontSize12"></span><span class="readingTime" title="1 min read"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item__content">
+                            <h3 class="activity-item__title"> <a href="https://forums.envato.com/t/level-3/109466" target="_blank"> Kannonh replied to evel 3 :)</a></h3>
+
+                            <p style="font-size:14px; clear:both; "> Để định nghĩa một hằng số trong PHP, bạn phải sử dụng hàm define() và để lấy giá trị của một hằng, bạn phải chỉ ra tên của nó. Không giống như biến, bạn không cần thêm $ vào hằng. Bạn cũng có thể sử dụng hàm constant() để đọc một giá trị của hằng nếu bạn muốn lấy tên của hằng một cách linh hoạt.  </p>
+
+                            <ul class="comment-count">
+                                <li> <i class="fa fa-heart-o" aria-hidden="true"></i> 69
+                                <li>
+                                <li> <i class="fa fa-comment-o" aria-hidden="true"></i> 19
+                                <li>
+                            </ul>
+                            <ul class="tags list-unstyled">
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                            </ul>
+                        </div>
+
+                    </article>
+                    <article class="activity-item activity-item--forum" style="display: block;">
+                        <div class="u-clearfix u-marginBottom10">
+                            <div class="postMetaInline u-floatLeft">
+                                <div class="u-flexCenter">
+                                    <div class="postMetaInline-avatar u-flex0">
+                                        <a class="link avatar u-baseColor--link" href="https://medium.com/kilianmarkert" data-action="show-user-card" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto"><img src="https://cdn-images-1.medium.com/fit/c/36/36/1*LX0LNy9CBJac5mbE-FAfVw.jpeg" class="avatar-image u-size36x36 u-xs-size32x32" alt="Go to the profile of Kilian Markert"></a>
+                                    </div>
+                                    <div class="postMetaInline postMetaInline-authorLockup u-flex1 u-noWrapWithEllipsis">
+                                        <a class="link link link--darken link--accent u-accentColor--textNormal u-accentColor--textDarken u-baseColor--link" href="https://medium.com/kilianmarkert?source=responses---------0-----------" data-action="show-user-card" data-action-source="responses---------0-----------" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto">Kilian Markert</a>
+                                        <div class="u-fontSize12 u-baseColor--textNormal u-textColorNormal js-postMetaInlineSupplemental"><a class="link link--darken" href="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action="open-post" data-action-value="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action-source="preview-listing"><time datetime="2017-06-06T01:44:00.753Z">Jun 6</time></a><span class="middotDivider u-fontSize12"></span><span class="readingTime" title="1 min read"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item__content">
+                            <h3 class="activity-item__title"> <a href="https://forums.envato.com/t/level-3/109466" target="_blank"> Kannonh replied to evel 3 :)</a></h3>
+
+                            <p style="font-size:14px; clear:both; "> Để định nghĩa một hằng số trong PHP, bạn phải sử dụng hàm define() và để lấy giá trị của một hằng, bạn phải chỉ ra tên của nó. Không giống như biến, bạn không cần thêm $ vào hằng. Bạn cũng có thể sử dụng hàm constant() để đọc một giá trị của hằng nếu bạn muốn lấy tên của hằng một cách linh hoạt.  </p>
+
+                            <ul class="comment-count">
+                                <li> <i class="fa fa-heart-o" aria-hidden="true"></i> 69
+                                <li>
+                                <li> <i class="fa fa-comment-o" aria-hidden="true"></i> 19
+                                <li>
+                            </ul>
+                            <ul class="tags list-unstyled">
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                            </ul>
+                        </div>
+
+                    </article>
+                    <article class="activity-item activity-item--forum" style="display: block;">
+                        <div class="u-clearfix u-marginBottom10">
+                            <div class="postMetaInline u-floatLeft">
+                                <div class="u-flexCenter">
+                                    <div class="postMetaInline-avatar u-flex0">
+                                        <a class="link avatar u-baseColor--link" href="https://medium.com/kilianmarkert" data-action="show-user-card" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto"><img src="https://cdn-images-1.medium.com/fit/c/36/36/1*LX0LNy9CBJac5mbE-FAfVw.jpeg" class="avatar-image u-size36x36 u-xs-size32x32" alt="Go to the profile of Kilian Markert"></a>
+                                    </div>
+                                    <div class="postMetaInline postMetaInline-authorLockup u-flex1 u-noWrapWithEllipsis">
+                                        <a class="link link link--darken link--accent u-accentColor--textNormal u-accentColor--textDarken u-baseColor--link" href="https://medium.com/kilianmarkert?source=responses---------0-----------" data-action="show-user-card" data-action-source="responses---------0-----------" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto">Kilian Markert</a>
+                                        <div class="u-fontSize12 u-baseColor--textNormal u-textColorNormal js-postMetaInlineSupplemental"><a class="link link--darken" href="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action="open-post" data-action-value="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action-source="preview-listing"><time datetime="2017-06-06T01:44:00.753Z">Jun 6</time></a><span class="middotDivider u-fontSize12"></span><span class="readingTime" title="1 min read"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item__content">
+                            <h3 class="activity-item__title"> <a href="https://forums.envato.com/t/level-3/109466" target="_blank"> Kannonh replied to evel 3 :)</a></h3>
+
+                            <p style="font-size:14px; clear:both; "> Để định nghĩa một hằng số trong PHP, bạn phải sử dụng hàm define() và để lấy giá trị của một hằng, bạn phải chỉ ra tên của nó. Không giống như biến, bạn không cần thêm $ vào hằng. Bạn cũng có thể sử dụng hàm constant() để đọc một giá trị của hằng nếu bạn muốn lấy tên của hằng một cách linh hoạt.  </p>
+
+                            <ul class="comment-count">
+                                <li> <i class="fa fa-heart-o" aria-hidden="true"></i> 69
+                                <li>
+                                <li> <i class="fa fa-comment-o" aria-hidden="true"></i> 19
+                                <li>
+                            </ul>
+                            <ul class="tags list-unstyled">
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                            </ul>
+                        </div>
+
+                    </article>
+                    <article class="activity-item activity-item--forum" style="display: block;">
+                        <div class="u-clearfix u-marginBottom10">
+                            <div class="postMetaInline u-floatLeft">
+                                <div class="u-flexCenter">
+                                    <div class="postMetaInline-avatar u-flex0">
+                                        <a class="link avatar u-baseColor--link" href="https://medium.com/kilianmarkert" data-action="show-user-card" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto"><img src="https://cdn-images-1.medium.com/fit/c/36/36/1*LX0LNy9CBJac5mbE-FAfVw.jpeg" class="avatar-image u-size36x36 u-xs-size32x32" alt="Go to the profile of Kilian Markert"></a>
+                                    </div>
+                                    <div class="postMetaInline postMetaInline-authorLockup u-flex1 u-noWrapWithEllipsis">
+                                        <a class="link link link--darken link--accent u-accentColor--textNormal u-accentColor--textDarken u-baseColor--link" href="https://medium.com/kilianmarkert?source=responses---------0-----------" data-action="show-user-card" data-action-source="responses---------0-----------" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto">Kilian Markert</a>
+                                        <div class="u-fontSize12 u-baseColor--textNormal u-textColorNormal js-postMetaInlineSupplemental"><a class="link link--darken" href="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action="open-post" data-action-value="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action-source="preview-listing"><time datetime="2017-06-06T01:44:00.753Z">Jun 6</time></a><span class="middotDivider u-fontSize12"></span><span class="readingTime" title="1 min read"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item__content">
+                            <h3 class="activity-item__title"> <a href="https://forums.envato.com/t/level-3/109466" target="_blank"> Kannonh replied to evel 3 :)</a></h3>
+
+                            <p style="font-size:14px; clear:both; "> Để định nghĩa một hằng số trong PHP, bạn phải sử dụng hàm define() và để lấy giá trị của một hằng, bạn phải chỉ ra tên của nó. Không giống như biến, bạn không cần thêm $ vào hằng. Bạn cũng có thể sử dụng hàm constant() để đọc một giá trị của hằng nếu bạn muốn lấy tên của hằng một cách linh hoạt.  </p>
+
+                            <ul class="comment-count">
+                                <li> <i class="fa fa-heart-o" aria-hidden="true"></i> 69
+                                <li>
+                                <li> <i class="fa fa-comment-o" aria-hidden="true"></i> 19
+                                <li>
+                            </ul>
+                            <ul class="tags list-unstyled">
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                            </ul>
+                        </div>
+
+                    </article>
+                    <article class="activity-item activity-item--forum" style="display: block;">
+                        <div class="u-clearfix u-marginBottom10">
+                            <div class="postMetaInline u-floatLeft">
+                                <div class="u-flexCenter">
+                                    <div class="postMetaInline-avatar u-flex0">
+                                        <a class="link avatar u-baseColor--link" href="https://medium.com/kilianmarkert" data-action="show-user-card" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto"><img src="https://cdn-images-1.medium.com/fit/c/36/36/1*LX0LNy9CBJac5mbE-FAfVw.jpeg" class="avatar-image u-size36x36 u-xs-size32x32" alt="Go to the profile of Kilian Markert"></a>
+                                    </div>
+                                    <div class="postMetaInline postMetaInline-authorLockup u-flex1 u-noWrapWithEllipsis">
+                                        <a class="link link link--darken link--accent u-accentColor--textNormal u-accentColor--textDarken u-baseColor--link" href="https://medium.com/kilianmarkert?source=responses---------0-----------" data-action="show-user-card" data-action-source="responses---------0-----------" data-action-value="22ce8c524199" data-action-type="hover" data-user-id="22ce8c524199" dir="auto">Kilian Markert</a>
+                                        <div class="u-fontSize12 u-baseColor--textNormal u-textColorNormal js-postMetaInlineSupplemental"><a class="link link--darken" href="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action="open-post" data-action-value="https://medium.com/kilianmarkert/hey-kenneth-ef13f71f03ef?source=responses---------0-----------" data-action-source="preview-listing"><time datetime="2017-06-06T01:44:00.753Z">Jun 6</time></a><span class="middotDivider u-fontSize12"></span><span class="readingTime" title="1 min read"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item__content">
+                            <h3 class="activity-item__title"> <a href="https://forums.envato.com/t/level-3/109466" target="_blank"> Kannonh replied to evel 3 :)</a></h3>
+
+                            <p style="font-size:14px; clear:both; "> Để định nghĩa một hằng số trong PHP, bạn phải sử dụng hàm define() và để lấy giá trị của một hằng, bạn phải chỉ ra tên của nó. Không giống như biến, bạn không cần thêm $ vào hằng. Bạn cũng có thể sử dụng hàm constant() để đọc một giá trị của hằng nếu bạn muốn lấy tên của hằng một cách linh hoạt.  </p>
+
+                            <ul class="comment-count">
+                                <li> <i class="fa fa-heart-o" aria-hidden="true"></i> 69
+                                <li>
+                                <li> <i class="fa fa-comment-o" aria-hidden="true"></i> 19
+                                <li>
+                            </ul>
+                            <ul class="tags list-unstyled">
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                                <li><a href="https://viblo.asia/tags/css" class="tag">CSS</a></li>
+                                <li><a href="https://viblo.asia/tags/html" class="tag">HTML</a></li>
+                                <li><a href="https://viblo.asia/tags/javascript" class="tag">JavaScript</a></li>
+                            </ul>
+                        </div>
+
+                    </article>*@
+</aside>
+    @{
+        int page = ViewBag.start;
+        
+    }
+@*<div class="pagination-holder clearfix" style="margin-top:10px">
+        <div id="light-pagination" class="pagination"></div>
+    </div>*@
+    <ul id="pagination" class="pagination">
+        @*<li class="disabled"><i aria-hidden="true" class="fa fa-angle-left"></i></li>
+            <li class="active"><span>1</span></li>
+            <li><a href="https://viblo.asia/tags/html?page=2">2</a></li>
+            <li class="hidden-md-down"><a href="https://viblo.asia/tags/html?page=3">3</a></li>
+            <li class="hidden-md-down"><a href="https://viblo.asia/tags/html?page=4">4</a></li>
+            <li class="hidden-md-down"><a href="https://viblo.asia/tags/html?page=5">5</a></li>
+            <li class="hidden-md-down"><a href="https://viblo.asia/tags/html?page=6">6</a></li>
+            <li class="hidden-md-down"><a href="https://viblo.asia/tags/html?page=7">7</a></li>
+            <li class="hidden-md-down"><a href="https://viblo.asia/tags/html?page=8">8</a></li>
+            <li class="hidden-md-down"><a href="https://viblo.asia/tags/html?page=9">9</a></li>
+            <li class="hidden-md-down"><a href="https://viblo.asia/tags/html?page=10">10</a></li>
+            <li><a href="https://viblo.asia/tags/html?page=2" rel="next"><i aria-hidden="true" class="fa fa-angle-right"></i></a></li>*@
+    </ul>
+
+</div>
+
+</div>
+<div class="layout__sidebar" style="width: 24%; padding: 0 0px 10px 0px; float: right;">
+
+    <div class="sidebar-box popular-tags">
+        <div class="section-title-line" style="border-bottom: 1px solid #e4e4e4">
+            <h4 class="text-uppercase"><i style="color: #5488c7" class="fa fa-search" aria-hidden="true"></i>  Từ khóa tìm kiếm</h4>
+            <!-- <hr class="filler-line"> -->
+        </div>
+        @{Html.RenderAction("GetAll_Tag");}
+
+    </div>
+    <div class="adv">
+        <img style="width: 100%" src="~/Content/assets/images/stack_qc.jpg"/>
+
+    </div>
+    <div class="adv">
+        <img style="width: 100%" src="~/Content/assets/images/satck_qc2.jpg" />
+
+    </div>
+</div>
+</main>
+<div class="clear"></div>
+<!-- end section -->
+
+  
+
+
+@*<script src="~/Content/assets/js/layout_main.js"></script>*@
+@section Scripts{
+   <script src="~/Content/assets/js/jquery.simplePagination.js"></script>
+
+    <script>
+        var query = null;
+        var tag = null;
+    </script>
+    @if (ViewBag.query != null)
+    {
+        <script>
+
+            query = '@ViewBag.query';
+        </script>
+    }
+    @if (ViewBag.tag != null)
+    {
+
+        <script>
+
+            tag = '@ViewBag.tag';
+        </script>
+    }
+    <script>
+        $(document)
+            .ready(function() {
+
+            });
+
+        $(function() {
+
+
+            var items = '@ViewBag.total';
+            var currentPage = '@ViewBag.start';
+            var href = "";
+
+            if (query != null) {
+                debugger;
+                href = 'tim-kiem-kien-thuc.html?query=' + query + '&start='
+            } else {
+                debugger;
+                href = 'tim-kiem-kien-thuc.html?tag=' + tag + '&start='
+            }
+            $('#pagination')
+                .pagination({
+                    items: items,
+                    itemsOnPage: 10,
+                    currentPage: currentPage,
+                    hrefTextPrefix: href,
+                    cssStyle: 'pagination'
+                });
+        });
+
+        @*function Search() {
+            debugger;
+            var query = $('input[name=query]').val();
+            $(location).href = '@Url.Action("Search", "LessonPage")' + '?query=' + query;
+        }*@
+
+        $('.tag')
+            .click(function(e) {
+                var tag = $(this).data('tag');
+                window.location.href = '@Url.Action("Search", "LessonPage")' + '?tag=' + tag;
+
+            });
+       
+
+        $('.header__search__button')
+      .on('click',
+          function (e) {
+              e.preventDefault();
+              debugger;
+              var query = $('input[name=query]').val();
+              window.location.href = '@Url.Action("Search", "LessonPage")' + '?query=' + query;
+          });
+    </script>
+}

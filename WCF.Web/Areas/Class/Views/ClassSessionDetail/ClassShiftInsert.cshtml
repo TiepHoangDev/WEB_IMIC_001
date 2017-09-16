@@ -1,0 +1,97 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.ClassShiftObject
+@{
+    ViewBag.Title = "Thêm ca học";
+    Layout = "~/Areas/Class/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> Thêm ca học
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm("ClassShiftInsert", "ClassSessionDetail", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <div class="form-body">
+
+                <div class="form-group">
+                    <label>Tên ca học</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.ShiftName, new {@class = "form-control", @placeholder = "Nhập tên ca học..."})
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-body">
+
+                <div class="form-group">
+                    <label>Thời gian bắt đầu</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.StartTime, new {@class = "form-control", @placeholder = "Thời gian bắt đầu..."})
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-body">
+
+                <div class="form-group">
+                    <label>Thời gian kết thúc</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.EndTime, new {@class = "form-control", @placeholder = "Thời gian kết thúc..."})
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-body">
+
+                <div class="form-group">
+                    <label>Trạng thái hoạt động</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.CheckBoxFor(m => m.IsActived)
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn blue">Thêm</button>
+                
+            </div>
+        }
+    </div>
+</div>
+
+@section PageLevelScript {
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script src="~/Areas/AdminCP/Content/ckfinder/ckfinder.js"></script>
+    
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

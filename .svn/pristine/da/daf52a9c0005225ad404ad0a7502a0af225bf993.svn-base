@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.VideoCommentReplyObject>
+
+@{
+    Layout = null;
+}
+<div class="sub-cmt-box">
+    @foreach (var item in Model)
+    {
+        <div class="t-subcomment w-100 pull-left">
+            <img src="~/Content/images/avatar/@item.Account.ImageAvatar" class="round-avatar pull-left" />
+            <div class="t-cmt-right">
+                <div class="w-100 pull-left">
+                    <a class="pull-left"><b>@item.Account.FullName</b></a>
+                    @{
+        double temp = DateTime.Now.Subtract(item.ModifiedTime).TotalHours;
+        if (temp < 1)
+        {
+            double display = DateTime.Now.Subtract(item.ModifiedTime).TotalMinutes;
+            if (display < 1)
+            {
+                <div class="cmt-time pull-right">Vừa xong</div>
+            }
+            else
+            {
+                <div class="cmt-time pull-right">@Math.Round(display) phút trước</div>
+            }
+        }
+        if (temp >= 1 && temp < 24)
+        {
+            <div class="cmt-time pull-right">@Math.Round(temp) giờ trước</div>
+        }
+        if (temp >= 24 && temp < 72)
+        {
+            double display = DateTime.Now.Subtract(item.ModifiedTime).TotalDays;
+            <div class="cmt-time pull-right">@Math.Round(display) ngày trước</div>
+        }
+        if (temp >= 72)
+        {
+            <div class="cmt-time pull-right">@item.ModifiedTime.ToString("dd/MM/yyyy hh:mm")</div>
+        }
+                    }
+                </div>
+                <div class="t-cmt-content">
+                    @item.ContentReply
+                </div>
+                <div class="w-100 pull-left m-t-8">
+                    <div class="pull-right text-muted">
+                        @if (item.IsLiked == false)
+                        {
+                            <div class="pull-right reply-like"><span class="reply-like-count">@item.TotalOfLikes</span> likes</div>
+                            <a class="fa fa-heart p-right-6 pull-right reply-like-btn" data-replyid="@item.VideoCommentReplyId" style="line-height:inherit"></a>
+                        }
+                        else
+                        {
+                            <div class="pull-right reply-like heart"><span class="reply-like-count">@item.TotalOfLikes</span> likes</div>
+                            <a class="fa fa-heart p-right-6 pull-right heart reply-like-btn" data-replyid="@item.VideoCommentReplyId" style="line-height:inherit"></a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

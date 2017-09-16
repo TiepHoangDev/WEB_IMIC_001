@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Cập nhật Tag công nghệ";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@model WCF.BusinessObjectsLayer.EntityObjects.ArticleTagObject
+<div class="portlet box red-intense">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Cập nhật Tag công nghệ
+        </div>
+        <div class="tools">
+
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        <div style="width:100%">
+            @using (Html.BeginForm("Tag_Update", "TechAdmin", FormMethod.Post))
+            {
+                <h4 style="color:red">@Html.ValidationSummary("", true)</h4>
+                <div class="form-group">
+                    <h3>Tên danh mục</h3>
+
+                    @Html.TextBoxFor(q => q.TagName, new
+       {
+           @type = "text",
+           @class = "form-control",
+           @required = "true"
+       })
+                </div>
+
+
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+
+                </div>
+            }
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

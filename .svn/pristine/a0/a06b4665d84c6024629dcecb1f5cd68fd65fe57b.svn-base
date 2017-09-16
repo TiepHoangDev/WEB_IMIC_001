@@ -1,0 +1,94 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.IntroduceEduProgramObject>
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    if (item.rank == 0)
+    {
+        <div class="work first-week">
+            <div class="title">@item.Title</div>
+            <div class="line">&nbsp;</div>
+            <ul>
+                @if (!string.IsNullOrEmpty(item.Line1))
+                {
+                    <li>item.Line1</li>
+                }
+
+                @if (!string.IsNullOrEmpty(item.Line2))
+                {
+                    <li>item.Line2</li>
+                }
+
+                @if (!string.IsNullOrEmpty(item.Line3))
+                {
+                    <li>item.Line3</li>
+                }
+
+                @if (!string.IsNullOrEmpty(item.Line4))
+                {
+                    <li>item.Line4</li>
+                }
+
+                @if (!string.IsNullOrEmpty(item.Line5))
+                {
+                    <li>item.Line5</li>
+                }
+
+                @if (!string.IsNullOrEmpty(item.Line6))
+                {
+                    <li>item.Line6</li>
+                }
+
+            </ul>
+        </div>
+        <div class="Clear" style="height: 50px;">&nbsp;</div>
+    }
+    else
+    {
+        <div class="work">
+            <div class="title">@item.Title</div>
+            <div class="line">&nbsp;</div>
+            <ul>
+                @if (!string.IsNullOrEmpty(item.Line1))
+                {
+                    <li>@item.Line1</li>
+                }
+
+                @if (!string.IsNullOrEmpty(item.Line2))
+                {
+                    <li>@item.Line2</li>
+                }
+
+                @if (!string.IsNullOrEmpty(item.Line3))
+                {
+                    <li>@item.Line3</li>
+                }
+
+                @if (!string.IsNullOrEmpty(item.Line4))
+                {
+                    <li>@item.Line4</li>
+                }
+
+                @if (!string.IsNullOrEmpty(item.Line5))
+                {
+                    <li>@item.Line5</li>
+                }
+
+                @if (!string.IsNullOrEmpty(item.Line6))
+                {
+                    <li>@item.Line6</li>
+                }
+            </ul>
+        </div>       
+
+    }
+
+
+}
+
+
+      
+
+

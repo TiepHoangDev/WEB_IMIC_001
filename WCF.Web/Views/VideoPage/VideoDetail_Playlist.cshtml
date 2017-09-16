@@ -1,0 +1,35 @@
+﻿@using WCF.BusinessObjectsLayer.EntityObjects
+@using WCF.Web.App_Start
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.VideoObject>
+
+@{
+    Layout = null;
+}
+@{
+    VideoCategoryObject objCategory = ViewBag.VideoCategory;
+}
+@if (Model.Count() > 0)
+{
+    foreach (var item in Model)
+    {
+        <li class="col-xs-12 no-padding">
+            <a href="@Url.RouteUrl("video-detail", new { videoCodeNumber = item.VideoCodeNumber, videoname = StringHelpers.ToAscii(item.VideoName) })"> <img class="col-xs-5 no-padding" style="height:80px" src="~/Content/Galleries/Video/Thumbnails/@item.VideoThumbnail" /></a>
+            <div class="col-xs-7 p-right-0">
+                @if (item.VideoName.Length > 41)
+                {
+                    <a class="text-muted w-100 pull-left" style="font-size:12px" href="@Url.RouteUrl("video-detail", new { videoCodeNumber = item.VideoCodeNumber, videoname = StringHelpers.ToAscii(item.VideoName) })"><b>@item.VideoName.Substring(0, 41)...</b></a>
+                }
+                else
+                {
+                    <a class="text-muted w-100 pull-left" style="font-size:12px" href="@Url.RouteUrl("video-detail", new { videoCodeNumber = item.VideoCodeNumber, videoname = StringHelpers.ToAscii(item.VideoName) })"><b>@item.VideoName</b></a>
+                }
+                @*<a class="w-100 pull-left" style="font-size:11px" href="@Url.RouteUrl("video-category", new { vcCodeNumber = objCategory.VCCodeNumber, catname = StringHelpers.ToAscii(objCategory.VideoCategoryName) })"><b>@objCategory.VideoCategoryName</b></a>*@
+                <h5 class="w-100 pull-left"><small>@item.TotalOfViews.ToString("n0") người xem</small></h5>
+            </div>
+        </li>
+    }
+}
+else
+{
+    <div class="involve-video-emty-list">Hiện không có video liên quan nào.</div>
+}

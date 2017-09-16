@@ -1,0 +1,180 @@
+﻿@{
+    ViewBag.Title = "Cập nhật bài viết công nghệ";
+    Layout = "~/Areas/BTV/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model WCF.BusinessObjectsLayer.EntityObjects.TechArticleObject
+<div class="portlet box red-intense">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Cập nhật bài viết công nghệ
+        </div>
+        <div class="tools">
+
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        <div style="width:100%">
+            @using (Html.BeginForm("Article_Edit", "Manage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "ck-form" }))
+            {
+                @Html.HiddenFor(q => q.CreatedBy)
+                @Html.HiddenFor(q => q.CreatedTime)
+                @Html.HiddenFor(q => q.isActive)
+                @Html.HiddenFor(q => q.isApproved)
+                @Html.HiddenFor(q => q.isDeleted)
+                @Html.HiddenFor(q => q.LastRepliedTime)
+                @Html.HiddenFor(q => q.ModifiedBy)
+                @Html.HiddenFor(q => q.ModifiedTime)
+                @Html.HiddenFor(q => q.LastReplier)
+                @Html.HiddenFor(q => q.ApprovedBy)
+                @Html.HiddenFor(q => q.TotalOfLinks)
+                @Html.HiddenFor(q => q.TotalOfUsers)
+                @Html.HiddenFor(q => q.TotalOfReplies)
+                @Html.HiddenFor(q => q.TechArticleId)
+                @Html.HiddenFor(q => q.ArticleImageLink)
+                @Html.HiddenFor(q => q.ArticleCodeNumber)
+                <div class="form-group">
+                    <label>Tiêu đề bài viết</label>
+
+                    @Html.TextBoxFor(q => q.ArticleTitle, new
+       {
+           @class = "form-control",
+           @placeholder = "Tiêu đề"
+
+       })
+                </div>
+                <div class="form-group">
+                    <label>Danh mục bài viết</label>
+
+                    @{
+                        var lisCategory = ViewBag.TechCategoryList;
+                        List<SelectListItem> lisSelectCategory = new List<SelectListItem>();
+                        foreach (var item in lisCategory)
+                        {
+                            lisSelectCategory.Add(new SelectListItem()
+                            {
+                                Value = "" + item.TechCategoryId,
+                                Text = item.CategoryName
+                            });
+                        }
+                    }
+
+                    @Html.DropDownListFor(m => m.TechCategoryId, lisSelectCategory, new {@class = "form-control"})
+                </div>
+                <div class="form-group">
+                    <label>Mô tả </label>
+                    @Html.TextAreaFor(x => x.TechSummary, new
+                       {
+                           @class = "form-control",
+                           @rows = "6"
+                       })
+
+                </div>
+                <div class="form-group">
+                    <label>Nội dung bài viết</label>
+                    <textarea class="form-control" name="ContentArticle">@Html.Raw(Model.ContentArticle)</textarea>
+
+                </div>
+                <div class="form-group">
+                    <label>Số lượt like</label>
+
+                    @Html.TextBoxFor(q => q.TotalOfLikes, new
+       {
+           @class = "form-control",
+           @type = "number"
+
+       })
+                </div>
+                <div class="form-group">
+                    <label>Số lượt View</label>
+
+                    @Html.TextBoxFor(q => q.TotalOfViews, new
+       {
+           @class = "form-control",
+           @type = "number"
+
+       })
+
+                </div>
+                <div class="form-group">
+                    <label>Số lượt Replies</label>
+                    @Html.TextBoxFor(x => x.TotalOfReplies, new
+       {
+           @class = "form-control",
+           @type = "number"
+       })
+                </div>
+                <div class="form-group">
+                    <label>Số lượt Share</label>
+                    @Html.TextBoxFor(x => x.TotalOfLinks, new
+       {
+           @class = "form-control",
+           @type = "number"
+       })
+                </div>
+                <div class="form-group">
+                    <label>Số Users liên quan</label>
+                    @Html.TextBoxFor(x => x.TotalOfUsers, new
+       {
+           @class = "form-control",
+           @type = "number"
+       })
+                </div>
+                <div class="form-group">
+                    <label>Rank của bài viết</label>
+
+                    @Html.TextBoxFor(q => q.RankOfPin, new
+       {
+           @class = "form-control",
+           @type = "number"
+
+
+       })
+                </div>
+                <div class="form-group">
+                    <label>Ảnh đại diện bài viết</label>
+                    <input type="file" id="ava" name="Avatar" />
+
+                    <div style="margin-top:15px;">
+                        <img style="width:200px;height:180px;" class="img-thumbnail rimage" src="~/Content/Galleries/Tech/Articles/@Model.ArticleImageLink" />
+                    </div>
+
+                </div>
+                <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+
+            }
+        </div>
+    </div>
+</div>
+@section PageLevelScript{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script src="~/Areas/AdminCP/Content/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript">
+        if ($(window).width() > 500) {
+            var editor = CKEDITOR.instances['ContentArticle'];
+
+            if (editor) { editor.destroy(true); }
+            CKEDITOR.replace('ContentArticle', {
+                enterMode: CKEDITOR.ENTER_BR,
+                htmlEncodeOutput: true,
+                //extraPlugins: 'uicolor',
+                height: '700px'
+
+            });
+                 CKFinder.setupCKEditor(null, '@Url.Content("~/Areas/AdminCP/Content/ckfinder")');
+        }
+    </script>
+
+
+    <script>
+        $("#ava").change(function () {
+            readURL(this, '.rimage');
+        });
+
+    </script>
+}
+
+
+
+

@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="modal fade" id="dangky">
+    <div class="modal-dialog login">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Đăng Ký</h4>
+            </div>
+            <div class="modal-body">
+                <a class="btn btn-block btn-social btn-facebook">
+                    <i class="fa fa-facebook"></i> Đăng ký bằng Facebook
+                </a>
+                <div class="box-line">
+                    <span>Hoặc đăng ký tài khoản trên IMIC</span>
+                </div>
+                <form role="form">
+                    <fieldset>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Họ" name="name" type="text" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Tên" name="name" type="text" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Mật khẩu" name="password" type="password" value="">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Nhập lại mật khẩu" name="password" type="password" value="">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input name="remember" type="checkbox" value="Remember Me"> Bằng việc đăng ký và sử dụng trang web, bạn đã đồng ý với các<a href="#">Điều khoản & Quy chế</a>
+                            </label>
+                        </div>
+                        <div class="form-group margintop30">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary pull-right">Hoàn tất</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal-dialog -->
+</div>

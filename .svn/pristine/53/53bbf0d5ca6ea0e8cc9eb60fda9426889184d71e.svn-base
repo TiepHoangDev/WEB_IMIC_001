@@ -1,0 +1,425 @@
+﻿@{
+    ViewBag.Title = "Cập nhật tin tuyển dụng";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+    var objAcc = ((AccountObject)Session[CommonConstants.SESSION_ACCOUNT]);
+}
+@using WCF.BusinessObjectsLayer.Commons
+@using WCF.BusinessObjectsLayer.EntityObjects
+@model WCF.BusinessObjectsLayer.EntityObjects.RecruitmentNewsletterObject
+<style>
+    .alert-tag {
+        color: red;
+    }
+
+    .tag-group {
+        float: left;
+        vertical-align: central;
+    }
+
+    .post-tag {
+        border-radius: 5px;
+        float: left;
+        margin-left: 5px;
+        height: 28px;
+        line-height: 28px;
+        padding-left: 5px;
+        padding-right: 5px;
+        color: #33658a;
+        vertical-align: middle;
+        background-color: #cee0ed;
+    }
+
+    .delete-tag {
+        width: 14px;
+        height: 14px;
+        vertical-align: middle;
+        display: inline-block;
+        background-position: -40px -319px;
+        cursor: pointer;
+        margin-left: 3px;
+        margin-top: -2px;
+        margin-bottom: -1px;
+    }
+
+    #tag-editor {
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 4px;
+        width: 100%;
+        padding: 3px;
+    }
+
+        #tag-editor input {
+            border: none;
+        }
+
+    .file-box {
+        display: none;
+        width: 100%;
+    }
+</style>
+<div class="portlet box red-intense">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Cập nhật tin tuyển dụng
+        </div>
+        <div class="tools">
+
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        <div style="width:100%">
+            @using (Html.BeginForm("News_Update", "RecruitmentAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(x => x.NewsletterId)
+                @Html.HiddenFor(x => x.NewsletterCode)
+                if (objAcc.RoleId !=1 && objAcc.RoleId!=0)
+                {
+                   @Html.HiddenFor(x=>x.isApproved) 
+                }
+                @*@Html.HiddenFor(m=>m.ImageLink)*@
+                @Html.HiddenFor(x => x.isDeleted);
+                @Html.HiddenFor(x => x.ModifiedBy)
+                @Html.HiddenFor(x => x.ModifiedTime)
+                @Html.HiddenFor(x => x.ApprovedBy)
+                <div class="form-group">
+                    <label>Tiêu đề bài viết</label>
+
+                    @Html.TextBoxFor(x => x.Title, new
+       {
+           @class = "form-control",
+           @type = "text",
+           @placeholder = "Tiêu đề",
+           @required = "true"
+       })
+
+                </div>
+                <div class="form-group">
+                    <label>Giới thiệu ngắn</label>
+
+                    @Html.TextAreaFor(x => x.Description, new
+       {
+           @class = "form-control",
+           @type = "text",
+           @placeholder = "Giới thiệu ngắn",
+           @rows = "6"
+       })
+
+                </div>
+                if (Model.ImageServerFlag == true)
+                {
+                    @Html.HiddenFor(m=>m.ImageLink)
+                    <div class="form-group">
+
+                        <label style="width:100%">Ảnh đại diện bài viết</label>
+
+                        <input type="checkbox" name="localfile" value="1" checked class="form-control" />@Html.Raw("Chọn ảnh từ máy tính")
+                        <div class="file-box" style="display:block">
+                            <input type="file" name="Avatar" id="ava">
+                        </div>
+                        <input name="ImageLink" type="text" class="form-control" style="display:none;margin-top:10px" placeholder="Dán link ảnh đại diện vào đây" value="" />
+                    </div>
+                    <div style="margin-top:15px;">
+                        <img style="width:200px;height:180px;" class="img-thumbnail rimage" src="~/Content/Galleries/Recruit/@Model.ImageLink" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+
+                        <label style="width:100%">Ảnh đại diện bài viết</label>
+
+                        <input type="checkbox" name="localfile" value="1" class="form-control" />@Html.Raw("Chọn ảnh từ máy tính")
+                        <div class="file-box">
+                            <input type="file" name="Avatar" id="ava">
+                        </div>
+                        <input name="ImageLink" type="text" class="form-control" style="margin-top:10px" placeholder="Dán link ảnh đại diện vào đây" value="@Model.ImageLink" />
+                    </div>
+                    <div style="margin-top:15px;">
+                        <img style="width:200px;height:180px;" class="img-thumbnail rimage" src="@Model.ImageLink" />
+                    </div>
+                }
+                <div class="form-group">
+                    <label>Tiêu đề SEO của ảnh (tự sinh)</label>
+
+                    @Html.TextBoxFor(x => x.ImageAlt, new
+       {
+           @class = "form-control",
+           @type = "text",
+           @placeholder = "Tiêu đề SEO"
+       })
+
+                </div>
+                <div class="form-group">
+                    <label>Bài viết của công ty:</label>
+                    @{
+                var lisCategory = ViewBag.CompanyList;
+                List<SelectListItem> lisSelectCategory = new List<SelectListItem>();
+                foreach (var item in lisCategory)
+                {
+                    lisSelectCategory.Add(new SelectListItem()
+                    {
+                        Value = "" + item.CompanyId,
+                        Text = item.CompanyName
+                    });
+                }
+                    }
+
+                    @Html.DropDownListFor(m => m.CompanyId, lisSelectCategory, new { @class = "form-control", @name = "CategoryList" })
+                </div>
+
+                <div class="form-group">
+                    <label>Thông tin tuyển dụng</label>
+                    <textarea name="Content">@Html.Raw(HttpUtility.HtmlDecode(Model.Content))</textarea>
+
+                </div>
+                <div class="form-group">
+                    <label>Thông tin liên hệ</label>
+                    <textarea name="ContactInfo">@Html.Raw(HttpUtility.HtmlDecode(Model.ContactInfo))</textarea>
+
+                </div>
+                <div class="form-group">
+                    <label>Thông tin nhà tuyển dụng</label>
+                    <textarea name="EmployerInfo">@Html.Raw(HttpUtility.HtmlDecode(Model.EmployerInfo))</textarea>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Rank của bài viết</label>
+                    @Html.TextBoxFor(x => x.Rank, new
+       {
+           @class = "form-control",
+           @type = "number"
+       })
+                </div>
+                <div class="form-group">
+                    <label>Số lượt like</label>
+                    @Html.TextBoxFor(x => x.TotalOfLikes, new
+       {
+           @class = "form-control",
+           @type = "number"
+       })
+
+                </div>
+                <div class="form-group">
+                    <label>Số lượt View</label>
+                    @Html.TextBoxFor(x => x.TotalOfViews, new
+       {
+           @class = "form-control",
+           @type = "number"
+       })
+                </div>
+                <div class="form-group">
+                    <label>Số lượt share Facebook</label>
+                    @Html.TextBoxFor(x => x.TotalOfShareFacebook, new
+       {
+           @class = "form-control",
+           @type = "number"
+       })
+                </div>
+                <div class="form-group">
+                    <label>Số lượt share Twitter </label>
+                    @Html.TextBoxFor(x => x.TotalOfShareTwitter, new
+       {
+           @class = "form-control",
+           @type = "number"
+       })
+                </div>
+                <div class="form-group">
+                    <label>Số lượt share G+</label>
+                    @Html.TextBoxFor(x => x.TotalOfShareGoogle, new
+                    {
+                        @class = "form-control",
+                        @type = "number"
+                    })
+                </div>
+                  if (objAcc.RoleId == 0 || objAcc.RoleId == 1)
+                    {
+                         <div class="form-group">
+                            <label>Duyệt bài viết</label>
+                            @Html.CheckBoxFor(model => model.isApproved, new { @class = "iCheck-helper" })
+                            <em>(Chọn nếu muốn hiển thị bài viết)</em>
+                    </div>
+                    }
+                    
+                List<NewsletterTagObject> lstTag = (List<NewsletterTagObject>)ViewBag.TagList;
+                List<NewsletterTagDetailObject> lstDetail = (List<NewsletterTagDetailObject>)ViewBag.DetailList;
+                <div class="form-group">
+                    <label>Gắn tag cho bài viết</label>
+                    <div style="width:100%;padding:10px;border:1px solid #999">
+                        @foreach (var item in lstTag)
+                        {
+                            <div class="col-xs-3">
+                                @if (lstDetail.Find(x => x.NewsletterTagId == item.NewsletterTagId) != null)
+                                {
+                                    <input type="checkbox" name="tag" value="@item.NewsletterTagId" checked />@item.NewsletterTagName
+                                }
+                                else
+                                {
+                                    <input type="checkbox" name="tag" value="@item.NewsletterTagId" />@item.NewsletterTagName
+
+
+
+
+                                }
+
+
+
+                            </div>
+                        }
+                        <div style="clear:both"></div>
+                        <label style="margin-top:10px">Thêm tag mới</label>
+                        <h4 style="color:#00cc00">Gõ tag và ấn Enter để thêm tag mới</h4>
+                        <h4 class="alert-tag"></h4>
+                        <div style="width: 100%" id="tag-editor">
+                            <span class="tag-group">
+
+                            </span>
+                            <input type="text" name="newtag" style="float: left" class="form-control"/>
+                            <div style="clear: both"></div>
+                        </div>
+
+                    </div>
+                  
+
+
+                </div>
+                <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+            }
+
+        </div>
+        <input type="hidden" name="newtaglst" />
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script src="~/Areas/AdminCP/Content/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript">
+        if ($(window).width() > 500) {
+            var editor = CKEDITOR.instances['Content'];
+
+            if (editor) { editor.destroy(true); }
+            CKEDITOR.replace('Content', {
+                enterMode: CKEDITOR.ENTER_BR,
+                htmlEncodeOutput: true,
+                height: '1000px'
+
+            });
+            var editor2 = CKEDITOR.instances['ContactInfo'];
+
+            if (editor2) { editor2.destroy(true); }
+            CKEDITOR.replace('ContactInfo', {
+                enterMode: CKEDITOR.ENTER_BR,
+                htmlEncodeOutput: true,
+                height: '500px'
+
+            });
+            var editor3 = CKEDITOR.instances['EmployerInfo'];
+
+            if (editor3) { editor3.destroy(true); }
+            CKEDITOR.replace('EmployerInfo', {
+                enterMode: CKEDITOR.ENTER_BR,
+                htmlEncodeOutput: true,
+                height: '500px'
+
+            });
+            CKFinder.setupCKEditor(null, '@Url.Content("~/Areas/AdminCP/Content/ckfinder")');
+        }
+    </script>
+    <script>
+        $('input[name=Avatar]').on('change', function (e) {
+            var fullPath = $(this).val();
+            if (fullPath) {
+                var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+                var filename = fullPath.substring(startIndex);
+                if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                    filename = filename.substring(1);
+                }
+                var fn = filename.split('.');
+                var extension = fn[fn.length - 1];
+                filename = filename.replace(extension, '');
+                filename = filename.replace('.', ' ');
+                $('input[name=NewsImageAlt]').val(filename);
+
+            }
+        });
+        $('input[name=ImageLink]').on('keydown', function (e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                var fullPath = $(this).val();
+                if (fullPath) {
+                    var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+                    var filename = fullPath.substring(startIndex);
+                    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                        filename = filename.substring(1);
+                    }
+                    var fn = filename.split('.');
+                    var extension = fn[fn.length - 1];
+                    filename = filename.replace(extension, '');
+                    filename = filename.replace('.', ' ');
+                    filename = filename.replace('%20', ' ');
+                    $('input[name=ImageAlt]').val(filename);
+
+                }
+                $('.rimage').attr('src', $(this).val());
+            }
+        })
+        $(document).on("keydown", "input", function (e) {
+            if (e.which == 13) e.preventDefault();
+        });
+        $('input[name=newtag]').on('keyup', function (e) {
+            if (e.keyCode == 13) {
+                var input = $(this);
+                var query = $(this).val();
+                if (String(query).trim().length > 0) {
+                    $.ajax({
+                        url: '@Url.Action("CheckTag","RecruitmentAdmin")',
+                        data: { q: query },
+                        type: 'post',
+                        success: function (response) {
+                            if (response.rs == 'fail') {
+                                $('.alert-tag').fadeIn('fast');
+                                $('.alert-tag').html('Tag ' + query + ' đã bị trùng');
+                                $(input).val('');
+                            }
+                            else {
+                                $('.tag-group').append('<span class="post-tag">' + query + '<span class="delete-tag fa fa-times"></span>'
+                                    + '<input name="newtag" value="' + query + '" type="hidden">'
+                                    + '</span>');
+
+                                var width = $('.tag-group').width();
+                                $(input).css('width', 'calc(100% - ' + width + 'px)');
+                                $(input).val('');
+                                $('.alert-tag').fadeOut('fast');
+                            }
+                        }
+                    })
+                }
+            }
+
+        });
+        $(document).on("click", ".delete-tag", function () {
+            $(this).parent().remove();
+
+        });
+        $('input[name=localfile]').on('click', function () {
+            if ($(this).is(':checked')) {
+                $('.file-box').fadeIn('fast');
+                $('input[name=ImageLink]').fadeOut('fast');
+            }
+            else {
+                $('.file-box').fadeOut('fast');
+                $('input[name=ImageLink]').fadeIn('fast');
+            }
+        })
+
+    </script>
+    <script>
+        $("#ava").change(function () {
+            readURL(this, '.rimage');
+        });
+
+    </script>
+}

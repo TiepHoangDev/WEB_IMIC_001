@@ -1,0 +1,101 @@
+﻿@using WCF.Web.App_Start
+
+@{
+    ViewBag.Title = "Quản lý việc làm";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.ReJobObject>  
+<div class="col-xs-12">
+    <div class="portlet box red-intense">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-globe"></i>quản lý việc làm
+            </div>
+            <div class="tools">
+
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="col-xs-12" style="float:none">
+                <div style="padding-bottom:10px;">
+                    <a class="btn btn-primary btn-sm" style="margin-top:10px;" href="@Url.Action("JobInsert","RecruitmentAn")">
+                        Thêm mới
+                        <span class="fa fa-plus" style="padding-left:6px;"></span>
+                    </a>
+                </div>
+                <table class="table table-striped table-bordered table-hover dataTable no-footer" id="tbl-main" aria-describedby="dataTables-example_info">
+                    <thead>
+                        <tr role="row">
+                            <th>Tên việc làm</th>
+                            <th>Mô tả</th>
+                            <th>Hình ảnh</th>
+                            <th>Tiêu đề seo</th>
+                            <th>Đường dẫn </th>
+                            <th>Tag</th>
+                            <th>Vị trí</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                <td>@item.JobTitle</td>
+                                <td>@item.JobSummary</td>
+                                <td><img style="width:50px;height:50px;" src="~/Content/Galleries/Job/@item.JobImage_Link" /></td>
+                                <td>@item.JobImage_Alt</td>
+                                <td> @item.Job_Url</td>
+                                <td>@item.objTag.NewsletterTagName</td>
+                                <td>@item.Rank</td>
+
+                                <th>
+                                    <a href="@Url.Action("JobUpdate", "RecruitmentAn", new { id = item.JobId })" class="btn btn-info">Sửa</a>
+                                    <a class="btn btn-danger" onclick="Remove('@item.JobId','@StringHelpers.FormatJSString(""+item.JobTitle)',this)">Xóa</a>
+                                </th>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script>
+        $(document)
+            .ready(function () {
+                $('#tbl-main').dataTable();
+            });
+
+        function Remove(id, name, event) {
+            var sender = event.currentTarget;
+            var answer = confirm("Bạn muốn xóa việc làm này không: " + name + " ?");
+            if (answer) {
+                $.ajax({
+                    url: '@Url.Action("JobDelete", "RecruitmentAn")',
+                    data: { id: id },
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.rs == 'ok') {
+                            $(event).closest("tr").remove();
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,91 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.FacebookUserLikedObject
+
+@{
+    ViewBag.Title = "Thêm người thích trang Facebook";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> Thêm người thích trang Facebook
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm("FacebookUserLikeInsert", "OthersCategory", FormMethod.Post, new { @class = "horizontal-form", enctype = "multipart/form-data" }))
+        {
+            <div class="form-body">
+
+
+                @Html.HiddenFor(m => m.FacebookUserLikedId)
+                @Html.HiddenFor(m => m.IsDeleted)
+
+                <h3 class="form-section"><b>Thông tin facebook</b></h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><b>Tên Facebook</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.FacebookName, new {@class = "form-control", @placeholder = "Nguyễn Trần Huyền My"})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><b>Ảnh facebook</b></label>
+                            <input type="file" name="fileAvatar">
+                            <p class="help-block">
+                                Chọn một ảnh.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label><b>Link facebook</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.FacebookLink, new { @class = "form-control", @placeholder = "Dẫn link facebook vào đây" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><b>Xếp hạng ưu tiên</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.RankVip, new { @class = "form-control", @placeholder = "Chỉ nhập số 1 - 100, giá trị mặc định là 1000" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><b>Trạng thái</b></label>
+                            <div class="radio-list">
+                                <label class="checkbox">
+                                    @Html.CheckBoxFor(m => m.IsShow, 1) Hiển thị
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn blue">Cập nhật</button>
+                <button type="button" class="btn default">Huỷ</button>
+            </div>
+        }
+
+    </div>
+</div>
+

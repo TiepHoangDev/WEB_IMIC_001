@@ -1,0 +1,157 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.IntroduceBannerObject>
+@{
+    ViewBag.Title = "Trang giới thiệu - Banners";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<div class="portlet box grey-cascade">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Danh sách banner của trang giới thiệu
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="table-toolbar">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="btn-group">
+                        <a href="@Url.Action("BannerInsert", "IntroduceAdmin")" class="btn green">
+                            Thêm banner mới <i class="fa fa-plus"></i>
+                        </a>
+                    </div>
+                    <div class="col-xs-2 pull-right">
+                        <button class="btn btn-block btn-danger btn-flat pull-right" id="DeleteOfChecked">Xóa</button>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-striped table-bordered table-hover" id="sample_1">
+                <thead>
+                    <tr>
+                        <th class="table-checkbox">
+                            <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" />
+                        </th>
+                        <th>
+                            Tiêu đề
+                        </th>
+                        <th>
+                            Ảnh
+                        </th>
+                        <th>
+                            Link trỏ đến
+                        </th>
+                        <th>
+                            Rank
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var obj in Model)
+                    {
+                        <tr class="odd gradeX">
+                            <td>
+                                <input type="checkbox" class="checkboxes" name="@obj.IntroduceBanerld" value="@obj.IntroduceBanerld" />
+                            </td>
+                            <td>
+                                @obj.TitleBanner
+                            </td>
+                            <td>
+                                <img align="middle" class="img-thumbnail" style="height: 50px; width: 50px;" src="~/Content/Galleries/Introduce/Banners/@obj.Bannerlmage" />
+                            </td>
+                            <td>
+                                @obj.BannerLinkTo
+                            </td>
+                            <td class="center">
+                                @obj.RankToShow
+                            </td>
+                            <td>
+                                <a href="@Url.Action("BannerEdit", "IntroduceAdmin", new { bannerId = @obj.IntroduceBanerld})" class="btn btn-info">Sửa</a>
+                                <a href="javascript:" class="btn btn-danger" onclick="Delete('@obj.IntroduceBanerld','@obj.TitleBanner')">Xoá</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/select2/select2.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/admin/pages/scripts/table-managed.js"></script>
+
+    <script>
+        jQuery(document).ready(function() {
+            TableManaged.init();
+        });
+    </script>
+    <script>
+        function Delete(id, title) {
+            bootbox.confirm("Bạn có đồng ý xóa banner: " + title + "?", function (result) {
+                if (result) {
+                    var url = "@Url.Action("Delete")";
+                    debugger;
+                    $.ajax({
+                        url: url,
+                        data: { bannerId: id },
+                        type: "post",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.Success) {
+                                debugger;
+                                alert(data.Message);
+                            } else {
+                                alert(data.Message);
+                            }
+                        }
+                    });
+                    window.location.href = window.location.href;
+                }
+            });
+        }
+    </script>
+    <script>
+        // Khi click vào nút Xoá
+        $("#DeleteOfChecked").on("click", function () {
+            var selected = [];
+            var selectedName = [];
+            debugger;
+            // Lấy list checked
+            $(":checkbox:checked").each(function () {
+                var data = jQuery(this).attr("value");
+                var name = jQuery(this).attr("name");
+                selected.push(data);
+                selectedName.push(name);
+            });
+
+            var ValueArr = selected.join(", ");
+            var NameArr = selectedName.join(", ");
+            //console.log(NameArr);
+
+            bootbox.confirm("Bạn có thực sự muốn xoá các banner: " + NameArr + " ?", function (result) {
+
+                if (result == true) {
+                    //Post dữ liệu từ Ajax --> Action trong Controllers
+                    $.post("@Url.Action("DeleteCheckAll")", { idArr: selected }, function (data) {
+                        if (data.Success) {
+                            alert(data.Message);
+
+                        } else {
+                            alert(data.Message);
+                        }
+
+                    });
+                }
+                window.location.href = window.location.href;
+            });
+            return false;
+        });
+    </script>
+
+}

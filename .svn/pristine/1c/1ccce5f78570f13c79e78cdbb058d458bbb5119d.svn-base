@@ -1,0 +1,47 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.CourseTechnologyObject
+@{
+    ViewBag.Title = "Đào tạo - Thêm công nghệ mới";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> Thông tin về công nghệ cần thêm
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm("CourseTech", "TrainingAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-body">
+                <div class="form-group">
+                    <label>Tên công nghệ</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.CourseTechnologyName, new { @class = "form-control", @placeholder = "Nhập tên công nghệ (VD: HTML5, Java,...)" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Ảnh đại diện</label>
+                    <input type="file" name="fileAvatar">
+                    <p class="help-block">
+                        Chọn một ảnh đại diện.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Link trỏ đến</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextAreaFor(m => m.LinkTo, new { @class = "form-control", @placeholder = "Nhập link..." })
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn blue">Thêm</button>
+                <button type="button" class="btn default">Huỷ</button>
+            </div>
+        }
+    </div>
+</div>
+
+

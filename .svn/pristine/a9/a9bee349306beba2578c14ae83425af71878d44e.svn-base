@@ -1,0 +1,178 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.IntroducePageObject
+@{
+    ViewBag.Title = "IMIC-ĐÀO TẠO KINH NGHIỆM LẬP TRÌNH-ĐỒ HỌA";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section css
+{
+    <link href='~/Content/css/gioi-thieu/owl.carousel.css' rel='stylesheet' type='text/css' media='all' />
+    <link href='~/Content/css/gioi-thieu/owl.theme.css' rel='stylesheet' type='text/css' media='all' />
+    <link href='~/Content/css/gioi-thieu/owl.transitions.css' rel='stylesheet' type='text/css' media='all' />
+    <link href='~/Content/css/intro-style.css' rel='stylesheet' type='text/css' media='all' />
+    <link href='~/Content/css/style_gioithieu.css' rel='stylesheet' type='text/css' media='all' />
+}
+
+@section script
+{
+    <script src="~/Content/js/gioithieu/intro.js"></script>
+    <script src="~/Content/js/gioithieu/owl.carousel.js"></script>
+    <script src="~/Content/js/gioithieu/owl.carousel.min.js"></script>
+}
+    
+<div class="slide-wrapper">
+        <div id="owl-demo" class="owl-carousel owl-theme" style="width: 100%; float: left; display: block; opacity: 1;">
+
+
+            <div class="owl-wrapper-outer">
+                <div class="owl-wrapper" style="width: 8094px; left: 0px; display: block; transition: all 0ms ease; transform: translate3d(0px, 0px, 0px); transform-origin: 674.5px center 0px; perspective-origin: 674.5px center;">
+                  
+                    @Html.Action("Index_Slide")
+                  
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+        <div id="intro-service">
+            <div class="container panelIntroService">
+                <div id="panelIntroService" class="col-xs-12">
+
+
+                    <!--Đặt viền cho khung service-->
+                    @Html.Action("Index_Missions")
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-wrapper">
+        <!--silder-->
+        <!--end silder-->
+        <div class="row">
+            <div class="intro-service-box po">
+                <img src="~/Content/images/other/imic-kinhnghiem.png" class="img-t">
+                <div class="container">
+                    <div class="col-xs-12">
+                        <div class="box_text_q">
+                            <h2><span>@Model.TitleServices</span></h2>
+                            <div class="text-c">
+                                @Html.Raw(Model.PassageServices)
+                                
+                            </div>
+
+                            <div class="introduction oneColumnWidth" style="width:100%">
+                                <div class="content" style="width:45%">
+                                   @Html.Raw(Model.SubArticle)
+                                </div>
+                            </div>
+                            <div class="education-program oneColumnWidth" style="width:100%;margin-top:40px">
+                                <div class="logo">
+                                    <img src="~/Content/images/gioi-thieu/@Html.Raw(Model.SubArticlePicture)" alt="" style="width:90%">
+                                </div>
+                                @Html.Action("Index_EduProgram")
+                                <div class="Clear">&nbsp;</div>
+                            </div>
+                            <!-- <div class="col-xs-12"> -->
+                            <!-- <ul class="service-list"> -->
+                            <!-- <li class="col-lg-3 col-md-6 col-sm-12"> -->
+                            <!-- <a href="#"> -->
+                            <!-- <img style="height: 120px" src="/Content/Galleries/Introduce/Services/IMIC-doi-ngu-chuyen-gia.png"> -->
+                            <!-- <h4 href="#">Đội ngũ Chuyên Gia</h4> IMIC tự hào là một đơn vị hiện có đội ngũ với hơn 18 Chuyên gia có nhiều năm Kinh Nghiệm phát triển, Quản lý dự án và kỹ năng truyền dạy kiến thức, công nghệ cho người khác rất logic, khoa học -->
+                            <!-- <br> -->
+                            <!-- </a> -->
+                            <!-- </li> -->
+                            <!-- <li class="col-lg-3 col-md-6 col-sm-12"> -->
+                            <!-- <a href="#"> -->
+                            <!-- <img style="height: 120px" src="/Content/Galleries/Introduce/Services/IMIC-khong-day-han-lam-va-dai-tra.png"> -->
+                            <!-- <h4 href="#">Không dạy "hàn lâm" &amp; "đại trà"</h4> Mỗi lớp khai giảng chỉ từ 7 - 12 Học viên để luôn luôn đảm bảo Chuyên gia sẽ hướng dẫn cho các em Học viên được tốt nhất. -->
+                            <!-- <br> -->
+                            <!-- </a> -->
+                            <!-- </li> -->
+                            <!-- <li class="col-lg-3 col-md-6 col-sm-12"> -->
+                            <!-- <a href="#"> -->
+                            <!-- <img style="height: 120px" src="/Content/Galleries/Introduce/Services/IMIC-hoc-thu-01-tuan-mien-phi.png"> -->
+                            <!-- <h4 href="#">Học thử 01 Tuần</h4> Học viên được học thử 01 TUẦN miễn phí để đánh giá chất lượng Đào Tạo trước khi quyết định tham gia khóa học. -->
+                            <!-- <br> -->
+                            <!-- </a> -->
+                            <!-- </li> -->
+                            <!-- <li class="col-lg-3 col-md-6 col-sm-12"> -->
+                            <!-- <a href="#"> -->
+                            <!-- <img style="height: 120px" src="/Content/Galleries/Introduce/Services/IMIC-bai-giang-va-video-truc-quan.png"> -->
+                            <!-- <h4 href="#">Nhận bài giảng + Video</h4> Nhận trọn bộ Video giảng dạy &lt;Step-By-Step&gt; + bài giảng chi tiết từng phần nội dung của khóa học. -->
+                            <!-- <br> IC Design -->
+                            <!-- <br> -->
+                            <!-- </a> -->
+                            <!-- </li> -->
+                            <!-- <li class="col-lg-3 col-md-6 col-sm-12"> -->
+                            <!-- <a href="#"> -->
+                            <!-- <img style="height: 120px" src="/Content/Galleries/Introduce/Services/IMIC-hoc-cung-chuyen-gia.png"> -->
+                            <!-- <h4 href="#">Học cùng Chuyên gia</h4> Cùng học &amp; làm việc với Chuyên gia để củng cố kiến thức, kinh nghiệm cho tự tin làm Dự Án. -->
+                            <!-- <br> -->
+                            <!-- </a> -->
+                            <!-- </li> -->
+                            <!-- <li class="col-lg-3 col-md-6 col-sm-12"> -->
+                            <!-- <a href="#"> -->
+                            <!-- <img style="height: 120px" src="/Content/Galleries/Introduce/Services/IMIC-lam-du-an-thuc-te.png"> -->
+                            <!-- <h4 href="#">Làm Dự án thực tế </h4> Được Chuyên gia hướng dẫn phát triển dự án thực tế - Được chia sẻ nhiều kỹ năng quan trọng khi join vào dự án tại doanh nghiệp hoặc làm việc với khách hàng. -->
+                            <!-- <br> -->
+                            <!-- </a> -->
+                            <!-- </li> -->
+                            <!-- <li class="col-lg-3 col-md-6 col-sm-12"> -->
+                            <!-- <a href="#"> -->
+                            <!-- <img style="height: 120px" src="/Content/Galleries/Introduce/Services/IMIC-chung-nhan-kinh-nghiem.png"> -->
+                            <!-- <h4 href="#">Chứng nhận Kinh Nghiệm</h4> Được cấp Chứng nhận Kinh Nghiệm phát triển Dự Án &amp; chi tiết các Công nghệ đã nắm và làm chủ được nó khi tốt nghiệp. -->
+                            <!-- <br> -->
+                            <!-- </a> -->
+                            <!-- </li> -->
+                            <!-- <li class="col-lg-3 col-md-6 col-sm-12"> -->
+                            <!-- <a href="#"> -->
+                            <!-- <img style="height: 120px" src="/Content/Galleries/Introduce/Services/IMIC-viec-lam-sau-tot-nghiep.png"> -->
+                            <!-- <h4 href="#">Việc làm sau Tốt nghiệp</h4> Được tham gia các đợt Phỏng vấn chọn Ứng Viên cho Đối tác+Khách hàng của IMIC. -->
+                            <!-- <br> -->
+                            <!-- </a> -->
+                            <!-- </li> -->
+                            <!-- </ul> -->
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--service-->
+            <!--end service -->
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="widhfull bg_white padding-top30 padding-bottom30">
+                    <div class="main">
+                        <div class="col-xs-12">
+                            <div class="box_text_q">
+                                <h2><span>@Model.TitleExperiencers</span></h2>
+                                <div class="text-c">
+                                    <p style="text-align:justify">
+                                        <span style="font-size:14px"><span style="font-family:Tahoma,Geneva,sans-serif">@Html.Raw(Model.PassageExperiencers)</span></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+
+
+                            @Html.Action("Index_Experiencers")
+                           
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Footer haravan -->
+    
+
+

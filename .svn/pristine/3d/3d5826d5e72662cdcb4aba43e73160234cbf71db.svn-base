@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Quản lý sinh viên vắng";
+    Layout = "~/Areas/Class/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using WCF.Web.App_Start
+@model  IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.ClassSessionLogAbsentObject>
+    <div class="portlet box red-intense">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-globe"></i>Quản lý sinh viên vắng
+            </div>
+            <div class="tools">
+
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="col-xs-12" style="float:none">
+                <div style="padding-bottom:10px;">
+                    <a class="btn btn-primary btn-sm" style="margin-top:10px;" href="@Url.Action("AbsentInsert","Class",new{id = ViewBag.id})">
+                        Thêm mới
+                        <span class="fa fa-plus" style="padding-left:6px;"></span>
+                    </a>
+                </div>
+                <table class="table table-striped table-bordered table-hover dataTable no-footer" id="tbl-main" aria-describedby="dataTables-example_info">
+                    <thead>
+                        <tr role="row">
+                            <th>Ngày học</th>
+                            <th>Học viên</th>
+                            <th>Lý do</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                <td>@item.objSessionLog.OnDate</td>
+                                <td>@item.objAcc.FullName</td>
+                                <td>@item.Reason</td>
+                                <th>
+                                    <a href="@Url.Action("AbsentUpdate", "Class", new { id = item.LogAbsentStudentId })" class="btn btn-info">Sửa</a>
+                                    <a class="btn btn-danger" onclick="Remove('@item.LogAbsentStudentId','@StringHelpers.FormatJSString(""+item.Reason)',this)">Xóa</a>
+                                </th>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    @section PageLevelScript{
+        <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+        <script>
+            $(document)
+                .ready(function () {
+                    $('#tbl-main').dataTable();
+                });
+
+            function Remove(id, name, event) {
+                var sender = event.currentTarget;
+                var answer = confirm("Bạn có muốn xóa không ?");
+                if (answer) {
+                    $.ajax({
+                        url: '@Url.Action("AbsentDelete", "Class")',
+                        data: { id: id },
+                        type: "post",
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.rs == 'ok') {
+                                $(event).closest("tr").remove();
+                            }
+                        }
+                    });
+                }
+            }
+
+
+        </script>
+    }
+

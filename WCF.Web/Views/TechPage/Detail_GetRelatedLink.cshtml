@@ -1,0 +1,74 @@
+﻿
+@{
+    Layout = null;
+}
+@model List<WCF.BusinessObjectsLayer.EntityObjects.TechArticleObject>
+@*<ul class="clear-ul w-100 pull-left t-same-poster">
+    @foreach (var item in Model)
+    {
+        <li class="w-100"> <a class="t-link" href="@Url.RouteUrl("tech-detail", new { codeNumber = item.ArticleCodeNumber, PostName = WCF.Web.App_Start.StringHelpers.ToAscii(item.ArticleTitle) })"><span class="count-box">@item.TotalOfViews</span>@item.ArticleTitle</a> </li>
+    }
+    <li class="w-100"> <a class="t-link" href="#">Show more..</a> </li>
+</ul>*@
+
+<div class="box-cacbaikhac">
+    <h3 class="title">Các bài liên quan</h3>
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+
+            <div class="col-xs-12 col-lg-4 col-md-4">
+                <div class="item">
+                    <a href="@Url.RouteUrl("tech-detail", new { codeNumber = item.ArticleCodeNumber, PostName = WCF.Web.App_Start.StringHelpers.ToAscii(item.ArticleTitle) })">
+                        <img style="width: 100%;height: 106px" src="~/Content/Galleries/Tech/Articles/@item.ArticleImageLink" class="img">
+                        <h4>@item.ArticleTitle</h4>
+                    </a>
+                </div>
+            </div>
+        }
+
+        @*<div class="col-xs-12 col-lg-4 col-md-4">
+                <div class="item">
+                    <a href="/tin-tuc-cong-nghe/3057/Phong-van-Gioi-thieu-viec-lam-sang-%C4%90oi-tac-cua-iMic-thang-6-2015.html">
+                        <img style="width: 100%;height: 106px" src="/Content/Galleries/News/NewsImage/Tuyen-lap-trinh-vien.png" class="img">
+                        <h4>Phỏng vấn  Giới thiệu việc làm sang Đối tác của iMic tháng 6-2015</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-4 col-md-4">
+                <div class="item">
+                    <a href="/tin-tuc-cong-nghe/3134/8-Cach-de-lap-trinh-vien-Java-co-the-kiem-bon-tien.html">
+                        <img style="width: 100%;height: 106px" src="/Content/Galleries/News/NewsImage/Cach-lap-trinh-vien-Java-kiem-tien-98347234.png" class="img">
+                        <h4>8 Cách để lập trình viên Java có thể kiếm bộn tiền</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-4 col-md-4">
+                <div class="item">
+                    <a href="/tin-tuc-cong-nghe/3117/Nhin-lai-buc-tranh-startup-Viet-2016-%C4%90ung-chi-sam-soi-nhung-.html">
+                        <img style="width: 100%;height: 106px" src="/Content/Galleries/News/NewsImage/khoi-dong-startup-viet-03-1485284107106.png" class="img">
+                        <h4>Nhìn lại bức tranh startup Việt 2016: Đừng chỉ săm soi những ...</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-4 col-md-4">
+                <div class="item">
+                    <a href="/tin-tuc-cong-nghe/3065/Bao-ve-Tot-nghiep-Khoa-hoc-Lap-trinh-C-lop-Y2016CS46.html">
+                        <img style="width: 100%;height: 106px" src="/Content/Galleries/News/NewsImage/du-an-phan-mem-1.png" class="img">
+                        <h4>Bảo vệ Tốt nghiệp Khóa học Lập trình C# lớp Y2016CS46</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-4 col-md-4">
+                <div class="item">
+                    <a href="/tin-tuc-cong-nghe/3112/Them-nhieu-hinh-anh-thuc-te-cua-Galaxy-S8-xuat-hien.html">
+                        <img style="width: 100%;height: 106px" src="/Content/Galleries/News/NewsImage/hinh-anh-galaxy-s8-1_800x448-600x400.jpg" class="img">
+                        <h4>Thêm nhiều hình ảnh thực tế của Galaxy S8 xuất hiện</h4>
+                    </a>
+                </div>
+            </div>*@
+    </div>
+
+
+</div>

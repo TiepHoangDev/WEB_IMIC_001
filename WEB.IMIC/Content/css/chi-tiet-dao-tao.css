@@ -1,0 +1,19 @@
+.tool-content-title {
+    text-align: center;
+    margin-bottom: 90px;
+}
+
+.tool-content-title h1 {
+    font-weight: 300;
+    font-size: 50px;
+    margin: 0;
+        margin-bottom: 0px;
+    color: #4a4a4a;
+    margin-bottom: 17px;
+}
+.tool-content-title p {
+    color: #4a4a4a;
+    font-size: 22px;
+    font-weight: 300;
+    margin: 0;
+}

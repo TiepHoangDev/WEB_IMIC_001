@@ -1,0 +1,7 @@
+﻿@model List<WCF.BusinessObjectsLayer.EntityObjects.LessonObject>
+
+    @foreach(var item in Model)
+    {
+        Html.RenderAction("Lesson", "LessonPage", new { id = item.LessonId });
+    }
+   

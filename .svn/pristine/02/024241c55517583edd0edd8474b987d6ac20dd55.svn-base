@@ -1,0 +1,28 @@
+﻿@model List<WCF.BusinessObjectsLayer.EntityObjects.RecruitmentNewsletterObject>
+@using WCF.Web.App_Start
+    @if (Model.Count != 0)
+    {
+         <h4 class="cmt-header">Cùng đơn vị</h4>
+        <div class="ck-content">
+            <table class="table table-striped table-bordered table-hover dataTable no-footer">
+                <thead>
+                <tr>
+                    <th>Tên bài</th>
+                    <th>Công ty</th>
+                    <th>Số lượt Views</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><a href="@Url.RouteUrl("recruit", new {code = item.NewsletterCode, name = StringHelpers.GenerateURL(item.Title)})">@item.Title</a></td>
+                        <td>@item.objCompany.CompanyName</td>
+                        <td>@item.TotalOfViews</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    }
+   

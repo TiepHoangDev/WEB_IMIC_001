@@ -1,0 +1,764 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DC702CBB-FD76-4B52-8330-A9DED912DB23}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WEB.IMIC</RootNamespace>
+    <AssemblyName>WEB.IMIC</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=__MvcPagesVersion__, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\AdminCP\AdminCPAreaRegistration.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IntroducePageController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap-grid.css" />
+    <Content Include="Content\css\bootstrap-grid.min.css" />
+    <Content Include="Content\css\bootstrap-reboot.css" />
+    <Content Include="Content\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\brandontext-font.css" />
+    <Content Include="Content\css\brandontext-font.min.css" />
+    <Content Include="Content\css\chi-tiet-dao-tao.css" />
+    <Content Include="Content\css\chi-tiet-dao-tao\content-footer.css" />
+    <Content Include="Content\css\chi-tiet-dao-tao\content-main.css" />
+    <Content Include="Content\css\chi-tiet-dao-tao\content-tag.css" />
+    <Content Include="Content\css\chi-tiet-dao-tao\layout-main.css" />
+    <Content Include="Content\css\chi-tiet-dao-tao\sell_at_store.min.css" />
+    <Content Include="Content\css\chi-tiet-dao-tao\stack_overflow.css" />
+    <Content Include="Content\css\chi-tiet-dao-tao\style-imic.css" />
+    <Content Include="Content\css\chi-tiet-dao-tao\style.css" />
+    <Content Include="Content\css\chi-tiet-dao-tao\style_animate.css" />
+    <Content Include="Content\css\chi-tiet-dao-tao\swiper.min.css" />
+    <Content Include="Content\css\chi-tiet-tin-tuc\Global.css" />
+    <Content Include="Content\css\chi-tiet-tin-tuc\Pages.css" />
+    <Content Include="Content\css\chi-tiet-tin-tuc\responesive.css" />
+    <Content Include="Content\css\chi-tiet-tin-tuc\style.css" />
+    <Content Include="Content\css\chi-tiet-tin-tuc\swiper.min.css" />
+    <Content Include="Content\css\css3-animate.css" />
+    <Content Include="Content\css\custom.css" />
+    <Content Include="Content\css\custom.min.css" />
+    <Content Include="Content\css\dao-tao-tt\style_dao_tao_tt.css" />
+    <Content Include="Content\css\dao-tao\index_home.min.css" />
+    <Content Include="Content\css\dao-tao\sell_at_store.min.css" />
+    <Content Include="Content\css\dao-tao\sell_at_website.min.css" />
+    <Content Include="Content\css\emojione.min.css" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\gioi-thieu\owl.carousel.css" />
+    <Content Include="Content\css\gioi-thieu\owl.theme.css" />
+    <Content Include="Content\css\gioi-thieu\owl.transitions.css" />
+    <Content Include="Content\css\global-product-sans.css" />
+    <Content Include="Content\css\global-themes.min.css" />
+    <Content Include="Content\css\Global.css" />
+    <Content Include="Content\css\grid-framework.css" />
+    <Content Include="Content\css\header-footer-update.css" />
+    <Content Include="Content\css\home-dttt\detail.min.css" />
+    <Content Include="Content\css\home-dttt\index.min.css" />
+    <Content Include="Content\css\home-dttt\ld-omnichannel.min.css" />
+    <Content Include="Content\css\home-dttt\pagenavi-css.css" />
+    <Content Include="Content\css\home-dttt\style.css" />
+    <Content Include="Content\css\home-dttt\swiper.min.css" />
+    <Content Include="Content\css\hrv-register.css" />
+    <Content Include="Content\css\index_home.min.css" />
+    <Content Include="Content\css\intro-style.css" />
+    <Content Include="Content\css\khai-giang\style-khai-giang.css" />
+    <Content Include="Content\css\master.css" />
+    <Content Include="Content\css\master.scss.min.css" />
+    <Content Include="Content\css\menu-mobile-v1.2.css" />
+    <Content Include="Content\css\menu-mobile-v1.css" />
+    <Content Include="Content\css\menumain.css" />
+    <Content Include="Content\css\menumain.min.css" />
+    <Content Include="Content\css\owl.carousel.css" />
+    <Content Include="Content\css\owl.css" />
+    <Content Include="Content\css\pagenavi-css.css" />
+    <Content Include="Content\css\Pages.css" />
+    <Content Include="Content\css\responesive.css" />
+    <Content Include="Content\css\sell_at_store.min.css" />
+    <Content Include="Content\css\sell_at_website.min.css" />
+    <Content Include="Content\css\sell_other_web.min.css" />
+    <Content Include="Content\css\style-new.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\style_gioithieu.css" />
+    <Content Include="Content\css\tuyen-dung\style-tuyen-dung.css" />
+    <Content Include="Content\font-awesome-4.3.0\css\font-awesome.css" />
+    <Content Include="Content\font-awesome-4.3.0\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome-4.3.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\font-awesome-4.3.0\HELP-US-OUT.txt" />
+    <Content Include="Content\images\01_0526cbea6dd34424b68cf0d0dfb9f651_large.jpg" />
+    <Content Include="Content\images\01_06317775831a4034a2104db7016c518a_large.jpg" />
+    <Content Include="Content\images\01_0a14254719384237a9a7665acb8e9ed2_large.jpg" />
+    <Content Include="Content\images\01_141ab902ba5e42e387ff7fbcf1b22256_large.jpg" />
+    <Content Include="Content\images\01_1961fee6414c41eabcee656bd5980f14_large.jpg" />
+    <Content Include="Content\images\01_27a81da73b764352b7dfc852482329a3_large.jpg" />
+    <Content Include="Content\images\01_30d6057b1b9149768f5cc4f70232d85b_large.jpg" />
+    <Content Include="Content\images\01_39b20658489b46ce8c883c857770cba1_large.jpg" />
+    <Content Include="Content\images\01_3deffac2e5994b54a1d58619a3f663fa_large.jpg" />
+    <Content Include="Content\images\01_405e7bf8151d465cb6bf526f67f7e409_large.jpg" />
+    <Content Include="Content\images\01_412b5d342ee0447aa63a64a495183403_large.jpg" />
+    <Content Include="Content\images\01_4158dfa5a04b4d3ba7f7d587d20d2c86_large.jpg" />
+    <Content Include="Content\images\01_43962ecb0da8480eabf413f55bab0b25_large.jpg" />
+    <Content Include="Content\images\01_481d47d8-0fa9-42cd-441c-e4b8fe30fcd4_large.jpg" />
+    <Content Include="Content\images\01_4c12c66acb3040a1a3b26c53531d8151_large.jpg" />
+    <Content Include="Content\images\01_509f132c7cc54d7e819ebb496425e9d6_large.jpg" />
+    <Content Include="Content\images\01_56b5999fd818490792efc9e0b1d1f71e_large.jpg" />
+    <Content Include="Content\images\01_57cc937d-b9f7-45bc-7380-8d7f8a972e22_large.jpg" />
+    <Content Include="Content\images\01_587296b163d440db88d4c1cd89460755_large.jpg" />
+    <Content Include="Content\images\01_60c377f0d58545a292bcc919f4227b83_large.jpg" />
+    <Content Include="Content\images\01_6dc9fb57af7346b09000374eed0c84d2_large.jpg" />
+    <Content Include="Content\images\01_70b159590a7e4e9fbe3fe1f5057a2615_large.jpg" />
+    <Content Include="Content\images\01_781d0c9f76024a39bd19900e509552dd_large.jpg" />
+    <Content Include="Content\images\01_9583c62ac9f843f4b7e13ecf21dfac99_large.jpg" />
+    <Content Include="Content\images\01_95951be4e092483bbd47e89060a4ca6a_large.jpg" />
+    <Content Include="Content\images\01_9835ba3020a7402bb3b4d5ddc7ea30f6_large.jpg" />
+    <Content Include="Content\images\01_994d139eba6b450d891e250e5f0e61c3_large.jpg" />
+    <Content Include="Content\images\01_ac918ae8c1db4bc4a6c170c44623e250_large.jpg" />
+    <Content Include="Content\images\01_aef043f8207942bf8a5d99bfe36344a6_large.jpg" />
+    <Content Include="Content\images\01_b00e48c1857f49bb9ea0c17d465d245b_large.jpg" />
+    <Content Include="Content\images\01_b11170fecb1f4f6a8f8f4d9398837099_large.jpg" />
+    <Content Include="Content\images\01_b6bf3af857dc4af5ae39bb79394e9404_large.jpg" />
+    <Content Include="Content\images\01_b72ab210-45f3-4956-57f6-761dcccd966b_large.jpg" />
+    <Content Include="Content\images\01_b7c04ca16cc9464c8271507e612e7048_large.jpg" />
+    <Content Include="Content\images\01_b87613273b84486fbd533cb37e10e560_large.jpg" />
+    <Content Include="Content\images\01_e4eebe99f651441bbe2bbb8f2522802a_large.jpg" />
+    <Content Include="Content\images\01_eaa7f8b6ee0d4e3288a84105fa3d2442_large.jpg" />
+    <Content Include="Content\images\01_f9ba8521a8154c87a871067cf504310c_large.jpg" />
+    <Content Include="Content\images\01_large.jpg" />
+    <Content Include="Content\images\01_large.png" />
+    <Content Include="Content\images\01_large_002.jpg" />
+    <Content Include="Content\images\01_large_003.jpg" />
+    <Content Include="Content\images\01_large_004.jpg" />
+    <Content Include="Content\images\5giay-mau.svg" />
+    <Content Include="Content\images\bg-email-subscribe.jpg" />
+    <Content Include="Content\images\bg-trial-footer.jpg" />
+    <Content Include="Content\images\bh_online.gif" />
+    <Content Include="Content\images\bo_cong_thuong.png" />
+    <Content Include="Content\images\button-register.png" />
+    <Content Include="Content\images\chi-tiet-dao-tao\bg_dt1.png" />
+    <Content Include="Content\images\chi-tiet-dao-tao\imic-Vi-sao-nen-lua-chon-imicrosoft-viet-nam.png" />
+    <Content Include="Content\images\chi-tiet-dao-tao\ld-sellAtStore-banner-bg.jpg" />
+    <Content Include="Content\images\chi-tiet-dao-tao\ld-sellAtStore-banner-img.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\bg-trial-footer.jpg" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\boder-seperate.jpg" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\buon-ban-kinh-doanh-gi-voi-10-trieu-289x198.jpg" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\close_mn-min.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\icon-top-hot.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\introduction-module1-icon.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\introduction-module2-bg.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\introduction_module1_bg.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\introduction_module2_bg.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\introduction_module3_bg.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\Khoa-vba-excel-tai-HCM-7875678%281%29.jpg" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\kinh-doanh-gi-nam-2017-von-it-289x198.jpg" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\kinh-doanh-gi-voi-300-trieu-dong-nam-2017-289x198.jpg" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\kinh-doanh-online-mat-hang-nao-nam-2017-hieu-qua-289x198.jpg" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\menu-top-icon1.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\menu-top-icon2.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\menu-top-icon3.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\menu-top-icon4.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\menu-top-icon5.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\menu-top-icon6.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\relate-next-hv.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\relate-next.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\relate-prev-hv.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\relate-prev.png" />
+    <Content Include="Content\images\chi-tiet-tin-tuc\xu-huong-kinh-doanh-gi-nam-2017-289x198.jpg" />
+    <Content Include="Content\images\clinic-desktop_large.jpg" />
+    <Content Include="Content\images\close_mn-min %281%29.png" />
+    <Content Include="Content\images\dao-tao-tt\banner.png" />
+    <Content Include="Content\images\dao-tao-tt\bg-email-subscribe.jpg" />
+    <Content Include="Content\images\dao-tao-tt\bh_online.gif" />
+    <Content Include="Content\images\dao-tao-tt\hello-bizweb.jpg" />
+    <Content Include="Content\images\dao-tao-tt\img-reg-box.png" />
+    <Content Include="Content\images\dao-tao-tt\thietkewebsitebanhang-block-3-image-1.png" />
+    <Content Include="Content\images\dao-tao-tt\thietkewebsitebanhang-block-3.jpg" />
+    <Content Include="Content\images\dao-tao\01_0526cbea6dd34424b68cf0d0dfb9f651_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_06317775831a4034a2104db7016c518a_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_0a14254719384237a9a7665acb8e9ed2_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_141ab902ba5e42e387ff7fbcf1b22256_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_1961fee6414c41eabcee656bd5980f14_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_27a81da73b764352b7dfc852482329a3_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_30d6057b1b9149768f5cc4f70232d85b_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_39b20658489b46ce8c883c857770cba1_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_3deffac2e5994b54a1d58619a3f663fa_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_405e7bf8151d465cb6bf526f67f7e409_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_412b5d342ee0447aa63a64a495183403_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_4158dfa5a04b4d3ba7f7d587d20d2c86_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_43962ecb0da8480eabf413f55bab0b25_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_481d47d8-0fa9-42cd-441c-e4b8fe30fcd4_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_4c12c66acb3040a1a3b26c53531d8151_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_509f132c7cc54d7e819ebb496425e9d6_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_56b5999fd818490792efc9e0b1d1f71e_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_57cc937d-b9f7-45bc-7380-8d7f8a972e22_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_587296b163d440db88d4c1cd89460755_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_60c377f0d58545a292bcc919f4227b83_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_6dc9fb57af7346b09000374eed0c84d2_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_70b159590a7e4e9fbe3fe1f5057a2615_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_781d0c9f76024a39bd19900e509552dd_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_9583c62ac9f843f4b7e13ecf21dfac99_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_95951be4e092483bbd47e89060a4ca6a_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_9835ba3020a7402bb3b4d5ddc7ea30f6_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_994d139eba6b450d891e250e5f0e61c3_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_ac918ae8c1db4bc4a6c170c44623e250_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_aef043f8207942bf8a5d99bfe36344a6_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_b00e48c1857f49bb9ea0c17d465d245b_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_b11170fecb1f4f6a8f8f4d9398837099_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_b6bf3af857dc4af5ae39bb79394e9404_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_b72ab210-45f3-4956-57f6-761dcccd966b_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_b7c04ca16cc9464c8271507e612e7048_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_b87613273b84486fbd533cb37e10e560_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_e4eebe99f651441bbe2bbb8f2522802a_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_eaa7f8b6ee0d4e3288a84105fa3d2442_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_f9ba8521a8154c87a871067cf504310c_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_large.jpg" />
+    <Content Include="Content\images\dao-tao\01_large.png" />
+    <Content Include="Content\images\dao-tao\01_large_002.jpg" />
+    <Content Include="Content\images\dao-tao\01_large_003.jpg" />
+    <Content Include="Content\images\dao-tao\01_large_004.jpg" />
+    <Content Include="Content\images\dao-tao\5giay-mau.svg" />
+    <Content Include="Content\images\dao-tao\bg-email-subscribe.jpg" />
+    <Content Include="Content\images\dao-tao\bg-trial-footer.jpg" />
+    <Content Include="Content\images\dao-tao\bh_online.gif" />
+    <Content Include="Content\images\dao-tao\bo_cong_thuong.png" />
+    <Content Include="Content\images\dao-tao\button-register.png" />
+    <Content Include="Content\images\dao-tao\clinic-desktop_large.jpg" />
+    <Content Include="Content\images\dao-tao\fb-den.svg" />
+    <Content Include="Content\images\dao-tao\fb-mau.svg" />
+    <Content Include="Content\images\dao-tao\gg-den.svg" />
+    <Content Include="Content\images\dao-tao\gg-mau.svg" />
+    <Content Include="Content\images\dao-tao\home-img-security-1.jpg" />
+    <Content Include="Content\images\dao-tao\home-img-security-2.jpg" />
+    <Content Include="Content\images\dao-tao\icon-benefit-channel.png" />
+    <Content Include="Content\images\dao-tao\icon-benefit-pro.png" />
+    <Content Include="Content\images\dao-tao\icon-benefit-report.png" />
+    <Content Include="Content\images\dao-tao\icon-benefit-shipping.png" />
+    <Content Include="Content\images\dao-tao\icon-security-alt.png" />
+    <Content Include="Content\images\dao-tao\icon-security-certificate.png" />
+    <Content Include="Content\images\dao-tao\icon-security-search.png" />
+    <Content Include="Content\images\dao-tao\icon-security-sheld.png" />
+    <Content Include="Content\images\dao-tao\icon-security-title.png" />
+    <Content Include="Content\images\dao-tao\icon-security-trust.png" />
+    <Content Include="Content\images\dao-tao\img-analytics.png" />
+    <Content Include="Content\images\dao-tao\img-ssl.png" />
+    <Content Include="Content\images\dao-tao\img_01_large.jpg" />
+    <Content Include="Content\images\dao-tao\introduction-module1-icon.png" />
+    <Content Include="Content\images\dao-tao\introduction_module1_bg.png" />
+    <Content Include="Content\images\dao-tao\introduction_module2_bg.png" />
+    <Content Include="Content\images\dao-tao\introduction_module3_bg.png" />
+    <Content Include="Content\images\dao-tao\launchpad_logo-min.png" />
+    <Content Include="Content\images\dao-tao\ld-sellAtStore-banner-bg.jpg" />
+    <Content Include="Content\images\dao-tao\ld-sellAtStore-banner-img.png" />
+    <Content Include="Content\images\dao-tao\menu-top-icon1.png" />
+    <Content Include="Content\images\dao-tao\menu-top-icon2.png" />
+    <Content Include="Content\images\dao-tao\menu-top-icon3.png" />
+    <Content Include="Content\images\dao-tao\menu-top-icon4.png" />
+    <Content Include="Content\images\dao-tao\menu-top-icon5.png" />
+    <Content Include="Content\images\dao-tao\menu-top-icon6.png" />
+    <Content Include="Content\images\dao-tao\sell-other-web-banner.png" />
+    <Content Include="Content\images\dao-tao\the-bag_destop_large.png" />
+    <Content Include="Content\images\dao-tao\thefaceshop-mau.svg" />
+    <Content Include="Content\images\dao-tao\theme_01_3e471e90-e3a0-4e11-6260-e960e29ba993_large.jpg" />
+    <Content Include="Content\images\dao-tao\theme_01_large.jpg" />
+    <Content Include="Content\images\dao-tao\thietkewebsitebanhang-block-2-icon-connect.png" />
+    <Content Include="Content\images\dao-tao\thietkewebsitebanhang-block-2-icon-mobile.png" />
+    <Content Include="Content\images\dao-tao\thietkewebsitebanhang-block-2-icon-theme.png" />
+    <Content Include="Content\images\dao-tao\thietkewebsitebanhang-block-2-icon-time.png" />
+    <Content Include="Content\images\dao-tao\thietkewebsitebanhang-block-2-image-2.png" />
+    <Content Include="Content\images\dao-tao\thietkewebsitebanhang-block-2-image-4.png" />
+    <Content Include="Content\images\dao-tao\wt-den.svg" />
+    <Content Include="Content\images\dao-tao\wt-mau.svg" />
+    <Content Include="Content\images\dao-tao\yt-den.svg" />
+    <Content Include="Content\images\dao-tao\yt-mau.svg" />
+    <Content Include="Content\images\fb-den.svg" />
+    <Content Include="Content\images\fb-mau.svg" />
+    <Content Include="Content\images\gg-den.svg" />
+    <Content Include="Content\images\gg-mau.svg" />
+    <Content Include="Content\images\gioi-thieu\160825mission-vision-1000x250.jpg" />
+    <Content Include="Content\images\gioi-thieu\bg_educate2.jpg" />
+    <Content Include="Content\images\gioi-thieu\bg_educate3.png" />
+    <Content Include="Content\images\gioi-thieu\Career.jpg" />
+    <Content Include="Content\images\gioi-thieu\Chuyen gia - HOA DUY VAN - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Chuyen gia - HOANG DUC HIEU - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Chuyen gia - NGUYEN DIEU LINH - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Chuyen gia - NGUYEN HOANG ANH - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Chuyen gia - NGUYEN THU HUONG - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Chuyen gia - NGUYEN TUAN ANH - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Chuyen gia - NGUYEN VAN DOAN - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Chuyen gia - PHAM DUC MANH - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Chuyen gia - PHAM VIET CUONG - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Chuyen gia - PHUNG VAN QUYET - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Chuyen gia - TRINH VAN HUNG - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Chuyen gia - VU KHAC LINH - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Gia-tri-cot-loi.jpg" />
+    <Content Include="Content\images\gioi-thieu\Giang vien - KHUC NGOC HUY - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Giang vien - NGUYEN QUOC HUNG - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Giang vien - NGUYEN THANH LOC - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Giang vien - NGUYEN THANH TRUNG - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Giang vien - TO QUANG MINH - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Giang vien - VU MINH TRONG - IMIC.png" />
+    <Content Include="Content\images\gioi-thieu\Industry_2.jpg" />
+    <Content Include="Content\images\gioi-thieu\introduction-module2-bg.png" />
+    <Content Include="Content\images\gioi-thieu\Overview_2.jpg" />
+    <Content Include="Content\images\gioi-thieu\Su-menh.jpg" />
+    <Content Include="Content\images\gioi-thieu\tam-nhin.jpg" />
+    <Content Include="Content\images\gioi-thieu\valuecore_content_bg6.png" />
+    <Content Include="Content\images\gioi-thieu\valuecore_pic1.png" />
+    <Content Include="Content\images\gioi-thieu\vision_module1_bg.png" />
+    <Content Include="Content\images\home-dttt\5-star.png" />
+    <Content Include="Content\images\home-dttt\background2.png" />
+    <Content Include="Content\images\home-dttt\background_module_three.png" />
+    <Content Include="Content\images\home-dttt\bg-banner-header.jpg" />
+    <Content Include="Content\images\home-dttt\bg-box-cta.png" />
+    <Content Include="Content\images\home-dttt\bg-Dtai_sao_Uomni_channel_C.jpg" />
+    <Content Include="Content\images\home-dttt\bg-email-subscribe.jpg" />
+    <Content Include="Content\images\home-dttt\bg-image-desktop-detail.png" />
+    <Content Include="Content\images\home-dttt\bg-image-mobile-detail.png" />
+    <Content Include="Content\images\home-dttt\bg-trial-footer.jpg" />
+    <Content Include="Content\images\home-dttt\bh_online.gif" />
+    <Content Include="Content\images\home-dttt\group1.png" />
+    <Content Include="Content\images\home-dttt\group2.png" />
+    <Content Include="Content\images\home-dttt\group3.png" />
+    <Content Include="Content\images\home-dttt\icon-cach-kiem-tien-hv.png" />
+    <Content Include="Content\images\home-dttt\icon-cach-kiem-tien.png" />
+    <Content Include="Content\images\home-dttt\icon-kinh-doanh-2017-hv.png" />
+    <Content Include="Content\images\home-dttt\icon-kinh-doanh-2017.png" />
+    <Content Include="Content\images\home-dttt\icon-kinh-doanh-my-pham-hv.png" />
+    <Content Include="Content\images\home-dttt\icon-kinh-doanh-my-pham.png" />
+    <Content Include="Content\images\home-dttt\icon-kinh-doanh-nho-hv.png" />
+    <Content Include="Content\images\home-dttt\icon-kinh-doanh-nho.png" />
+    <Content Include="Content\images\home-dttt\icon-kinh-doanh-quan-ao-hv.png" />
+    <Content Include="Content\images\home-dttt\icon-kinh-doanh-quan-ao.png" />
+    <Content Include="Content\images\home-dttt\icon-kinh-doanh-trang-suc-hv.png" />
+    <Content Include="Content\images\home-dttt\icon-kinh-doanh-trang-suc.png" />
+    <Content Include="Content\images\home-dttt\icon-search-post.png" />
+    <Content Include="Content\images\home-dttt\img-alphabook.jpg" />
+    <Content Include="Content\images\home-dttt\img-beemart.jpg" />
+    <Content Include="Content\images\home-dttt\img-reg-box.png" />
+    <Content Include="Content\images\home-dttt\img-saothaiduong.jpg" />
+    <Content Include="Content\images\home-dttt\img-taisao1.png" />
+    <Content Include="Content\images\home-dttt\img-taisao2.png" />
+    <Content Include="Content\images\home-dttt\img-taisao3.png" />
+    <Content Include="Content\images\home-dttt\index-slide-next-hv.png" />
+    <Content Include="Content\images\home-dttt\index-slide-next.png" />
+    <Content Include="Content\images\home-dttt\index-slide-prev-hv.png" />
+    <Content Include="Content\images\home-dttt\index-slide-prev.png" />
+    <Content Include="Content\images\home-dttt\mockup_site.png" />
+    <Content Include="Content\images\home-dttt\mockup_site2.png" />
+    <Content Include="Content\images\home-dttt\mockup_site3.png" />
+    <Content Include="Content\images\home-dttt\topic-slide-next-hv.png" />
+    <Content Include="Content\images\home-dttt\topic-slide-next.png" />
+    <Content Include="Content\images\home-dttt\topic-slide-prev-hv.png" />
+    <Content Include="Content\images\home-dttt\topic-slide-prev.png" />
+    <Content Include="Content\images\home-img-security-1.jpg" />
+    <Content Include="Content\images\home-img-security-2.jpg" />
+    <Content Include="Content\images\icon-benefit-channel.png" />
+    <Content Include="Content\images\icon-benefit-pro.png" />
+    <Content Include="Content\images\icon-benefit-report.png" />
+    <Content Include="Content\images\icon-benefit-shipping.png" />
+    <Content Include="Content\images\icon-security-alt.png" />
+    <Content Include="Content\images\icon-security-certificate.png" />
+    <Content Include="Content\images\icon-security-search.png" />
+    <Content Include="Content\images\icon-security-sheld.png" />
+    <Content Include="Content\images\icon-security-title.png" />
+    <Content Include="Content\images\icon-security-trust.png" />
+    <Content Include="Content\images\icon\bg-box-cta.png" />
+    <Content Include="Content\images\icon\bg_career_line_bottom.png" />
+    <Content Include="Content\images\icon\btn-go.png" />
+    <Content Include="Content\images\icon\icon-cach-kiem-tien.png" />
+    <Content Include="Content\images\icon\icon-kinh-doanh-2017-hv.png" />
+    <Content Include="Content\images\icon\icon-kinh-doanh-2017.png" />
+    <Content Include="Content\images\icon\icon-kinh-doanh-my-pham.png" />
+    <Content Include="Content\images\icon\icon-kinh-doanh-nho-hv.png" />
+    <Content Include="Content\images\icon\icon-kinh-doanh-nho.png" />
+    <Content Include="Content\images\icon\icon-kinh-doanh-quan-ao.png" />
+    <Content Include="Content\images\icon\icon-kinh-doanh-trang-suc.png" />
+    <Content Include="Content\images\icon\icon_bullet.png" />
+    <Content Include="Content\images\icon\icon_dropdown.png" />
+    <Content Include="Content\images\icon\icon_search.png" />
+    <Content Include="Content\images\icon\icon_slide_next.gif" />
+    <Content Include="Content\images\icon\icon_slide_previous.gif" />
+    <Content Include="Content\images\icon\layout_icon_phone.png" />
+    <Content Include="Content\images\icon\menutop_icon_book.png" />
+    <Content Include="Content\images\icon\menutop_icon_culture.png" />
+    <Content Include="Content\images\icon\menutop_icon_fly.png" />
+    <Content Include="Content\images\icon\menutop_icon_id.png" />
+    <Content Include="Content\images\icon\menutop_icon_question.png" />
+    <Content Include="Content\images\icon\question_icon_Reply.png" />
+    <Content Include="Content\images\icon\recruitment_infor_bg.png" />
+    <Content Include="Content\images\icon\recruitment_infor_Id.png" />
+    <Content Include="Content\images\icon\recruitment_infor_map.png" />
+    <Content Include="Content\images\icon\recruitment_infor_monney.png" />
+    <Content Include="Content\images\icon\recruitment_infor_place.png" />
+    <Content Include="Content\images\icon\recruitment_infor_sta.png" />
+    <Content Include="Content\images\icon\recruitment_infor_time.png" />
+    <Content Include="Content\images\icon\thietkewebsitebanhang-block-3-icon-arrow.png" />
+    <Content Include="Content\images\icon\topic-slide-next.png" />
+    <Content Include="Content\images\icon\topic-slide-prev.png" />
+    <Content Include="Content\images\img-analytics.png" />
+    <Content Include="Content\images\img-ssl.png" />
+    <Content Include="Content\images\img_01_large.jpg" />
+    <Content Include="Content\images\IMICROSOFT-VIET-NAM.jpg" />
+    <Content Include="Content\images\introduction-module1-icon.png" />
+    <Content Include="Content\images\introduction-module2-bg.png" />
+    <Content Include="Content\images\introduction_module1_bg.png" />
+    <Content Include="Content\images\introduction_module2_bg.png" />
+    <Content Include="Content\images\introduction_module3_bg.png" />
+    <Content Include="Content\images\khai-giang\Business-Analyst-for-the-Small-Business.jpg" />
+    <Content Include="Content\images\khai-giang\IMIC-Khai-giang-khoa-hoc-Lap-Trinh-C-tu-Co-Ban-Nang-Cao.png" />
+    <Content Include="Content\images\khai-giang\imic-khai-giang-khoa-hoc-lap-trinh-front-end-html-css.png" />
+    <Content Include="Content\images\khai-giang\imic-khai-giang-khoa-hoc-lap-trinh-ios-mobile-apps.png" />
+    <Content Include="Content\images\khai-giang\imic-khai-giang-khoa-hoc-lap-trinh-web-portal-asp.net-mvc5-6.png" />
+    <Content Include="Content\images\khai-giang\imic-khai-giang-khoa-hoc-thiet-ke-do-hoa-cinema-4d.png" />
+    <Content Include="Content\images\khai-giang\imic-khai-giang-khoa-hoc-vba-excel.png" />
+    <Content Include="Content\images\khai-giang\imic-khai-giang-khoa-java-core.png" />
+    <Content Include="Content\images\khai-giang\IMIC-KHAI-GIANG-KHOA-KY-NANG-THIET-KE-DO-HOA.png" />
+    <Content Include="Content\images\khai-giang\imic-khai-giang-khoa-thiet-ke-do-hoa-2d.png" />
+    <Content Include="Content\images\khai-giang\imic-khoa-hoc-lap-trnh-phat-trinh-du-an-voi-csharpt-NET.png" />
+    <Content Include="Content\images\khai-giang\IMIC-TT-Khoa-hoc-Lap-Trinh-Android-Apps-Game-Co-Ban-Nang-Cao.png" />
+    <Content Include="Content\images\khai-giang\Khoa-hoc-Business-Analytics-BA-tai-IMIC.png" />
+    <Content Include="Content\images\khai-giang\khoa-hoc-chng-chi-phan-tich-nghiep-vu-IIBA-3.jpg" />
+    <Content Include="Content\images\khai-giang\Khoa-hoc-lap-trinh-j2ee-763w434557.jpg" />
+    <Content Include="Content\images\khai-giang\Khoa-hoc-software-testing-tai-IMicroSoft-Viet-Nam-98787.jpg" />
+    <Content Include="Content\images\khai-giang\thietkewebsitebanhang-banner-image.png" />
+    <Content Include="Content\images\khai-giang\thietkewebsitebanhang-banner.jpg" />
+    <Content Include="Content\images\launchpad_logo-min.png" />
+    <Content Include="Content\images\ld-sellAtStore-banner-bg.jpg" />
+    <Content Include="Content\images\ld-sellAtStore-banner-img.png" />
+    <Content Include="Content\images\Logo-IMIC-Full.png" />
+    <Content Include="Content\images\logo-imic.png" />
+    <Content Include="Content\images\menu-top-icon1.png" />
+    <Content Include="Content\images\menu-top-icon2.png" />
+    <Content Include="Content\images\menu-top-icon3.png" />
+    <Content Include="Content\images\menu-top-icon4.png" />
+    <Content Include="Content\images\menu-top-icon5.png" />
+    <Content Include="Content\images\menu-top-icon6.png" />
+    <Content Include="Content\images\relate-next-hv.png" />
+    <Content Include="Content\images\relate-next.png" />
+    <Content Include="Content\images\relate-prev-hv.png" />
+    <Content Include="Content\images\relate-prev.png" />
+    <Content Include="Content\images\sell-other-web-banner.png" />
+    <Content Include="Content\images\the-bag_destop_large.png" />
+    <Content Include="Content\images\thefaceshop-mau.svg" />
+    <Content Include="Content\images\theme_01_3e471e90-e3a0-4e11-6260-e960e29ba993_large.jpg" />
+    <Content Include="Content\images\theme_01_large.jpg" />
+    <Content Include="Content\images\thietkewebsitebanhang-block-2-icon-connect.png" />
+    <Content Include="Content\images\thietkewebsitebanhang-block-2-icon-mobile.png" />
+    <Content Include="Content\images\thietkewebsitebanhang-block-2-icon-theme.png" />
+    <Content Include="Content\images\thietkewebsitebanhang-block-2-icon-time.png" />
+    <Content Include="Content\images\thietkewebsitebanhang-block-2-image-2.png" />
+    <Content Include="Content\images\thietkewebsitebanhang-block-2-image-4.png" />
+    <Content Include="Content\images\totop.png" />
+    <Content Include="Content\images\tuyen-dung\16e82d41eee9493f54364e402e41fdf2.jpg" />
+    <Content Include="Content\images\tuyen-dung\1b783269d712e851b79e350ff0514f09.png" />
+    <Content Include="Content\images\tuyen-dung\458c1bfc5837058fecb95ebb25d9f070.jpg" />
+    <Content Include="Content\images\tuyen-dung\47077a22a2cc8acf7e37e8ba1deb4271.jpg" />
+    <Content Include="Content\images\tuyen-dung\52a799ce9e567b51c27d856ce92e6bff.png" />
+    <Content Include="Content\images\tuyen-dung\5e8faa4e2fa5b8f8e49a3b607eed40a5.jpg" />
+    <Content Include="Content\images\tuyen-dung\88f99ee9044ea92a3a83c39a69296307.png" />
+    <Content Include="Content\images\tuyen-dung\b12db5d45e518a63555e78dcb06047a8.png" />
+    <Content Include="Content\images\tuyen-dung\culture_picture1.png" />
+    <Content Include="Content\images\tuyen-dung\culture_picture2.png" />
+    <Content Include="Content\images\tuyen-dung\eb200f55f893a1341968de827dc6089a.jpg" />
+    <Content Include="Content\images\tuyen-dung\efc8629ab1b95d36515f65be386cf1e9.png" />
+    <Content Include="Content\images\tuyen-dung\layout_Bg.png" />
+    <Content Include="Content\images\wt-den.svg" />
+    <Content Include="Content\images\wt-mau.svg" />
+    <Content Include="Content\images\yt-den.svg" />
+    <Content Include="Content\images\yt-mau.svg" />
+    <Content Include="Content\js\analytics.js" />
+    <Content Include="Content\js\api.jquery_min.js" />
+    <Content Include="Content\js\api.js" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\chi-tiet-tin-tuc\swiper.jquery.min.js" />
+    <Content Include="Content\js\conversion_async.js" />
+    <Content Include="Content\js\dao-tao\default.js" />
+    <Content Include="Content\js\default.js" />
+    <Content Include="Content\js\default_002.js" />
+    <Content Include="Content\js\fbevents.js" />
+    <Content Include="Content\js\fixheightproduct.js" />
+    <Content Include="Content\js\gioithieu\intro.js" />
+    <Content Include="Content\js\gioithieu\owl.carousel.js" />
+    <Content Include="Content\js\gioithieu\owl.carousel.min.js" />
+    <Content Include="Content\js\gtm.js" />
+    <Content Include="Content\js\home-dttt\swiper.jquery.min.js" />
+    <Content Include="Content\js\jquery-1.js" />
+    <Content Include="Content\js\jquery.hrv-register.js" />
+    <Content Include="Content\js\jquery.js" />
+    <Content Include="Content\js\jquery.lockfixed.js" />
+    <Content Include="Content\js\jquery.validate_min.js" />
+    <Content Include="Content\js\jquery_002.js" />
+    <Content Include="Content\js\jquery_003.js" />
+    <Content Include="Content\js\js.js" />
+    <Content Include="Content\js\mixpanel-2-latest.js" />
+    <Content Include="Content\js\modernizr.js" />
+    <Content Include="Content\js\option_selection.js" />
+    <Content Include="Content\js\owl.carousel.js" />
+    <Content Include="Content\js\owl.carousel.min.js" />
+    <Content Include="Content\js\owl.js" />
+    <Content Include="Content\js\popper.js" />
+    <Content Include="Content\js\popper.min.js" />
+    <Content Include="Content\js\script_themes.js" />
+    <Content Include="Content\js\sdk.js" />
+    <Content Include="Content\js\swiper.jquery.min.js" />
+    <Content Include="Content\js\txtinput-classie.js" />
+    <Content Include="Content\js\waypoints.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\css\bootstrap-grid.css.map" />
+    <Content Include="Content\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\css\bootstrap.css.map" />
+    <Content Include="Content\css\bootstrap.min.css.map" />
+    <Content Include="Content\css\grid-framework.less" />
+    <Content Include="Content\css\home-dttt\normalize.less" />
+    <Content Include="Content\css\home-dttt\scaffolding.less" />
+    <Content Include="Content\css\normalize.less" />
+    <Content Include="Content\css\scaffolding.less" />
+    <Content Include="Content\font-awesome-4.3.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome-4.3.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome-4.3.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome-4.3.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\font-awesome-4.3.0\fonts\FontAwesome.otf" />
+    <Content Include="Content\font-awesome-4.3.0\less\animated.less" />
+    <Content Include="Content\font-awesome-4.3.0\less\bordered-pulled.less" />
+    <Content Include="Content\font-awesome-4.3.0\less\core.less" />
+    <Content Include="Content\font-awesome-4.3.0\less\fixed-width.less" />
+    <Content Include="Content\font-awesome-4.3.0\less\font-awesome.less" />
+    <Content Include="Content\font-awesome-4.3.0\less\icons.less" />
+    <Content Include="Content\font-awesome-4.3.0\less\larger.less" />
+    <Content Include="Content\font-awesome-4.3.0\less\list.less" />
+    <Content Include="Content\font-awesome-4.3.0\less\mixins.less" />
+    <Content Include="Content\font-awesome-4.3.0\less\path.less" />
+    <Content Include="Content\font-awesome-4.3.0\less\rotated-flipped.less" />
+    <Content Include="Content\font-awesome-4.3.0\less\stacked.less" />
+    <Content Include="Content\font-awesome-4.3.0\less\variables.less" />
+    <Content Include="Content\font-awesome-4.3.0\scss\font-awesome.scss" />
+    <Content Include="Content\font-awesome-4.3.0\scss\_animated.scss" />
+    <Content Include="Content\font-awesome-4.3.0\scss\_bordered-pulled.scss" />
+    <Content Include="Content\font-awesome-4.3.0\scss\_core.scss" />
+    <Content Include="Content\font-awesome-4.3.0\scss\_fixed-width.scss" />
+    <Content Include="Content\font-awesome-4.3.0\scss\_icons.scss" />
+    <Content Include="Content\font-awesome-4.3.0\scss\_larger.scss" />
+    <Content Include="Content\font-awesome-4.3.0\scss\_list.scss" />
+    <Content Include="Content\font-awesome-4.3.0\scss\_mixins.scss" />
+    <Content Include="Content\font-awesome-4.3.0\scss\_path.scss" />
+    <Content Include="Content\font-awesome-4.3.0\scss\_rotated-flipped.scss" />
+    <Content Include="Content\font-awesome-4.3.0\scss\_stacked.scss" />
+    <Content Include="Content\font-awesome-4.3.0\scss\_variables.scss" />
+    <Content Include="Areas\AdminCP\Views\web.config" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\IntroducePage\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\AdminCP\Controllers\" />
+    <Folder Include="Areas\AdminCP\Models\" />
+    <Folder Include="Areas\AdminCP\Views\Shared\" />
+    <Folder Include="Content\js\dao-tao-tt\" />
+    <Folder Include="Content\js\khai-giang\" />
+    <Folder Include="Content\js\tuyen-dung\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WCF.BusinessControlLayer\WCF.BusinessControlLayer.csproj">
+      <Project>{d07d0d20-af44-4268-9ee0-8c6f06da326d}</Project>
+      <Name>WCF.BusinessControlLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WCF.BusinessObjectsLayer\WCF.BusinessObjectsLayer.csproj">
+      <Project>{eeb0ee70-bacf-445a-ad3e-61fa9109c0dc}</Project>
+      <Name>WCF.BusinessObjectsLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>9858</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:9858/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

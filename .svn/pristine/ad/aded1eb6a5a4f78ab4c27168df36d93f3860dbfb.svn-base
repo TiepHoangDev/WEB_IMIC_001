@@ -1,0 +1,662 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div class="slide-wrapper">
+        <div id="owl-demo" class="owl-carousel owl-theme" style="width: 100%; float: left; display: block; opacity: 1;">
+
+
+            <div class="owl-wrapper-outer">
+                <div class="owl-wrapper" style="width: 8094px; left: 0px; display: block; transition: all 0ms ease; transform: translate3d(0px, 0px, 0px); transform-origin: 674.5px center 0px; perspective-origin: 674.5px center;">
+                    <div class="owl-item" style="width: 1349px;">
+                        <div class="item">
+                            <img style="width:100%;height:600px;" src="images/gioi-thieu/Overview_2.jpg" alt="Lập trình ASP.NET">
+                            <div class="text-slider" style="display: block;">
+                                <div class="col-xs-12">
+                                    <h3>Lựa chọn theo học tại iMIC?</h3>
+                                    <ul class="text-slider-info">
+                                        <li>Học trên dự án, không học "Hàn Lâm".</li>
+                                        <li>Lĩnh hội được nhiều Kiến thức, Kinh nghiệm làm Dự án.</li>
+                                        <li>Cơ hội nghề nghiệp tại Đối tác, Khách hàng.</li>
+                                        <li>Vị trí, cơ hội thành công không còn xa.</li>
+
+
+                                    </ul>
+                                    <div class="col-xs-12">
+                                        <ul class="pull-right pagin">
+
+                                            <li>
+                                                <a href="#" class="owl-prev">
+                                                    <img src="images/icon/icon_slide_previous.gif">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="banner-number">1</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="owl-next">
+                                                    <img src="images/icon/icon_slide_next.gif">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item" style="width: 1349px;">
+                        <div class="item">
+                            <img style="width:100%;height:600px;" src="images/gioi-thieu/Industry_2.jpg" alt="Lập trình ASP.NET">
+                            <div class="text-slider" style="display: none;">
+                                <div class="col-xs-12">
+                                    <h3>Nơi khởi nguồn cho thành công của Bạn!</h3>
+                                    <ul class="text-slider-info">
+                                        <li>Với hơn 8000 học viên đã tốt nghiệp &amp; làm việc tại Đối tác, Khách hàng.</li>
+                                        <li>Với hơn 60,000 giờ nỗ lực truyền dạy Kiến thức, Kinh Nghiệm vì sự khởi nghiệp vững chắc dành cho Học Viên.</li>
+
+
+                                    </ul>
+                                    <div class="col-xs-12">
+                                        <ul class="pull-right pagin">
+
+                                            <li>
+                                                <a href="#" class="owl-prev">
+                                                    <img src="images/icon/icon_slide_previous.gif">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="banner-number">2</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="owl-next">
+                                                    <img src="images/icon/icon_slide_next.gif">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-item" style="width: 1349px;">
+                        <div class="item">
+                            <img style="width:100%;height:600px;" src="images/gioi-thieu/Career.jpg" alt="Lập trình ASP.NET">
+                            <div class="text-slider" style="display: none;">
+                                <div class="col-xs-12">
+                                    <h3>Học để làm tốt Dự án</h3>
+                                    <ul class="text-slider-info">
+                                        <li>Nội dung truyền dạy trực quan, khoa học.</li>
+                                        <li>Môi trường Học &amp; Làm dự án thực tế như tại Doanh nghiệp.</li>
+                                        <li>Được huấn luyện làm dự án ngoài cùng Chuyên gia.</li>
+
+
+                                    </ul>
+                                    <div class="col-xs-12">
+                                        <ul class="pull-right pagin">
+
+                                            <li>
+                                                <a href="#" class="owl-prev">
+                                                    <img src="images/icon/icon_slide_previous.gif">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="banner-number">3</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="owl-next">
+                                                    <img src="images/icon/icon_slide_next.gif">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+        <div id="intro-service">
+            <div class="container panelIntroService">
+                <div id="panelIntroService" class="col-xs-12">
+
+
+                    <!--Đặt viền cho khung service-->
+                    <div id="bg-green-desktop" class="col-sm-4 col-md-4 col-lg-4">
+                        <h4><strong>Trong sự nghiệp Đào Tạo?</strong></h4>
+                        <div id="content-green" class="col-xs-12" style="display: block;">
+                            <p>
+                                Đào tạo nguồn nhân lực CNTT-CNPM với chuyên môn cao cho hơn
+                                <br>
+                                <b>80 Đối tác + Khách hàng của iMIC</b>
+                                <br>
+
+                            </p>
+                        </div>
+                        <a class="btn-go" href="#site"></a>
+                    </div>
+                    <!--Đặt viền cho khung service-->
+                    <div id="bg-orange-desktop" class="col-sm-4 col-md-4 col-lg-4">
+                        <h4><strong>Trong lĩnh vực Phần mềm?</strong></h4>
+                        <div id="content-orange" class="col-xs-12" style="display: block;">
+                            <p>
+                                Đã trao cho hơn <b>150 khách hàng</b> cơ hội được ứng dụng CNPM trong Quản lý
+                                <br>
+                                <b>với chi phí thấp nhất</b>
+                                <br>
+                                <b>hiệu quả tốt nhất</b>
+                                <br>
+
+                            </p>
+                        </div>
+                        <a class="btn-go" href="#"></a>
+                    </div>
+                    <!--Đặt viền cho khung service-->
+                    <div id="bg-blue-desktop" class="col-sm-4 col-md-4 col-lg-4">
+                        <h4><strong>Trong lĩnh vực Dịch vụ?</strong></h4>
+                        <div id="content-blue" class="col-xs-12" style="display: block;">
+                            <p>
+                                Cung cấp dịch vụ tư vấn giải pháp
+                                <br> &amp; phát triển dự án
+                                <br> theo yêu cầu riêng.
+                                <br>
+
+                            </p>
+                        </div>
+                        <a class="btn-go" href="#"></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-wrapper">
+        <!--silder-->
+        <!--end silder-->
+        <div class="row">
+            <div class="intro-service-box po">
+                <img src="/Content/images/other/imic-kinhnghiem.png" class="img-t">
+                <div class="container">
+                    <div class="col-xs-12">
+                        <div class="box_text_q">
+                            <h2><span>Giới thiệu về iMicroSoft Việt Nam?</span></h2>
+                            <div class="text-c">
+                                <p style="text-align:justify">
+                                    <span style="font-size:14px"><span style="font-family:Tahoma,Geneva,sans-serif"><em><strong>IMicroSoft được ra đời vào tháng 07 năm 2011</strong></em> trong lúc sự phát triển và bùng nổ Công nghệ và Truyền thông tại Việt Nam. Ra đời với <em><strong>Sứ mệnh Đào Tạo Nguồn Nhân Lực có chuyên môn cao</strong></em> &amp; các <em><strong>sản phẩm Phần Mềm hỗ trợ công tác Quản lý </strong></em>cho Khách hàng với chi phí thấp mà hiệu quả lại cao. iMicroSoft - IMIC đã lựa chọn cho mình con đường đi lên lấy<em><strong> Chất lượng và Uy tín làm đầu</strong></em>. Năm 2011 cũng là năm thương hiệu IMIC chính thức được ra đời.</span></span>
+                                </p>
+
+                                <p style="text-align:justify">
+                                    &nbsp;&nbsp;&nbsp; <span style="font-size:14px">
+                                        <span style="font-family:Tahoma,Geneva,sans-serif"><span style="color:#ff8c00"><strong>-&nbsp; </strong><u><strong>SỨ MỆNH</strong></u></span> <strong>:</strong>&nbsp;&nbsp; Chúng tôi tạo ra và kết nối thế hệ những Lập trình viên trẻ tài năng, nhiệt huyết, cùng họ mang đến một thế giới tốt đẹp hơn bằng sức mạnh của Công nghệ hiện đại.&nbsp;&nbsp; Chúng tôi tin rằng, những người lãnh đạo công nghệ trong tương lai ấy cần có không chỉ là khả năng chuyên môn xuất sắc, mà còn là ngoại ngữ, kỹ năng mềm, tầm nhìn toàn cầu và tinh thần khởi nghiệp. Với Chương trình Đào Tạo toàn diện, thực tế, khác biệt, với sức mạnh của cộng đồng, chúng tôi khao khát không chỉ thay đổi tương lai Việt Nam, các nước ASEAN, mà còn dịch chuyển cả thế giới này.</span>
+                                    </span>
+
+                                </p>
+                                <img src="images/gioi-thieu/Su-menh.jpg" alt="" style="width: 100%" />
+                                <p style="text-align:justify">
+                                    &nbsp;&nbsp;&nbsp;<span style="font-size:14px">
+                                        <span style="font-family:Tahoma,Geneva,sans-serif"><span style="color:#ff8c00"><strong> -&nbsp; </strong><u><strong>TẦM NHÌN</strong></u><strong> </strong></span><strong>:&nbsp;</strong>&nbsp; Trở thành một trong các tổ chức giáo dục lớn nhất ở Việt Nam và ASEAN trong lĩnh vực công nghệ thông tin - công nghệ phần mềm, cung cấp cho học viên và cộng đồng những trải nghiệm giáo dục tốt nhất trong khu vực, nâng tầm trình độ nhân lực của đất nước. Cùng với cộng đồng về Kinh doanh – Kinh tế hàng nghìn thành viên ưu tú nhất đến từ các trường ĐH, công ty, dự án danh giá nhất trên thế giới IMIC góp phần vào sự phát triển của nền kinh tế tri thức và tương lai của Việt Nam.</span>
+                                    </span>
+
+                                </p>
+                                <img src="images/gioi-thieu/tam-nhin.jpg" alt="" style="width: 100%" />
+                                <p style="text-align:justify">
+                                    <span style="font-size:14px">
+                                        <span style="font-family:Tahoma,Geneva,sans-serif"><span style="color:#ff8c00"><strong>-&nbsp; </strong><u><strong>GIÁ TRỊ CỐT LÕI</strong></u></span><strong><strong> </strong>:&nbsp;</strong><span style="color:#ff0000"><u><strong> </strong></u></span></span>
+                                    </span>
+                                </p>
+
+                                <p style="text-align:justify">
+                                    <span style="font-size:14px">
+                                        <span style="font-family:Tahoma,Geneva,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#008000"><strong> 1.&nbsp;</strong> <u><em><strong>Nỗ lực để trở nên xuất sắc</strong></em></u><em><strong> :</strong></em></span>&nbsp; Những thành viên của cộng đồng IMIC từ chối cuộc sống bình thường của một sinh viên lập trình điển hình: sáng tới trường ngủ, tối cày game, ra trường xin được một công việc đủ ăn đã là tốt lắm rồi! Cộng đồng Học Viên của IMIC luôn hướng tới hoàn thiện bản thân từ khả năng chuyên môn, kỹ năng mềm, tiếng Anh, thái độ cầu tiến và sự cố gắng tuyệt đối để trở thành một <u><em><strong>Lập Trình Viên Xuất Sắc</strong></em></u> không chỉ ở tầm Việt Nam, mà còn với tầm quốc tế.</span>
+                                    </span>
+
+                                </p>
+
+                                <p style="text-align:justify">
+                                    <span style="font-size:14px"><span style="font-family:Tahoma,Geneva,sans-serif">&nbsp;&nbsp;&nbsp; <em><strong>"Giỏi là chuyện phải làm, rất giỏi mới thực sự đáng khen"</strong></em></span></span>
+
+                                </p>
+
+                                <p style="text-align:justify">
+                                    <span style="font-size:14px">
+                                        <span style="font-family:Tahoma,Geneva,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#008000"> </span><em><strong><span style="color:#008000">2. </span></strong></em><u><em><strong><span style="color:#008000">Sẻ chia để làm những điều tuyệt vời hơn</span></strong></em></u><em><strong><span style="color:#008000"> :&nbsp;</span> </strong></em><strong><em>&nbsp; </em></strong>Cộng đồng Công nghệ ở Việt Nam còn quá rời rạc, nhỏ lẻ, bản thân Lập trình viên cũng có xu hướng thu mình để làm việc độc lập. Tuy nhiên, chúng tôi tin rằng, để làm được một điều gì đó lớn lao, sẽ thật tuyệt nếu có những người anh em cùng sát cánh. Từ một ngôi nhà mang tên IMIC, chúng tôi hướng tới xây dựng một cộng đồng công nghệ trong khu vực ASEAN và toàn cầu, kết nối với nhau bằng khát vọng chung, sự giúp đỡ tận tâm và niềm tin vững chắc. Nếu cả thế giới này quay lưng lại với thất bại của bất kì ai, chúng tôi sẽ là người đầu tiên cho họ những cơ hội tiếp theo để đứng lên và bước tiếp.</span>
+                                    </span>
+
+                                </p>
+
+                                <p style="text-align:justify">
+                                    <span style="font-size:14px"><span style="font-family:Tahoma,Geneva,sans-serif">&nbsp;<em><strong>&nbsp;&nbsp; "Đừng sợ hãi, bạn không bao giờ phải đứng một mình!"</strong></em></span></span>
+                                </p>
+
+                                <p style="text-align:justify">
+                                    <span style="font-size:14px">
+                                        <span style="font-family:Tahoma,Geneva,sans-serif">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>
+                                                <strong><span style="color:#008000"> 3. <u>Công nghệ thuần túy là không đủ để thay đổi thế giới</u> :&nbsp;</span>&nbsp; </strong>
+                                            </em>Với cộng đồng Kinh doanh – Kinh tế – Tài chính của 1200+ thành viên ưu tú nhất đến từ các công ty và ĐH hàng đầu thế giới như Harvard, Standford, Oxford,…. hay P&amp;G, Unilever, Big4… cũng như đến từ cộng đồng Khởi nghiệp chúng tôi đã nỗ lực xây dựng trong suốt 05 năm qua, IMIC sẽ đi cùng với họ để thực hiện những ý tưởng lớn.
+                                        </span>
+                                    </span>
+                                </p>
+
+                                <p style="text-align:justify">
+                                    <span style="font-size:14px"><span style="font-family:Tahoma,Geneva,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em><strong> "Mở rộng tầm nhìn của mình, chúng ta sẽ thấy một thế giới khác!"</strong></em></span></span>
+                                </p>
+                                <img src="images/gioi-thieu/Gia-tri-cot-loi.jpg" alt="" style="width: 100%" />
+                            </div>
+
+                            <div class="introduction oneColumnWidth" style="width:100%">
+                                <div class="content" style="width:45%">
+                                    <p>
+                                        <strong>Nhân viên của DKT được đào tạo bài bản về tất cả các kỹ năng trong công việc.</strong> Chúng tôi
+                                        có bộ phận chuyên phụ trách đào tạo cho nhân viên mới và liên tục bổ sung các kĩ năng
+                                        mềm, kiến thức chuyên môn nâng cao cho nhân viên cũ. Mỗi nhân viên đều được khuyến
+                                        khích và tạo điều kiện tham gia các khóa đào tạo nội bộ hoặc ngoại khóa.
+                                    </p>
+                                    <p>
+                                        <strong>Nhân viên làm việc từ 3 tháng trở lên</strong> sẽ được tham gia các khóa đào tạo theo nhu cầu của
+                                        bộ phận. Tất cả các khóa đào tạo này nhằm giúp nhân viên có điều kiện phát huy khả năng
+                                        và học hỏi kinh nghiệm, tích lũy kiến thức, phát triển chuyên môn và nghề nghiệp gắn liền
+                                        định hướng phát triển của công ty.
+                                    </p>
+                                    <p>
+                                        Bên cạnh đó, <strong>những nhân viên xuất sắc</strong> sẽ được đào tạo nâng cao kĩ năng chuyên môn bởi
+                                        những chuyên gia hàng đầu trong lĩnh vực Thương mại điện tử.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="education-program oneColumnWidth" style="width:100%;margin-top:40px">
+                                <div class="logo">
+                                    <img src="images/gioi-thieu/bg_educate3.png" alt="" style="width:90%">
+                                </div>
+                                <div class="work first-week">
+                                    <div class="title">Tuần đầu tiên</div>
+                                    <div class="line">&nbsp;</div>
+                                    <ul>
+                                        <li>Kiến thức về sản phẩm dịch vụ</li>
+                                        <li>Quy trình làm việc DKT</li>
+                                        <li>Các kĩ năng chuyên môn cơ bản</li>
+                                        <li>Văn hóa DKT</li>
+                                        <li>Kĩ năng mềm phục vụ công việc</li>
+                                    </ul>
+                                </div>
+                                <div class="Clear" style="height: 50px;">&nbsp;</div>
+                                <div class="work">
+                                    <div class="title">Tháng đầu tiên</div>
+                                    <div class="line">&nbsp;</div>
+                                    <ul>
+                                        <li>Kỹ năng chuyên môn</li>
+                                        <li>Kỹ năng lập kế hoạch, công việc</li>
+                                    </ul>
+                                </div>
+                                <div class="work">
+                                    <div class="title">3 tháng</div>
+                                    <div class="line">&nbsp;</div>
+                                    <ul>
+                                        <li>Các khóa đào tạo theo nhu cầu</li>
+                                        <li>Các khóa bổ sung kiến thức chung về TMĐT</li>
+                                        <li>Kĩ năng làm việc nhóm team building</li>
+                                    </ul>
+                                </div>
+                                <div class="work">
+                                    <div class="title">6 tháng</div>
+                                    <div class="line">&nbsp;</div>
+                                    <ul>
+                                        <li>Kĩ năng chuyên môn nâng cao</li>
+                                        <li>Kĩ năng quản lý nhóm Leader</li>
+                                        <li>Kĩ năng đào tạo nhóm</li>
+                                    </ul>
+                                </div>
+                                <div class="work">
+                                    <div class="title">1 năm</div>
+                                    <div class="line">&nbsp;</div>
+                                    <ul>
+                                        <li>
+                                            Các khóa đào tạo kĩ năng chuyên
+                                            môn và kĩ năng quản lý được giảng
+                                            dạy bởi những chuyên gia hàng đầu
+                                            trong lĩnh vực Thương mại điện tử
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="Clear">&nbsp;</div>
+                            </div>
+                            <!-- <div class="col-xs-12"> -->
+                            <!-- <ul class="service-list"> -->
+                            <!-- <li class="col-lg-3 col-md-6 col-sm-12"> -->
+                            <!-- <a href="#"> -->
+                            <!-- <img style="height: 120px" src="/Content/Galleries/Introduce/Services/IMIC-doi-ngu-chuyen-gia.png"> -->
+                            <!-- <h4 href="#">Đội ngũ Chuyên Gia</h4> IMIC tự hào là một đơn vị hiện có đội ngũ với hơn 18 Chuyên gia có nhiều năm Kinh Nghiệm phát triển, Quản lý dự án và kỹ năng truyền dạy kiến thức, công nghệ cho người khác rất logic, khoa học -->
+                            <!-- <br> -->
+                            <!-- </a> -->
+                            <!-- </li> -->
+                            <!-- <li class="col-lg-3 col-md-6 col-sm-12"> -->
+                            <!-- <a href="#"> -->
+                            <!-- <img style="height: 120px" src="/Content/Galleries/Introduce/Services/IMIC-khong-day-han-lam-va-dai-tra.png"> -->
+                            <!-- <h4 href="#">Không dạy "hàn lâm" &amp; "đại trà"</h4> Mỗi lớp khai giảng chỉ từ 7 - 12 Học viên để luôn luôn đảm bảo Chuyên gia sẽ hướng dẫn cho các em Học viên được tốt nhất. -->
+                            <!-- <br> -->
+                            <!-- </a> -->
+                            <!-- </li> -->
+                            <!-- <li class="col-lg-3 col-md-6 col-sm-12"> -->
+                            <!-- <a href="#"> -->
+                            <!-- <img style="height: 120px" src="/Content/Galleries/Introduce/Services/IMIC-hoc-thu-01-tuan-mien-phi.png"> -->
+                            <!-- <h4 href="#">Học thử 01 Tuần</h4> Học viên được học thử 01 TUẦN miễn phí để đánh giá chất lượng Đào Tạo trước khi quyết định tham gia khóa học. -->
+                            <!-- <br> -->
+                            <!-- </a> -->
+                            <!-- </li> -->
+                            <!-- <li class="col-lg-3 col-md-6 col-sm-12"> -->
+                            <!-- <a href="#"> -->
+                            <!-- <img style="height: 120px" src="/Content/Galleries/Introduce/Services/IMIC-bai-giang-va-video-truc-quan.png"> -->
+                            <!-- <h4 href="#">Nhận bài giảng + Video</h4> Nhận trọn bộ Video giảng dạy &lt;Step-By-Step&gt; + bài giảng chi tiết từng phần nội dung của khóa học. -->
+                            <!-- <br> IC Design -->
+                            <!-- <br> -->
+                            <!-- </a> -->
+                            <!-- </li> -->
+                            <!-- <li class="col-lg-3 col-md-6 col-sm-12"> -->
+                            <!-- <a href="#"> -->
+                            <!-- <img style="height: 120px" src="/Content/Galleries/Introduce/Services/IMIC-hoc-cung-chuyen-gia.png"> -->
+                            <!-- <h4 href="#">Học cùng Chuyên gia</h4> Cùng học &amp; làm việc với Chuyên gia để củng cố kiến thức, kinh nghiệm cho tự tin làm Dự Án. -->
+                            <!-- <br> -->
+                            <!-- </a> -->
+                            <!-- </li> -->
+                            <!-- <li class="col-lg-3 col-md-6 col-sm-12"> -->
+                            <!-- <a href="#"> -->
+                            <!-- <img style="height: 120px" src="/Content/Galleries/Introduce/Services/IMIC-lam-du-an-thuc-te.png"> -->
+                            <!-- <h4 href="#">Làm Dự án thực tế </h4> Được Chuyên gia hướng dẫn phát triển dự án thực tế - Được chia sẻ nhiều kỹ năng quan trọng khi join vào dự án tại doanh nghiệp hoặc làm việc với khách hàng. -->
+                            <!-- <br> -->
+                            <!-- </a> -->
+                            <!-- </li> -->
+                            <!-- <li class="col-lg-3 col-md-6 col-sm-12"> -->
+                            <!-- <a href="#"> -->
+                            <!-- <img style="height: 120px" src="/Content/Galleries/Introduce/Services/IMIC-chung-nhan-kinh-nghiem.png"> -->
+                            <!-- <h4 href="#">Chứng nhận Kinh Nghiệm</h4> Được cấp Chứng nhận Kinh Nghiệm phát triển Dự Án &amp; chi tiết các Công nghệ đã nắm và làm chủ được nó khi tốt nghiệp. -->
+                            <!-- <br> -->
+                            <!-- </a> -->
+                            <!-- </li> -->
+                            <!-- <li class="col-lg-3 col-md-6 col-sm-12"> -->
+                            <!-- <a href="#"> -->
+                            <!-- <img style="height: 120px" src="/Content/Galleries/Introduce/Services/IMIC-viec-lam-sau-tot-nghiep.png"> -->
+                            <!-- <h4 href="#">Việc làm sau Tốt nghiệp</h4> Được tham gia các đợt Phỏng vấn chọn Ứng Viên cho Đối tác+Khách hàng của IMIC. -->
+                            <!-- <br> -->
+                            <!-- </a> -->
+                            <!-- </li> -->
+                            <!-- </ul> -->
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--service-->
+            <!--end service -->
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="widhfull bg_white padding-top30 padding-bottom30">
+                    <div class="main">
+                        <div class="col-xs-12">
+                            <div class="box_text_q">
+                                <h2><span>Đội ngũ Chuyên Gia tại IMicroSoft Việt Nam</span></h2>
+                                <div class="text-c">
+                                    <p style="text-align:justify">
+                                        <span style="font-size:14px"><span style="font-family:Tahoma,Geneva,sans-serif">IMICROSOFT VIỆT NAM - IMIC tự hào là nơi qui tụ đội ngũ Chuyên gia giỏi chuyên môn, kỹ năng truyền dạy và giàu kinh nghiệm thực tế. Các chuyên gia đang tham gia giảng dạy tại IMIC luôn mong muốn có cơ hội được truyền dạy những Kiến thức + Kinh nghiệm đến nhiều bạn Học viên, giúp các em nâng cao chuyên môn, cơ hội công việc ổn định thu nhập cao cũng như sớm đạt được nhiều thành công hơn trong công việc. Bạn sẽ cảm thấy bất ngờ và hứng thú khi bắt gặp những người đồng hành mang trong mình tràn đầy đam mê, nhiệt huyết và cháy hết mình ở nơi đây!!!</span></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+
+
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Chuyen gia - NGUYEN TUAN ANH - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">CG. NGUYỄN TUẤN ANH</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 333
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Chuyen gia - NGUYEN THU HUONG - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">CG. NGUYỄN THU HƯƠNG</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 333
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Giang vien - NGUYEN THANH TRUNG - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">GV. NGUYỄN THÀNH TRUNG</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 666
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Chuyen gia - VU KHAC LINH - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">CG. VŨ KHẮC LINH</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 666
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Chuyen gia - HOA DUY VAN - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">CG. HOA DUY VĂN</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 666
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Giang vien - VU MINH TRONG - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">GV. VŨ MINH TRỌNG</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 666
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Giang vien - TO QUANG MINH - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">GV. TÔ QUANG MINH</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 333
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Chuyen gia - PHUNG VAN QUYET - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">CG. PHÙNG VĂN QUYẾT</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 333
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Chuyen gia - PHAM VIET CUONG - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">CG. PHẠM VIỆT CƯỜNG</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 666
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Chuyen gia - NGUYEN VAN DOAN - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">CG. NGUYỄN VĂN ĐOÀN</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 666
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Giang vien - KHUC NGOC HUY - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">GV. KHÚC NGỌC HUY</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 666
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Giang vien - NGUYEN QUOC HUNG - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">CG. NGUYỄN QUỐC HÙNG</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 333
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Chuyen gia - PHAM DUC MANH - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">CG. PHẠM ĐỨC MẠNH</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 666
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Chuyen gia - NGUYEN DIEU LINH - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">CG. NGUYỄN DIỆU LINH</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 333
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Chuyen gia - TRINH VAN HUNG - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">CG. TRỊNH VĂN HÙNG</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 666
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Giang vien - NGUYEN THANH LOC - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">GV. NGUYỄN THÀNH LỘC</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 666
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Chuyen gia - NGUYEN HOANG ANH - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">CG. NGUYỄN HOÀNG ANH</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 666
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-3 col-md-4 col-ms-4">
+                                <div class="box-about-3">
+                                    <img src="images/gioi-thieu/Chuyen gia - HOANG DUC HIEU - IMIC.png" class="img">
+                                    <div class="text-ct">
+                                        <div class="box">
+                                            <h3 class="title">CG. HOÀNG ĐỨC HIẾU</h3>
+                                            <div class="text2">
+                                                <i class="fa fa-phone"></i> 043. 7557 333
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Footer haravan -->
+    
+
+

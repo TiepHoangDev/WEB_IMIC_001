@@ -1,0 +1,117 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using WCF.BusinessObjectsLayer.EntityObjects;
+using WCF.DataAccessLayer.Models;
+
+namespace WCF.DataAccessLayer.Daos
+{
+    public class LessonDAO
+    {
+        public List<LessonObject> getElements()
+        {
+            WebIMicEntities m_objDb = new WebIMicEntities();
+            List<LessonObject> lisRs = new List<LessonObject>();
+            foreach (var item in m_objDb.WEB_IMIC_SP_Lesson_GETALL())
+            {
+                LessonObject objLesson = new LessonObject();
+                objLesson.LessonId = item.LessonId;
+                objLesson.LessonCategoryId = (Guid)item.LessonCategoryId;
+                objLesson.LessonCode = (long)item.LessonCode;
+                objLesson.LessonName = item.LessonName;
+                objLesson.ImageFlag = (bool)item.ImageFlag;
+                objLesson.SeoImage = item.SeoImage;
+                objLesson.TotalOfView = (long)item.TotalOfView;
+                objLesson.TotalOfLike = (long)item.TotalOfLike;
+                objLesson.Rank = (int)item.Rank;
+                objLesson.LessonSumary = item.LessonSumary;
+                objLesson.ModifiedBy = (Guid)item.ModifiedBy;
+                objLesson.ModifiedTime = (DateTime)item.ModifiedTime;
+                objLesson.IsDeleted = (bool)item.IsDeleted;
+                AccountObject objAccount = new AccountObject();
+                objAccount.AccountId = (Guid)item.ModifiedBy;
+                objAccount.Username = item.Username;
+                objLesson.objAccount = objAccount;
+                lisRs.Add(objLesson);
+            }
+            return lisRs;
+        }
+
+        public List<LessonObject> getElementsByCategoryId(Guid LessonCategoryId)
+        {
+            WebIMicEntities m_objDb = new WebIMicEntities();
+            List<LessonObject> lisRs = new List<LessonObject>();
+            foreach (var item in m_objDb.WEB_IMIC_SP_Lesson_GETBYCATEGORYID(LessonCategoryId))
+            {
+                LessonObject objLesson = new LessonObject();
+                objLesson.LessonId = item.LessonId;
+                objLesson.LessonCategoryId = (Guid)item.LessonCategoryId;
+                objLesson.LessonCode = (long)item.LessonCode;
+                objLesson.LessonName = item.LessonName;
+                objLesson.TotalOfView = (long)item.TotalOfView;
+                objLesson.TotalOfLike = (long)item.TotalOfLike;
+                objLesson.ImageFlag = (bool)item.ImageFlag;
+                objLesson.SeoImage = item.SeoImage;
+                objLesson.Rank = (int)item.Rank;
+                objLesson.LessonSumary = item.LessonSumary;
+                objLesson.ModifiedBy = (Guid)item.ModifiedBy;
+                objLesson.ModifiedTime = (DateTime)item.ModifiedTime;
+                objLesson.IsDeleted = (bool)item.IsDeleted;
+                AccountObject objAccount = new AccountObject();
+                objAccount.AccountId = (Guid)item.ModifiedBy;
+                objAccount.Username = item.Username;
+                objLesson.objAccount = objAccount;
+                lisRs.Add(objLesson);
+            }
+            return lisRs;
+        }
+
+        public LessonObject getElementById(Guid LessonId)
+        {
+            WebIMicEntities m_objDb = new WebIMicEntities();
+            foreach (var item in m_objDb.WEB_IMIC_SP_Lesson_GETBYID(LessonId))
+            {
+                LessonObject objLesson = new LessonObject();
+                objLesson.LessonId = item.LessonId;
+                objLesson.LessonCategoryId = (Guid)item.LessonCategoryId;
+                objLesson.LessonCode = (long)item.LessonCode;
+                objLesson.LessonName = item.LessonName;
+                objLesson.ImageFlag = (bool)item.ImageFlag;
+                objLesson.LessonSumary = item.LessonSumary;
+                objLesson.SeoImage = item.SeoImage;
+                objLesson.TotalOfView = (long)item.TotalOfView;
+                objLesson.TotalOfLike = (long)item.TotalOfLike;
+                objLesson.Rank = (int)item.Rank;
+                objLesson.ModifiedBy = (Guid)item.ModifiedBy;
+                objLesson.ModifiedTime = (DateTime)item.ModifiedTime;
+                objLesson.IsDeleted = (bool)item.IsDeleted;
+                objLesson.objCategory = new LessonCategoryDAO().getElementById((Guid)item.LessonCategoryId);
+                return objLesson;
+            }
+            return null;
+        }
+
+        public bool addElement(LessonObject objLesson)
+        {
+            WebIMicEntities m_objDb = new WebIMicEntities();
+            m_objDb.WEB_IMIC_SP_Lesson_INSERT(objLesson.LessonId, objLesson.LessonCategoryId, objLesson.LessonName,objLesson.ImageFlag,objLesson.SeoImage, objLesson.TotalOfView,
+                objLesson.TotalOfLike, objLesson.TotalRank, (byte)objLesson.Rank, objLesson.ModifiedBy, objLesson.ModifiedTime, objLesson.IsDeleted,objLesson.LessonSumary);
+            return true;
+        }
+
+        public bool updateElement(LessonObject objLesson)
+        {
+            WebIMicEntities m_objDb = new WebIMicEntities();
+            m_objDb.WEB_IMIC_SP_Lesson_UPDATE(objLesson.LessonId, objLesson.LessonCategoryId, objLesson.LessonName,objLesson.ImageFlag, objLesson.SeoImage, objLesson.TotalOfView,
+                objLesson.TotalOfLike, objLesson.TotalRank, (byte)objLesson.Rank, objLesson.ModifiedBy, objLesson.ModifiedTime, objLesson.IsDeleted,objLesson.LessonSumary);
+            return true;
+        }
+
+        public void deleteElement(Guid LessonId)
+        {
+            new WebIMicEntities().WEB_IMIC_SP_Lesson_DELETE(LessonId);
+        }
+    }
+}

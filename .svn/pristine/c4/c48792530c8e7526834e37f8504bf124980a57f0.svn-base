@@ -1,0 +1,222 @@
+﻿
+@{
+    ViewBag.Title = "Chinher sửa banner";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+<style>
+    .file-box {
+        display: none;
+        width: 100%;
+    }
+</style>
+@model WCF.BusinessObjectsLayer.EntityObjects.BannerObject
+<div class="portlet box red-intense">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Thêm mới banner
+        </div>
+        <div class="tools">
+
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        <div style="width:100%">
+            @using (Html.BeginForm("BannerUpdate", "BannerAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(x=>x.BannerId)
+                @Html.HiddenFor(x=>x.ImageLink)
+                <h4 style="color:red">@Html.ValidationSummary("", true)</h4>
+                <div class="form-group">
+                    <h3>Tiêu đề 1</h3>
+
+                    @Html.TextBoxFor(q => q.Text1, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+                        @required = "true",
+                        @placeholder = "tiêu đề 1"
+                    })
+                </div>
+                <div class="form-group">
+                    <h3>Tiêu đề 2</h3>
+
+                    @Html.TextBoxFor(q => q.Text2, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+
+                        @placeholder = "tiêu đề 2"
+                    })
+                </div>
+                <div class="form-group">
+                    <h3>Tiêu đề 3</h3>
+
+                    @Html.TextBoxFor(q => q.Text3, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+
+                        @placeholder = "tiêu đề 3"
+                    })
+                </div>
+                <div class="form-group">
+                    <h3>Tiêu đề 4</h3>
+
+                    @Html.TextBoxFor(q => q.Text4, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+
+                        @placeholder = "tiêu đề 4"
+                    })
+                </div>
+                <div class="form-group">
+                    <h3>Tiêu đề 5</h3>
+
+                    @Html.TextBoxFor(q => q.Text5, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+
+                        @placeholder = "tiêu đề 5"
+                    })
+                </div>
+                if (Model.FlagImage == true)
+                {
+                    <div class="form-group">
+
+                        <label style="width:100%">Ảnh đại diện bài viết</label>
+
+                        <input type="checkbox" name="localfile" value="1" checked class="form-control" />@Html.Raw("Chọn ảnh từ máy tính")
+                        <div class="file-box" style="display:block">
+                            <input type="file" name="Avatar" id="ava">
+                        </div>
+                        <input name="ImageLink" type="text" class="form-control" style="display:none;margin-top:10px" placeholder="Dán link ảnh đại diện vào đây" value="" />
+                    </div>
+                    <div style="margin-top:15px;">
+                        <img style="width:200px;height:180px;" class="img-thumbnail rimage" src="~/Content/Galleries/Banner/@Model.ImageLink" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+
+                        <label style="width:100%">Ảnh đại diện bài viết</label>
+
+                        <input type="checkbox" name="localfile" value="1" class="form-control" />@Html.Raw("Chọn ảnh từ máy tính")
+                        <div class="file-box">
+                            <input type="file" name="Avatar" id="ava">
+                        </div>
+                        <input name="ImageLink" type="text" class="form-control" style="margin-top:10px" placeholder="Dán link ảnh đại diện vào đây" value="@Model.ImageLink" />
+                    </div>
+                    <div style="margin-top:15px;">
+                        <img style="width:200px;height:180px;" class="img-thumbnail rimage" src="@Model.ImageLink" />
+                    </div>
+                }
+                <div class="form-group">
+                    <label>Tiêu đề Seo của ảnh(tự sinh)</label>
+                    @Html.TextBoxFor(x => x.ImageAlt, new { @class = "form-control readimg", @type = "text", @placeholder = "Tiêu đề SEO" })
+
+                </div>
+
+                <div class="form-group">
+                    <h3>Vị trí</h3>
+
+                    @Html.TextBoxFor(q => q.Rank, new
+       {
+           @type = "number",
+           @class = "form-control",
+           @placeholder = "vị trí để hiển thị"
+       })
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+
+                </div>
+            }
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script>
+        $('input[name=Avatar]')
+            .on('change',
+                function (e) {
+                    var fullPath = $(this).val();
+                    if (fullPath) {
+                        var startIndex = (fullPath.indexOf('\\') >= 0
+                            ? fullPath.lastIndexOf('\\')
+                            : fullPath.lastIndexOf('/'));
+                        var filename = fullPath.substring(startIndex);
+                        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                            filename = filename.substring(1);
+                        }
+                        var fn = filename.split('.');
+                        var extension = fn[fn.length - 1];
+                        filename = filename.replace(extension, '');
+                        filename = filename.replace('.', ' ');
+                        $('input[name=ImageAlt]').val(filename);
+
+                    }
+                });
+
+        $("#ava").change(function () {
+            readURL(this, '.rimage');
+        });
+        $('input[name=ImageLink]').on('keydown', function (e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                var fullPath = $(this).val();
+                if (fullPath) {
+                    var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+                    var filename = fullPath.substring(startIndex);
+                    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                        filename = filename.substring(1);
+                    }
+                    var fn = filename.split('.');
+                    var extension = fn[fn.length - 1];
+                    filename = filename.replace(extension, '');
+                    filename = filename.replace('.', ' ');
+                    filename = filename.replace('%20', ' ');
+                    $('input[name=ImageAlt]').val(filename);
+
+                }
+                $('.rimage').attr('src', $(this).val());
+            }
+        })
+        $(document).on("keydown", "input", function (e) {
+            if (e.which == 13) e.preventDefault();
+        });
+        $('input[name=localfile]').on('click', function () {
+            if ($(this).is(':checked')) {
+                $('.file-box').fadeIn('fast');
+                $('input[name=ImageLink]').fadeOut('fast');
+            }
+            else {
+                $('.file-box').fadeOut('fast');
+                $('input[name=ImageLink]').fadeIn('fast');
+            }
+        })
+
+    </script>
+    <script>
+        $("#ava").change(function () {
+            readURL(this, '.rimage');
+        });
+
+    </script>
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Trang nguồn bài viết";
+    Layout = "~/Areas/BTV/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    tr,td,th {
+        padding: 10px;
+    }
+</style>
+@model WCF.BusinessObjectsLayer.EntityObjects.SourcePageObject
+<div class="form-body">
+    @if (!string.IsNullOrEmpty(Model.TechSource))
+    {
+       <section>
+        <h3> Danh sách trang nguồn bài viết trang công nghệ</h3>
+        <div>@Html.Raw(HttpUtility.HtmlDecode(Model.TechSource)) </div>
+    </section> 
+    }
+    
+    @if (!string.IsNullOrEmpty(Model.LessonSource))
+    {
+        <section>
+            <h3> Danh sách trang nguồn bài viết trang công nghệ</h3>
+            <div>@Html.Raw(HttpUtility.HtmlDecode(Model.LessonSource)) </div>
+        </section>
+    }
+    @if (!string.IsNullOrEmpty(Model.RecruitSource))
+    {
+        <section>
+            <h3> Danh sách trang nguồn bài viết trang công nghệ</h3>
+            <div>@Html.Raw(HttpUtility.HtmlDecode(Model.RecruitSource)) </div>
+        </section>
+    }
+
+
+</div>
+
+

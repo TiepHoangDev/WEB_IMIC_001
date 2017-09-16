@@ -1,0 +1,12 @@
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.DataAccessLayer\bin\Debug\WCF.DataAccessLayer.dll.config
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.DataAccessLayer\bin\Debug\WCF.DataAccessLayer.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.DataAccessLayer\bin\Debug\WCF.DataAccessLayer.pdb
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.DataAccessLayer\bin\Debug\EntityFramework.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.DataAccessLayer\bin\Debug\WCF.BusinessObjectsLayer.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.DataAccessLayer\bin\Debug\WCF.BusinessObjectsLayer.pdb
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.DataAccessLayer\bin\Debug\EntityFramework.xml
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.DataAccessLayer\obj\Debug\WCF.DataAccessLayer.csprojResolveAssemblyReference.cache
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.DataAccessLayer\obj\Debug\WCF.DataAccessLayer.dll
+E:\HPT\imic\web\WEB_IMIC_2.0\WCF.DataAccessLayer\obj\Debug\WCF.DataAccessLayer.pdb

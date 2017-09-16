@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using WCF.BusinessObjectsLayer.EntityObjects;
+using WCF.DataAccessLayer.Models;
+
+namespace WCF.DataAccessLayer.Daos
+{
+    public class IntroducePageDao : BaseModel<IntroducePageObject>
+    {
+        public override List<IntroducePageObject> getElements()
+        {
+            List<IntroducePageObject> lisIP = new List<IntroducePageObject>();
+            using (var dbContext = new WebIMicEntities())
+            {
+                var objTemp = dbContext.WEB_IMIC_SP_IntroducePage_GetAll().FirstOrDefault();
+                IntroducePageObject objPO = new IntroducePageObject();
+
+                objPO.IntroducePageId = objTemp.IntroducePageId;
+                objPO.IsDeleted = objTemp.IsDeleted;
+                objPO.ModifiedBy = objTemp.ModifiedBy;
+                objPO.ModifiedTime = objTemp.ModifiedTime;
+                objPO.PassageExperiencers = objTemp.PassageExperiencers;
+                objPO.PassagePartner = objTemp.PassagePartner;
+                objPO.PassageServices = objTemp.PassageServices;
+                objPO.TitleExperiencers = objTemp.TitleExperiencers;
+                objPO.TitlePartner = objTemp.TitlePartner;
+                objPO.TitleServices = objTemp.TitleServices;
+                lisIP.Add(objPO);
+
+            }
+            return lisIP;
+        }
+        public bool PageUpdate(IntroducePageObject objP)
+        {
+            using (var db = new WebIMicEntities())
+            {
+                db.WEB_IMIC_SP_IntroducePage_Update(objP.IntroducePageId, objP.TitleServices, objP.PassageServices,
+                    objP.PassageExperiencers, objP.TitlePartner, objP.PassagePartner, objP.ModifiedBy, DateTime.Now,
+                    objP.IsDeleted, objP.TitleExperiencers);
+            }
+            return true;
+        }
+        
+    }
+}

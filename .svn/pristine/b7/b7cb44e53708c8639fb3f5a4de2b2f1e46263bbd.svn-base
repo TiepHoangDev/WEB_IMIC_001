@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.StudentGaleryObject>
+@using WCF.Web.App_Start
+@foreach (var item in Model)
+{
+    if (item.FlagLink == true)
+    {
+        <a class="grid-item" href="~/Content/Galleries/StudentGalery/@item.ImageLink">
+            <div class="box-item">
+                @if (item.FlagThumbnail == true)
+                {
+                    <img src="~/Content/Galleries/StudentGalery/@item.ImageThumbnail" class="img" />
+                }
+                else
+                {
+                    <img src="@item.ImageThumbnail" class="img" />
+                }
+                <div class="box-cot">
+                    <h3 class="name">@item.imageName <span class="view">@item.TotalOfViews</span></h3>
+                    <p>
+                        @item.StudentDescription
+                    </p>
+                </div>
+            </div>
+        </a>
+    }
+    else
+    {
+        <a class="grid-item" href="@item.ImageLink">
+            <div class="box-item">
+                @if (item.FlagThumbnail == true)
+                {
+                    <img src="~/Content/Galleries/StudentGalery/@item.ImageThumbnail" class="img" />
+                }
+                else
+                {
+                    <img src="@item.ImageThumbnail" class="img" />
+                }
+                <div class="box-cot">
+                    <h3 class="name">@item.imageName <span class="view">@item.TotalOfViews</span></h3>
+                    <p>
+                        @item.StudentDescription
+                    </p>
+                </div>
+            </div>
+        </a>
+    }
+
+
+}

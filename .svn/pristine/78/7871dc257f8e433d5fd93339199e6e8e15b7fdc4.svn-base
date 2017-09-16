@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Chỉnh sửa bài viết";
+    Layout = "~/Areas/BTV/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model WCF.BusinessObjectsLayer.EntityObjects.ProposeObject
+<div class="portlet box red-intense">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Thêm mới đề xuất
+        </div>
+        <div class="tools">
+
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        <div style="width:100%">
+            @using (Html.BeginForm("ProposeUpdate", "Propose", FormMethod.Post))
+            {
+                @Html.HiddenFor(x=>x.ProposeId)
+                @Html.HiddenFor(x=>x.CreateDate)
+                @Html.HiddenFor(x=>x.IsRegister)
+                <h4 style="color:red">@Html.ValidationSummary("", true)</h4>
+                <div class="form-group">
+                    <h3>Tên bài viết</h3>
+
+                    @Html.TextBoxFor(q => q.ProposeName, new
+       {
+           @type = "text",
+           @class = "form-control"
+       })
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+
+                </div>
+            }
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+
+
+

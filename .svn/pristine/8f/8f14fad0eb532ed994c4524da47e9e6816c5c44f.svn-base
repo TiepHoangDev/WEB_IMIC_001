@@ -1,0 +1,16 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.VideoBannerObject>
+
+@{
+    Layout = null;
+}
+
+<div id="owl-demo" class="owl-carousel owl-theme">
+    @foreach (var item in Model)
+    {
+        <div class="item"><img src="~/Content/Galleries/Video/Banners/@item.Bannerlmage" alt="@item.VideoBannerId"></div>
+    }
+
+    @*<div class="item"><img src="~/Content/images/slider/images/1.png" alt="The Last of us"></div>
+    <div class="item"><img src="~/Content/images/slider/images/2.png" alt="GTA V"></div>
+    <div class="item"><img src="~/Content/images/slider/images/daotao.png" alt="Mirror Edge"></div>*@
+</div>

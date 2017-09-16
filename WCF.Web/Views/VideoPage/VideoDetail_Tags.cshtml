@@ -1,0 +1,17 @@
+﻿@{
+    Layout = null;
+}
+@model List<WCF.BusinessObjectsLayer.EntityObjects.VideoTagObject>
+
+@if (Model.Count > 0)
+{
+    <div class="v-tag-box">
+        <div class="w-100 pull-left">
+            <h4 style="float:left;margin-top:5px;padding-right:15px;">TAGS:</h4>
+            @foreach (var item in Model)
+            {
+                <span class="video-tag" data-id="@item.VideoTagId">@item.VideoTagName</span>
+            }
+        </div>
+    </div>
+}

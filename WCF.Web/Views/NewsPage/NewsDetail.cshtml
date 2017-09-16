@@ -1,0 +1,159 @@
+﻿@using WCF.BusinessObjectsLayer.EntityObjects
+@model WCF.BusinessObjectsLayer.EntityObjects.NewsObject
+@{
+    Layout = "~/Views/NewsPage/_LayoutNews.cshtml";
+    ViewBag.Title = @Model.NewsTitle;
+    ViewBag.description = @Model.NewsSummary;
+    ViewBag.image = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + "Content/Galleries/News/NewsImage/" + @Model.NewsAvatar;
+}
+<style>
+    .tag-box {
+    width: 100%;
+    float: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e9ebee;
+}
+.c-tag {
+    float: left;
+    color: #cc3333;
+    border: 1px solid #cc3366;
+    font-size: 11px;
+    padding: 7px 12px;
+    text-transform: none;
+    line-height: normal;
+    margin-right: 6px;
+    cursor: pointer;
+}
+.cmt-header {
+    margin-top: 10px;
+    background: #424147;
+    color: #FFEA00;
+    text-transform: uppercase;
+    font-size: 1.4em;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    float: left;
+}
+</style>
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=@System.Configuration.ConfigurationManager.AppSettings["FacebookAppId"]";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<script>
+    //prevent copy
+    $(document).keydown(function (event) {
+        if (event.keyCode == 123) {
+            return false; //Prevent f12
+        }
+        else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+            return false;  //Prevent from ctrl+shift+i
+        }
+    });
+    //end prevent copy
+</script>
+
+<div class="main" oncopy="return false" oncut="return false" onpaste="return false" oncontextmenu="return false">
+    <div class="content-detail">
+        <div class="content_small">
+            <div class="box-content">
+                <h1 class="title">
+                    @Model.NewsTitle
+                </h1>
+                <div class="time-t">
+                    <span class="fa-clock-o fa">@DateTime.Now.ToString("dd/MM/yyyy")</span>
+                    <a href="#" class="pull-right"><img src="~/Content/images/icon/icon_print.png"></a>
+                </div>
+                <h3 class="short_intro">
+                    @Model.NewsSummary
+                </h3>
+                @Html.Raw(Model.NewsContent)
+                <!--TAG-->
+                <div class="tag-box">
+                    <h4 class="cmt-header">TAGS:</h4>
+                    <div style="margin-top:10px;margin-left:10px;float:left">
+                        @{
+                            List<TagNewsObject> lstTag = (List<TagNewsObject>)ViewBag.ListTag;
+                            if (lstTag != null)
+                            {
+                                foreach (var item in lstTag)
+                                {
+                                    <a class="c-tag rec-tag">@item.TagNewsName</a>
+                                }
+                            }
+                            else
+                            {
+                                <p style="font-size: 15px; font-weight: bold;">Chưa có từ khóa</p>
+                            }
+
+                        }
+                    </div>
+                </div>
+                <div class="fb-like" data-href="@Request.Url.ToString()" style="float: left; margin-top: 25px;"
+                     data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true">
+
+                </div>
+                <div class="fb-comments" data-href="@HttpContext.Current.Request.Url.AbsoluteUri" data-numposts="5"></div>
+            </div>
+
+            <div class="box-cacbaikhac">
+                <h3 class="title">Các bài đã đăng</h3>
+                @{Html.RenderAction("Index_UserPostedNews");}
+
+            </div>
+        </div>
+    </div>
+    <div class="c-column">
+        <div class="box-list">
+            <img src="~/Content/images/single/qc.jpg" class="img">
+        </div>
+        <div class="box-list">
+            <!--Bai viet duoc quan tam-->
+            @{Html.RenderAction("Index_TopNews");}
+        </div>
+        <div class="box-list">
+            <h2 class="title">
+                <a href="#">SourceCode</a>
+            </h2>
+            <a href="#">
+                <img src="~/Content/images/single/single_21.jpg" class="img">
+                <div class="red-b">Đồ án thiết kế nội thất 3D</div>
+            </a>
+
+        </div>
+        <div class="box-list">
+            <h2 class="title"><a href="#">Phần mềm</a></h2>
+            <a href="#">
+                <img src="~/Content/images/single/single_29.jpg" class="img">
+            </a>
+            <ul class="newlist-2">
+                <li><a href="#">Top ứng dụng chỉnh sửa ảnh tốt nhất năm 2014</a></li>
+                <li><a href="#">Hướng dẫn sử dụng PhotoScape, phần mềm chỉnh sửa ảnh gọn nhẹ</a></li>
+                <li><a href="#">Download phần mềm đóng dấu ảnh tốt nhất link </a></li>
+            </ul>
+        </div>
+        <div class="box-list">
+            <a href="#">
+                <h2 class="title">VIDEO</h2>
+            </a>
+            <a href="#">
+                <img src="~/Content/images/single/single_8.jpg" class="img">
+                <div class="red-green">Lập trình Android cơ bản cho người mới học đến nâng cao cho người đã biết về ngôn ngữ Java</div>
+            </a>
+            <ul class="newlist-2">
+                <li><a href="#">Lập trình Java theo nhóm sử dụng Eclipse và SVN  Annotation Processing Tool</a></li>
+                <li><a href="#">Chia sẻ kiến các thức nền tảng & kinh nghiệm lập trình game Android </a></li>
+                <li><a href="#">Lập Trình C# cơ bản hướng dẫn rất hay các bạn có thể tham khảo các bài video </a></li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

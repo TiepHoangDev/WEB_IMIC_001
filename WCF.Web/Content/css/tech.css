@@ -1,0 +1,492 @@
+﻿@charset "utf-8";
+/* CSS Document */
+#tech-wrapper {
+    max-width: 1024px;
+    margin: auto;
+    width: 100%;
+    margin-top: 20px;
+}
+
+    #tech-wrapper .fa {
+        margin-top: 2px;
+    }
+
+.text-black {
+    color: #000;
+}
+
+.left-tech li {
+    list-style-type: none;
+}
+
+.left-tech ul {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.m-top-5 {
+    margin-top: 5px;
+}
+
+.m-bottom-5 {
+    margin-bottom: 5px;
+}
+
+.clear-ul {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+    .clear-ul li {
+        float: left;
+        list-style-type: none;
+        margin-top: 8px;
+    }
+
+.w-100 {
+    width: 100%;
+}
+
+.p-left-10 {
+    padding-left: 10px !important;
+}
+
+.p-right-10 {
+    padding-right: 10px !important;
+}
+
+.no-padding {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.p-left-0 {
+    padding-left: 0px !important;
+}
+
+.p-right-0 {
+    padding-right: 0px !important;
+}
+
+.bg-white {
+    background: #FFF;
+}
+
+.tech-main {
+    padding: 10px;
+    width: 100%;
+    float: left;
+    padding-top: 15px;
+}
+
+.t-content {
+    width: 100%;
+    float: left;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #999;
+}
+
+.round-avatar {
+    width: 47px;
+    height: 47px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 15px;
+}
+
+.t-box-right {
+    float: left;
+    width: calc(100% - 47px);
+    padding-left: 15px;
+}
+
+.t-article {
+    width: 100%;
+    float: left;
+    margin: 0px;
+    padding-left: 0px;
+}
+#cmt-list{
+    width:100%;
+    margin-top:20px;
+    float:left
+}
+.cmt-like-btn {
+    color:#999;
+    cursor:pointer;
+}
+.cmt-like-btn{
+    color:#999;
+}
+.cmt-time{
+    float:left;
+    margin-left:10px;
+    color:#777;
+}
+.cmt-delete{
+    float:right;
+    color:#777;
+    font-weight:bold;
+}
+.t-article li.t-item {
+    list-style-type: none;
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dee1e5;
+}
+
+.t-article li:nth-child(1) {
+    margin-top: 0px;
+}
+
+    .t-article li:nth-child(1) h4 {
+        margin-top: 15px;
+        margin-bottom: 0px;
+    }
+
+.t-article li.t-item:last-child {
+    border-bottom: none;
+}
+
+.t-category {
+    width: 100%;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+}
+
+    .t-category li {
+        border-right: 1px solid #999;
+        padding-left: 10px;
+        padding-right: 10px;
+        float: left;
+        list-style-type: none;
+    }
+
+.sm-round-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    float: left;
+    margin-top: 5px;
+}
+
+ul.t-likes {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 10px;
+    max-height: 110px;
+    overflow: hidden;
+}
+
+    ul.t-likes li {
+        list-style-type: none;
+        float: right;
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+
+.count-box {
+    margin-left: 3px;
+    margin-right: 3px;
+    background: #e4e4e4;
+    color: #7a7a7a;
+    border-radius: 8px;
+    padding: 1px 3px;
+    font-weight: bold;
+}
+
+.t-link {
+    float: left;
+    width: calc(100% - 20px);
+    margin-left: 3px;
+}
+
+.t-same-poster li {
+    position: relative;
+}
+
+#toggle-tech {
+    margin-top: 40px;
+    width: 100%;
+    float: left;
+    background: #f8f8f8;
+    border: 1px solid #e4e4e4;
+}
+
+    #toggle-tech li.toggle-box {
+        padding: 10px;
+        width: 100%;
+        float: left;
+        border-top: 1px solid #e4e4e4;
+    }
+
+        #toggle-tech li.toggle-box:first-child {
+            padding: 0px;
+        }
+
+        #toggle-tech li.toggle-box:nth-child(2) {
+            padding-top: 0px;
+        }
+
+        #toggle-tech li.toggle-box ul.top-toggle {
+            width: calc(100% - 46px);
+            float: left;
+            margin: 0px;
+            padding: 0px;
+            border-right: 1px solid #e4e4e4;
+        }
+
+            #toggle-tech li.toggle-box ul.top-toggle li {
+                list-style-type: none;
+                float: left;
+                margin-left: 10px;
+                padding: 5px 5px;
+            }
+
+    #toggle-tech .drop-btn {
+        width: 45px;
+        line-height: 52px;
+        float: right;
+        border: none;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    #toggle-tech li.toggle-box ul.top-toggle li p {
+        margin-bottom: 2px;
+    }
+
+    #toggle-tech li.toggle-box ul li:first-child {
+        margin-left: 0px;
+    }
+
+.capital-box {
+    margin-right: 5px;
+    background: #9dc1cc;
+    color: #FFF;
+    border-radius: 50%;
+    padding: 1px 4px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.xs-round-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    float: left;
+}
+
+.number {
+    font-size: 16px;
+}
+
+.t-comment-sec {
+    margin-top: 15px;
+}
+
+.t-comment {
+    width: 100%;
+    float: left;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dee1e5;
+    margin-top: 10px;
+}
+
+    .t-comment .t-subcomment {
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px solid #dee1e5;
+    }
+
+.t-cmt-right {
+    float: left;
+    width: calc(100% - 47px);
+    padding-left: 15px;
+}
+
+.t-cmt-content {
+    width: 100%;
+    float: left;
+    margin-top: 4px;
+}
+
+.m-t-15 {
+    margin-top: 15px;
+}
+
+.m-t-8 {
+    margin-top: 8px;
+}
+
+.sub-cmt-box {
+    width: 100%;
+    float: left;
+    display: none;
+}
+
+.t-hide-comment {
+    cursor: pointer;
+}
+
+#toggle-tech li.toggle-box:nth-child(2), #toggle-tech li.toggle-box:nth-child(3) {
+    display: none;
+}
+
+#toggle-tech li.toggle-box ul.top-toggle li:last-child {
+    display: block;
+}
+
+.tech-tag {
+    background: #CCC;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #dee1e5;
+}
+
+.m-l-10 {
+    margin-left: 8px;
+}
+
+#toggle-tech li.toggle-box ul.top-toggle li:last-child {
+    display: none;
+}
+
+.t-reply-box {
+    padding-top: 10px;
+}
+
+.t-user {
+    margin-left: 0px;
+    padding-left: 0px;
+    padding: 15px;
+    background: #FFF;
+}
+
+    .t-user li {
+        list-style-type: none;
+        width: 100%;
+        float: left;
+        padding-bottom: 10px;
+        border-bottom: 1px dotted #dee1e5;
+        margin-top: 8px;
+    }
+
+.square-avatar {
+    width: 50px;
+    height: 50px;
+}
+
+.btn-float-post {
+    position: fixed;
+    bottom: 5%;
+    right: 10%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: lightgoldenrodyellow;
+    font-size: 30px;
+    text-align: center;
+    color: #999;
+    line-height: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 999;
+}
+
+.cat-img {
+    max-height: 101px;
+}
+
+.heart {
+    color: #f4427a;
+}
+
+.like:hover {
+    cursor: pointer;
+}
+
+.tech-content img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.right-tech {
+    padding-left: 25px;
+    padding-right: 0px;
+}
+
+.cmt-box-title {
+    float: left;
+    margin-top: 10px;
+    padding-bottom: 7px;
+    border-bottom: 2px solid #0193de;
+}
+
+.tech-tag-02 {
+    float: left;
+    color: #cc3333;
+    border: 1px solid #cc3366;
+    font-size: 11px;
+    padding: 7px 12px;
+    text-transform: none;
+    line-height: normal;
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+    .tech-tag-02:hover {
+        background: #CCC;
+    }
+
+@media only screen and (max-width:980px) {
+    .cat-img {
+        max-height: 213px;
+    }
+
+    .right-tech {
+        padding-left: 25px;
+        padding-right: 0px;
+    }
+}
+
+@media only screen and (max-width:700px) {
+    .cat-img {
+        max-height: 130px;
+    }
+
+    .right-tech {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+.t-reply {
+    cursor: pointer;
+    color: #777;
+}
+
+@media only screen and (max-width:600px) {
+    .cat-img {
+        max-height: 101px;
+    }
+
+    .right-tech {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .t-box-right {
+        width: 100%;
+    }
+}

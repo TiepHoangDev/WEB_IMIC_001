@@ -1,0 +1,614 @@
+﻿@{
+    //ViewBag.Title = @Model.ArticleTitle;
+    
+    //ViewBag.description = @Model.TechSummary;
+    //ViewBag.image = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + "Content/Galleries/Tech/Articles/" + @Model.ArticleImageLink;
+    Layout = "~/Views/TechPage/_LayoutTech.cshtml";
+}
+@using WCF.BusinessObjectsLayer.EntityObjects
+@using WCF.BusinessObjectsLayer.Commons
+@model WCF.BusinessObjectsLayer.EntityObjects.TechArticleObject
+@section TechCss{
+    <link href="~/Content/css/tech.css" rel="stylesheet">
+<link href="~/Content/assets/ckeditor/plugins/prism/lib/prism/prism_patched.min.css" rel="stylesheet" />
+
+    <link href="~/Content/assets/ckeditor/plugins/codesnippet/lib/highlight/styles/monokai_sublime.css" rel="stylesheet"/>
+
+<script src="~/Content/assets/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+    <style>
+        .box-cacbaikhac {
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .c-column {
+            width: 314px !important;
+        }
+    </style>
+}
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=@System.Configuration.ConfigurationManager.AppSettings["FacebookAppId"]";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<div id="tech-wrapper" oncopy="return false" oncut="return false" onpaste="return false" oncontextmenu="return false">
+    <div class="col-lg-8 col-xs-12" style="padding-left:0px;padding-right:0px;">
+        <div class="left-tech w-100 pull-left bg-white">
+            <div class="tech-main">
+                <div class="t-content">
+
+                    <div class="t-box-right">
+                        <ul class="t-article">
+                            <!--title-->
+
+                            <li class="t-item">
+                                @*<a href="@Url.RouteUrl("user-profile", new {username = Model.objCreateBy.Username})">
+                                        <img class="round-avatar hidden-xs " src="~/Content/images/avatar/@Model.objCreateBy.ImageAvatar"/>
+
+                                    </a>*@
+                                <a href="#">
+                                    <img class="round-avatar hidden-xs " src="~/Content/images/avatar/@Model.objCreateBy.ImageAvatar" />
+
+                                </a>
+                                <h4>@Model.ArticleTitle</h4>
+                            </li>
+                            <!--category-->
+                            <li class="t-item">
+                                <ul class="t-category">
+                                    <li><a><b>@Model.objTechCategory.CategoryName</b></a></li>
+                                    <li class="text-muted">@Model.CreatedTime.ToString("dd/MM/yyyy")</li>
+                                    <li class="text-muted">@Model.TotalOfViews lượt xem</li>
+                                </ul>
+                                <a class=" visible-xs hidden-lg">@Model.objCreateBy.FullName</a>
+                            </li>
+                            <!--actual content--><!--ck editor-->
+                            <li class="t-item">
+                                <div class="w-100 tech-content">
+                                    @*<div style="font-weight:600">@Model.TechSummary</div>
+                                        <br />*@
+                                    @Html.Raw(HttpUtility.HtmlDecode(Model.ContentArticle))
+                                </div>
+                            </li>
+                            <!-- likes -->
+                            <li class="t-item">
+                                <div class="col-xs-12">
+                                    @if (Session[CommonConstants.SESSION_ACCOUNT] != null)
+                                    {
+                                        <div class="fa fa-link text-muted pull-right" style="font-size:18px"></div>
+
+                                        bool? liked = (bool?)ViewBag.liked;
+                                        if (liked != null)
+                                        {
+                                            if (liked.Value == true)
+                                            {
+                                                <div class="fa fa-heart pull-right heart like p-right-10" data-status="on" href="javascript:0" style="font-size:18px"></div>
+                                            }
+                                            else
+                                            {
+                                                <div class="fa fa-heart pull-right text-muted like p-right-10" data-status="off" href="javascript:0" style="font-size:18px"></div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="fa fa-heart pull-right text-muted like p-right-10" href="javascript:0" style="font-size:18px"></div>
+                                        }
+
+                                    }
+
+                                    <a class="pull-right text-muted  p-right-10 t-like-count" href="javascript:(0)">
+                                        <b><span class="like-number">@Model.TotalOfLikes</span>&nbsp;Lượt thích</b>
+                                    </a>
+                                </div>
+                                <div class="w-100 pull-left">
+                                    @{Html.RenderAction("Detail_GetUserLike", "TechPage", new { articleid = Model.TechArticleId });}
+                                </div>
+                            </li>
+                            <li class="t-item">
+                                <div class="w-100 pull-left">
+                                    <h4 style="float:left;margin-top:5px;padding-right:15px;">Từ khóa tìm kiếm:</h4>
+                                    @{Html.RenderAction("Detail_GetTag", "TechPage", new { articleid = Model.TechArticleId });}
+                                </div>
+                            </li>
+                            <!--same-poster-->
+                            <div class="fb-like" data-href="@Request.Url.ToString()" style="float: left; margin-top: 25px;"
+                                 data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true">
+
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+                <!--t content-->
+                <!--t-comment-sec-->
+                <div class="t-comment-sec w-100 pull-left">
+                    @if (Session[CommonConstants.SESSION_ACCOUNT] == null)
+                    {
+                        <div class="well-sm alert-info col-xs-12">
+                            <h3>Yêu cầu đăng nhập</h3>
+                            <p>Bạn cần phải là thành viên để có thể comment vào bài viết này, vui lòng đăng nhập bằng tài khoản của mình hoặc đăng ký</p>
+                            <div class="col-lg-3 col-sm-6 col-xs-12 p-left-0 m-top-5">
+                                <a class="btn btn-primary btn-sm col-lg-12 col-xs-12">Đăng nhập</a>
+                            </div>
+                            <div class="col-lg-3 col-sm-6 col-xs-12 p-left-0 m-top-5">
+                                <a class="btn btn-success btn-sm col-lg-12 col-xs-12">Đăng ký</a>
+                            </div>
+                            <p></p>
+                        </div>
+                    }
+
+                    <h4 class="cmt-box-title">Bình luận</h4>
+
+                    @if (Session[CommonConstants.SESSION_ACCOUNT] != null)
+                    {
+
+                        <div class="t-comment">
+                            <img src="~/Content/images/avatar/@ViewBag.Ava" class="round-avatar pull-left" />
+                            <div class="t-cmt-right">
+                                <div class="w-100 pull-left">
+                                    <textarea class="form-control" placeholder="Bạn đang nghĩ gì" rows="3" name="content"></textarea>
+                                    <div class="w-100 pull-left m-t-15">
+
+                                        <div class="col-lg-2 col-xs-5 col-md-3 p-right-0 pull-right">
+                                            <button class="btn-primary btn pull-right col-xs-12 btn-sm" id="btn-submit-cmt" data-article="@Model.TechArticleId">Đăng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="fb-comments" data-href="@Request.Url.ToString()" data-width="100%" data-numposts="5"></div>
+                    <div class="clear"></div>
+                    <div id="cmt-list">
+                        @{Html.RenderAction("Detail_GetMoreComment", "TechPage", new { articleid = Model.TechArticleId, pageIndex = 0 });}
+                    </div>
+                    <div class="col-xs-12" style="margin-top: 25px;">
+                        <button class="col-xs-offset-5 btn btn-default" id="btn-load-cmt">Tải thêm</button>
+                    </div>
+                </div>
+
+                @*<li class="t-item">*@
+                @{Html.RenderAction("Detail_GetRelatedLink", "TechPage", new { techId = @Model.TechArticleId });}
+                <!--same-link-->
+                @*<ul id="toggle-tech">
+                        <li class="toggle-box">
+                            <a class="drop-btn fa fa-angle-down"></a>
+                            <ul class="top-toggle">
+                                <li>
+                                    <p class="w-100 text-muted text-center">created</p>
+                                    <img src="~/Content/images/other/@Model.objCreateBy.ImageAvatar" class="xs-round-avatar" />
+                                    <p class="pull-left p-left-10">@Model.objCreateBy.FullName</p>
+                                </li>
+                                <li>
+                                    <p class="w-100 text-muted text-center">Last replies</p>
+                                    <img src="~/Content/images/other/anh1.jpg" class="xs-round-avatar" />
+                                    <p class="pull-left p-left-10">10d</p>
+                                </li>
+                                <li>
+                                    <div class="w-100 pull-left text-center number"><b>@Model.TotalOfReplies</b></div>
+                                    <div class=" pull-left text-muted">Replies</div>
+                                </li>
+                                <li>
+                                    <div class="w-100 text-danger number"><b>@Model.TotalOfViews</b></div>
+                                    <div class=" pull-left text-muted">Views</div>
+                                </li>
+                                <li>
+                                    <div class="w-100 text-center number"><b>@Model.TotalOfUsers</b></div>
+                                    <div class=" pull-left text-muted">Users</div>
+                                </li>
+                                <li>
+                                    <img class="sm-round-avatar m-l-10" src="~/Content/images/avatar/2.jpg" />
+                                    <img class="sm-round-avatar m-l-10" src="~/Content/images/avatar/2.jpg" />
+                                    <img class="sm-round-avatar m-l-10" src="~/Content/images/avatar/2.jpg" />
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="toggle-box">
+                            <h5 class="w-100 pull-left text-muted">Frequent Poster</h5>
+                            <ul class="w-100 pull-left">
+                                <li class="pull-left p-right-10"> <img class="sm-round-avatar" src="~/Content/images/avatar/2.jpg" /> </li>
+                                <li class="pull-left p-right-10"> <img class="sm-round-avatar" src="~/Content/images/avatar/3.jpg" /> </li>
+                                <li class="pull-left p-right-10"> <img class="sm-round-avatar" src="~/Content/images/single/24fd3cca6778555b5725a961ec36da68.jpg" /> </li>
+                            </ul>
+                        </li>
+                        <li class="toggle-box">
+                            <h5 class="w-100 pull-left text-muted">Popular links</h5>
+                            @{Html.RenderAction("Detail_GetRelatedLink", "TechPage", new { categoryID = Model.TechCategoryId });}
+
+                        </li>
+                    </ul>*@
+                <!--toggle-tech-->
+                @*</li>*@
+                @*<img class="w-100 pull-lxeft m-t-15" style="height:165px" src="~/Content/images/Home_Conghe_detail_03.png">*@
+                <!--adrvetise-->
+                @*<div class="w-100 margintop30 pull-left">
+                        <h4>Suggested Topic</h4>
+                        <table class="m-t-15 w-100">
+                            <thead class="text-muted border-bottom">
+                                <tr>
+                                    <td>Topic</td>
+                                    <td>Category</td>
+                                    <td>Replies</td>
+                                    <td>Views</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-bottom">
+                                    <td>
+                                        <h5><a class="text-black">[Wiki dll c#] Các ví dụ tạo DLL trong Delphi</a></h5>
+                                        <span class="tech-tag">wiki</span> <span class="tech-tag">C++</span>
+                                    </td>
+                                    <td>Lập trình C++</td>
+                                    <td>1000</td>
+                                    <td>1000</td>
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td>
+                                        <h5><a class="text-black">Cần giúp bài tập C về mảng 2 chiều! </a></h5>
+                                        <span class="tech-tag">support-code</span> <span class="tech-tag">C++</span>
+                                    </td>
+                                    <td>Lập trình C++</td>
+                                    <td>1000</td>
+                                    <td>1000</td>
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td>
+                                        <h5><a class="text-black">Giải pháp nào để mình có máy lập trình IOS phù hợp?</a></h5>
+                                        <span class="tech-tag">iOS</span> <span class="tech-tag">Mobile</span>
+                                    </td>
+                                    <td>Lập trình C++</td>
+                                    <td>1000</td>
+                                    <td>1000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>*@
+                <!--suggested-->
+            </div>
+            <!--tech-main-->
+        </div>
+    </div>
+    <!--left tech-->
+
+    <div class="right-tech col-lg-4">
+        @*<div class="a-column w-100">
+                @{Html.RenderAction("Detail_GetAllCategory", "TechPage");}
+
+                <div class="box-list hidden-xs">
+                    <ul class="t-user w-100 pull-left">
+                        <li>
+                            <img src="~/Content/images/avatar/2.jpg" class="round-avatar"/>
+                            <div class="m-l-10 pull-left">
+                                <p class="w-100"><b>Phạm Văn Tuấn</b>
+                                </p>
+                                <p class="m-t-5 pull-left"><span class="text-primary">100</span> lượt xem
+                                </p>
+                                <p class="m-t-5 pull-left m-l-10"><span class="text-primary">20</span> lượt thích
+                                </p>
+
+                            </div>
+                            <div class="fa fa-circle text-success pull-right"></div>
+                        </li>
+                        <li>
+                            <img src="~/Content/images/avatar/1.jpg" class="round-avatar"/>
+                            <div class="m-l-10 pull-left">
+                                <p class="w-100"><b>Phạm Văn Tuấn</b>
+                                </p>
+                                <p class="m-t-5 pull-left"><span class="text-primary">100</span> lượt xem
+                                </p>
+                                <p class="m-t-5 pull-left m-l-10"><span class="text-primary">20</span> lượt thích
+                                </p>
+
+                            </div>
+                            <div class="fa fa-circle text-success pull-right"></div>
+                        </li>
+                        <li>
+                            <img src="~/Content/images/avatar/3.jpg" class="round-avatar"/>
+                            <div class="m-l-10 pull-left">
+                                <p class="w-100"><b>Phạm Văn Tuấn</b>
+                                </p>
+                                <p class="m-t-5 pull-left"><span class="text-primary">100</span> lượt xem
+                                </p>
+                                <p class="m-t-5 pull-left m-l-10"><span class="text-primary">20</span> lượt thích
+                                </p>
+
+                            </div>
+                            <div class="fa fa-circle text-success pull-right"></div>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+            </div>*@
+        <div class="c-column">
+            <div class="box-list">
+                <img src="/Content/images/single/qc.jpg" class="img">
+            </div>
+            <div class="box-list">
+                <!--Bai viet duoc quan tam-->
+                @*<h2 class="title">BÀI VIẾT ĐƯỢC QUAN TÂM</h2>
+                    <ul class="newlist">
+                        <li>
+                            <a href="/tin-tuc-cong-nghe/3111/Khai-giang-khoa-Lap-trinh-Du-%C3%81n-Phan-Mem-voi-JAVA-CORE.html">
+                                <img style="width: 120px;height: 70px" src="/Content/Galleries/News/NewsImage/IMIC-KG-Khoa-JAVA-CORE-J56032.png" class="img">
+                                <div class="text">
+                                    <h6>Khai giảng khóa Lập trình Dự Án Phần Mềm với JAVA CORE</h6>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/tin-tuc-cong-nghe/3057/Phong-van-Gioi-thieu-viec-lam-sang-%C4%90oi-tac-cua-iMic-thang-6-2015.html">
+                                <img style="width: 120px;height: 70px" src="/Content/Galleries/News/NewsImage/Tuyen-lap-trinh-vien.png" class="img">
+                                <div class="text">
+                                    <h6>Phỏng vấn  Giới thiệu việc làm sang Đối tác của iMic tháng 6-2015</h6>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/tin-tuc-cong-nghe/3134/8-Cach-de-lap-trinh-vien-Java-co-the-kiem-bon-tien.html">
+                                <img style="width: 120px;height: 70px" src="/Content/Galleries/News/NewsImage/Cach-lap-trinh-vien-Java-kiem-tien-98347234.png" class="img">
+                                <div class="text">
+                                    <h6>8 Cách để lập trình viên Java có thể kiếm bộn tiền</h6>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/tin-tuc-cong-nghe/3117/Nhin-lai-buc-tranh-startup-Viet-2016-%C4%90ung-chi-sam-soi-nhung-.html">
+                                <img style="width: 120px;height: 70px" src="/Content/Galleries/News/NewsImage/khoi-dong-startup-viet-03-1485284107106.png" class="img">
+                                <div class="text">
+                                    <h6>Nhìn lại bức tranh startup Việt 2016: Đừng chỉ săm soi những ...</h6>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>*@
+
+            </div>
+            <div class="box-list">
+                <h2 class="title">
+                    <a href="#">SourceCode</a>
+                </h2>
+                <a href="#">
+                    <img src="/Content/images/single/single_21.jpg" class="img">
+                    <div class="red-b">Đồ án thiết kế nội thất 3D</div>
+                </a>
+
+            </div>
+            @{Html.RenderAction("TechRight");}
+        </div>
+        <div class="a-column w-100">
+            <div class="box-list hidden-xs"> <a href="#"> <img src="~/Content/images/other/anh5.jpg" class="img-t"> </a> </div>
+            @*<div class="box-list hidden-xs">
+                    <div class="fb-box">
+                        <img src="~/Content/images/icon/fb.png" class="img-t">
+                        <div class="box-icon-imic"> <img src="~/Content/images/other/imic-kinhnghiem.png"> </div>
+                        <div class="fb"> <img src="~/Content/images/other/anh6.jpg"> </div>
+                    </div>
+                </div>*@
+            @Html.Action("FacebookLikeBox", "Marketing")
+        </div>
+    </div>
+    <!--right tech-->
+    <div class="clearfix"></div>
+</div>
+@{              var avatar = "";
+              var username = "";
+              var uid = "";
+              var fullname = "";
+              AccountObject user = (AccountObject)Session[CommonConstants.SESSION_ACCOUNT];
+              if (user != null)
+              {
+                  avatar = user.ImageAvatar;
+                  username = user.Username;
+                  fullname = user.FullName;
+                  uid = user.AccountId + "";
+              }
+}
+@section TechScript
+{
+<script src="~/Content/assets/ckeditor/ckeditor.js"></script>
+<script src="~/Content/assets/ckeditor/plugins/prism/lib/prism/prism_patched.min.js"></script>
+<script src="~/Content/assets/ckeditor/plugins/codesnippet/dialogs/codesnippet.js"></script>
+
+    <script>
+
+        $('.like').on('click', function (e) {
+            var id = '@Model.TechArticleId';
+            var current = $(this).data("status");
+            var status = "";
+            if (current == 'off') {
+                status = "on";
+                $(this).data("status", "on");
+                $(this).removeClass("text-muted");
+                $(this).addClass("heart");
+                var html = $.parseHTML('<li id-menu=@username><a><img src="/Content/images/avatar/@avatar" class="w-100 sm-round-avatar" title="@username" /></a></li>');
+                $(html).hide();
+                $('.t-likes').append($(html));
+                $(html).fadeIn('slow');
+                var like = parseInt($('.like-number').html()) + 1;
+                $('.like-number').html(like);
+            }
+            else {
+                status = "off";
+                $(this).data("status", "off");
+                $(this).addClass("text-muted");
+                $(this).removeClass("heart");
+                $('.t-likes [id-menu=@username]').remove();
+                var like = parseInt($('.like-number').html()) - 1;
+                $('.like-number').html(like);
+            }
+            $.ajax({
+                url: '@Url.Action("Article_Like","TechPage")',
+                data: { articleid: id, status: status },
+                dataType: "json",
+                type: "post"
+            })
+
+        })
+
+    </script>
+    <script>
+        $('.drop-btn').click(function () {
+            $('#toggle-tech li.toggle-box:nth-child(2)').fadeToggle("fast");
+            $('#toggle-tech li.toggle-box:nth-child(3)').fadeToggle("fast");
+            $('#toggle-tech li.toggle-box ul.top-toggle li:last-child').fadeToggle("fast");
+        });
+        $('.t-like-count').click(function () {
+            $('.t-likes').fadeToggle("fast");
+        }); 
+        $(document).on("click", ".t-hide-comment", function () {
+            $(this).parent().parent().find('.sub-cmt-box').fadeToggle("fast");
+        });
+        $(document).on("click", ".t-reply", function () {
+            $(this).parent().parent().parent().parent().find('.t-reply-box').fadeToggle("fast");
+        });
+       
+    </script>
+
+    <script>
+        $(document).on("keydown", "textarea[name=subcmt]", function (e) {
+            if (e.which == 13) {
+
+                var content = $(this).val();
+                var uid = '@uid';
+                var cid = $(this).parent().parent().data('cmt');
+                var tis = $(this);
+                $.ajax({
+                    url: '@Url.Action("Detail_InsertSubComment","TechPage")',
+                    dataType: 'json',
+                    type: 'post',
+                    data: { content: content, uid: uid, cid: cid },
+                    success: function (e) {
+                        if (e.rs != 'fail') {
+                            var html = ' <div class="t-subcomment w-100 pull-left">'
+                                + '<a href="@Url.RouteUrl("user-profile", new { username = username })">'
+                                + '<img src="/Content/images/avatar/@avatar" class="round-avatar pull-left" /></a>'
+                                + '<div class="t-cmt-right"><div class="w-100 pull-left"><a class="pull-left"><b>@fullname</b></a>'
+                                + '<div class="pull-right text-muted">Vừa xong</div></div><div class="t-cmt-content">'
+                                + content
+                                + '</div><div class="w-100 pull-left m-t-8"><div class="pull-right text-muted"><div class="pull-right">0 likes</div>'
+                                + '<div class="fa fa-heart p-right-10"></div></div></div></div></div>'
+                            $(html).css('display', 'none');
+                            $(tis).parent().parent().find('.sub-cmt-box').fadeIn('fast');
+                            $(tis).parent().parent().find('.sub-cmt-box').append(html);
+                            $('html, body').animate({
+                                scrollTop: $(html).offset().top
+                            }, 200);
+                            $(html).fadeIn('slow');
+                            $(tis).val('');
+                            $(tis).fadeOut('fast');
+                        }
+
+                    }
+                })
+            }
+        });
+    </script>
+    <script>
+        $('#btn-submit-cmt').on('click', function () {
+            var articleid = $(this).data('article');
+            var content = $('textarea[name=content]').val();
+
+            $.ajax({
+                url: '@Url.Action("Detail_InsertComment","TechPage")',
+                dataType: 'json',
+                type: 'post',
+                data: { content: content, id: articleid },
+                success: function (e) {
+                    if (e.rs != 'fail') {
+
+                        var html = $.parseHTML('<div class="t-comment">'
+                            + '<a href="@Url.RouteUrl("user-profile", new { username = username })">'
+                            + '<img src="/Content/images/avatar/@avatar '
+                            + '"class="round-avatar pull-left" /> </a><div class="t-cmt-right" data-cmt="'+e.rs
+                            + '"><div class="w-100 pull-left">'
+                            + '<a class="pull-left"><b>@fullname'
+                            + '</b></a><div class="cmt-time">Vừa xong</div></div>'
+                            + '<div class="t-cmt-content w-100 pull-left m-t-8">'
+                            + content
+                            + '</div><div class="w-100 pull-left m-t-8"><a class="pull-left t-hide-comment"><b></b></a>'
+                            + '<div class="pull-right text-muted"><div class="pull-right"><span class="cmt-like-count">0</span> likes</div>'
+                            + '<a class="fa fa-heart p-right-10 cmt-like-btn pull-right" data-cmtid="' + e.rs + '"></a>'
+                            + '  <div class="pull-right p-right-10 t-reply"><a>Reply</a></div>'
+                            + ' <div class="fa fa-reply p-right-10 pull-right"></div>'
+                            + '</div></div>'
+                            + '<div class="sub-cmt-box"></div>'
+                            + '<div class="w-100 pull-left t-reply-box" style="display:none;">'
+                            + '<textarea class="form-control" placeholder="Trả lời bình luận" rows="3" name="subcmt"></textarea></div>'
+                            + '</div></div>');
+                        $(html).css('display', 'none');
+                        $('#cmt-list').prepend($(html));
+                        $(html).fadeIn('fast');
+                    }
+                }
+            })
+        })
+    </script>
+    <script>
+        var cmtIndex = 1;
+        $('#btn-load-cmt').on('click', function (e) {
+            $.ajax({
+                url: '@Url.Action("Detail_GetMoreComment", "TechPage")',
+                data: { articleid: '@Model.TechArticleId', pageIndex: cmtIndex },
+                type: 'post',
+                success: function (response) {
+                    var html = $.parseHTML(response);
+                    var rs = $(html).find('.t-cmt-right').length;
+
+                    if (rs > 0) {
+
+                        $(html).css('display', 'none');
+                        $('#cmt-list').append($(html));
+                        $(html).fadeIn('fast');
+                        cmtIndex = cmtIndex + 1;
+                    }
+                    else $('#btn-load-cmt').fadeOut('slow');
+                }
+            })
+        });
+
+
+    </script>
+    <script>
+        $(document).on("click", ".cmt-like-btn", function() {
+            var id = $(this).data('cmtid');
+            var btn = $(this);
+            $.ajax({
+                url: '@Url.Action("Detail_LikeComment", "TechPage")',
+                data: { commentid: id },
+                dataType: 'json',
+                type: 'post',
+                success: function(response) {
+                    btn.removeClass('heart');
+                    if (response.rs == 'like') {
+                        btn.addClass('heart');
+
+                    }
+                    $(btn).parent().find('.cmt-like-count').html(response.like);
+
+                }
+            })
+        })
+
+    </script>
+    <script>
+        //prevent copy
+        $(document).keydown(function (event) {
+            if (event.keyCode == 123) {
+                return false; //Prevent f12
+            }
+            else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+                return false;  //Prevent from ctrl+shift+i
+            }
+        });
+        //end prevent copy
+    </script>
+}
+
+
+
+

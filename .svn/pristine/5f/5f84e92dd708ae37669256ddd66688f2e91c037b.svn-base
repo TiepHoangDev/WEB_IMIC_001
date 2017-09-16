@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EEB0EE70-BACF-445A-AD3E-61FA9109C0DC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WCF.BusinessObjectsLayer</RootNamespace>
+    <AssemblyName>WCF.BusinessObjectsLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commons\CommonConstants.cs" />
+    <Compile Include="Commons\SecurityHelper.cs" />
+    <Compile Include="EntityObjects\AccountObject.cs" />
+    <Compile Include="EntityObjects\ArticleTagDetailObject.cs" />
+    <Compile Include="EntityObjects\ArticleTagObject.cs" />
+    <Compile Include="EntityObjects\BannerObject.cs" />
+    <Compile Include="EntityObjects\BoxBelowDetailObject.cs" />
+    <Compile Include="EntityObjects\BoxBelowObject.cs" />
+    <Compile Include="EntityObjects\ClassDetailObject.cs" />
+    <Compile Include="EntityObjects\ClassObject.cs" />
+    <Compile Include="EntityObjects\ClassSessionDetailObject.cs" />
+    <Compile Include="EntityObjects\ClassSessionLogAbsentObject.cs" />
+    <Compile Include="EntityObjects\ClassSessionLogObject.cs" />
+    <Compile Include="EntityObjects\ClassShiftObject.cs" />
+    <Compile Include="EntityObjects\ClassWeekDayObject.cs" />
+    <Compile Include="EntityObjects\CommentLikeObject.cs" />
+    <Compile Include="EntityObjects\CommentObject.cs" />
+    <Compile Include="EntityObjects\CommentReplyLikeObject.cs" />
+    <Compile Include="EntityObjects\CommentReplyObject.cs" />
+    <Compile Include="EntityObjects\ContactObject.cs" />
+    <Compile Include="EntityObjects\CourseObject.cs" />
+    <Compile Include="EntityObjects\CourseTeacherObject.cs" />
+    <Compile Include="EntityObjects\CourseTechnologyDetailObject.cs" />
+    <Compile Include="EntityObjects\CourseTechnologyObject.cs" />
+    <Compile Include="EntityObjects\DemoProjectDetailObject.cs" />
+    <Compile Include="EntityObjects\DemoProjectObject.cs" />
+    <Compile Include="EntityObjects\EncodeMD5.cs" />
+    <Compile Include="EntityObjects\FacebookUserLikedObject.cs" />
+    <Compile Include="EntityObjects\IntroduceBannerObject.cs" />
+    <Compile Include="EntityObjects\IntroduceEduProgramObject.cs" />
+    <Compile Include="EntityObjects\IntroduceMissionObject.cs" />
+    <Compile Include="EntityObjects\IntroducePageObject.cs" />
+    <Compile Include="EntityObjects\IntroducePartnerObject.cs" />
+    <Compile Include="EntityObjects\IntroduceServiceObject.cs" />
+    <Compile Include="EntityObjects\JobObject.cs" />
+    <Compile Include="EntityObjects\LessonCategoryObject.cs" />
+    <Compile Include="EntityObjects\LessonDetailLikeObject.cs" />
+    <Compile Include="EntityObjects\LessonDetailObject.cs" />
+    <Compile Include="EntityObjects\LessonDetailTagDetailObject.cs" />
+    <Compile Include="EntityObjects\LessonDetailTagObject.cs" />
+    <Compile Include="EntityObjects\LessonObject.cs" />
+    <Compile Include="EntityObjects\LessonTagDetailObject.cs" />
+    <Compile Include="EntityObjects\LessonTagObject.cs" />
+    <Compile Include="EntityObjects\LocationObject.cs" />
+    <Compile Include="EntityObjects\LoginObject.cs" />
+    <Compile Include="EntityObjects\MenuCategoryDetailObject.cs" />
+    <Compile Include="EntityObjects\ExperiencerObject.cs" />
+    <Compile Include="EntityObjects\ImageAdsObject.cs" />
+    <Compile Include="EntityObjects\MenuCategoryObject.cs" />
+    <Compile Include="EntityObjects\NewsCategoryObject.cs" />
+    <Compile Include="EntityObjects\NewsletterTagDetailObject.cs" />
+    <Compile Include="EntityObjects\NewsletterTagObject.cs" />
+    <Compile Include="EntityObjects\NewsObject.cs" />
+    <Compile Include="EntityObjects\OpenClassObject.cs" />
+    <Compile Include="EntityObjects\OpenClassPageObject.cs" />
+    <Compile Include="EntityObjects\ProposeObject.cs" />
+    <Compile Include="EntityObjects\RecruitmentBannerObject.cs" />
+    <Compile Include="EntityObjects\RecruitmentCompanyObject.cs" />
+    <Compile Include="EntityObjects\RecruitmentGalleryImageObject.cs" />
+    <Compile Include="EntityObjects\RecruitmentNewsletterObject.cs" />
+    <Compile Include="EntityObjects\RecruitmentTitleObject.cs" />
+    <Compile Include="EntityObjects\RegisterDetailObject.cs" />
+    <Compile Include="EntityObjects\RegisterPersonObject.cs" />
+    <Compile Include="EntityObjects\ReJobObject.cs" />
+    <Compile Include="EntityObjects\RoleObject.cs" />
+    <Compile Include="EntityObjects\RuleWritingObject.cs" />
+    <Compile Include="EntityObjects\SEOEngineerDetailObject.cs" />
+    <Compile Include="EntityObjects\SEOEngineerObject.cs" />
+    <Compile Include="EntityObjects\SourcePageObject.cs" />
+    <Compile Include="EntityObjects\StatusObject.cs" />
+    <Compile Include="EntityObjects\StudentGaleryObject.cs" />
+    <Compile Include="EntityObjects\TagDetailObject.cs" />
+    <Compile Include="EntityObjects\TagNewsDetailObject.cs" />
+    <Compile Include="EntityObjects\TagNewsObject.cs" />
+    <Compile Include="EntityObjects\TagObject.cs" />
+    <Compile Include="EntityObjects\TechArticleLikeObject.cs" />
+    <Compile Include="EntityObjects\TechArticleObject.cs" />
+    <Compile Include="EntityObjects\TechBannerObject.cs" />
+    <Compile Include="EntityObjects\TechCategoryObject.cs" />
+    <Compile Include="EntityObjects\TechCommentLikeObject.cs" />
+    <Compile Include="EntityObjects\TechCommentObject.cs" />
+    <Compile Include="EntityObjects\TechCommentReplyObject.cs" />
+    <Compile Include="EntityObjects\TechLinkObject.cs" />
+    <Compile Include="EntityObjects\TechLogoObject.cs" />
+    <Compile Include="EntityObjects\TechRightObject.cs" />
+    <Compile Include="EntityObjects\TechStatusObject.cs" />
+    <Compile Include="EntityObjects\TrainingBannerObject.cs" />
+    <Compile Include="EntityObjects\TrainingCategoryObject.cs" />
+    <Compile Include="EntityObjects\TrainingPageObject.cs" />
+    <Compile Include="EntityObjects\VideoBannerObject.cs" />
+    <Compile Include="EntityObjects\VideoCategoryObject.cs" />
+    <Compile Include="EntityObjects\VideoCommentLikeObject.cs" />
+    <Compile Include="EntityObjects\VideoCommentObject.cs" />
+    <Compile Include="EntityObjects\VideoCommentReplyLikeObject.cs" />
+    <Compile Include="EntityObjects\VideoCommentReplyObject.cs" />
+    <Compile Include="EntityObjects\VideoLikeObject.cs" />
+    <Compile Include="EntityObjects\VideoObject.cs" />
+    <Compile Include="EntityObjects\VideoSubCategoryObject.cs" />
+    <Compile Include="EntityObjects\VideoTagDetailObject.cs" />
+    <Compile Include="EntityObjects\VideoTagObject.cs" />
+    <Compile Include="EntityObjects\WelcomePageObject.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

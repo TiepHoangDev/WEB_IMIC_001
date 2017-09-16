@@ -1,0 +1,171 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.OpenClassObject
+@{
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> Sửa lớp khai giảng
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm("ClassEdit", "ClassAdmin", FormMethod.Post, new { id = "manageForm", enctype = "multipart/form-data" }))
+        {
+            <div class="form-body">
+                <div class="form-group">
+                    @Html.HiddenFor(model => model.ClassId)
+                    @Html.HiddenFor(model => model.ClassAvatar)
+                    @Html.HiddenFor(model => model.IsApproved)
+                    @Html.HiddenFor(model => model.ModifiedBy)
+                    <label>Chọn danh mục</label>
+                    @{
+            var ListCourse = ViewBag.ListCourse;
+            List<SelectListItem> lisSelectCourse = new List<SelectListItem>();
+            foreach (var item in ListCourse)
+            {
+                lisSelectCourse.Add(new SelectListItem()
+                {
+                    Value = "" + item.CourseId,
+                    Text = item.CourseName
+                });
+            }
+                    }
+
+                    @Html.DropDownListFor(m => m.CourseId, lisSelectCourse, new { @class = "form-control" })
+
+                </div>
+                <div class="form-group">
+                    <label>Tiêu đề tin</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.ClassName, new { @class = "form-control", @placeholder = "Nhập tiêu đề..." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Địa điểm</label>
+                    @Html.TextBoxFor(m => m.LocationID, new { @class = "form-control", @placeholder = "Nhập địa điểm..." })
+            @*var ListLocation = ViewBag.ListLocation;
+            List<SelectListItem> lisSelectLocation = new List<SelectListItem>();
+            foreach (var item in ListLocation)
+            {
+                lisSelectLocation.Add(new SelectListItem()
+                {
+                    Value = "" + item.LocationID,
+                    Text = item.LocationName
+                });
+            }
+                    }
+
+                    @Html.DropDownListFor(m => m.LocationID, lisSelectLocation, new { @class = "form-control" })*@
+
+                </div>
+                <div class="form-group">
+                    <label>@Html.LabelFor(model => model.ClassAvatar)</label>
+                    <input type="file" name="fileAvatar">
+                    <p class="help-block">
+                        <img src="~/Content/Galleries/Class/@Model.ClassAvatar" height="50" width="50" />
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Thời gian học</label>
+                    <div class="">
+                        @Html.TextBoxFor(m => m.ClassTime, new {@class = "form-control", @placeholder = "Thời gian - 19:30...."})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tháng</label>
+                    <div class="">
+                        @Html.TextBoxFor(m => m.Month, new {@class = "form-control", @placeholder = "Vui lòng nhập số từ 1-12"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Ngày</label>
+                    <div class="">
+                        @Html.TextBoxFor(m => m.DayOfMonth, new {@class = "form-control", @placeholder = "Vui lòng nhập số từ 1-31"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Thứ</label>
+                    <div class="">
+                        @Html.TextBoxFor(m => m.DayOfWeek, new { @class = "form-control", @placeholder = "Thứ 2" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Nội dung popup</label>
+                    <div class="">
+                        @Html.TextAreaFor(m => m.ContentPopup, new {@class = "ckeditor form-control", @row = "6"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Số người đã đăng ký</label>
+                    <div class="">
+                        @Html.TextBoxFor(m => m.TotalOfRegisters, new { @class = "form-control", @placeholder = "100" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Số học viên tối đa</label>
+                    <div class="">
+                        @Html.TextBoxFor(m => m.MaxTotalOfStudents, new { @class = "form-control", @placeholder = "5 - 12" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn blue" onclick="UpdateEvent()">Sửa</button>
+                <!--Phần hủy sẽ được mở khi code xong-->
+                @*<button type="button" class="btn default">Huỷ</button>*@
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script src="~/Areas/AdminCP/Content/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript">
+        var editor = CKEDITOR.instances["ContentPopup"];
+        if (editor) { editor.destroy(true); }
+        CKEDITOR.replace("ContentPopup", {
+            enterMode: CKEDITOR.ENTER_BR
+        });
+
+        CKFinder.setupCKEditor(null, '@Url.Content("~/Areas/AdminCP/Content/ckfinder")');
+    </script>
+
+    <script>
+    @*function UpdateEvent() {
+        bootbox.confirm("Đồng ý lưu lại ", function (result) {
+            if (result) {
+                var form = $("#manageForm");
+                $.ajax({
+                    cache: false,
+                    async: true,
+                    type: "POST",
+                    url: "@Url.Action("ClassEdit","ClassAdmin")",
+                    data: form.serialize(),
+                    dataType: "json",
+                    success: function (data) {
+                            if (data.Success) {
+                                window.location.href = "@Url.Action("ListClass", "ClassAdmin")";
+                            } else {
+                                window.location.href = "@Url.Action("ListClass", "ClassAdmin")";
+                            }
+                        }
+                    });
+
+            }
+        });
+    }
+
+    setAdminCurrentUrl('@Url.Action("ListClass", "ClassAdmin")');*@
+
+    </script>
+}
+
+
+
+
+
+
+

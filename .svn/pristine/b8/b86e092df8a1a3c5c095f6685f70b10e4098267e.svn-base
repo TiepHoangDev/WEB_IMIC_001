@@ -1,0 +1,56 @@
+﻿@model List<WCF.BusinessObjectsLayer.EntityObjects.IntroduceMissionObject>
+@{
+    ViewBag.Title = "Trang giới thiệu - Mission List";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> 3 missions ở trên slider trang giới thiệu
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm("MissionEdit", "IntroduceAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-body">
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    @Html.HiddenFor(m => m[i].IntroduceMissionld)
+                    <div class="form-group">
+                        <label>Mission @(i+1): </label>
+                        <div class="input-icon right">
+                            <i class="fa fa-microphone"></i>
+                            @Html.TextBoxFor(m => m[i].Title, new { @class = "form-control", @placeholder = "Nhập tiêu đề..." })
+                        </div>
+                        <div class="input-icon right">
+                            <i class="fa fa-microphone"></i>
+                            @Html.TextBoxFor(m => m[i].Content1, new { @class = "form-control", @placeholder = "Nhập nội dung thứ 1..." })
+                        </div>
+                        <div class="input-icon right">
+                            <i class="fa fa-microphone"></i>
+                            @Html.TextBoxFor(m => m[i].Content2, new {@class = "form-control", @placeholder = "Nhập nội dung thứ 2..."})
+                        </div>
+                        <div class="input-icon right">
+                            <i class="fa fa-microphone"></i>
+                            @Html.TextBoxFor(m => m[i].Content3, new {@class = "form-control", @placeholder = "Nhập nội dung thứ 3..."})
+                        </div>
+                        <div class="input-icon right">
+                            <i class="fa fa-microphone"></i>
+                            @Html.TextBoxFor(m => m[i].Link, new {@class = "form-control", @placeholder = "Nhập link trỏ..."})
+                        </div>
+                        <div class="input-icon right">
+                            <i class="fa fa-microphone"></i>
+                            @Html.TextBoxFor(m => m[i].RankToShow, new { @class = "form-control", @placeholder = "Nhập rank sắp xếp..." })
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn blue">Thêm banner</button>
+                <button type="button" class="btn default">Huỷ</button>
+            </div>
+        }
+    </div>
+</div>
+

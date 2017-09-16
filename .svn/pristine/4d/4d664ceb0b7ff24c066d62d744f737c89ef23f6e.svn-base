@@ -1,0 +1,67 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.OpenClassPageObject
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="/Content/css/khai-giang/style-khai-giang.css" rel="stylesheet" />
+<div id="wrapper" class="clearfix">
+    <div class="ld-thietkewebsitebanhang">
+        <div class="thietkewebsitebanhang-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-sm-12 title">
+                        <h1>@Html.Raw(Model.TopTitle)</h1>
+                        <p class="desc">@Html.Raw(Model.SubTilte)</p>
+                        <a class="btn-registration" onclick="openCreateStorePopup(this, null, false, 'kenhwebsite');" href="javascript:;">Text Button</a>
+                    </div>
+                    <div class="col-md-6 image-banner">
+                        <img src="@Model.TopImage" alt="@Model.TopImageAlt">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="thietkewebsitebanhang-block-1">
+            <div class="container">
+                <h2>@Model.MiddleTilte</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        var flagTop = false;
+        var flagBot = false;
+        var $animation_elements = $('.animation-element');
+        var $window = $(window);
+
+        function check_if_in_view() {
+            var window_height = $window.height();
+            var window_top_position = $window.scrollTop();
+            var window_bottom_position = (window_top_position + window_height);
+
+            $.each($animation_elements, function () {
+                var $element = $(this);
+                var element_height = $element.outerHeight();
+                var element_top_position = $element.offset().top;
+                var element_bottom_position = (element_top_position + element_height);
+
+                //check to see if this current container is within viewport
+                if ((element_bottom_position >= window_top_position) &&
+                    (element_top_position <= window_bottom_position)) {
+                    $element.addClass('in-view');
+                } else {
+                    $element.removeClass('in-view');
+                }
+            });
+        }
+
+        $window.on('scroll resize', check_if_in_view);
+        $window.trigger('scroll');
+    </script>
+</div>
+
+<div id="page-wrapper" class="w-100 course-content">
+    <div class="row">
+        @Html.Partial("Index_OpenClassPage", ViewBag.Index_OpenClass as IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.OpenClassObject>)
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+}
+@model WCF.BusinessObjectsLayer.EntityObjects.TechArticleObject
+
+<div style="width:100%">
+    <div class="w-100 bg-white">
+        <div class="tech-main" style="float:none">
+            <div class="t-content">
+              
+                <div class="t-box-right" style="float:none">
+                    <ul class="t-article">
+                        <!--title-->
+                        <li class="t-item">
+                            <h4>@Model.ArticleTitle</h4>
+                        </li>
+                        <!--category-->
+                        <li class="t-item">
+                            <ul class="t-category">
+                                <li><a><b>@Model.objTechCategory.CategoryName</b></a></li>
+                                <li class="text-muted">@Model.CreatedTime.ToString("dd/MM/yyyy")</li>
+                                <li class="text-muted">20.301 lượt xem</li>
+                            </ul>
+                        </li>
+                        <!--actual content--><!--ck editor-->
+                        <li class="t-item">
+                            <div class="w-100 tech-content">
+                                @Html.Raw(HttpUtility.HtmlDecode(Model.ContentArticle))
+                            </div>
+                        </li>
+                        <!-- likes -->
+                        <!--same-poster-->
+
+                    </ul>
+                </div>
+            </div>
+            <!--t content-->
+            <!--t-comment-sec-->
+            <!--adrvetise-->
+            <!--suggested-->
+        </div>
+        <!--tech-main-->
+    </div>
+</div>
+

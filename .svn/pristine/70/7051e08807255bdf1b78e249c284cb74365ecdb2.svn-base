@@ -1,0 +1,119 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.ExperiencerObject
+@{
+    ViewBag.Title = "Thêm chuyên gia";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> Thông tin về chuyên gia
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm("ExperiencerInsert", "ExperiencerAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-body">
+                
+                <div class="form-group">
+                    <label>Tên chuyên gia</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.FullName, new {@class = "form-control", @placeholder = "Nhập tên chuyên giia..."})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Ảnh đại diện</label>
+                    <input type="file" name="fileAvatar">
+                    <p class="help-block">
+                        Chọn một ảnh đại diện cho chuyên gia.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Giới tính</label>
+                    <div class="radio-list">
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.Gender, true) Nam
+                        </label>
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.Gender, false) Nữ
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Điện thoại</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.Phone, new {@class = "form-control", @placeholder = "Nhập số điện thoại..."})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.Email, new {@class = "form-control", @placeholder = "Nhập email..."})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Địa chỉ</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.Address, new {@class = "form-control", @placeholder = "Nhập địa chỉ..."})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Số năm kinh nghiệm</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.ExperienceYear, new {@class = "form-control", @placeholder = "Nhập số năm kinh nghiệm..."})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tên công ty</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.CompanyName, new {@class = "form-control", @placeholder = "Nhập tên công ty..."})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tóm tắt sơ lược</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.SummaryContent, new {@class = "form-control", @placeholder = "Nhập sơ lược về chuyên gia..."})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Mô tả chi tiết</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextAreaFor(m => m.PassageDescription, new {@class = "ckeditor form-control", @row = "6"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Rank hiển thị ở trang giới thiệu (số thấp thì đứng trước)</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.RankToShowIntroduce, new { @class = "form-control", @placeholder = "Nhập số tự nhiên..." })
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn blue">Thêm chuyên gia</button>
+                <button type="button" class="btn default">Huỷ</button>
+            </div>
+        }
+    </div>
+</div>
+@section Scripts {
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/AdminCP/Content/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript">
+        var editor = CKEDITOR.instances['PassageDescription'];
+        if (editor) { editor.destroy(true); }
+        CKEDITOR.replace('PassageDescription', {
+            enterMode: CKEDITOR.ENTER_BR,
+        });
+        
+        CKFinder.setupCKEditor(null, '@Url.Content("~/Areas/AdminCP/Content/ckfinder")');
+    </script>
+}

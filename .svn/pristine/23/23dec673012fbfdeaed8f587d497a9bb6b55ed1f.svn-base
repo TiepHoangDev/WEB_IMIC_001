@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WCF.BusinessObjectsLayer.EntityObjects
+{
+    public class IntroduceBannerObject
+    {
+        public Guid IntroduceBanerld { get; set; }
+        public string Bannerlmage { get; set; }
+        public string BannerLinkTo { get; set; }
+        public bool IsDeleted { get; set; }
+        public string TitleBanner { get; set; }
+        public string Content1 { get; set; }
+        public string Content2 { get; set; }
+        public string Content3 { get; set; }
+        public string Content4 { get; set; }
+        public string Content5 { get; set; }
+        public byte? RankToShow { get; set; }
+        public Guid? ModifiedBy { get; set; }
+        public DateTime? ModifiedTime { get; set; }
+
+        public AccountObject Account { get; set; }
+    }
+}

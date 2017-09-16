@@ -1,0 +1,326 @@
+﻿@{
+    ViewBag.Title = "Tuyển dụng";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    ViewBag.description = "iMic - Nơi đào tạo lập trình viên hàng đầu Việt Nam. Cơ hội tiếp cận môi trường làm dự án tại các Công ty, trau dồi kinh nghiệm lập trình cùng các chuyên gia, giảng viên nhiều năm kinh nghiệm.";
+    ViewBag.image = "http://imic.edu.vn/Images/Shortcut.jpg";
+}
+@model WCF.BusinessObjectsLayer.EntityObjects.RecruitmentTitleObject
+@section css{
+    <link href="~/Content/css/style_tuyendung.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/css/colorbox.css">
+    <style>
+        .c-blog-wrapper {
+            float: left;
+            width: 100%;
+            padding-bottom: 20px;
+        }
+
+        .btn-load-rec {
+            display: block;
+            margin: auto;
+            max-width: 100%;
+            border: 1px solid #424147;
+            border-bottom: 3px solid #ffea00;
+            border-radius: 0px;
+            background: #424147;
+            float: none;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 30px;
+        }
+
+            .btn-load-rec:hover {
+                border: 1px solid #424147;
+                background: #ffea00;
+                color: #424147;
+            }
+    </style>
+}
+<div class="index-banner">
+    @{Html.RenderAction("Banner", "RecruitmentPageAn");}
+
+
+</div>
+@*<div class="main">*@
+<div class="content-top">
+    <div class="wrap">
+        <h3>@Model.Title1</h3>
+        <h5>@Model.Summary1</h5>
+        <div class="section group">
+            @{Html.RenderAction("Job", "RecruitmentPageAn");}
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div class="content-middle">
+    <h2><span>@Model.Title2</span></h2>
+    <p>@Model.Summary2</p>
+    <div id="container">
+        @{Html.RenderAction("Gallery", "RecruitmentPageAn");}
+    </div>
+</div>
+<div class="content-bottom" style="margin-bottom: 30px;">
+    <h2><span>@Model.Title3</span></h2>
+    <p>@Model.Summary3</p>
+    @{Html.RenderAction("Company", "RecruitmentPageAn");}
+</div>
+
+<div class="project-wrapper">
+
+    <div class="project">
+
+        @{Html.RenderAction("Index_Newsletter", "RecruitPage", new { code = ViewBag.code, query = ViewBag.query });}
+
+
+        <button type="button" class="btn btn-sm btn-primary btn-load-rec">Xem thêm tin bài</button>
+
+    </div>
+    <div class="project-sidebar">
+        @*<div class="project-list">
+                <a style="font-size: 1.4em; color: #ffea00; margin-bottom: 30px; text-transform: uppercase;" href="@Url.RouteUrl("recruitindex")">Xem tất cả tin bài</a>
+            </div>*@
+
+        @{Html.RenderAction("Index_PopularNews", "RecruitPage");}
+        @{Html.RenderAction("Index_Tag", "RecruitPage");}
+        @{Html.RenderAction("Index_Company", "RecruitPage");}
+
+    </div>
+    <div class="clear"></div>
+</div>
+
+@*</div>*@
+
+@section scripts{
+
+    <script src="~/Content/js/masonry.pkgd.min.js"></script>
+
+    <script src="~/Content/js/recruit/jquery.imagesloaded.js"></script>
+    <script>
+        $(document).ready(function () {
+            reloadMasonry();
+
+
+        });
+        function reloadMasonry() {
+            var $container = $('.c-blog-wrapper');
+            $container.imagesLoaded(function () {
+                var ms = $container.masonry({
+                    itemSelector: '.blog-img'
+                });
+                setTimeout(function () {
+                    $(ms).masonry('layout');
+                }, 1000);
+
+            });
+        }
+        setTimeout(function () {
+            $('.c-blog-wrapper').masonry('layout');
+        }, 1000);
+
+    </script>
+
+    <script src="~/Content/js/recruit/jquery.wmuSlider.js"></script>
+    <script type="text/javascript" src="~/Content/js/recruit/modernizr.custom.min.js"></script>
+    <script>
+        $('.example1').wmuSlider();
+    </script>
+    <!-- include colorbox -->
+    <script src="~/Content/js/recruit/jquery.colorbox-min.js"></script>
+    <!-- Include the plug-in -->
+    <script src="~/Content/js/recruit/jquery.wookmark.js"></script>
+    <!-- Once the page is loaded, initalize the plug-in. -->
+    <script type="text/javascript">
+        (function ($) {
+            $('#tiles').imagesLoaded(function () {
+                // Prepare layout options.
+                var options = {
+                    autoResize: true, // This will auto-update the layout when the browser window is resized.
+                    container: $('#main1'), // Optional, used for some extra CSS styling
+                    offset: 2, // Optional, the distance between grid items
+                    itemWidth: 200 // Optional, the width of a grid item
+                };
+
+                // Get a reference to your grid items.
+                var handler = $('#tiles li');
+
+                // Call the layout function.
+                handler.wookmark(options);
+
+                // Init lightbox
+                $('a', handler).colorbox({
+                    rel: 'lightbox'
+                });
+            });
+        })(jQuery);
+    </script>
+    <script type="text/javascript">
+        $(window).load(function () {
+            $("#flexiselDemo1").flexisel();
+            $("#flexiselDemo2").flexisel({
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 1
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 2
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 3
+                    }
+                }
+            });
+
+            $("#flexiselDemo3").flexisel({
+                visibleItems: 5,
+                animationSpeed: 1000,
+                autoPlay: true,
+                autoPlaySpeed: 3000,
+                pauseOnHover: true,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 1
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 2
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 3
+                    }
+                }
+            });
+
+        });
+    </script>
+    <script type="text/javascript" src="~/Content/js/recruit/jquery.flexisel.js"></script>
+
+
+
+    <script>
+        var comid = null;
+        var query = null;
+    </script>
+    @if (ViewBag.code != null)
+    {
+        <script>
+            comid = ViewBag.code;
+        </script>
+    }
+    @if (ViewBag.query != null)
+    {
+        <script>
+            query = '@ViewBag.query';
+        </script>
+    }
+    <script>
+        var page = 1;
+        var comcount = 0;
+        var tagcount = 0;
+        $('.rec-com').on('click', function (e) {
+            var id = $(this).data('id');
+            $('.btn-load-rec').fadeIn('slow');
+            if (comid != id) {
+                page = 0;
+                $.ajax({
+                    url: '@Url.Action("Index_Newsletter","RecruitPage")',
+                    data: { code: id, start: page },
+                    type: 'post',
+                    success: function (response) {
+                        var $boxHtml = $.parseHTML(response);
+                        var length = $($boxHtml).find('.blog-img').length;
+                        if (length > 0) {
+                            $('.btn-load-rec').show();
+                            $('.c-blog-wrapper').remove();
+                            $('html, body').animate({
+                                scrollTop: $(".project").offset().top
+                            }, 700);
+                            $($boxHtml).hide();
+                            $('.project').prepend($boxHtml);
+                            $($boxHtml).fadeIn('slow');
+                            reloadMasonry();
+
+                            query = null;
+                            comid = id;
+                            page = 1;
+                        }
+                    }
+                });
+
+            }
+        });
+        $('.rec-tag').on('click', function (e) {
+            var tag = $(this).data('tag');
+            $('.btn-load-rec').fadeIn('slow');
+            if (tag != query) {
+
+                page = 0;
+                $.ajax({
+                    url: '@Url.Action("Index_Newsletter","RecruitPage")',
+                    data: { query: tag, start: page },
+                    type: 'post',
+                    success: function (response) {
+                        var $boxHtml = $.parseHTML(response);
+                        var length = $($boxHtml).find('.blog-img').length;
+                        if (length > 0) {
+                            $('.btn-load-rec').show();
+                            $('.c-blog-wrapper').remove();
+                            $('html, body').animate({
+                                scrollTop: $(".project").offset().top
+                            }, 700);
+                            $($boxHtml).hide();
+                            $('.project').prepend($boxHtml);
+                            $($boxHtml).fadeIn('slow');
+                            reloadMasonry();
+                         
+                            comid = null;
+                            query = tag;
+                            page = 1;
+                        }
+                    }
+                });
+
+            }
+        });
+        $('.btn-load-rec').on('click', function () {
+            $.ajax({
+                url: '@Url.Action("Index_Newsletter","RecruitPage")',
+                data: { code: comid, query: query, start: page },
+                type: 'post',
+                success: function (response) {
+                    var $boxHtml = $.parseHTML(response);
+                    var length = $($boxHtml).find('.blog-img').length;
+                    if (length > 0) {
+                        var $content = $($boxHtml).find('.blog-img');
+                        $(".c-blog-wrapper").append($content).masonry('appended', $content, true);
+                        reloadMasonry();
+                        page = page + 1;
+                    }
+                    else {
+                        $('.btn-load-rec').fadeOut('slow');
+                    }
+                }
+            })
+        })
+    </script>
+    @if (Request.Params["query"] != null || Request.Params["code"] != null)
+    {
+        <script>
+            $(document).ready(function () {
+                setTimeout(function () {
+                    $('html, body').animate({
+                        scrollTop: $(".project").offset().top - 20
+                    }, 1500);
+                }, 1000);
+
+            });
+
+        </script>
+    }
+}

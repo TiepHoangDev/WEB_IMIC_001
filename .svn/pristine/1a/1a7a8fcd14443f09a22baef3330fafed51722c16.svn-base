@@ -1,0 +1,79 @@
+﻿@{
+    Layout = null;
+}
+@using WCF.BusinessObjectsLayer.EntityObjects
+@using WCF.BusinessObjectsLayer.Commons
+@model List<WCF.BusinessObjectsLayer.EntityObjects.TechCommentObject>
+@{
+    var isLogin = false;
+    AccountObject user = (AccountObject)Session[CommonConstants.SESSION_ACCOUNT];
+    if (user != null)
+    {
+        isLogin = true;
+    }
+}
+@foreach (var item in Model)
+{
+    <div class="t-comment">
+        <a href="@Url.RouteUrl("user-profile", new { username = @item.objCommentBy.Username })">
+            <img src="~/Content/images/avatar/@item.objCommentBy.ImageAvatar" class="round-avatar pull-left" />
+        </a>
+        <div class="t-cmt-right" data-cmt="@item.TechCommentID">
+            <div class="w-100 pull-left">
+                <a class="pull-left"><b>@item.objCommentBy.FullName</b></a>
+                @if (item.MofifiedTime.Date == DateTime.Now.Date)
+                {
+                    if (DateTime.Now.Subtract(item.MofifiedTime).Hours == 0)
+                    {
+                        
+                        <div class="cmt-time">@(DateTime.Now.Subtract(item.MofifiedTime).Minutes)p</div>
+                    }
+                    else
+                    {
+                        <div class="cmt-time">@(DateTime.Now.Subtract(item.MofifiedTime).Hours)h</div>
+                    }
+                }
+
+                else
+                {
+                    <div class="cmt-time">@item.MofifiedTime.Day Tháng @item.MofifiedTime.Month</div>
+                }
+
+
+            </div>
+            <div class="t-cmt-content">
+                @item.ContentComment
+            </div>
+            <div class="w-100 pull-left m-t-8">
+                @if (@item.TotalOfReplies>0)
+                { 
+                <a class="pull-left t-hide-comment"><b>Xem tất cả @item.TotalOfReplies phản hồi</b></a>
+                }
+                @if (isLogin == true)
+                {
+                    <div class="pull-right text-muted">
+                        <div class="pull-right "><span class="cmt-like-count">@item.TotalOfLikes</span> likes</div>
+                        @if (item.isLiked == false)
+                        {
+                            <a class="fa fa-heart p-right-10 pull-right cmt-like-btn" data-cmtid="@item.TechCommentID"></a>
+                        }
+                        else
+                        {
+                            <a class="fa fa-heart p-right-10 pull-right heart cmt-like-btn" data-cmtid="@item.TechCommentID"></a>
+                        }
+                        <div class="pull-right p-right-10 t-reply"><a>Reply</a></div>
+                        <div class="fa fa-reply p-right-10 pull-right"></div>
+
+                    </div>
+                }
+            </div>
+            @{Html.RenderAction("Detail_AllSubComment", "TechPage", new { commentid = item.TechCommentID });
+            }
+        </div>
+
+
+    </div>
+
+
+
+}

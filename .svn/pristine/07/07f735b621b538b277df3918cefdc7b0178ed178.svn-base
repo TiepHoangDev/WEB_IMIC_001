@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Message";
+    Layout = null;
+}
+<link href="~/Content/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+<style>
+    
+    .tr-banner {
+    width: 100%;
+    font-family: Tahoma;
+    background-position: center ;
+    height: 100%;
+}
+    .w-100 {
+        padding-top: 17%;
+       
+        width: 100%;
+        color: #FFF;
+        margin: auto;
+    }
+    h2 {
+    font-size: 20px;
+    text-align: left;
+    /*display: table;*/
+    /*margin: auto;*/
+    margin-left:150px;
+    color: #000;
+    font-weight: 400;
+    }
+    a {
+        color: #fff;
+    }
+    
+    #dvCountDown {
+    font-size: 16px;
+    /*text-align: center;
+    display: table;*/
+    margin-left:150px;
+    color:  #000;
+    font-weight: 400;
+    }
+</style>
+
+<div class="tr-banner" style="background-image: url('../../Content/images/kien-thuc-lap-trinh-do-hoa-877876.jpg'); ">
+
+    <div class="w-100">
+        <h2>Nội dung bạn đang quan tâm đã được chúng tôi chuyển về cộng đồng <a style="color: #ff8c00" href="http://hoidapit.com.vn">hoidapit.vn</a></h2>
+
+        <div id="dvCountDown" style="display: none">
+            Bạn sẽ được tự động chuyển hướng sau <span id="lblCount"></span> seconds. <i class="fa fa-arrow-circle-right"></i>
+        </div>
+    </div>
+   
+</div>
+
+<script src="~/Content/js/jquery-2.1.4.min.js"></script>
+<script>
+$(document).ready(function () {
+    // Handler for .ready() called.
+    window.setTimeout(function () {
+        var seconds = 10;
+        $("#dvCountDown").show();
+        $("#lblCount").html(seconds);
+        setInterval(function () {
+            seconds--;
+            $("#lblCount").html(seconds);
+            if (seconds == 0) {
+                $("#dvCountDown").hide();
+                window.location = "//hoidapit.com.vn";
+            }
+        }, 1000);
+    });
+});
+</script>

@@ -1,0 +1,196 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.TrainingPageObject
+
+@{
+    ViewBag.Title = "Trang giới thiệu - Các dịch vụ";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> 8 dịch vụ trang giới thiệu
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm("PageInfoEdit", "TrainingAdmin", FormMethod.Post, new { @class = "horizontal-form", enctype = "multipart/form-data" }))
+        {
+            <div class="form-body">
+
+                
+                    @Html.HiddenFor(m => m.TrainingPageId)
+                    @Html.HiddenFor(m => m.ModifiedBy)
+                
+                <h3 class="form-section"><b>Thời gian học</b></h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><b>Tiêu để của mục thời gian học</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.LearningTimeTitle, new {@class = "form-control", @placeholder = "Ban ngày"})
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><b>Session 1</b></label>
+                                <div class="input-icon right">
+                                    <i class="fa fa-microphone"></i>
+                                    @Html.TextBoxFor(m => m.SessionName1, new { @class = "form-control", @placeholder = "Ban ngày" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><b>Thời gian</b></label>
+                                <div class="input-icon right">
+                                    <i class="fa fa-microphone"></i>
+                                    @Html.TextBoxFor(m => m.SessionTime1, new { @class = "form-control", @placeholder = "8.30 - 17.00" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><b>Session 2</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.SessionName2, new { @class = "form-control", @placeholder = "Ban ngày" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><b>Thời gian</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.SessionTime2, new { @class = "form-control", @placeholder = "8.30 - 17.00" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><b>Session 3</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.SessionName3, new {@class = "form-control", @placeholder = "Ban ngày"})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><b>Thời gian</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.SessionTime3, new {@class = "form-control", @placeholder = "8.30 - 17.00"})
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><b>Session 4</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.SessionName4, new { @class = "form-control", @placeholder = "Ban ngày" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><b>Thời gian</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.SessionTime4, new { @class = "form-control", @placeholder = "8.30 - 17.00" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+                <h3 class="form-section"><b>Lịch đào tạo</b></h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><b>Tiêu để của mục lịch đào tạo</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.CalendarTitle, new { @class = "form-control"})
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><b>Mô tả</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.CalendarDescription, new { @class = "form-control"})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><b>Đường dẫn đến lịch khai giảng</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.CalendarLinkTo, new { @class = "form-control"})
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="form-section"><b>Các giảng viên</b></h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><b>Tiêu để của mục các giảng viên</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.TeacherTitle, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><b>Mô tả</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.TeacherDescription, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label><b>Đường dẫn đến trang giảng viên</b></label>
+                            <div class="input-icon right">
+                                <i class="fa fa-microphone"></i>
+                                @Html.TextBoxFor(m => m.TeacherLinkTo, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn blue">Cập nhật</button>
+                <button type="button" class="btn default">Huỷ</button>
+            </div>
+        }
+
+    </div>
+</div>
+
+

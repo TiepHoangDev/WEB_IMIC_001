@@ -1,0 +1,153 @@
+﻿
+@{
+    ViewBag.Title = "TechLinkUpdate";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+@model WCF.BusinessObjectsLayer.EntityObjects.TechLinkObject
+<div class="portlet box red-intense">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Thêm mới bài viết
+        </div>
+        <div class="tools">
+
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        <div style="width:100%">
+            @using (Html.BeginForm("TechLinkUpdate", "TechAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(m=>m.TechLinkId)
+                @Html.HiddenFor(m=>m.TechLinkImage)
+                <h4 style="color:red">@Html.ValidationSummary("", true)</h4>
+                <div class="form-group">
+                    <h3>Tiêu đề h3</h3>
+
+                    @Html.TextBoxFor(q => q.TechLinkTitle, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+                        @required = "true",
+                        @placeholder = "tiêu đề chính"
+                    })
+                </div>
+                <div class="form-group">
+                    <h3>Tiêu đề 1</h3>
+
+                    @Html.TextBoxFor(q => q.Title1, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+
+                        @placeholder = "tiêu đề 1"
+                    })
+                </div>
+                <div class="form-group">
+                    <h3>Nội dung 1</h3>
+
+                    @Html.TextAreaFor(q => q.Sumary1, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+
+                        @placeholder = "Nội dung"
+                    })
+                </div>
+                <div class="form-group">
+                    <h3>Tiêu đề 2</h3>
+
+                    @Html.TextBoxFor(q => q.Title2, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+
+                        @placeholder = "tiêu đề 2"
+                    })
+                </div>
+                <div class="form-group">
+                    <h3>Nội dung 2</h3>
+
+                    @Html.TextAreaFor(q => q.Sumary2, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+
+                        @placeholder = "Nội dung  2"
+                    })
+                </div>
+                <div class="form-group">
+                    <label>Hình ảnh</label>
+
+                    <input type="file" name="Avatar" id="ava">
+                    <div style="margin-top:15px;">
+                        <img style="width:200px;height:180px;" class="img-thumbnail rimage" src="~/Content/Galleries/Tech/TechLink/@Model.TechLinkImage" />
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <h3>Đường dẫn</h3>
+
+                    @Html.TextBoxFor(q => q.TechLinkUrl, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+                        @placeholder = "Đường dẫn"
+                    })
+                </div>
+                <div class="form-group">
+                    <h3>Nunber 1 </h3>
+
+                    @Html.TextBoxFor(q => q.Number1, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+
+                    })
+                </div>
+                <div class="form-group">
+                    <h3>Number 2</h3>
+
+                    @Html.TextBoxFor(q => q.Number2, new
+       {
+           @type = "text",
+           @class = "form-control",
+
+       })
+                </div>
+                <div class="form-group">
+                    <h3>Vị trí</h3>
+
+                    @Html.TextBoxFor(q => q.Rank, new
+       {
+           @type = "number",
+           @class = "form-control",
+           @placeholder = "vị trí để hiển thị"
+       })
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+
+                </div>
+            }
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script>
+
+        $("#ava").change(function () {
+            readURL(this, '.rimage');
+        });
+
+    </script>
+}
+
+

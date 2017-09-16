@@ -1,0 +1,35 @@
+﻿@using System.Globalization
+@model List<WCF.BusinessObjectsLayer.EntityObjects.RecruitmentNewsletterObject>
+<div class="project-list1">
+    <h4>Các tin đáng chú ý</h4>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="@Url.RouteUrl("recruit",new{code = item.NewsletterCode,name=WCF.Web.App_Start.StringHelpers.GenerateURL(item.Title)})">
+                    @if (item.ImageServerFlag == true)
+                    {
+                        <img src="~/Content/Galleries/Recruit/@item.ImageLink" alt="@item.ImageAlt">
+                    }
+                    else
+                    {
+                        <img src="@item.ImageLink" alt="@item.ImageAlt">
+                    }
+                </a>
+                <p><a href="@Url.RouteUrl("recruit",new{code = item.NewsletterCode,name=WCF.Web.App_Start.StringHelpers.GenerateURL(item.Title)})">@item.Title</a></p>
+                <span class="likes">
+                    <span class="link">
+                        @*<a href="#">@item.ModifiedTime.ToString("MMMM"). @item.ModifiedTime.Day, @item.ModifiedTime.Year</a>*@
+                        <a href="#">@item.ModifiedTime.Day @item.ModifiedTime.ToString("MMMM", new CultureInfo("vi")) @item.ModifiedTime.Year</a>
+                    </span>
+                    <a href="@Url.RouteUrl("recruit",new{code = item.NewsletterCode,name=WCF.Web.App_Start.StringHelpers.GenerateURL(item.Title)})">
+                        <div class="fa fa-user" style="color:#f44242;font-size:17px"></div>&nbsp;
+                        <!--<img src="~/Content/images/recruit/heart.png" title="likes" alt="" />-->
+                    </a>@item.TotalOfViews
+                </span><div class="clear"></div>
+            </li>
+        }
+
+
+    </ul>
+</div>

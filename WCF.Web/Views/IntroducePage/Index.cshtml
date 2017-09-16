@@ -1,0 +1,101 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.IntroducePageObject
+@{
+    ViewBag.Title = "IMIC-ĐÀO TẠO KINH NGHIỆM LẬP TRÌNH-ĐỒ HỌA";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    ViewBag.description = "iMic - Nơi đào tạo lập trình viên hàng đầu Việt Nam. Cơ hội tiếp cận môi trường làm dự án tại các Công ty, trau dồi kinh nghiệm lập trình cùng các chuyên gia, giảng viên nhiều năm kinh nghiệm.";
+    ViewBag.image = "http://imic.edu.vn/Images/Shortcut.jpg";
+}
+@section SEO{
+    
+    
+    <meta name="DESCRIPTION" content="iMic-Đào tạo Kinh nghiệm Lập trình-Đồ họa. Nơi chắp cánh cho các bạn yêu thích, đam mê Lập trình, Thiết kế Đồ họa.">
+    <meta name="KEYWORDS" content="đào tạo lập trình, khóa học lập trình,đào tạo thiết kế đồ họa, học lập trình">
+}
+@section css
+{
+    <link href="~/Content/css/intro/owl.carousel.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/css/intro/owl.theme.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/css/intro/owl.transitions.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/css/intro/intro-style.css" type="text/css" rel="stylesheet" />
+}
+
+
+<div class="slide-wrapper">
+    <div id="owl-demo" class="owl-carousel owl-theme" style="width:100%; float:left">
+        @Html.Action("Index_Slide")
+    </div>
+    <div id="intro-service">
+        <div class="container panelIntroService">
+            <div id="panelIntroService" class="col-xs-12">
+                @Html.Action("Index_Missions")
+            </div>
+        </div>
+    </div>
+</div>
+<div id="page-wrapper">
+            <!--silder-->
+            <!--end silder-->
+    <div class="row">
+            <div class="intro-service-box po">
+                <img src="~/Content/images/other/imic-kinhnghiem.png" class="img-t">
+                <div class="container">
+                    <div class="col-xs-12">
+                        <div class="box_text_q">
+                            <h2><span>@Model.TitleServices</span></h2>
+                            <div class="text-c"> @Html.Raw(Model.PassageServices) </div>
+                            <div class="col-xs-12">
+                                <ul class="service-list">
+                                    @Html.Action("Index_Services")
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--service-->
+            <!--end service -->
+            <div class="clearfix"></div>
+            @*<div class="row"> </div>*@
+            <div class="row">
+                <div class="widhfull bg_white padding-top30 padding-bottom30">
+                    <div class="main">
+                        <div class="col-xs-12">
+                            <div class="box_text_q">
+                                <h2><span>@Model.TitleExperiencers</span></h2>
+                                <div class="text-c">@Html.Raw(Model.PassageExperiencers)</div>
+                            </div>
+                            <div class="clearfix"></div>
+                            @Html.Action("Index_Experiencers")
+                        </div>
+                    </div>
+                </div>
+                <div class="main">
+                    <div class="row" style="margin-left: 15px; margin-right: 15px">
+                        <div class="box_text_d">
+                            @*<h2>@Model.TitlePartner</h2>
+                            <div class="text-c"> @Html.Raw(Model.PassagePartner) </div>*@
+                            <div class="list-logo">
+                                @Html.Action("Index_Partners")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+        <!-- /#page-wrapper -->
+
+            <!--end dang nhap-->
+            <!--dang ki-->
+
+@section scripts
+{
+    <script src="~/Content/js/intro/owl.carousel.js"></script>
+    <script src="~/Content/js/intro/owl.carousel.min.js"></script>
+    <script src="~/Content/js/intro.js"></script>
+}
+            
+
+
+
+

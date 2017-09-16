@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "ClassUpdate";
+    Layout = "~/Areas/Class/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model WCF.BusinessObjectsLayer.EntityObjects.ClassObject
+<link href="~/Content/css/jquery.datetimepicker.css" rel="stylesheet" />
+<div class="portlet box red-intense">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Thêm mới lớp học
+        </div>
+        <div class="tools">
+
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        <div style="width:100%">
+            @using (Html.BeginForm("ClassUpdate", "Class", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(x=>x.ClassId)
+                 @Html.HiddenFor(x=>x.IsStatus)
+                <h4 style="color:red">@Html.ValidationSummary("", true)</h4>
+                <div class="form-group">
+                    <h3>Tên lớp</h3>
+
+                    @Html.TextBoxFor(q => q.ClassName, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+                        @required = "true",
+                        @placeholder = "Tên lớp"
+                    })
+                </div>
+                <div class="form-group">
+                    <h3>Ngày bắt đầu</h3>
+
+                    @Html.TextBoxFor(q => q.BeginDate, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+                        @placeholder = "2107/6/20"
+
+
+                    })
+                </div>
+                <div class="form-group">
+                    <label>Ngày kết thúc</label>
+
+                    @Html.TextBoxFor(q => q.EndDate, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+                        @placeholder = "2107/8/20"
+
+                    })
+                </div>
+                <div class="form-group">
+                    <h3>Số học viên</h3>
+
+                    @Html.TextBoxFor(q => q.StudentNo, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+                        @required = "true",
+                        @placeholder = "tổng số học viên"
+                    })
+                </div>
+                <div class="form-group">
+                    <h3>Số buổi đã dạy</h3>
+
+                    @Html.TextBoxFor(q => q.Teached, new
+                    {
+                        @type = "text",
+                        @class = "form-control",
+                        @required = "true",
+                        @placeholder = "số buổi đã dạy"
+                    })
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+
+                </div>
+            }
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+
+@section PageLevelScript{
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script src="~/Content/assets/js/jquery.datetimepicker.full.js"></script>
+    <script>
+        $.datetimepicker.setLocale('en');
+        $('#BeginDate').datetimepicker({
+            dayOfWeekStart: 1,
+            lang: 'en',
+
+
+        });
+        $('#EndDate').datetimepicker({
+            dayOfWeekStart: 1,
+            lang: 'en'
+
+        });
+
+    </script>
+
+}

@@ -1,0 +1,446 @@
+﻿@using WCF.BusinessObjectsLayer.EntityObjects;
+@using WCF.BusinessObjectsLayer.Commons;
+@using WCF.BusinessControlLayer.Bcls;
+@model WCF.BusinessObjectsLayer.EntityObjects.VideoObject
+@{
+    ViewBag.Title = @Model.VideoName;
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    ViewBag.description = @Model.VideoDescription;
+    ViewBag.image = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + "Content/Galleries/Recruit/" + @Model.VideoThumbnail;
+}
+@section css{
+    <!-- Custom CSS -->
+    <link href="~/Content/css/style.css" rel="stylesheet">
+    <link href="~/Content/css/video.css" type="text/css" rel="stylesheet" />
+}
+@{
+    var avatar = "";
+    var username = "";
+    var uid = "";
+    var fullname = "";
+    AccountObject account = (AccountObject)Session[CommonConstants.SESSION_ACCOUNT];
+    if (account != null)
+    {
+        avatar = account.ImageAvatar;
+        username = account.Username;
+        fullname = account.FullName;
+        uid = account.AccountId + "";
+    }
+}
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=@System.Configuration.ConfigurationManager.AppSettings["FacebookAppId"]";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div id="page-wrapper">
+    <div id="customer-video-detail">
+        <div class="main">
+            <div class="col-lg-8 col-xs-12 left-video">
+                <div class="v-detail-box w-100 pull-left">
+                    @Html.Action("Index_CategorySearch")
+                </div>
+                <!--search-->
+                <div class="clearfix"></div>
+                <div class="video w-100 pull-left">
+                    <iframe style="width:100%; height:400px"
+                            src="@Model.VideoLink" allowfullscreen></iframe>
+                </div>
+                <!--actual video-->
+                <div class="v-title-box">
+                    <a href="@Url.RouteUrl("user-profile", new { username=Model.Account.Username })">
+                        <img class="round-avatar pull-left" src="~/Content/images/avatar/@Model.Account.ImageAvatar" />
+                    </a>
+
+                    <div class="v-comment-right">
+                        <h4 class="v-title">@Model.VideoName</h4>
+                        <div class="bottom-box text-muted">
+                            <div class="pull-left">@Model.TotalOfViews.ToString("n0") lượt xem</div>
+                            <div class="v-like-box">
+                                @if (ViewBag.liked == false)
+                                {
+                                    <a href="javascript:0" onclick="Like('@Model.VideoId',event)" title="Thích" style="padding-right:6px">
+                                        <div class="pull-right text-muted">
+                                            <div class="pull-right "><span class="video-like-count">@Model.TotalOfLikes.ToString("n0")</span></div>
+                                            <div data-status="False" class="fa fa-heart liked p-right-6 pull-right" style="line-height:inherit"></div>
+                                        </div>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="javascript:0" onclick="Like('@Model.VideoId',event)" title="Bỏ Thích" style="padding-right:6px">
+                                        <div class="pull-right text-muted heart">
+                                            <div class="pull-right "><span class="video-like-count">@Model.TotalOfLikes.ToString("n0")</span></div>
+                                            <div data-status="True" class="fa fa-heart liked p-right-6 pull-right" style="line-height:inherit"></div>
+                                        </div>
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @{Html.RenderAction("VideoDetail_Tags", "VideoPage", new { VideoCodeNumber = Model.VideoCodeNumber });}
+
+                <div class="fb-box">
+                    <div class="fb-like" data-href="@Request.Url.ToString()" style="float: left; margin-top: 25px;"
+                         data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true">
+
+                    </div>
+                    <div class="fb-comments" data-href="@Request.Url.ToString()" data-width="100%" data-numposts="5"></div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="v-comment-box">
+                    @if (account != null)
+                    {
+                        <div class="v-my-comment">
+                            <img class="round-avatar pull-left" src="~/Content/images/avatar/@account.ImageAvatar" />
+                            <div class="v-comment-right">
+                                <textarea class="form-control" placeholder="Bạn đang nghĩ gì" rows="3" id="contentComment" name="contentComment"></textarea>
+                                <div class="w-100 pull-left m-t-15">
+                                    <div class="col-lg-2 col-xs-5 col-md-3 p-right-0 pull-right">
+                                        <button class="btn-default btn pull-right col-xs-12">Hủy</button>
+                                    </div>
+                                    <div class="col-lg-2 col-xs-5 col-md-3 p-right-0 pull-right">
+                                        <button class="btn-primary btn pull-right col-xs-12" onclick="postComment()">Đăng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="v-other-comment">
+                        @{
+                            int pageIndex = 0;
+                        }
+                        @{Html.RenderAction("VideoDetail_Comment", new { pageIndex, Model.VideoId });}
+                    </div>
+                    @if (Model.TotalOfComments > 2)
+                    {
+                        <div class="margintop30 col-xs-12">
+                            <button class="btn btn-default col-xs-offset-5" id="btnMoreComment" onclick="loadMoreComment()">Tải thêm</button>
+                        </div>
+                    }
+                </div>
+            </div>
+            <!--left-video-->
+            @if (Model.VideoSubCategoryId != null)
+            {
+                <div class="pull-right col-lg-4 col-xs-12" style="margin-top:20px">
+                    <div class="right-video w-100 pull-left">
+                        <h5 class="text-muted pull-left b-bottom w-100"><b>Các video trong playlist</b></h5>
+                        <div class="w-100 pull-left" id="playlist">
+                            <ul class="playlist-video">
+                                @{Html.RenderAction("VideoDetail_Playlist", new { Model.VideoId, Model.VideoSubCategoryId });}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="pull-right col-lg-4 col-xs-12" style="margin-top:28px">
+                    <div class="right-video w-100 pull-left">
+                        <h5 class="text-muted pull-left b-bottom w-100"><b>Các video liên quan</b></h5>
+                        <div class="w-100 pull-left" id="involve-video">
+                            <ul class="related-video">
+                                @{
+                int pageIndexInvolve = 0;
+                                }
+                                @{Html.RenderAction("VideoDetail_InvolveVideo", new { pageIndexInvolve, Model.VideoId, Model.VideoCategoryId });}
+                            </ul>
+                            <div class="col-xs-12 no-padding">
+                                <button class="btn btn-default col-xs-offset-5" id="btnInvolveVideo" onclick="loadMoreInvolveVideo()">Tải thêm</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="pull-right col-lg-4 col-xs-12" style="margin-top:20px">
+                    <div class="right-video w-100 pull-left">
+                        <h5 class="text-muted pull-left b-bottom w-100"><b>Các video liên quan</b></h5>
+                        <div class="w-100 pull-left" id="involve-video">
+                            <ul class="related-video">
+                                @{
+                int pageIndexInvolve = 0;
+                                }
+                                @{Html.RenderAction("VideoDetail_InvolveVideo", new { pageIndexInvolve, Model.VideoId, Model.VideoCategoryId });}
+                            </ul>
+                            <div class="col-xs-12 no-padding">
+                                <button class="btn btn-default col-xs-offset-5" id="btnInvolveVideo" onclick="loadMoreInvolveVideo()">Tải thêm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <!--rightbox-->
+        </div>
+        <div class="clearfix"></div>
+        <!--container-->
+    </div>
+    <div class="clearfix"></div>
+</div>
+<!--pagewrapper-->
+
+<div class="clear"></div>
+
+<input id="vcCodeNumber" type="hidden" name="vcCodeNumber" value="@ViewBag.vcCodeNumber">
+<input id="videoID" type="hidden" name="videoID" value="@ViewBag.videoID">
+<input id="videoCategoryID" type="hidden" name="videoCategoryID" value="@Model.VideoCategoryId">
+<input id="accountID" type="hidden" name="accountID" value="@ViewBag.accountId">
+<input id="status" type="hidden" name="status" value="@ViewBag.liked">
+
+@section scripts{
+
+    <script>
+        $(document).on("click", ".t-hide-comment", function () {
+            var contain = $(this).parent().parent();
+            if ($(this).html() == '<b>Thu gọn</b>') {
+                var count = contain.find('.t-subcomment').length;
+                $(this).html('<b>Xem tất cả ' + count + ' phản hồi</b>');
+                contain.find('.sub-cmt-box').fadeOut("fast");
+            }
+            else {
+                $(this).html('<b>Thu gọn</b>');
+                contain.find('.sub-cmt-box').fadeIn("fast");
+            }
+        });
+
+        $(document).on("click", ".t-reply", function () {
+            $(this).parent().parent().parent().parent().find('.t-reply-box').fadeToggle("fast");
+        });
+    </script>
+
+    <script>
+        var videoID = $("#videoID").val();
+        function postComment() {
+            var contentComment = $("#contentComment").val();
+            $.ajax({
+                url: "@Url.Action("VideoDetail_PostComment", "VideoPage")",
+                dataType: 'json',
+                type: "post",
+                data: { contentComment: contentComment, videoId: videoID }
+            }).success(function (response) {
+                if (response.rs != "fail") {
+                    var html = $.parseHTML('<div class="t-comment">'
+                        + '<a href="@Url.RouteUrl("user-profile", new { username = username })">'
+                        + '<img src="/Content/images/avatar/@avatar '
+                        + '"class="round-avatar pull-left" /> </a><div class="t-cmt-right" data-cmt="' + response.rs
+                        + '"><div class="w-100 pull-left">'
+                        + '<a class="pull-left"><b>@fullname'
+                        + '</b></a><div class="cmt-time pull-right">Vừa xong</div></div>'
+                        + '<div class="t-cmt-content w-100 pull-left m-t-8">'
+                        + response.contentComment
+                        + '</div><div class="w-100 pull-left m-t-8"><a class="pull-left t-hide-comment"><b></b></a>'
+                        + '<div class="pull-right text-muted"><div class="pull-right comment-like"><span class="cmt-like-count">0</span> likes</div>'
+                        + '<a class="fa fa-heart p-right-10 cmt-like-btn pull-right" data-cmtid="' + response.rs + '" style="line-height:inherit"></a>'
+                        + '  <div class="pull-right p-right-10 t-reply"><a>Reply</a></div>'
+                        + ' <div class="fa fa-reply p-right-10 pull-right" style="line-height:inherit"></div>'
+                        + '</div></div>'
+                        + '<div class="sub-cmt-box"></div>'
+                        + '<div class="reply-comment-box">'
+                        + '<div class="w-100 pull-left t-reply-box" style="display:none;">'
+                        + '<textarea class="form-control" placeholder="Trả lời bình luận" rows="3" name="subcmt"></textarea></div>'
+                        + '</div></div></div>');
+                    $(html).css('display', 'none');
+                    $('.v-other-comment').prepend($(html));
+                    $(html).fadeIn('fast');
+                    $("#contentComment").val('');
+                }
+            });
+        }
+    </script>
+
+    <script>
+        var pageindex = 1;
+        function loadMoreComment() {
+            var page = pageindex;
+            var videoID = $("#videoID").val();
+            $("#loader-img").show();
+            $.ajax({
+                url: "@Url.Action("VideoDetail_Comment", "VideoPage")",
+                type: "get",
+                data: { pageIndex: page, videoId: videoID }
+            }).success(function (response) {
+                debugger
+                var parsed = $.parseHTML(response);
+                var result = $(parsed).find(".t-cmt-content");
+                if (result.length == 0) {
+                    $("#loader-img").hide();
+                    $("#btnMoreComment").hide();
+                }
+                else {
+                    $(".v-other-comment").append(parsed);
+                    $("#loader-img").hide();
+                    pageindex = pageindex + 1;
+                }
+            });
+        }
+    </script>
+
+    <script>
+        var pageIndexInvolve = 1;
+        function loadMoreInvolveVideo() {
+            var page = pageIndexInvolve;
+            var videoID = $("#videoID").val();
+            var videoCategoryID = $("#videoCategoryID").val();
+            debugger
+            $("#loader-img").show();
+            $.ajax({
+                url: "@Url.Action("VideoDetail_InvolveVideo", "VideoPage")",
+                type: "get",
+                data: { pageIndexInvolve: page, videoId: videoID, VideoCategoryID: videoCategoryID }
+            }).success(function (response) {
+                var parsed = $.parseHTML(response);
+                var result = $(parsed).find("#involve-title");
+                if (result.length == 0) {
+                    $("#loader-img").hide();
+                    $("#btnInvolveVideo").hide();
+                } else {
+                    $(".related-video").append(parsed);
+                    $("#loader-img").hide();
+                    pageIndexInvolve = pageIndexInvolve + 1;
+                }
+            });
+        }
+    </script>
+
+    <script>
+        function Like(id, event) {
+            var accountId = $("#accountID").val();
+            var liked = $(".liked").data("status");
+            var likeCount = $(".liked").parent().find('.video-like-count').html();
+            debugger
+            if (accountId != "") {
+                $.ajax({
+                    url: '@Url.Action("VideoDetail_LikeVideo", "VideoPage")',
+                    data: { videoId: id, accountId: accountId, status: liked, LikeCount: likeCount },
+                    type: "post",
+                    success: function (response) {
+                        if (liked.toString() == "False") {
+                            $(".liked").parent().addClass('heart');
+                            $(".liked").parent().find('.video-like-count').html(response.LikeCount);
+                            $(".liked").data("status", "True");
+                        }
+                        else {
+                            $(".liked").parent().removeClass('heart');
+                            $(".liked").parent().find('.video-like-count').html(response.LikeCount);
+                            $(".liked").data("status", "False");
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+
+    <script>
+        $(document).on("click", ".cmt-like-btn", function () {
+            var accountId = $("#accountID").val();
+            if (accountId != "") {
+                var id = $(this).data('cmtid');
+                var btn = $(this);
+                var likeCount = $(btn).parent().find('.cmt-like-count').html();
+                $.ajax({
+                    url: '@Url.Action("VideoDetail_LikeComment","VideoPage")',
+                    data: { CommentId: id, LikeCount: likeCount },
+                    dataType: 'json',
+                    type: 'post',
+                    success: function (response) {
+                        btn.removeClass('heart');
+                        if (response.rs == 'like') {
+                            btn.addClass('heart');
+                            $(btn).parent().find('.comment-like').addClass('heart');
+                            $(btn).parent().find('.cmt-like-count').html(response.likeCount);
+                        }
+                        else if (response.rs == 'unlike') {
+                            $(btn).parent().find('.comment-like').removeClass('heart');
+                            $(btn).parent().find('.cmt-like-count').html(response.likeCount);
+                        }
+
+                    }
+                })
+            }
+        })
+    </script>
+
+    <script>
+        $(document).on("keydown", "textarea[name=subcmt]", function (e) {
+            if (e.which == 13) {
+                var content = $(this).val();
+                var commentId = $(this).parent().parent().parent().data('cmt');
+                var tis = $(this);
+                debugger
+                $.ajax({
+                    url: '@Url.Action("VideoDetail_ReplyComment", "VideoPage")',
+                    dataType: 'json',
+                    type: 'post',
+                    data: { CommentId: commentId, ContentReply: content },
+                    success: function (e) {
+                        if (e.rs != 'fail') {
+                            var html = ' <div class="t-subcomment w-100 pull-left">'
+                                + '<a href="@Url.RouteUrl("user-profile", new { username = username })">'
+                                + '<img src="/Content/images/avatar/@avatar" class="round-avatar pull-left" /></a>'
+                                + '<div class="t-cmt-right"><div class="w-100 pull-left"><a class="pull-left"><b>@fullname</b></a>'
+                                + '<div class="pull-right cmt-time">Vừa xong</div></div><div class="t-cmt-content">'
+                                + content
+                                + '</div><div class="w-100 pull-left m-t-8"><div class="pull-right text-muted"><div class="pull-right reply-like"><span class="reply-like-count">0</span> likes</div>'
+                                + '<a class="fa fa-heart p-right-6 pull-right reply-like-btn" data-replyid="' + e.rs + '" style="line-height:inherit"></a>'
+                                + '</div></div></div></div></div>'
+                            $(html).css('display', 'none');
+                            var replybox = '<div class="w-100 pull-left t-reply-box" style="display:none;">'
+                                + '<textarea class="form-control" placeholder="Trả lời bình luận" rows="3" name="subcmt"></textarea>'
+                                + '</div>';
+                            $(replybox).css('display', 'none');
+                            $(tis).parent().parent().parent().find('.sub-cmt-box').fadeIn('fast');
+                            $(tis).parent().parent().parent().find('.sub-cmt-box').append(html);
+                            $(tis).parent().parent().parent().find('.reply-comment-box').append(replybox);
+                            $(tis).parent().parent().parent().find('.reply-comment-box').find('.t-reply-box').first().remove();
+                            debugger
+                            $(html).fadeIn('slow');
+                            $(tis).val('');
+                            $(tis).fadeOut('fast');
+                        }
+
+                    }
+                })
+            }
+        });
+    </script>
+
+    <script>
+        $(document).on("click", ".reply-like-btn", function () {
+            var accountId = $("#accountID").val();
+            if (accountId != "") {
+                var id = $(this).data('replyid');
+                var btn = $(this);
+                var likeCount = $(btn).parent().find('.reply-like-count').html();
+                $.ajax({
+                    url: '@Url.Action("VideoDetail_LikeCommentReply", "VideoPage")',
+                    data: { CommentReplyId: id, LikeCount: likeCount },
+                    dataType: 'json',
+                    type: 'post',
+                    success: function (response) {
+                        btn.removeClass('heart');
+                        if (response.rs == 'like') {
+                            btn.addClass('heart');
+                            $(btn).parent().find('.reply-like').addClass('heart');
+                            $(btn).parent().find('.reply-like-count').html(response.likeCount);
+                        }
+                        else if (response.rs == 'unlike') {
+                            $(btn).parent().find('.reply-like').removeClass('heart');
+                            $(btn).parent().find('.reply-like-count').html(response.likeCount);
+                        }
+    
+                    }
+                })
+            }
+        })
+    </script>
+
+}

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.MenuCategoryObject>
+@{
+    Layout = null;
+}
+<ul class="nav sf-menu">
+    @foreach (var item in Model)
+    {
+        if (item.MenuId.Equals(1))
+        {
+            <li class="active">
+                <a href="#site"><i class="fa fa-home"></i> </a>
+            </li>
+            @*<li class="active" font-size><a href="#site">@item.MenuText</a></li>*@
+        }
+        else
+        {
+            <li><a href="@item.MenuLink">@item.MenuText</a></li>
+        }
+    }
+    
+</ul>

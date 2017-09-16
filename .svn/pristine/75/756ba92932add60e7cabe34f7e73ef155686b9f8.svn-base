@@ -1,0 +1,115 @@
+﻿
+@model List<WCF.BusinessObjectsLayer.EntityObjects.IntroduceServiceObject>
+
+@{
+    ViewBag.Title = "Trang giới thiệu - Các dịch vụ";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> 8 dịch vụ trang giới thiệu
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm("ServiceEdit", "IntroduceAdmin", FormMethod.Post, new { @class = "horizontal-form", enctype = "multipart/form-data" }))
+        {
+            <div class="form-body">
+
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    @Html.HiddenFor(m => m[i].IntroduceServiceId)
+                    <h3 class="form-section"><b>Mission @(i + 1)</b></h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><b>Tên dịch vụ</b></label>
+                                <div class="input-icon right">
+                                    <i class="fa fa-microphone"></i>
+                                    @Html.TextBoxFor(m => m[i].ServiceName, new {@class = "form-control", @placeholder = "Nhập tên dịch vụ..."})
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><b>Ảnh banner</b></label>
+                                <img class="img" height="50" width="50" src="~/Content/Galleries/Introduce/Services/@Model[i].ServiceImage" /> @Model[i].ServiceImage
+                                @Html.HiddenFor(m => m[i].ServiceImage)
+                                <input type="file" name="fileAvatars">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><b>Nội dung 1</b></label>
+                                <div class="input-icon right">
+                                    <i class="fa fa-microphone"></i>
+                                    @Html.TextBoxFor(m => m[i].Content1, new {@class = "form-control", @placeholder = "Nhập nội dung thứ 1..."})
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><b>Nội dung 2</b></label>
+                                <div class="input-icon right">
+                                    <i class="fa fa-microphone"></i>
+                                    @Html.TextBoxFor(m => m[i].Content2, new { @class = "form-control", @placeholder = "Nhập nội dung thứ 2..." })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><b>Nội dung 3</b></label>
+                                <div class="input-icon right">
+                                    <i class="fa fa-microphone"></i>
+                                    @Html.TextBoxFor(m => m[i].Content3, new {@class = "form-control", @placeholder = "Nhập nội dung thứ 3..."})
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><b>Nội dung 4</b></label>
+                                <div class="input-icon right">
+                                    <i class="fa fa-microphone"></i>
+                                    @Html.TextBoxFor(m => m[i].Content4, new { @class = "form-control", @placeholder = "Nhập nội dung thứ 4..." })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><b>Đường dẫn</b></label>
+                                <div class="input-icon right">
+                                    <i class="fa fa-microphone"></i>
+                                    @Html.TextBoxFor(m => m[i].LinkToService, new {@class = "form-control", @placeholder = "Nhập link trỏ..."})
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><b>Rank sắp xếp</b></label>
+                                <div class="input-icon right">
+                                    <i class="fa fa-microphone"></i>
+                                    @Html.TextBoxFor(m => m[i].RankToShow, new { @class = "form-control", @placeholder = "Nhập rank sắp xếp..." })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn blue">Cập nhật</button>
+                <button type="button" class="btn default">Huỷ</button>
+            </div>
+        }
+
+    </div>
+</div>

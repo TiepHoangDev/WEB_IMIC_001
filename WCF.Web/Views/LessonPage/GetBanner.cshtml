@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.BannerObject>
+
+
+
+
+
+<div class="hero-gallery">
+    @foreach (var item in Model)
+    {
+        <section class="hero hero_light hero_focus-position_center">
+            @if (item.FlagImage == true)
+            {
+                <div style="background-image: url(/Content/Galleries/Banner/@item.ImageLink)" class="hero__background hero__background_index_0">
+
+                </div>
+            }
+            else
+            {
+                <div style="background-image: url(@item.ImageLink)" class="hero__background hero__background_index_0">
+
+            </div>
+            }
+            
+
+            <div class="hero__container">
+                <div class="hero__content">
+                    <h2 class="hero__title">@item.Text1 </h2>
+                    <p class="hero__text hero__text_simple">@item.Text2 </p>
+
+                    <a href="@item.Text3" class="hero__button">FIND OUT MORE...</a>
+
+                </div>
+            </div>
+
+        </section>
+    }
+</div>

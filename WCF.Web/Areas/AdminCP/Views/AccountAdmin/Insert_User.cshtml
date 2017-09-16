@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "Insert_User";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+@model WCF.BusinessObjectsLayer.EntityObjects.AccountObject
+
+<div style="padding-bottom:20px;width:100%">
+    <h4 style="font-weight:bold; color:#1945e5; padding-bottom:30px; font-size:18px">Add New User</h4>
+    @using (Html.BeginForm("Insert_User", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @*@Html.ValidationSummary(true)*@
+        @Html.HiddenFor(m => m.UserId)
+        <div class="form-group">
+            <label>Username</label>
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @required = "true", @id = "username" })
+        </div>
+        <h5 style="color:red">@Html.ValidationSummary("", true)</h5>
+        <h5 style="color:red; display:none" class="username_warning">This Account already exists, please change username.</h5>
+
+        <div class="form-group">
+            <label>Password</label>
+            @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @required = "true" })
+        </div>
+        <div class="form-group">
+            <label>Full Name</label>
+            @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", @required = "true" })
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            @Html.TextAreaFor(m => m.Email, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Phone Number</label>
+            @Html.TextAreaFor(m => m.PhoneNumber, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Avatar</label>
+            <h5 style="color:red; font-weight:bold">*Required image resolution 160x160</h5>
+            <input type="file" name="Avatar" />
+        </div>
+
+        if (objUser.RoleId == 0)
+        {
+            <div class="form-group">
+                <label>Role</label>
+                @{
+            var lisRole = ViewBag.listRole;
+            List<SelectListItem> listItem = new List<SelectListItem>();
+            foreach (var item in lisRole)
+            {
+                listItem.Add(new SelectListItem()
+                {
+                    Value = "" + item.RoleId,
+                    Text = item.RoleName
+                });
+            }
+                }
+                @Html.DropDownListFor(m => m.RoleId, listItem, new { @class = "form-control" })
+            </div>
+        }
+
+        <div style="padding-left:0px;width:100%">
+            <a class="btn btn-lg btn-primary" id="btn_submit" data-toggle="modal" href="#confirm-modal">Submit</a>
+            <a href="@Url.Action("Index", "User")" class="btn btn-lg btn-danger" data-toggle="modal">Cancel</a>
+        </div>
+
+        <!-- /.modal -->
+        <div class="modal fade bs-modal-lg" id="confirm-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title">Confirm Dialog</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure to insert that user ?
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn default" data-dismiss="modal">Close</button>
+                        <button onclick="submit" class="btn blue">Confirm</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    }
+
+</div>
+@section PageLevelScript{
+    <script>
+        $('#username').on('change', function (e) {
+
+            var Username = $('#username').val();
+            $.ajax({
+                url: '@Url.Action("Check_Username", "User")',
+                type: 'post',
+                data: { username: Username }
+            }).success(function (response) {
+                if (response.result == true) {
+                    $('.username_warning').show();
+                    $('#btn_submit').attr("disabled", true);
+                }
+                else {
+                    $('.username_warning').hide();
+                    $('#btn_submit').attr("disabled", false);
+                }
+            });
+        });
+    </script>
+}
+

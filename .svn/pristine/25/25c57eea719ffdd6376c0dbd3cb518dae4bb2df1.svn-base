@@ -1,0 +1,158 @@
+﻿
+@{
+    ViewBag.Title = "Xem trước bài viết";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+
+@if (Model.ImageServerFlag == true)
+{
+    ViewBag.image = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath + "Content/Galleries/Recruit/" + @Model.ImageLink;
+}
+else
+{
+    ViewBag.image = @Model.ImageLink;
+}
+@using System.Globalization
+@using WCF.BusinessObjectsLayer.EntityObjects
+@model WCF.BusinessObjectsLayer.EntityObjects.RecruitmentNewsletterObject
+@section css{
+    <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/css/style_tuyendung.css" rel="stylesheet" type="text/css" media="all" />
+
+
+}
+<style>
+    .ck-table table tbody tr td {
+        padding: 5px;
+    }
+
+    .ck-table ol, .ck-table ul {
+        list-style-type: initial;
+        margin: auto;
+        padding-left: 30px;
+    }
+
+    .content-header {
+        width: 100%;
+        background: #E8DCF0;
+        line-height: 37px;
+        padding-left: 5px;
+        color: #5D2482;
+        margin-bottom: 0px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+</style>
+@*<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=@System.Configuration.ConfigurationManager.AppSettings["FacebookAppId"]";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>*@
+@*<div class="main">*@
+@*<div ><a class=" btn btn-success" href="@Url.Action("ManageNewsUnApproved", "RecruitmentAdmin")">Quay lại trang quản lý bài viết </a>
+</div>*@
+<hr style="background-color: red"/>
+<div class="project-wrapper" style="padding-top:30px;">
+
+    <div class="project">
+        <div class="single-blog">
+            <div class="single-img">
+                @if (Model.ImageServerFlag == true)
+                {
+                    <img src="~/Content/Galleries/Recruit/@Model.ImageLink" alt="@Model.ImageAlt" style="width:100%" />
+                }
+                else
+                {
+                    <img src="@Model.ImageLink" alt="@Model.ImageAlt" style="width:100%" />
+                }
+
+            </div>
+            <div class="blog-desc">
+                <h1 style="font-weight: bold">@Model.Title</h1>
+                <i class="fa fa-clock-o" aria-hidden="true"></i><a href="javascript:0" style="color: #333;"> @Model.ModifiedTime.Day @Model.ModifiedTime.ToString("MMMM", new CultureInfo("vi")) @Model.ModifiedTime.Year</a>
+                <p>@Model.Description</p>
+                <div class="comment">
+                    <a href="javascript:0">
+                        <div class="fa fa-user" style="color:#f44242; font-size: 17px; float: left"></div>&nbsp;
+                    </a>@Model.TotalOfViews&nbsp;Lượt xem
+                    <div class="comment-desc">
+                        @*<span >Nhà tuyển dụng :</span>*@
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        <a href="javascript:0">
+                            @Model.objCompany.CompanyName
+                        </a> @*/*@
+                        @*<a href="javascript:0">@Model.TotalOfViews views</a> /*@
+                        @*<a href="javascript:0">@Model.ModifiedTime.ToString("MMMM"). @Model.ModifiedTime.Day, @Model.ModifiedTime.Year</a>*@
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+            <div style="width:100%;float:left;margin-top:10px;">
+                <h4 class="content-header">Thông tin tuyển dụng</h4>
+                <div class="ck-content ck-table">
+                    @Html.Raw(HttpUtility.HtmlDecode(Model.Content))
+                </div>
+                <div class="clear"></div>
+                <h4 class="content-header">Thông tin liên hệ</h4>
+                <div class="ck-content ck-table">
+                    @Html.Raw(HttpUtility.HtmlDecode(Model.ContactInfo))
+                </div>
+                <div class="clear"></div>
+                <h4 class="content-header">Thông tin nhà tuyển dụng</h4>
+                <div class="ck-content ck-table">
+                    @Html.Raw(HttpUtility.HtmlDecode(Model.EmployerInfo))
+                </div>
+            </div>
+
+            <div class="tag-box">
+                <h4 class="cmt-header">TAGS:</h4>
+                <div style="margin-top:10px;margin-left:10px;float:left">
+                    @{
+                        List<NewsletterTagDetailObject> lstTag = (List<NewsletterTagDetailObject>)ViewBag.TagList;
+                        if (lstTag != null)
+                        {
+                            foreach (var item in lstTag)
+                            {
+                                <a class="c-tag rec-tag">@item.objTag.NewsletterTagName</a>
+                            }
+                        }
+                        else
+                        {
+                            <p style="font-size: 15px; font-weight: bold;">Chưa có từ khóa</p>
+                        }
+
+                    }
+                </div>
+            </div>
+            @*<div class="fb-like" data-href="@Request.Url.ToString()" style="float: left; margin-top: 25px;"
+                 data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true">
+
+            </div>
+
+
+            <div style="width:100%;float:left;margin-top: 20px;">
+                <h4 class="cmt-header">BÌNH LUẬN</h4>
+            </div>
+            <div class="fb-comments" data-href="@Request.Url.ToString()" data-width="100%" data-numposts="5"></div>
+            <div class="clear"></div>
+            <div style="width:100%;float:left;margin-top: 20px;">
+
+                @{Html.RenderAction("Detail_ComRelated", "RecruitPage", new { id = Model.NewsletterId });}
+            </div>
+
+            @{Html.RenderAction("Detail_Related", "RecruitPage", new { rid = Model.NewsletterId });}*@
+
+
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,154 @@
+﻿@{
+    ViewBag.Title = "Trang kiến thức";
+    Layout = "~/Views/Shared/_LayoutLesson.cshtml";
+}
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.LessonCategoryObject>
+<style>
+    .u-overflow {
+        height: 84px;
+        overflow: hidden;
+        text-align: justify;
+    }
+
+</style>
+<div class="container--fluid s-large-below s-large-above">
+    <div class="homepage-categories">
+        <h3 class="homepage__heading th-align-center">Lựa chọn chủ đề bạn quan tâm</h3>
+        <p class="homepage__subheading th-align-center">Là tiện ích giúp bạn nhanh chóng tìm được các bài viết mà bạn đang quan tâm</p>
+        <div class="categories__grid">
+            @foreach (var item in Model)
+            {
+
+
+                <div class="category-card__wrapper">
+                    <a alt="Audio" class="category-card"  href="#@item.CategoryCode" style="background-image: url(/Content/Galleries/Lesson/Categories/@item.CategoryImage)">
+                        <div class="category-card__name">
+                            <h4>@item.CategoryName</h4>
+                        </div>
+                    </a>
+                </div>
+            }
+            @*<div class="category-card__wrapper">
+                <a alt="Design &amp; Graphics" class="category-card" href="#audio1" style="background-image: url(images/design-graphics-ed4d8ecc719622b90221f76638c79dbd29303ecafca8673f2aba9d0b60c6723a.jpg)">
+                    <div class="category-card__name">
+                        <h4>Design &amp; Graphics</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="category-card__wrapper">
+                <a alt="WordPress" class="category-card" href="/explore/wordpress" style="background-image: url(images/wordpress-f6f302ce233c5fb33b18c4ffba1d73ca3116f19f891212af909cdd575c45d96e.jpg)">
+                    <div class="category-card__name">
+                        <h4>WordPress</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="category-card__wrapper">
+                <a alt="Logo Design &amp; Branding" class="category-card" href="/explore/logo-design-branding" style="background-image: url(images/logo-design-branding-ed3450deffc63806b357283ae98719f3742d3138c6a1d5320cfccbb267f683b2.jpg)">
+                    <div class="category-card__name">
+                        <h4>Logo Design &amp; Branding</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="category-card__wrapper">
+                <a alt="Online Marketing" class="category-card" href="/explore/business-online-marketing" style="background-image: url(images/business-online-marketing-d69b4a8d3942cd2223b6e7211f4c28e0ef476bea080272df67a437fea509abed.jpg)">
+                    <div class="category-card__name">
+                        <h4>Online Marketing</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="category-card__wrapper">
+                <a alt="Video &amp; Animation" class="category-card" href="/explore/video-animation" style="background-image: url(images/video-animation-f10ea710d678f041d5bbdca058554a9f28243c7f40dd20a98421253d4587d41f.jpg)">
+                    <div class="category-card__name">
+                        <h4>Video &amp; Animation</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="category-card__wrapper">
+                <a alt="Mobile &amp; Apps" class="category-card" href="/explore/mobile-apps" style="background-image: url(images/mobile-apps-cf7e30008e29b8ca6023800410b9d869ddb19cc0a8f718fda694716a734934c2.jpg)">
+                    <div class="category-card__name">
+                        <h4>Mobile &amp; Apps</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="category-card__wrapper">
+                <a alt="Websites &amp; Programming" class="category-card" href="/explore/websites-programming" style="background-image: url(images/websites-programming-363fe58ca9201de21946f6b4b82b1e2ba0c201470346b71a1c99adc09619409f.jpg)">
+                    <div class="category-card__name">
+                        <h4>Websites &amp; Programming</h4>
+                    </div>
+                </a>
+            </div>*@
+        </div>
+    </div>
+    <div class="homepage-community">
+        <h3 class="homepage__heading th-align-center">Chia sẻ kiến thức theo chuyên mục</h3>
+        <p class="homepage__subheading th-align-center">Có hơn 3000 bài viết chia sẻ kiến thức và 220 thành viên đã tham gia cộng đồng của chúng tôi</p>
+        <div class="js-homeStream">
+            @foreach (var item1 in Model)
+            {
+                <div id="@item1.CategoryCode" class="streamItem streamItem--section js-streamItem">
+                    <section class="u-marginTop30 u-xs-margin0 u-marginBottom15 u-maxWidth1250 u-sm-paddingLeft20 u-sm-paddingRight20 u-borderBox u-marginAuto">
+                        <header style=" padding-bottom: 10px; border-bottom: solid 1px #e8e8e8;" class="u-marginBottom30 u-flexTop u-xs-flexWrap u-fontSize14 u-contentSansThin">
+                            <a class="link link--accent u-accentColor--textNormal link--noUnderline u-flexCenter u-baseColor--link">
+                                <img style="width:40px; height: 40px; border-radius: 50%; border: 1px solid silver; margin-right: 10px " src="~/Content/Galleries/Lesson/Categories/@item1.CategoryImage"/>
+                                <h1 class="u-fontSize18 u-contentSansRegular u-fontWeightBold u-xs-fontSize18">@item1.CategoryName</h1>
+                                <div class="u-flexCenter u-relative u-top2 u-textColorGreenNormal u-marginLeft10">
+                                    <span class="svgIcon svgIcon--arrowRight svgIcon--21px">
+                                        <svg class="svgIcon-use" width="21" height="21" viewBox="0 0 21 21">
+                                            <path d="M8.3 4.2l6.4 6.3-6.4 6.3-.8-.8 5.5-5.5L7.5 5" fill-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </a>
+                        </header>
+                        @*<div class="row u-marginTop30 u-marginLeftNegative12 u-marginRightNegative12">
+                            <div class="col u-xs-size12of12 js-trackedPost u-paddingLeft12 u-marginBottom15 u-paddingRight15 u-size8of12" >
+                                <div class="u-lineHeightBase postItem u-marginRight3">
+                                    <a href="" data-action="open-post" class="u-block u-xs-height170 u-height350 u-sizeFullWidth u-floatLeft  u-backgroundSizeCover u-backgroundOriginBorderBox u-backgroundColorGrayLight u-borderLighter" style="background-image: url(/Content/Galleries/Lesson/Categories/@item1.CategoryImage); background-position: 50% 50% !important;"><span class="u-textScreenReader">@item1.CategoryName</span></a>
+                                </div>
+                            </div>
+                            <div class="col u-xs-marginBottom10 u-paddingLeft9 u-paddingRight12 u-paddingTop0 u-sm-paddingTop20 u-paddingBottom25 u-size4of12 u-xs-size12of12 u-marginBottom30">
+                                <a class="" href="">
+                                    <h3 class="u-contentSansBold u-lineHeightTightest u-xs-fontSize24 u-paddingBottom2 u-paddingTop5 u-fontSize32">
+                                        <div class="u-letterSpacingTight u-lineHeightTighter u-fontSize22 u-xs-fontSize24">@item1.CategoryName</div>
+                                    </h3>
+                                    <div class="u-contentSansThin u-lineHeightBaseSans u-fontSize18 u-xs-fontSize18">
+                                        <div class="u-fontSize14 u-letterSpacingTight u-lineHeightTight u-marginTop7">@item1.CategorySumary</div>
+                                    </div>
+                                </a>
+                                <div class="u-clearfix u-marginTop20">
+                                    <div class="u-flexCenter">
+                                        <div class="postMetaInline-avatar u-flex0"><a class="link avatar u-baseColor--link" href="" ><img src="~/Content/images/avatar/@item1.objAccount.ImageAvatar" class="avatar-image u-size36x36 u-xs-size32x32" ></a>
+                                        </div>
+                                        <div class="postMetaInline postMetaInline-authorLockup u-flex1 u-noWrapWithEllipsis">
+                                            <a class="link link link--darken link--accent u-accentColor--textNormal u-accentColor--textDarken u-baseColor--link" href="">@item1.objAccount.FullName</a>
+                                            <div class="u-fontSize12 u-baseColor--textNormal u-textColorNormal js-postMetaInlineSupplemental"><time datetime="2017-06-02T17:05:47.435Z">@item1.ModifiedTime</time>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                        <div class="row u-marginTop15 u-marginLeftNegative12 u-marginRightNegative12">
+                            @{Html.RenderAction("GetAllLesson","LessonPage",new{@id = item1.LessonCategoryId});}
+                        </div>
+                    </section>
+                </div>
+            }
+        </div>
+
+        <!-- end section -->
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document)
+            .ready(function() {
+                $(".category-card").click(function (event) {
+                    event.preventDefault();
+                    $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+                });
+            });
+    </script>
+}
+   

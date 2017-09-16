@@ -1,0 +1,81 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.DemoProjectObject
+@{
+    ViewBag.Title = "Thêm dự án mẫu";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> Thông tin về dự án mấu
+        </div>
+    </div>
+    <div class="portlet-body form">
+        @using (Html.BeginForm("DemoProjectInsert", "TrainingAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-body">
+
+                <div class="form-group">
+                    <label>Tên video/hình ảnh</label>
+                    <div class="alert alert-warning">
+                        <strong>Chú ý!</strong> Tên dự án nên đặt có tiền tố DAV cho "Video dự án", DAA cho "Ảnh dự án", GTV cho "Video giới thiệu" để dễ tìm ví dụ như: GTV_giới thiệu Imic, DAA_Lớp ASP.net, DAV_lớp Java
+
+                    </div>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.ProjectName, new {@class = "form-control", @placeholder = "Nhập tên dự án..."})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Ảnh nền</label>
+                    <input type="file" name="fileAvatar">
+                    <p class="help-block">
+                        Chọn một ảnh nền.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Ảnh demo chi tiết project (nếu file demo là ảnh)</label>
+                    <input type="file" name="fileImageDemo">
+                    <p class="help-block">
+                        Chọn một ảnh demo chi tiết.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label>Link video demo (nếu file demo là video)</label>
+                    <div class="input-icon right">
+                        <i class="fa fa-microphone"></i>
+                        @Html.TextBoxFor(m => m.DemoLink, new {@class = "form-control", @placeholder = "Nhập link..."})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>File demo dự án là ảnh hay video?</label>
+                    <div class="radio-list">
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.DemoType, false) Video
+                        </label>
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.DemoType, true) Ảnh
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Hiển thị ở "Hình ảnh/Video" dự án hay "Video giới thiệu"</label>
+                    <div class="radio-list">
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.TabType, false) Hình ảnh/Video dự án
+                        </label>
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.TabType, true) Video giới thiệu
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn blue">Thêm</button>
+                <button type="button" class="btn default">Huỷ</button>
+            </div>
+        }
+    </div>
+</div>
+

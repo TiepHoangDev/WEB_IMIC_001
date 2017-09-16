@@ -1,0 +1,352 @@
+﻿@model List<WCF.BusinessObjectsLayer.EntityObjects.RegisterDetailObject>
+@{
+    ViewBag.Title = "Đơn đăng ký chưa duyệt";
+    Layout = "~/Areas/AdminCP/Views/Shared/_Admin.cshtml";
+}
+
+<div class="portlet box grey-cascade">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-globe"></i>Danh sách đơn đăng ký mới
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="table-toolbar">
+            <div class="row">
+                <div class="col-md-12">
+
+                </div>
+            </div>
+
+            <table class="table table-striped table-bordered table-hover" id="sample_1">
+                <thead>
+                    <tr>
+                        <th class="table-checkbox">
+                            <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" />
+                        </th>
+                        <th>
+                            Ngày đăng ký
+                        </th>
+                        <th>
+                            Lớp học đăng ký
+                        </th>
+                        <th>
+                            Khóa học đăng ký
+                        </th>
+                        <th>
+                            Người đăng ký
+                        </th>
+                        <th>
+                            Email người đăng ký
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Count() > 0)
+                    {
+                        foreach (var obj in Model)
+                        {
+                            <tr class="odd gradeX">
+                                <td>
+                                    <input type="checkbox" class="checkboxes" name="@obj.RegisterDetailId" value="@obj.RegisterDetailId" />
+                                </td>
+                                <td>
+                                    @obj.CreatedTime
+                                </td>
+                                <td>
+                                    @if (obj.OpenClass != null)
+                                    {
+                                        <p>@obj.OpenClass.ClassName</p>
+                                    }
+                                </td>
+                                <td>
+                                    @if (obj.Course != null)
+                                    {
+                                        <p>@obj.Course.CourseName</p>
+                                    }
+                                </td>
+                                <td>
+                                    @obj.RegisterPerson.FullName
+                                </td>
+                                <td>
+                                    @obj.RegisterPerson.Email
+                                </td>
+                                <td>
+                                    @{
+                                        string strName = "";
+                                        if (obj.OpenClass != null)
+                                        {
+                                            strName += obj.OpenClass.ClassName;
+                                        }
+                                        else
+                                        {
+                                            if (obj.Course != null)
+                                            {
+                                                strName += obj.Course.CourseName;
+                                            }
+                                        }
+                                    }
+                                    @*<a onclick="btnModal('@obj.RegisterDetailId', '@obj.ClassId', '@obj.CourseId', '@obj.RegisterPersonId', '@obj.CreatedTime', '@Html.Raw(strName) ', '@Html.Raw(obj.RegisterPerson.FullName)', '@Html.Raw(obj.RegisterPerson.Address)', '@Html.Raw(obj.RegisterPerson.Email)', '@Html.Raw(obj.RegisterPerson.Phone)', '@Html.Raw(obj.RegisterPerson.JobObj.JobObjectName) ', '@Html.Raw(obj.Message)') " type="button" class="btn btn-info btn-small">Xem đơn</a>*@
+                                    <a href="@Url.Action("getResByID","ClassAdmin",new{id= obj.RegisterDetailId,daduyet =false})" class="btn btn-info btn-small">Xem đơn</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade in" id="modalDetail" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Thông tin chi tiết</h4>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("Register_Aprroving", "ClassAdmin", FormMethod.Post, new { @id = "frmReg", @class = "row form-horizontal margin-top-10" }))
+                {
+                    <div class="form-body">
+                        <input type="hidden" name="registerDetailId" id="registerDetailId" />
+                        <input type="hidden" name="classCourseId" id="classCourseId" />
+                        <input type="hidden" name="typeReg" id="typeReg" />
+                        <input type="hidden" name="personId" id="personId" />
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Ngày đăng ký :</label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" readonly name="createdTime" id="createdTime" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Khoá/Lớp học :</label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" readonly name="className" id="className" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Họ tên:</label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" readonly name="fullName" id="fullName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Địa chỉ: </label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" readonly name="address" id="address" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Email :</label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" readonly name="email" id="email" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Số điện thoại :</label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" readonly name="phone" id="phone" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Hiện là :</label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" readonly name="jobName" id="jobName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Tin nhắn để lại :</label>
+                            <div class="col-md-6">
+                                <textarea id="message" readonly name="message" class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Trạng thái xử lý :</label>
+                            <div class="col-md-6">
+                                <select name="status" class="form-control">
+                                    <option value="0">Chưa xử lý</option>
+                                    <option value="1">Đã mail/phone</option>
+                                    <option value="2">Đang chờ phản hồi</option>
+                                    <option value="3">Đã chấp nhận học thử</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Ghi chú :</label>
+                            <div class="col-md-6">
+                                <textarea name="comment" class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button id="submitFrm" type="button" class="btn btn-primary">Xác nhận đã duyệt</button>
+                <button type="button" class="btn default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/select2/select2.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Areas/AdminCP/Content/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/global/plugins/bootbox/bootbox.min.js"></script>
+    <script src="~/Areas/AdminCP/Content/assets/admin/pages/scripts/table-managed.js"></script>
+
+    <script>
+        jQuery(document).ready(function () {
+            TableManaged.init();
+
+            $("#submitFrm").click(function () {
+                $("#frmReg").submit();
+            });
+        });
+        var TableManaged = function () {
+
+            var initTable1 = function () {
+
+                var table = $('#sample_1');
+
+                // begin first table
+                table.dataTable({
+
+                    // Internationalisation. For more info refer to http://datatables.net/manual/i18n
+                    "language": {
+                        "aria": {
+                            "sortAscending": ": activate to sort column ascending",
+                            "sortDescending": ": activate to sort column descending"
+                        },
+                        "emptyTable": "No data available in table",
+                        "info": "Showing _START_ to _END_ of _TOTAL_ records",
+                        "infoEmpty": "No records found",
+                        "infoFiltered": "(filtered1 from _MAX_ total records)",
+                        "lengthMenu": "Show _MENU_ records",
+                        "search": "Search:",
+                        "zeroRecords": "No matching records found",
+                        "paginate": {
+                            "previous": "Prev",
+                            "next": "Next",
+                            "last": "Last",
+                            "first": "First"
+                        }
+                    },
+
+                    // Or you can use remote translation file
+                    //"language": {
+                    //   url: '//cdn.datatables.net/plug-ins/3cfcc339e89/i18n/Portuguese.json'
+                    //},
+
+                    // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
+                    // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js). 
+                    // So when dropdowns used the scrollable div should be removed. 
+                    //"dom": "<'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
+
+                    "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
+
+                    "columns": [{
+                        "orderable": true
+                    }, {
+                        "orderable": true
+                    }, {
+                        "orderable": true
+                    }, {
+                        "orderable": true
+                    }, {
+                        "orderable": true
+                    }, {
+                        "orderable": true
+                    }, {
+                        "orderable": true
+                    }],
+                    "lengthMenu": [
+                        [5, 15, 20, -1],
+                        [5, 15, 20, "All"] // change per page values here
+                    ],
+                    // set the initial value
+                    "pageLength": 20,
+                    "pagingType": "full_numbers",
+                    "columnDefs": [{  // set default column settings
+                        'orderable': false,
+                        'targets': [0]
+                    }, {
+                        "searchable": false,
+                        "targets": [0]
+                    }],
+                    "order": [
+                        [1, "asc"]
+                    ] // set first column as a default sort by asc
+                });
+
+                var tableWrapper = jQuery('#sample_1_wrapper');
+
+                table.find('.group-checkable').change(function () {
+                    var set = jQuery(this).attr("data-set");
+                    var checked = jQuery(this).is(":checked");
+                    jQuery(set).each(function () {
+                        if (checked) {
+                            $(this).attr("checked", true);
+                            $(this).parents('tr').addClass("active");
+                        } else {
+                            $(this).attr("checked", false);
+                            $(this).parents('tr').removeClass("active");
+                        }
+                    });
+                    jQuery.uniform.update(set);
+                });
+
+                table.on('change', 'tbody tr .checkboxes', function () {
+                    $(this).parents('tr').toggleClass("active");
+                });
+
+                tableWrapper.find('.dataTables_length select').addClass("form-control input-xsmall input-inline"); // modify table per page dropdown
+            }
+
+
+
+            return {
+
+                //main function to initiate the module
+                init: function () {
+                    if (!jQuery().dataTable) {
+                        return;
+                    }
+
+                    initTable1();
+                }
+
+            };
+
+        }();
+    </script>
+    <script>
+        function btnModal(registerDetailId, classId, courseId, personId, createdTime, className, fullName, address, email, phone, jobName, message) {
+            // show lên modal
+            debugger
+            $("#modalDetail #registerDetailId").val(registerDetailId);
+            $("#modalDetail #classCourseId").val(classId != '' ? classId : courseId);
+            $("#modalDetail #typeReg").val(classId != '' ? true : false); // false la dk tu trang dao tao
+            $("#modalDetail #personId").val(personId);
+            $("#modalDetail #createdTime").val(createdTime);
+            $("#modalDetail #className").val(className);
+            $("#modalDetail #fullName").val(fullName);
+            $("#modalDetail #address").val(address);
+            $("#modalDetail #email").val(email);
+            $("#modalDetail #phone").val(phone);
+            $("#modalDetail #jobName").val(jobName);
+            $("#modalDetail #message").val(message);
+
+            // hiện modal
+            $("#modalDetail").modal();
+        }
+    </script>
+}

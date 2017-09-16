@@ -1,0 +1,10 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.IntroducePartnerObject>
+@{
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+    <img href="@item.PartnerLinkTo" src="~/Content/Galleries/Introduce/Partners/@item.PartnerLogo" />
+    
+}
+

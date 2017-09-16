@@ -1,0 +1,12 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.TechLogoObject>
+<div class="other-platform-logo">
+    @foreach (var item in Model)
+    {
+
+
+        <a href="javascript: void(0);" title="@item.TechLogoTitle">
+            <img alt="@item.TechLogoTitle" src="~/Content/Galleries/Tech/Logo/@item.TechLogoImage" typeof="foaf:Image" height="186">
+        </a>
+    }
+       
+</div>

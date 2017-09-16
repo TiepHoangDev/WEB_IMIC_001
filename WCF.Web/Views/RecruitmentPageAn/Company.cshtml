@@ -1,0 +1,9 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.RecruitmentCompanyObject>
+<ul id="flexiselDemo3">
+    @foreach (var item in Model)
+    {
+        <li ><img src="~/Content/Galleries/Recruit/@item.CompanyLogo" data-id="@item.CompanyCode" class="rec-com" /></li>
+    }
+    
+    
+</ul>

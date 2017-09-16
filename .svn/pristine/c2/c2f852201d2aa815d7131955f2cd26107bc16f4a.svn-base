@@ -1,0 +1,221 @@
+body {
+    font-family: Roboto-Regular;
+    font-size: 14px;
+    height: 100%;
+    background-color: #fff;
+    color: #575757;
+}
+.box_text_q h2 {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-top: 50px;
+    /* margin-bottom: 30px; */
+    font-weight: 600;
+}
+.box_text_q h2 span {
+    color: #ca3433;
+}
+.box_text_q {
+    max-width: 1024px;
+    margin: auto;
+    min-height: 300px;
+    /* margin-bottom: 30px; */
+    width: 100%;
+}
+.box_text_q .text-c {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    margin-top: 30px;
+    line-height: 30px;
+    font-family: "Times New Roman", Times, serif;
+}
+.box-about-3 {
+    width: 100%;
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.box-about-3 .img {
+    height: 100%;
+    width: 100%;
+}
+.box-about-3 .text-ct {
+    position: absolute;
+    z-index: 2;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(77, 178, 230, 0.7);
+    opacity: 0;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+.box-about-3 .text-ct .box .title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+    font-size: 12px;
+    color: #fff;
+    text-align: left;
+    line-height: 40px;
+    border-bottom: 1px solid #fff;
+    text-transform: uppercase;
+    margin: 0px;
+}
+.box-about-3 .text-ct .box .text2 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+    font-size: 16px;
+    color: #fff;
+    text-align: left;
+    line-height: 30px;
+    text-transform: uppercase;
+    margin: 0px;
+}
+.box-about-3 .text-ct .box {
+    width: 100%;
+    padding: 15px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}
+.box-about-3 .text-ct .box .text2 i {
+    font-size: 18px;
+    margin-right: 10px;
+    border: 1px solid #fff;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    line-height: 30px;
+    text-align: center;
+}
+.bg_white {
+    background-color: #fff;
+}
+
+.padding-bottom30 {
+    padding-bottom: 30px;
+}
+
+.padding-top30 {
+    padding-top: 30px;
+}
+
+.widhfull {
+    width: 100%;
+    display: inline-block;
+    float: left;
+}
+
+
+
+
+.main {
+    max-width: 1024px;
+    margin: auto;
+    width: 100%;
+}
+.box-about-3 .text-ct .box .title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+    font-size: 12px;
+    color: #fff;
+    text-align: left;
+    line-height: 40px;
+    border-bottom: 1px solid #fff;
+    text-transform: uppercase;
+    margin: 0px;
+}
+
+ .introduction {
+    color: #7d7d7d;
+    min-height: 360px;
+    padding: 30px 0 10px;
+    background: url(../images/gioi-thieu/bg_educate2.jpg) right 50px no-repeat transparent;
+}
+
+.oneColumnWidth {
+    width: 100%;
+    margin: 0 auto;
+}
+.education-program .work.first-week {
+    width: 45%;
+}
+.education-program .logo {
+    float: left;
+    width: 45%;
+    height: 191px;
+    margin-right: 43px;
+}
+.education-program .work {
+    float: left;
+   margin-right: 15px; 
+   width:22%;
+   font-size:13px;
+}
+ .education-program .work .title {
+    color: #2db3db;
+    font-size: 21px;
+    font-family: Roboto-Bold;
+	font-weight: bold;
+}
+.education-program .work .line {
+    height: 4px;
+    background: url(../images/icon/bg_career_line_bottom.png) left center no-repeat transparent;
+}
+.education-program .work.first-week li {
+    width: 190px;
+    float: left;
+	font-size:13px;
+}
+
+ .education-program .work li {
+    background: url(../images/icon/icon_bullet.png) left top no-repeat transparent;
+    min-height: 24px;
+    padding: 2px 0 0 30px;
+    margin-bottom: 9px;
+}
+
+.Clear {
+    clear: both;
+    line-height: 0;
+}
+ul, li {
+    margin: 0;
+    padding: 0;
+list-style-type: none;}
+.education-program .work ul {
+    margin-top: 15px;
+}
+@media screen and (min-width: 1200px){
+
+.container {
+    width: 1024px;
+}
+}

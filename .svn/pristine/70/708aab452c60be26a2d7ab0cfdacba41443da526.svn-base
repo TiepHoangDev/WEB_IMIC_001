@@ -1,0 +1,78 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+.wrapper-register {
+	max-width: 460px;
+	margin: 0 auto;
+}
+.wrapper-register iframe {
+	min-width: 460px;
+	min-height: 550px;
+	border: none;
+}
+.box-try-register input {
+	width: calc(100% - 100px);
+	float: left;
+	border-radius: 3px 0 0 3px;
+}
+.btn-try {
+	background: #338dbc;
+	color: #fff;
+	text-transform: uppercase;
+	border-radius: 0 3px 3px 0;
+}
+.btn-register {
+	background: #338dbc;
+	color: #fff;
+	text-transform: uppercase;
+}
+.btn-try:hover, .btn-register:hover {
+	color: #fff;
+	background: #286f94;
+}
+.modal-container {
+	background: #2a2c2e;
+	display: none;
+	min-height: 100vh;
+	left: 0;
+	opacity: 0;
+	overflow: auto;
+	top: 0;
+	width: 100%;
+	text-align: center;
+	-webkit-overflow-scrolling: touch;
+	z-index: -1;
+	color: #fff;
+	-webkit-transition: opacity 150ms;
+	transition: opacity 150ms;
+}
+.modal-container.hrv-modal-active {
+	display: block;
+	opacity: 1;
+}
+body.hrv-modal-open > *:not(.modal-container) {
+	display: none;
+}
+.closemodal {
+	height: 36px;
+	width: 37px;
+	position: absolute;
+	z-index: 2;
+	top: 30px;
+	right: 30px;
+	background: url(//hstatic.net/0/0/global/design/haravan/H_Library/images/close.png) no-repeat;
+	cursor: pointer;
+}
+#hrv-registry iframe {
+	width: 100%;
+	min-height: 100vh;
+	overflow: hidden;
+	border: none;
+}
+@media (max-width:767px) {
+	.closemodal {
+		top: 10px;
+		right: 10px;
+	}
+}

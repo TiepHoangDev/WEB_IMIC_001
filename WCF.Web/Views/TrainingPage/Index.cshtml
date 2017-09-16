@@ -1,0 +1,211 @@
+﻿@model WCF.BusinessObjectsLayer.EntityObjects.TrainingPageObject
+@{
+    ViewBag.Title = "IMIC-ĐÀO TẠO KINH NGHIỆM LẬP TRÌNH-ĐỒ HỌA";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    ViewBag.description = "iMic - Nơi đào tạo lập trình viên hàng đầu Việt Nam. Cơ hội tiếp cận môi trường làm dự án tại các Công ty, trau dồi kinh nghiệm lập trình cùng các chuyên gia, giảng viên nhiều năm kinh nghiệm.";
+    ViewBag.image = "http://imic.edu.vn/Images/Shortcut.jpg";
+}
+@section SEO{
+    
+    
+    @*<meta name="DESCRIPTION" content="iMic - Nơi đào tạo lập trình viên hàng đầu Việt Nam. Cơ hội tiếp cận môi trường làm dự án tại các Công ty, trau dồi kinh nghiệm lập trình cùng các chuyên gia, giảng viên nhiều năm kinh nghiệm.">*@
+    <meta name="KEYWORDS" content="Đào tạo lập trình, khóa học lập trình, kinh nghiệm lập trình, đào tạo đồ họa, thiết kế đồ họa">
+}
+@section css{
+    <link href="~/Content/css/train-banner.css" rel="stylesheet" type="text/css">
+}
+
+<div id="page-wrapper" oncopy="return false" oncut="return false" onpaste="return false" oncontextmenu="return false">
+    @*<div class="main">
+            <!--silder-->
+            @Html.Action("Index_Banner")
+            <!--end silder-->
+        </div>
+        <div class="box-dt-group">
+            <div class="main">
+                <div class="col-xs-12 col-lg-4 col-md-4 bg-1">
+                    <div class="box-dt">
+                        <i class="fa-clock-o fa"></i>
+                        <h3 class="title">@Model.LearningTimeTitle</h3>
+                        <ul class="list-time">
+                            <li><span>@Model.SessionName1</span>: @Model.SessionTime1</li>
+                            <li><span>@Model.SessionName2</span>: @Model.SessionTime2</li>
+                            <li><span>@Model.SessionName3</span>: @Model.SessionTime3</li>
+                            <li><span>@Model.SessionName4</span>: @Model.SessionTime4</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-4 col-md-4 bg-2">
+                    <div class="box-dt">
+                        <i class="fa-calendar fa"></i>
+                        <h3 class="title">@Model.CalendarTitle</h3>
+                        <div class="box-text">
+                            @Model.CalendarDescription
+                            <p>
+                                <a href="@Model.CalendarLinkTo" class="button"> Xem thêm</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-4 col-md-4 bg-3">
+                    <div class="box-dt">
+                        <i class="fa-acc"><img src="~/Content/images/icon/icon_aac.png"></i>
+                        <h3 class="title">@Model.TeacherTitle</h3>
+                        <div class="box-text">
+                            @Model.TeacherDescription
+                            <p>
+                                <a href="@Model.TeacherLinkTo" class="button"> Xem thêm</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+    <div class="row">
+        <div class="tr-banner" style="background-image: url('../../Content/Galleries/Training/Banner/@ViewBag.Banner.BannerlmageBackground'); ">
+            @*@Html.Action("Index_Banner")*@
+            <div class="w-100">
+                <h4 class="tr-banner-title">Connect(); // IMIC Việt Nam</h4>
+                <h4><a class="tr-banner-link">Save the date<i class="fa fa-arrow-circle-right"></i></a></h4>
+            </div>
+            <div class="main">
+                <ul class="tr-banner-detail">
+                    <li class="col-lg-4 col-md-4 col-xs-12 li-detail">
+                        <div class="tr-detail-caption">@Model.LearningTimeTitle</div>
+                        <div class="tr-detail-content">
+                            <ul class="col-xs-12 train-list">
+                                <li class="col-xs-12">
+                                    <p>@Model.SessionName1</p>
+                                    <p>@Model.SessionTime1</p>
+                                </li>
+                                <li class="col-xs-12">
+                                    <p>@Model.SessionName2</p>
+                                    <p>@Model.SessionTime2</p>
+                                </li>
+                                <li class="col-xs-12">
+                                    <p>@Model.SessionName3</p>
+                                    <p>@Model.SessionTime3</p>
+                                </li>
+                                <li class="col-xs-12">
+                                    <p>@Model.SessionName4</p>
+                                    <p>@Model.SessionTime4</p>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                        <a class="tr-more">Xem thêm<i class="fa fa-arrow-circle-right"></i></a>
+                    </li>
+                    <li class="col-lg-4 col-md-4 col-xs-12 li-detail">
+                        <div class="tr-detail-caption">@Model.CalendarTitle</div>
+                        <div class="tr-detail-content">@Model.CalendarDescription</div>
+                        <a href="@Model.CalendarLinkTo" class="tr-more">Xem thêm<i class="fa fa-arrow-circle-right"></i></a>
+                    </li>
+                    <li class="col-lg-4 col-md-4 col-xs-12 li-detail">
+                        <div class="tr-detail-caption">@Model.TeacherTitle</div>
+                        <div class="tr-detail-content">@Model.TeacherDescription</div>
+                        <a href="@Model.TeacherLinkTo" class="tr-more">Xem thêm<i class="fa fa-arrow-circle-right"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-dt-group">
+        <div class="main">
+            <div class="a-column">
+                @Html.Action("Index_Category")
+                @Html.Action("ImageAds", "Marketing")
+                @Html.Action("FacebookLikeBox", "Marketing")
+            </div>
+            <div class="content_daotao">
+                <div class="row">
+                    <div id="course-list" class="col-xs-12">
+                        @Html.Action("ListCourse", new { categoryId = ViewBag.categoryId })
+                    </div>
+
+                    <div class="col-lg-12 pull-left widthfull">
+                        <img id="loader-img" alt="" src="~/Content/Galleries/SharedIcons/loading.gif" style="display: none; position: relative; left: 250px; bottom: 233px;" />
+                        <a class="bt-bts" onclick=" loadMore() ">Xem thêm nhiều Khóa Đào Tạo Kiến thức + Kinh Nghiệm về LẬP TRÌNH & ĐỒ HỌA nữa</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @* Đóng div từ trong index_banner *@
+</div>
+<input id="categoryId" type="hidden" name="categoryId" value="@ViewBag.categoryId"/>
+<div id="ematic_background_overlay" style="display: block; z-index: 2147483647; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; background: rgb(0, 0, 0); opacity: 0.8;"></div>
+<div id="ematic_popUpOverlay_6566_9613_1" style="position: absolute; left: 0px; top: -100%; width: 100%; height: 100%; z-index: 2147483647; margin-top: 0px; display: block; opacity: 1;">
+    <form onsubmit="return false" autocomplete="off">
+        <div data-trueoverlayindex="1" class="ematicOverlayContent ematicOverlayContent0" style="position: fixed; border-radius: 3px; background-image: url(&quot;/Content/images/background/Co-so-dao-tao-tai-Ho-Chi-Minh.png&quot;); background-repeat: no-repeat; background-position: center center; background-size: 600px 400px; width: 600px; height: 400px; z-index: 10000; margin-left: auto; margin-right: auto; left: 30%; top:121.5px; opacity: 1; display: block;">
+
+            @*<input id="ematic_closeExitIntentOverlay_1_xl_1_2" value="Đóng" class="ematic_closeExitIntentOverlay_1" type="button" style="cursor: pointer; padding: 0; margin: 0; position: absolute; left: 743px; top: 18px; width: 46px; height: 37px; border: none;opacity: 0.8 !important; color: #f4a460" >*@
+            <span title="Đóng" id="ematic_closeExitIntentOverlay_1_xl_1_2" class="ematic_closeExitIntentOverlay_1" style="cursor: pointer; padding: 0; margin: 0; position: absolute; left: 580px; top: 5px; width: 15px; height: 15px; border: none;opacity: 1 !important; color: #00bfff;font-weight: bold">X </span>
+        </div>
+
+    </form>
+</div>
+@section scripts
+{
+    <script>
+        var pageindex = 1;
+        
+        function loadMore() {
+            var id = $('#categoryId').val();
+            var page = pageindex;
+            debugger;
+            $('#loader-img').show();
+            $.ajax({
+                url: '@Url.Action("ListCourse", "TrainingPage")',
+                type: 'get',
+                data: { categoryId: id, pageSize: 9, pageIndex: page }
+            }).success(function (response) {
+                debugger;
+                var parsed = $.parseHTML(response);
+                var result = $(parsed).find(".item");
+                if (result.length == 0) {
+                    $('.bt-bts').hide();
+                    $('#loader-img').hide();
+                } else {
+                    $('#course-list').append(parsed);
+                    pageindex = pageindex + 1;
+                    $('#loader-img').hide();
+                }
+
+            });
+        }
+
+
+    </script>
+    <script>
+        //prevent copy
+        $(document).keydown(function (event) {
+            if (event.keyCode == 123) {
+                return false; //Prevent f12
+            }
+            else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {
+                return false;  //Prevent from ctrl+shift+i
+            }
+        });
+        //end prevent copy
+    </script>
+    @*<script>
+            $(document).ready(function () {
+                $(".bt-bts").click(function () {
+                    $(".ViewBag").hide();
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $(".button-onclick").click(function () {
+                    $(".ViewBag1").hide();
+                });
+            });
+        </script>*@
+
+}
+

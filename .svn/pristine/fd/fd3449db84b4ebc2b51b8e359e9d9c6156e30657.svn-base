@@ -1,0 +1,25 @@
+﻿@model List<WCF.BusinessObjectsLayer.EntityObjects.TechArticleObject>
+@using WCF.Web.App_Start
+@foreach (var item in Model)
+{
+
+    <div class="grid-item">
+        <div class="box-item">
+            <a href="@Url.RouteUrl("tech-detail", new { codeNumber = item.ArticleCodeNumber, PostName = StringHelpers.ToAscii(item.ArticleTitle) })">
+                <img src="~/Content/Galleries/Tech/Articles/@item.ArticleImageLink" class="img">
+                <div class="box-cot">
+                    <h3 class="name" style="width:calc(100% - 23px)">@item.objTechCategory.CategoryName</h3><span class="view text-muted" style="float:right">@item.TotalOfViews</span>
+                    <p>
+                        @item.ArticleTitle
+                    </p>
+                    <div class="item-avatar">
+                        <img src="~/Content/images/avatar/@item.objCreateBy.ImageAvatar" class="avatar">
+                        <span class="name-2">@item.objCreateBy.FullName</span>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+    </div>
+
+}

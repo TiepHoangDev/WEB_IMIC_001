@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "Thêm mới thành viên";
+    Layout = "~/Areas/Class/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model WCF.BusinessObjectsLayer.EntityObjects.AccountObject
+
+<div id="add-video-category" style="padding-bottom:20px; width:100%">
+    <div class="portlet light">
+        <div class="portlet-body" style="padding-top:0px">
+            @*<h4 style=" font-weight:bold; color:#1945e5; padding-bottom:30px; font-size:18px">
+                Update Video Category</h4>*@
+
+            @using (Html.BeginForm("AccountInsert", "ClassAccount", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="form-group">
+                    <h3>Ảnh</h3>
+                    @Html.TextBoxFor(m => m.ImageAvatar, new { type = "file", name = "ImageAvatar", id = "avatar" })
+                    <div style="margin-top:15px;">
+                        <img style="width:200px;height:150px;" class="img-thumbnail rimage" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h3>Chọn chức vụ</h3>
+                    @{
+                var lisRole = ViewBag.Role;
+                List<SelectListItem> listItem = new List<SelectListItem>();
+                foreach (var item in lisRole)
+                {
+                    listItem.Add(new SelectListItem()
+                    {
+                        Value = "" + item.RoleId,
+                        Text = item.RoleName
+                    });
+                }
+                    }
+                    @Html.DropDownListFor(m => m.RoleId, listItem, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <h3>Tài khoản</h3>
+                    @Html.TextBoxFor(m => m.Username, new { @type = "text", @class = "form-control", id = "UserName", required = "true" })
+                </div>
+                <div class="form-group">
+                    <h3>Mật khẩu</h3>
+                    @Html.TextBoxFor(m => m.Password, new { @type = "password", @class = "form-control", required = "true" })
+                </div>
+                <div class="form-group">
+                    <h3>FullName</h3>
+                    @Html.TextBoxFor(m => m.FullName, new { @type = "text", @class = "form-control", id = "FullName" })
+                </div>
+
+                <div class="form-group">
+                    <h3>Giới tính</h3>
+                    @{
+                List<SelectListItem> listItems = new List<SelectListItem>();
+                listItems.Add(new SelectListItem
+                     {
+                         Text = "Nam",
+                         Value = "true",
+                     });
+                listItems.Add(new SelectListItem
+                     {
+                         Text = "Nữ",
+                         Value = "false",
+
+                     });
+                listItems.Add(new SelectListItem
+                    {
+                        Text = "",
+                        Value = "",
+                        Selected = true
+                    });
+                    }
+                    @Html.DropDownListFor(m => m.Gender, listItems, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <h3>Ngày sinh</h3>
+                    <div class="input-icon">
+                        <i class="fa fa-calendar"></i>
+                        <input class="form-control date-picker" size="16" type="text" value="12-02-2012" data-date="12-02-2012" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h3>Email</h3>
+                    @Html.TextBoxFor(m => m.Email, new { @type = "text", @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <h3>Điện thoại</h3>
+                    @Html.TextBoxFor(m => m.Phone, new { @type = "text", @class = "form-control", id = "Phone" })
+                </div>
+                <div class="form-group">
+                    <h3>FaceBookID</h3>
+                    @Html.TextBoxFor(m => m.Phone, new { @type = "number", @class = "form-control", id = "Facebookid" })
+                </div>
+                <div class="form-group">
+                    <h3>GoogleID</h3>
+                    @Html.TextBoxFor(m => m.Phone, new { @type = "number", @class = "form-control", id = "GoogleID" })
+                </div>
+
+
+                <div style="padding-left:0px;width:100%;margin-top:30px;margin-bottom:20px">
+                    <a class="btn btn-primary" data-toggle="modal" href="#confirm-modal">Cập nhật</a>
+                    <a href="@Url.Action("ManageUser", "AccountAdmin")" class="btn btn-default" style="height:34px;width:86.75px">Đóng</a>
+                </div>
+
+                <!-- /.modal -->
+                <div class="modal fade bs-modal-lg" id="confirm-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                <h4 class="modal-title">Confirm Dialog</h4>
+                            </div>
+                            <div class="modal-body">
+                                Bạn có muốn tạo tài khoản này không ?
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn default" data-dismiss="modal">Hủy</button>
+                                <button onclick="submit" class="btn blue" id="btn-update">Xác nhận</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section PageLevelScript{
+    <script>
+        $("#avatar").change(function () {
+            readURL(this, '.rimage');
+        });
+
+    </script>
+
+}
+

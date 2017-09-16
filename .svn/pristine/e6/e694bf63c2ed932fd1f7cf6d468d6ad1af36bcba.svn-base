@@ -1,0 +1,46 @@
+﻿@model List<WCF.BusinessObjectsLayer.EntityObjects.RecruitmentNewsletterObject>
+       @if (Model.Count != 0)
+        {
+           <div class="related-post">
+               
+            <h4>Tin liên quan</h4>
+                <div class="clear"></div>
+                <style>
+                    .fb-post{
+                        width:100% !important;
+                    }
+                    .fb-post span{
+                        width:initial !important;
+                    }
+                </style>
+               <div class="gallery">
+                   <!-- start magnific -->
+                   <!-- end magnific -->
+
+                   <ul>
+                       @foreach (var item in Model)
+                       {
+                           <li>
+                               <a class="popup-with-zoom-anim" href="@Url.RouteUrl("recruit", new {code = item.NewsletterCode, name = WCF.Web.App_Start.StringHelpers.GenerateURL(item.Title)})">
+                                   @if (item.ImageServerFlag == true)
+                                   {
+                                       <img src="~/Content/Galleries/Recruit/@item.ImageLink" alt="@item.ImageAlt">
+                                   }
+                                   else
+                                   {
+                                       <img src="@item.ImageLink" alt="@item.ImageAlt">
+                                   }
+
+                                   <p>@item.Title</p>
+                               </a>
+                           </li>
+                       }
+
+
+                       <div class="clear"></div>
+                   </ul>
+
+               </div>
+        
+    </div>
+        }

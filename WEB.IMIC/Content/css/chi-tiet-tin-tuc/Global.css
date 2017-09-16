@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Roboto, Segoe UI, Arial;
+    font-weight: normal;
+    font-size: 14px;
+    height: 100%;
+}
+
+input, select, textarea {
+    font-size: 11px;
+}
+
+textarea {
+    color: #8A8A8A;
+    font-family: Segoe UI;
+}
+
+input {
+    padding: 1px;
+}
+
+    input[type="submit"], input[type="reset"] {
+        cursor: pointer;
+        font-size: 12px;
+        padding: 3px 5px;
+    }
+
+a {
+    color: #fff;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+img, img a {
+    border: 0 none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+.Clear {
+    clear: both;
+    line-height: 0;
+}
+
+.FloatRight {
+    float: right;
+}
+
+.FloatLeft {
+    float: left;
+}
+
+.ClearRight {
+    clear: right;
+}
+
+.ClearLeft {
+    clear: left;
+}
+
+.Warning {
+    color: #FF0000;
+}
+.oneColumnWidth {
+    margin: 0 auto;
+    width: 1220px;
+}

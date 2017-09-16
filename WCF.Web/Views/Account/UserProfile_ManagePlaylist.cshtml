@@ -1,0 +1,47 @@
+﻿@using WCF.BusinessObjectsLayer.EntityObjects;
+@using WCF.BusinessObjectsLayer.Commons;
+@using WCF.Web.App_Start
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.VideoSubCategoryObject>
+@{
+    AccountObject account = new AccountObject();
+    if (CommonConstants.SESSION_ACCOUNT != null)
+    {
+        account = (AccountObject)Session[CommonConstants.SESSION_ACCOUNT];
+    }
+    else
+    {
+        account = null;
+    }
+}
+<div>
+    <table class="table table-striped table-bordered table-hover dataTable" id="playlist-table">
+        <thead>
+            <tr class="uppercase">
+                <th style="text-align:center">
+                    TÊN DANH SÁCH PHÁT
+                </th>
+                <th style="width:180px;text-align:center">
+                    NGÀY TẠO
+                </th>
+                <th style="text-align:center">
+                    SỐ VIDEO
+                </th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.VideoSubCategoryName
+                </td>
+                <td style="text-align:center">
+                    @item.ModifiedTime.ToString("yyyy/MM/dd HH:mm:ss")
+                </td>
+                <td style="text-align:right">
+                    @item.TotalVideo.ToString("n0")
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

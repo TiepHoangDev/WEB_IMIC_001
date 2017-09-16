@@ -1,0 +1,91 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.VideoCategoryObject>
+@{
+    ViewBag.Title = "Trang video";
+    Layout = "~/Views/VideoPage/_LayoutVideo.cshtml";
+}
+
+<main>
+<div class="news-list">
+@foreach (var item in Model)
+{
+    <div class="news-list__layout">
+
+    <h1 class="news-list__title"> <img width="30" height="30" src="~/Content/Galleries/Video/Categories/@item.VideoCategoryIcon">   @item.VideoCategoryName</h1>
+    <!--
+    -->
+    @*<div class="news-list__navigation">
+
+
+                <div class="news-list-navigation">
+
+                    <div class="news-list-navigation-item ">
+                        <a href="/en/academy/uk/News" class="news-list-navigation-item__label"><span class="news-list-navigation-item__label-text">Latest news</span></a>
+
+                    </div>
+
+                    <div class="news-list-navigation-item ">
+                        <a href="/en/academy/uk/News/2016" class="news-list-navigation-item__label"><span class="news-list-navigation-item__label-text">2016</span></a>
+
+                    </div>
+
+                    <div class="news-list-navigation-item news-list-navigation-item_active">
+                        <span class="news-list-navigation-item__label"><span class="news-list-navigation-item__label-text">2015</span></span>
+
+                    </div>
+
+                    <div class="news-list-navigation-item ">
+                        <a href="/en/academy/uk/News/2014" class="news-list-navigation-item__label"><span class="news-list-navigation-item__label-text">2014</span></a>
+
+                    </div>
+
+                    <div class="news-list-navigation-item ">
+                        <a href="/en/academy/uk/News/2013" class="news-list-navigation-item__label"><span class="news-list-navigation-item__label-text">2013</span></a>
+
+                    </div>
+
+                </div>
+            </div>*@
+
+   @{Html.RenderAction("List_video","VideoPage",new{catcode = item.VCCodeNumber});}
+    </div>
+}
+</div>
+</main>
+                      
+@section scripts{
+    <script>
+        $('.SHOW_popup').on('click', function (e) {
+            e.preventDefault();
+            $('#modal-video').modal();
+
+            var code = $(this).attr("data");
+            debugger
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("getvideo", "VideoPage")",
+                data: { code : code },
+            success: function (response) {
+                var parsed = (response.src);
+                var name = (response.name);
+                var sumary = (response.sumary);
+                var view = (response.view);
+                debugger 
+       
+                $('iframe').attr('src', parsed +'?autoplay=1');
+                $('.title-video').append(name);
+
+                $('.video-description').append(sumary);
+                $('.view-count').append(view);
+            }
+        });
+        });
+        $('.close').on('click', function () {
+            $('iframe').attr('src', "");
+            $('.title-video').empty();
+            $('.video-description').empty();
+            $('.view-count').empty();
+        })
+    </script>                   
+       
+
+}

@@ -1,0 +1,54 @@
+﻿
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.TechRightObject>
+    @foreach (var item in Model)
+    {
+         <div class="box-list">
+        <h2 class="title"><a href="@item.TechRightUrl">@item.TechRightTitle</a></h2>
+        <a href="@item.TechRightUrl">
+            <img src="~/Content/Galleries/Tech/TechRight/@item.TechRightImage" class="img">
+        </a>
+             <ul class="newlist-2">
+                 @if (!string.IsNullOrEmpty(item.TechRightLine1))
+                 {
+                     <li><a href="@item.TechRightUrl1">@item.TechRightLine1</a></li>
+                 }
+                 @if (!string.IsNullOrEmpty(item.TechRightLine2))
+                {
+                    <li><a href="@item.TechRightUrl2">@item.TechRightLine2</a></li>
+                }
+
+                @if (!string.IsNullOrEmpty(item.TechRightLine3))
+                {
+                    <li><a href="@item.TechRightUrl3">@item.TechRightLine3</a></li>
+                }
+
+                @if (!string.IsNullOrEmpty(item.TechRightLine4))
+                {
+                    <li><a href="@item.TechRightUrl4">@item.TechRightLine4</a></li>
+                }
+
+                @if (!string.IsNullOrEmpty(item.TechRightLine5))
+                {
+                    <li><a href="@item.TechRightUrl5">@item.TechRightLine5</a></li>
+                }
+
+
+             </ul>
+    </div>
+    }
+   
+    @*<div class="box-list">
+        <a href="#">
+            <h2 class="title">VIDEO</h2>
+        </a>
+        <a href="#">
+            <img src="/Content/images/single/single_8.jpg" class="img">
+            <div class="red-green">Lập trình Android cơ bản cho người mới học đến nâng cao cho người đã biết về ngôn ngữ Java</div>
+        </a>
+        <ul class="newlist-2">
+            <li><a href="#">Lập trình Java theo nhóm sử dụng Eclipse và SVN Annotation Processing Tool</a></li>
+            <li><a href="#">Chia sẻ kiến các thức nền tảng &amp; kinh nghiệm lập trình game Android </a></li>
+            <li><a href="#">Lập Trình C# cơ bản hướng dẫn rất hay các bạn có thể tham khảo các bài video </a></li>
+        </ul>
+
+    </div>*@

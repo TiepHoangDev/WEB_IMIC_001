@@ -1,0 +1,79 @@
+﻿
+@{
+    Layout = null;
+}
+
+<footer class="art-footer gr-wrap ">
+    <div style="background-image: url(/Content/images/background/art_bg_footer.png);" class="bg ">
+        <img src="~/Content/images/other/img_footer_1.png" alt="img_footer_1 " class="img-1 hidden-xs hidden-sm hidden-md "><img src="~/Content/images/other/img_footer_2.png " alt="img_footer_2 " class="img-2 hidden-xs hidden-sm hidden-md ">
+        <div class="container ">
+            <div class="footer">
+                <div class="row">
+                    <div class="col-xs-12 col-lg-3 col-md-3 ">
+                        <ul class="list-ft">
+                            <li class="title">LIÊN KẾT KHÁC</li>
+                            <li><a href="http://www.imic.edu.vn/gioi-thieu-imic">Giới thiệu iMIC</a></li>
+                            <li><a href="#">Tuyển dụng</a></li>
+                            <li><a href="#">ĐK Thực tập Phần mềm</a></li>
+                            <li><a href="#">Tin tức </a></li>
+                            <li><a href="#">Giải pháp/phần mềm</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-lg-3 col-md-3">
+                        <ul class="list-ft">
+                            <li class="title">ĐÀO TẠO TRÊN DỰ ÁN</li>
+                            <li><a href="http://www.imic.edu.vn/lap-trinh-do-hoa/2026/Khoa-hoc-Lap-Trinh-C-NET-tu-Co-ban-den-Nang-cao-tren-Du-%C3%81n-Phan-Mem-Quan-Ly-.html">C#.NET </a></li>
+                            <li><a href="http://www.imic.edu.vn/lap-trinh-do-hoa/2062/Khoa-hoc-Lap-Trinh-Web-voi-ASP-NET-MVC-tren-Du-an-Website-Web-Portal.html">ASP.NET MVC5-6</a></li>
+                            <li><a href="http://www.imic.edu.vn/lap-trinh-do-hoa/2061/Khoa-hoc-Lap-Trinh-JAVA-CORE-tu-Co-ban-den-Nang-cao.html">Java Core</a></li>
+                            <li><a href="http://www.imic.edu.vn/lap-trinh-do-hoa/2072/Khoa-hoc-Lap-trinh-Web-J2EE-tu-Co-ban-den-Nang-Cao.html">J2EE Web Portal</a></li>
+                            <li><a href="http://www.imic.edu.vn/lap-trinh-do-hoa/2065/Khoa-hoc-Lap-Trinh-Android-tu-Co-ban-den-Nang-cao.html">Android Game/Apps</a></li>
+                            <li><a href="http://www.imic.edu.vn/lap-trinh-do-hoa/2066/Khoa-hoc-Lap-Trinh-IOS-tu-Co-ban-den-Nang-cao.html">IOS Game/Apps</a></li>
+                            <li><a href="http://www.imic.edu.vn/lap-trinh-do-hoa/2064/Khoa-hoc-Lap-Trinh-VBA-Excel-tu-Co-ban-den-Nang-cao.html">VBA Excel</a></li>
+                            <li><a href="http://www.imic.edu.vn/lap-trinh-do-hoa/2071/Khoa-hoc-Tester-tu-Co-ban-den-Nang-cao-Hoc-kiem-thu-tren-Du-An.html">Manual Testing</a></li>
+                            <li><a href="http://www.imic.edu.vn/lap-trinh-do-hoa/2071/Khoa-hoc-Tester-tu-Co-ban-den-Nang-cao-Hoc-kiem-thu-tren-Du-An.html">Automation Testing</a></li>
+                            <li><a href="http://www.imic.edu.vn/lap-trinh-do-hoa/2069/Khoa-%C4%90ao-tao-xu-ly-%E1%BA%A2nh-Photoshop-Chuyen-Nghiep-Ngan-Han.html">Đồ Họa Xử lý Ảnh</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-lg-6 col-md-6">
+                        <ul class="list-ft">
+                            <li class="title">IMICROSOFT VIỆT NAM</li>
+                            <li>- Văn phòng tại Hà Nội:</li>
+                            <li> Tầng 2B, tòa nhà T6-08 Tổng Cục 5, Bộ Công An, Số 643A Phạm Văn Đồng, B.Từ Liêm, Hà Nội.</li>
+                            <li> Điện thoại: <span style="color: yellow"> (024)3 7557 666 - (024)3 7557 333 - 0916 878 224</span></li>
+                            <li> Email: <span style="color: yellow"> tuvan@imicrosoft.edu.vn </span></li>
+                            <li> Facebook: <a href="http://www.facebook.com/imicrosoft.edu.vn"><span style="color: yellow">www.facebook.com/imicrosoft.edu.vn</span></a></li>
+                            <li>- Văn phòng tại Hồ Chí Minh:</li>
+                            <li>Số 256/18 Pasteur, phường 8, Quận 3, Hồ Chí Minh</li>
+                            <li>Điện thoại: <span style="color: yellow"> (028) 382 00 152 - 0916 878 224 - 0988 270 588 </span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<section class="nav-bottom hidden-xs ">
+
+
+    <div class="container">
+        <div class="row ">
+            
+            <div class="col-sm-6 col-md-6  ">
+                <label>Văn phòng đào tạo tại Hà Nội</label>
+                <a href="Tel:02437557666"><p>(024)3 7557 666 - (024)3 7557 333  </p></a> 
+            </div>
+            <div class="col-sm-6 col-md-6 ">
+                <label>Văn phòng đào tạo tại Hồ Chí Minh</label>
+                <a href="Tel:02838200152">
+                    <p>(028) 382 00 152</p>
+                </a>
+            </div>
+            </div>
+        <!--Khu vực mobile-->
+
+    </div>
+
+    
+
+</section>

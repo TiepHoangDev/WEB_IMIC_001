@@ -1,0 +1,20 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+@section css
+{
+    @RenderSection("StudentCss", false)
+}
+<div id="page-wrapper">
+    <div class="main">        
+        <div class="row" style="margin-top:-110px;">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @RenderSection("StudentScript", false)
+}
+

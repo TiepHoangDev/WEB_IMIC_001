@@ -1,0 +1,21 @@
+﻿@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.VideoObject>
+<div class="news-list__items">
+    @foreach (var item in Model)
+{
+    <div class="js-news-list-item news-list__item news-list-item news-list-item_news SHOW_popup" data ="@item.VideoCodeNumber">
+
+        <div class="news-list-item__wrapper">
+            <span class="news-list-item__picture">
+                <img class="news-list-item__image news-list-item__image_loaded_yes" alt="@item.VideoName " src="~/Content/Galleries/Video/Thumbnails/@item.VideoThumbnail">
+            </span>
+            <h2 class="news-list-item__title">
+                <a class="news-list-item__link">
+                    @item.VideoName
+                </a>
+            </h2>
+            <div class="news-list-item__description">@item.VideoDescription</div>
+        </div>
+    </div>
+}
+    
+</div>

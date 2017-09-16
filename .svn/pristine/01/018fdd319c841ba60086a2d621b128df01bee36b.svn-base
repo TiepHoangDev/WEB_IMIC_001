@@ -1,0 +1,122 @@
+﻿@{
+    ViewBag.Title = "Danh sách bài học";
+    Layout = "~/Views/LessonPage/_LayoutLessonNew.cshtml";
+
+    int i = 0;
+}
+
+@using WCF.Web.App_Start
+@model IEnumerable<WCF.BusinessObjectsLayer.EntityObjects.LessonObject>
+
+    <div>
+        <h1 class="visuallyhidden"></h1>
+        <section class="hero hero_light hero_focus-position_center">
+            <style>
+                .hero__background {
+                    background-image: url('https://sassoon.imgix.net/getmedia/ba56a8f3-e0e2-438e-a713-83bfedbf5160/Events_2?w=640&h=480&fit=crop&crop=faces');
+                }
+
+                @@media (min-width: 1024px) {
+                    .hero__background {
+                        background-image: url('https://sassoon.imgix.net/getmedia/ba56a8f3-e0e2-438e-a713-83bfedbf5160/Events_2?w=1280&h=640&fit=crop&crop=faces');
+                    }
+                }
+
+                @@media (min-width: 1280px) {
+                    .hero__background {
+                        background-image: url('https://sassoon.imgix.net/getmedia/ba56a8f3-e0e2-438e-a713-83bfedbf5160/Events_2?w=1440&h=640&fit=crop&crop=faces');
+                    }
+                }
+
+                @@media (min-width: 1440px) {
+                    .hero__background {
+                        background-image: url('https://sassoon.imgix.net/getmedia/ba56a8f3-e0e2-438e-a713-83bfedbf5160/Events_2?w=1680&h=640&fit=crop&crop=faces');
+                    }
+                }
+
+                @@media (min-width: 1680px) {
+                    .hero__background {
+                        background-image: url('https://sassoon.imgix.net/getmedia/ba56a8f3-e0e2-438e-a713-83bfedbf5160/Events_2?w=1920&h=640&fit=crop&crop=faces');
+                    }
+                }
+            </style>
+            <div class="hero__background"></div>
+
+            <div class="hero__container">
+                <div class="hero__content">
+                    <h2 class="hero__title">Events</h2>
+                    <p class="hero__text hero__text_simple">As well as creating high impact Academy courses, we also deliver superb cut and colour skills<br data-owner="balance-text">on stage with our dedicated show and seminar teams. Each year, teams of Sassoon professionals<br data-owner="balance-text">are sent out around the globe to stage shows, seminars, master classes and educational events.</p>
+
+                </div>
+            </div>
+
+        </section>
+
+
+        <div class="courses">
+            @foreach (var item in Model)
+            {
+                i++;
+                if (i % 2 == 0)
+                {
+
+                    <section class="courses__item course course_alignment_left">
+                        <a href="@Url.RouteUrl("lesson-detail",new{code = item.objDetail.DetailCode,name = StringHelpers.GenerateURL(item.objDetail.DetailTitle)})" class=" course__picture-link">
+                            <picture class="course__picture">
+                                <img src="~/Content/assets/images/Home-Promo_Latest-News.jpg" alt="Shows" class="course__default-image">
+                            </picture>
+                        </a>
+                        <div class="course__content-cell">
+                            <div class="course__content">
+                                <h2 class="course__title">
+                                    <a href="@Url.RouteUrl("lesson-detail",new{code = item.objDetail.DetailCode,name = StringHelpers.GenerateURL(item.objDetail.DetailTitle)})" class="course__link">@item.LessonName</a>
+                                </h2>
+                                <div class="course__text">
+                                    <p class="markup-p"></p>
+                                </div>
+                                <div class="course__actions">
+                                    <a href="@Url.RouteUrl("lesson-detail",new{code = item.objDetail.DetailCode,name = StringHelpers.GenerateURL(item.objDetail.DetailTitle)})" class="course__more-button">
+                                        View more
+                                        <svg viewBox="0 0 16 16" class="course__more-button-arrow">
+                                            <path d="M8,0L6.6,1.4L12.2,7H0v2h12.2l-5.6,5.6L8,16l8-8L8,0z"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                }
+                else
+                {
+                    <section class="courses__item course course_alignment_right">
+                        <a href="@Url.RouteUrl("lesson-detail",new{code = item.objDetail.DetailCode,name = StringHelpers.GenerateURL(item.objDetail.DetailTitle)})" class="course__picture-link">
+                            <picture class="course__picture">
+                                <img src="~/Content/assets/images/Home-Promo_Book-an-Event.jpg" alt="Look &amp; Learn Seminars" class="course__default-image">
+                            </picture>
+                        </a>
+                        <div class="course__content-cell">
+                            <div class="course__content">
+                                <h2 class="course__title">
+                                    <a href="@Url.RouteUrl("lesson-detail",new{code = item.objDetail.DetailCode,name = StringHelpers.GenerateURL(item.objDetail.DetailTitle)})" class="course__link">@item.LessonName</a>
+                                </h2>
+                                <div class="course__text">
+                                    <p class="markup-p">Choose a&nbsp;Sassoon&nbsp;Look &amp; Learn Seminar when you need to satisfy a variety of requirements in a specified time frame and specific audience.</p>
+                                </div>
+                                <div class="course__actions">
+                                    <a href="@Url.RouteUrl("lesson-detail",new{code = item.objDetail.DetailCode,name = StringHelpers.GenerateURL(item.objDetail.DetailTitle)})" class="course__more-button">
+                                        View more
+                                        <svg viewBox="0 0 16 16" class="course__more-button-arrow">
+                                            <path d="M8,0L6.6,1.4L12.2,7H0v2h12.2l-5.6,5.6L8,16l8-8L8,0z"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                }
+            }
+        </div>
+    </div>
+    @section Scripts{
+        <script src="~/Content/assets/js/app.20170423225748007.js"></script>
+    }
